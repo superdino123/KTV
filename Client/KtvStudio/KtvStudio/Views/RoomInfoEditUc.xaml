@@ -1,0 +1,85 @@
+﻿<UserControl x:Class="KtvStudio.Views.RoomInfoEditUc"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:KtvStudio.Views"
+             xmlns:converters="clr-namespace:KtvStudio.Helpers.Converters"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <converters:RoomTypeNameToCodeConverter x:Key="RoomTypeNameToCodeConverter"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Height="40" Background="White" Margin="0">
+            <DockPanel>
+                <TextBlock DockPanel.Dock="Left" Margin="2 5 5 5" Width="10"
+                                       Height="{Binding ElementName=toggleButtonBaseInfo,Path=Height}"
+                                       Background="#A0D8F0" />
+                <ToggleButton Name="toggleButtonBaseInfo"
+                                          DockPanel.Dock="Right"
+                                          IsTabStop="False"
+                                          HorizontalAlignment="Left"
+                                          Background="White"
+                                          BorderThickness="0"
+                                          BorderBrush="Transparent"
+                                          Padding="5 0"
+                                          IsChecked="True"
+                                          Content="包间信息"
+                                          FontSize="13"
+                                          FontWeight="Normal"
+                                          HorizontalContentAlignment="Left" />
+            </DockPanel>
+        </Border>
+        <Border Grid.Row="1"
+                            Background="#FFE0E0E0"
+                            BorderThickness="0 2 0 0"
+                            BorderBrush="#A0D8F0"
+                            Padding="0 3"
+                            Visibility="{Binding ElementName=toggleButtonBaseInfo,Path=IsChecked,Converter={StaticResource BooleanToVisibilityConverter}}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="房间号"
+                           VerticalAlignment="Center" Margin="5 5 0 5"/>
+                <TextBox Grid.Row="0" Grid.Column="1" MinWidth="200" Margin="5"
+                         Text="{Binding RoomInfoEditItem.RoomId}"/>
+                <TextBlock Grid.Row="0" Grid.Column="2" Text="房间类型"
+                           VerticalAlignment="Center" Margin="5 5 0 5"/>
+                <ComboBox Grid.Row="0" Grid.Column="3" MinWidth="200" Margin="5"
+                          ItemsSource="{Binding RoomTypeSource}" IsEditable="False"
+                          DisplayMemberPath="actionname" SelectedValuePath="actioncode"
+                          SelectedValue="{Binding RoomInfoEditItem.RoomType, Converter={StaticResource RoomTypeNameToCodeConverter}}"/>
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="房间面积"
+                           VerticalAlignment="Center" Margin="5 5 0 5"/>
+                <TextBox Grid.Row="1" Grid.Column="1" MinWidth="200" Margin="5"
+                         Text="{Binding RoomInfoEditItem.RoomSize}"/>
+                <TextBlock Grid.Row="1" Grid.Column="2" Text="麦克风数量"
+                           VerticalAlignment="Center" Margin="5 5 0 5"/>
+                <TextBox Grid.Row="1" Grid.Column="3" MinWidth="200" Margin="5"
+                         Text="{Binding RoomInfoEditItem.MicroPhoneNumber}"/>
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="房间展示"
+                           VerticalAlignment="Center" Margin="5 5 0 5"/>
+                <Image Grid.Row="2" Grid.Column="1" Width="300" Margin="5 5 0 5"
+                       Source="{Binding RoomInfoEditItem.ImageUrl}"/>
+                <Button Grid.Row="2" Grid.Column="2" Content="上传图片" HorizontalAlignment="Center" Height="30"
+                        Command="{Binding RoomImageUpLoadCmd}"/>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

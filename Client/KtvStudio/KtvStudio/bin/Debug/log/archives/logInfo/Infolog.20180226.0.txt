@@ -1,0 +1,36 @@
+2018-02-26 11:23:39 740|Info
+   |stacktrace = ClientViewModel.OnRoomImageUpLoad => ClientViewModel.RoomImageUploadToFtp => LogHelper.LogInfo
+   |message = Images/8006.jpg上传成功
+
+2018-02-26 11:23:39 854|Info
+   |stacktrace = ClientViewModel.OnRoomImageUpLoad => ClientViewModel.RoomImageUploadToFtp => LogHelper.LogInfo
+   |message = 同步本地成功
+
+2018-02-26 11:29:06 105|Info
+   |stacktrace = ClientViewModel.OnRoomImageUpLoad => ClientViewModel.RoomImageUploadToFtp => LogHelper.LogInfo
+   |message = Images/8006.jpg上传成功
+
+2018-02-26 11:29:06 165|Info
+   |stacktrace = ClientViewModel.OnRoomImageUpLoad => ClientViewModel.RoomImageUploadToFtp => LogHelper.LogInfo
+   |message = 同步本地成功
+
+2018-02-26 11:29:39 381|Info
+   |stacktrace = ClientViewModel.OnRoomImageUpLoad => ClientViewModel.RoomImageUploadToFtp => LogHelper.LogInfo
+   |message = Images/8006.jpg上传成功
+
+2018-02-26 11:29:39 393|Info
+   |stacktrace = ClientViewModel.OnRoomImageUpLoad => ClientViewModel.RoomImageUploadToFtp => LogHelper.LogInfo
+   |message = 同步本地成功
+
+2018-02-26 11:31:35 633|Info
+   |stacktrace = ClientViewModel.OnRoomImageUpLoad => ClientViewModel.RoomImageUploadToFtp => LogHelper.LogInfo
+   |message = Images/8006.jpg上传成功
+
+2018-02-26 11:34:30 616|Info
+   |stacktrace = ClientViewModel.OnRoomImageUpLoad => ClientViewModel.RoomImageUploadToFtp => LogHelper.LogInfo
+   |message = 同步本地成功
+
+2018-02-26 11:37:13 628|Info
+   |stacktrace = ClientViewModel.OnRoomImageUpLoad => ClientViewModel.RoomImageUploadToFtp => LogHelper.LogInfo
+   |message = Images/8006.jpg上传成功
+

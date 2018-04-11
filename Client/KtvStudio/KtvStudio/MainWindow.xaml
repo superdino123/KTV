@@ -1,0 +1,168 @@
+﻿<fluent:RibbonWindow
+                    xmlns:fluent="urn:fluent-ribbon" x:Class="KtvStudio.MainWindow"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:local="clr-namespace:KtvStudio"
+                    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+                    xmlns:converters="clr-namespace:Helpers.Converters;assembly=Helpers"
+                    xmlns:views="clr-namespace:KtvStudio.Views"
+                    xmlns:clientControlsBehaviours="clr-namespace:ClientControls.Behaviours;assembly=ClientControls"     
+                    xmlns:converters1="clr-namespace:KtvStudio.Helpers.Converters"
+                    mc:Ignorable="d"
+                    Name="ThisWindow"
+                    DataContext="{Binding ElementName=ThisWindow, Path=ClientViewModel}"
+                    Title="KTV信息管理平台" Height="350" Width="525"
+                    WindowStartupLocation="CenterScreen" WindowState="Maximized">
+    <fluent:RibbonWindow.Resources>
+        <converters:BooleanInvertVisibilityConverter x:Key="Bivc"/>
+        <converters1:RoomStateCodeToNameConverter x:Key="Rsctnc"/>
+        <BooleanToVisibilityConverter x:Key="Btvc"/>
+        <converters:DateTimeToNullConverter x:Key="Dtnc"/>
+    </fluent:RibbonWindow.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!--菜单栏-->
+        <fluent:Ribbon Grid.Row="0" IsQuickAccessToolBarVisible="False">
+            <fluent:Ribbon.ToolBarItems>
+                <Grid Margin="0 3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="郑伟地" Margin="0 0 10 0"/>
+                    <TextBlock Grid.Column="1" Text="田林东路店" Margin="0 0 10 0"/>
+                    <TextBlock Grid.Column="2" Text="{Binding DateTimeNow}"/>
+                </Grid>
+            </fluent:Ribbon.ToolBarItems>
+            <fluent:Ribbon.Menu>
+                <fluent:Backstage Header="文件">
+                    <fluent:BackstageTabControl>
+                        <fluent:BackstageTabItem Header="设置">
+                        </fluent:BackstageTabItem>
+                        <fluent:BackstageTabItem Header="工具">
+                        </fluent:BackstageTabItem>
+                        <fluent:BackstageTabItem Header="帮助">
+                        </fluent:BackstageTabItem>
+                    </fluent:BackstageTabControl>
+                </fluent:Backstage>
+            </fluent:Ribbon.Menu>
+            <fluent:RibbonTabItem Name="Home" Header="首页">
+                <fluent:RibbonGroupBox Header="使用操作">
+                    <fluent:Button Header="订购" Margin="5 0"
+                                   Command="{Binding RoomTaskAddCmd}">
+                        <fluent:Button.LargeIcon>
+                            <iconPacks:PackIconMaterial Kind="CartOutline" Width="26" Height="26" />
+                        </fluent:Button.LargeIcon>
+                    </fluent:Button>
+                    <fluent:Button Header="结算" Margin="5 0"
+                                   Command="{Binding RoomTaskBalanceCmd}">
+                        <fluent:Button.LargeIcon>
+                            <iconPacks:PackIconMaterial Kind="CartOff" Width="26" Height="26" />
+                        </fluent:Button.LargeIcon>
+                    </fluent:Button>
+                    <fluent:Button Header="续费" Margin="5 0"
+                                   Command="{Binding RoomTaskRenewCmd}">
+                        <fluent:Button.LargeIcon>
+                            <iconPacks:PackIconMaterial Kind="CartPlus" Width="26" Height="26" />
+                        </fluent:Button.LargeIcon>
+                    </fluent:Button>
+                </fluent:RibbonGroupBox>
+            </fluent:RibbonTabItem>
+            <fluent:RibbonTabItem Name="InfoManage" Header="包房信息管理">
+                <fluent:RibbonGroupBox Header="信息修改">
+                    <fluent:Button Header="新增" Margin="5 0"
+                                   Command="{Binding RoomInfoAddCmd}">
+                        <fluent:Button.LargeIcon>
+                            <iconPacks:PackIconMaterial Kind="Plus" Width="26" Height="26" />
+                        </fluent:Button.LargeIcon>
+                    </fluent:Button>
+                    <fluent:Button Header="编辑" Margin="5 0"
+                                   Command="{Binding RoomInfoEditCmd}">
+                        <fluent:Button.LargeIcon>
+                            <iconPacks:PackIconModern Kind="EditBox" Width="26" Height="26" />
+                        </fluent:Button.LargeIcon>
+                    </fluent:Button>
+                    <fluent:Button Header="取消" Margin="5 0"
+                                   Command="{Binding RoomInfoCancelCmd}">
+                        <fluent:Button.LargeIcon>
+                            <iconPacks:PackIconModern Kind="UndoPoint" Width="26" Height="26" />
+                        </fluent:Button.LargeIcon>
+                    </fluent:Button>
+                    <fluent:Button Header="保存" Margin="5 0"
+                                   Command="{Binding RoomInfoSaveCmd}">
+                        <fluent:Button.LargeIcon>
+                            <iconPacks:PackIconOcticons Kind="Check" Width="26" Height="26" />
+                        </fluent:Button.LargeIcon>
+                    </fluent:Button>
+                </fluent:RibbonGroupBox>
+            </fluent:RibbonTabItem>
+        </fluent:Ribbon>
+        <!--内容显示区域-->
+        <Grid Grid.Row="1">
+            <!--  -->
+            <Grid Visibility="{Binding ElementName=Home,Path=IsSelected,Converter={StaticResource Btvc}}">
+                <!-- 包房状态管理 -->
+                <DataGrid DataContext="{Binding ElementName=ThisWindow}"
+                        ItemsSource="{Binding ClientViewModel.RoomTaskSource}"
+                        IsReadOnly="True"
+                        AutoGenerateColumns="False"
+                        RowHeaderWidth="20"
+                        HeadersVisibility="All"
+                        Margin="5 0"
+                        clientControlsBehaviours:DataGridBehavior.DisplayRowNumber="True"
+                        SelectionChanged="RoomTaskDataGrid_SelectionChanged">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="房间号" Binding="{Binding roomid}" Width="100"/>
+                        <DataGridTextColumn Header="房间状态" Binding="{Binding roomstate, Converter={StaticResource Rsctnc}}" Width="100"/>
+                        <DataGridTextColumn Header="起始时间" Binding="{Binding starttime, Converter={StaticResource Dtnc}}" Width="200"/>
+                        <DataGridTextColumn Header="结束时间" Binding="{Binding endtime, Converter={StaticResource Dtnc}}" Width="200"/>
+                        <DataGridTextColumn Header="房间消费" Binding="{Binding roomconsume}" Width="100"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+            
+            <Grid Visibility="{Binding ElementName=InfoManage,Path=IsSelected,Converter={StaticResource Btvc}}">
+                <!-- 包房信息管理 -->
+                <DataGrid DataContext="{Binding ElementName=ThisWindow}"
+                        ItemsSource="{Binding ClientViewModel.RoomInfoSource}"
+                        IsReadOnly="True"
+                        AutoGenerateColumns="False"
+                        Visibility="{Binding ClientViewModel.RoomInfoEditVisibility, Converter={StaticResource Bivc}}"
+                        RowHeaderWidth="20"
+                        HeadersVisibility="All"
+                        Margin="5 0"
+                        clientControlsBehaviours:DataGridBehavior.DisplayRowNumber="True"
+                        MouseDoubleClick="RoomInfoSourceDataGrid_MouseDoubleClick"
+                        SelectionChanged="DataGrid_SelectionChanged">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="房间号" Binding="{Binding roomid}" Width="100"/>
+                        <DataGridTextColumn Header="房间类型" Binding="{Binding roomtype}" Width="100"/>
+                        <DataGridTextColumn Header="房间面积" Binding="{Binding roomsize}" Width="100"/>
+                        <DataGridTextColumn Header="麦克数量" Binding="{Binding microphonenumber}" Width="100"/>
+                        <DataGridTemplateColumn Header="房间展示" Width="200">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding imageurl}" Width="120" Height="50" Stretch="UniformToFill"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <views:RoomInfoEditUc DataContext="{Binding ElementName=ThisWindow, Path=ClientViewModel}"
+                                      Visibility="{Binding RoomInfoEditVisibility, Converter={StaticResource Btvc}}"/>
+            </Grid>
+        </Grid>
+        <!--状态栏-->
+        <fluent:StatusBar Grid.Row="2">
+            <fluent:StatusBarItem/>
+        </fluent:StatusBar>
+    </Grid>
+</fluent:RibbonWindow>

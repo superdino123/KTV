@@ -1,0 +1,12 @@
+2018-03-02 14:01:57 269|Info
+   |stacktrace = ClientViewModel.OnRoomImageUpLoad => ClientViewModel.RoomImageUploadToFtp => LogHelper.LogInfo
+   |message = Images/8006.jpg上传成功
+
+2018-03-02 14:02:01 363|Info
+   |stacktrace = ClientViewModel.OnRoomImageUpLoad => ClientViewModel.RoomImageUploadToFtp => LogHelper.LogInfo
+   |message = Images/8006.jpg上传成功
+
+2018-03-02 14:02:55 338|Info
+   |stacktrace = ClientViewModel.OnRoomImageUpLoad => ClientViewModel.RoomImageUploadToFtp => LogHelper.LogInfo
+   |message = Images/8006.jpg上传成功
+

@@ -1,0 +1,12 @@
+G:\3VSText\GitRepo\2TextKtv\Client\KtvStudio\ClientControls\bin\Debug\ClientControls.dll
+G:\3VSText\GitRepo\2TextKtv\Client\KtvStudio\ClientControls\bin\Debug\ClientControls.pdb
+G:\3VSText\GitRepo\2TextKtv\Client\KtvStudio\ClientControls\obj\Debug\ClientControls.csprojResolveAssemblyReference.cache
+G:\3VSText\GitRepo\2TextKtv\Client\KtvStudio\ClientControls\obj\Debug\ClientControls.csproj.CoreCompileInputs.cache
+G:\3VSText\GitRepo\2TextKtv\Client\KtvStudio\ClientControls\obj\Debug\ClientControls.dll
+G:\3VSText\GitRepo\2TextKtv\Client\KtvStudio\ClientControls\obj\Debug\ClientControls.pdb
+G:\3VSText\GitKtv\Client\KtvStudio\ClientControls\bin\Debug\ClientControls.dll
+G:\3VSText\GitKtv\Client\KtvStudio\ClientControls\bin\Debug\ClientControls.pdb
+G:\3VSText\GitKtv\Client\KtvStudio\ClientControls\obj\Debug\ClientControls.csprojResolveAssemblyReference.cache
+G:\3VSText\GitKtv\Client\KtvStudio\ClientControls\obj\Debug\ClientControls.csproj.CoreCompileInputs.cache
+G:\3VSText\GitKtv\Client\KtvStudio\ClientControls\obj\Debug\ClientControls.dll
+G:\3VSText\GitKtv\Client\KtvStudio\ClientControls\obj\Debug\ClientControls.pdb

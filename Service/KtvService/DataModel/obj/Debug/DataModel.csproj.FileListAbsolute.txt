@@ -1,0 +1,12 @@
+G:\3VSText\GitRepo\2TextKtv\Service\KtvService\DataModel\bin\Debug\DataModel.dll
+G:\3VSText\GitRepo\2TextKtv\Service\KtvService\DataModel\bin\Debug\DataModel.pdb
+G:\3VSText\GitRepo\2TextKtv\Service\KtvService\DataModel\obj\Debug\DataModel.csprojResolveAssemblyReference.cache
+G:\3VSText\GitRepo\2TextKtv\Service\KtvService\DataModel\obj\Debug\DataModel.csproj.CoreCompileInputs.cache
+G:\3VSText\GitRepo\2TextKtv\Service\KtvService\DataModel\obj\Debug\DataModel.dll
+G:\3VSText\GitRepo\2TextKtv\Service\KtvService\DataModel\obj\Debug\DataModel.pdb
+G:\3VSText\GitKtv\Service\KtvService\DataModel\bin\Debug\DataModel.dll
+G:\3VSText\GitKtv\Service\KtvService\DataModel\bin\Debug\DataModel.pdb
+G:\3VSText\GitKtv\Service\KtvService\DataModel\obj\Debug\DataModel.csprojResolveAssemblyReference.cache
+G:\3VSText\GitKtv\Service\KtvService\DataModel\obj\Debug\DataModel.csproj.CoreCompileInputs.cache
+G:\3VSText\GitKtv\Service\KtvService\DataModel\obj\Debug\DataModel.dll
+G:\3VSText\GitKtv\Service\KtvService\DataModel\obj\Debug\DataModel.pdb

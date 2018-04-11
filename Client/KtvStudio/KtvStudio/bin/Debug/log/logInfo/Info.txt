@@ -1,0 +1,4 @@
+2018-04-11 11:47:25 250|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"hash":"FoCkT3F2F3daGHF-RTWX9RVVOkXI","key":"7db0b9bedd364029ad44426fa27c04fc.jpg"}
+

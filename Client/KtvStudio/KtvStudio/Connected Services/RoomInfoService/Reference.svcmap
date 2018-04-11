@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="080d7987-e11f-4c90-9d02-222d08e6cab1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:9918/RoomInfoManagement/MEX" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="MEX4.xsd" MetadataType="Schema" ID="a77d39d7-2cf2-4575-98e4-c4a2db25a740" SourceId="1" SourceUrl="http://localhost:9918/RoomInfoManagement/MEX?xsd=xsd3" />
+    <MetadataFile FileName="MEX41.xsd" MetadataType="Schema" ID="66508f70-ebf2-4c84-9fb6-212732b4a278" SourceId="1" SourceUrl="http://localhost:9918/RoomInfoManagement/MEX?xsd=xsd2" />
+    <MetadataFile FileName="MEX42.xsd" MetadataType="Schema" ID="e4a1b33e-13a5-4168-94b7-f02c0889744c" SourceId="1" SourceUrl="http://localhost:9918/RoomInfoManagement/MEX?xsd=xsd1" />
+    <MetadataFile FileName="MEX43.xsd" MetadataType="Schema" ID="537973ff-e1e0-4993-9130-6fa62a5333a4" SourceId="1" SourceUrl="http://localhost:9918/RoomInfoManagement/MEX?xsd=xsd0" />
+    <MetadataFile FileName="RoomInfoManagementImplementation1.wsdl" MetadataType="Wsdl" ID="2490f108-faf0-4def-968d-5d69736cc164" SourceId="1" SourceUrl="http://localhost:9918/RoomInfoManagement/MEX" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

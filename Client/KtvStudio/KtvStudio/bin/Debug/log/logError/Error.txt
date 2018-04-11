@@ -1,0 +1,32 @@
+2018-04-05 09:35:51 204|Error
+   |stacktrace = ClientViewModel.<get_RoomTaskAddCmd>b__27_0 => ClientViewModel.OnRoomTaskAdd => LogHelper.LogError
+   |message = 用户ID:1,读取数据库用户信息数应为1，实际为0 
+
+2018-04-05 09:42:42 007|Error
+   |stacktrace = ClientViewModel.<get_RoomTaskAddCmd>b__27_0 => ClientViewModel.OnRoomTaskAdd => LogHelper.LogError
+   |message = 用户ID:1,读取数据库用户信息数应为1，实际为0 
+
+2018-04-05 09:46:54 359|Error
+   |stacktrace = ClientViewModel.<get_RoomTaskAddCmd>b__27_0 => ClientViewModel.OnRoomTaskAdd => LogHelper.LogError
+   |message = 用户ID:1,读取数据库用户信息数应为1，实际为0 
+
+2018-04-05 09:47:55 678|Error
+   |stacktrace = ClientViewModel.<get_RoomTaskAddCmd>b__27_0 => ClientViewModel.OnRoomTaskAdd => LogHelper.LogError
+   |message = 用户ID:1,读取数据库用户信息数应为1，实际为0 
+
+2018-04-05 09:52:04 058|Error
+   |stacktrace = ClientViewModel.<get_RoomTaskAddCmd>b__27_0 => ClientViewModel.OnRoomTaskAdd => LogHelper.LogError
+   |message = 用户ID:1,读取数据库用户信息数应为1，实际为0 
+
+2018-04-05 17:35:52 905|Error
+   |stacktrace = ClientViewModel.<get_RoomTaskAddCmd>b__28_0 => ClientViewModel.OnRoomTaskAdd => LogHelper.LogError
+   |message = 用户ID:0,读取数据库用户信息数应为1，实际为0 
+
+2018-04-05 17:37:51 346|Error
+   |stacktrace = ClientViewModel.<get_RoomTaskAddCmd>b__28_0 => ClientViewModel.OnRoomTaskAdd => LogHelper.LogError
+   |message = 用户ID:0,读取数据库用户信息数应为1，实际为0 
+
+2018-04-05 17:39:13 035|Error
+   |stacktrace = ClientViewModel.<get_RoomTaskAddCmd>b__28_0 => ClientViewModel.OnRoomTaskAdd => LogHelper.LogError
+   |message = 用户ID:0,读取数据库用户信息数应为1，实际为0 
+

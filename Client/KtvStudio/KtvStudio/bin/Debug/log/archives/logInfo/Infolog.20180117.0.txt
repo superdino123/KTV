@@ -1,0 +1,4 @@
+2018-01-17 12:48:57 781|Info
+   |stacktrace = RuntimeTypeHandle.CreateInstance => MainWindow..ctor => LogHelper.LogInfo
+   |message = 123
+

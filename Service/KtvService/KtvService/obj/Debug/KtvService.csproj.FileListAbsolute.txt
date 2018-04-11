@@ -1,0 +1,15 @@
+G:\3VSText\GitRepo\2TextKtv\Service\KtvService\KtvService\bin\Debug\KtvService.exe.config
+G:\3VSText\GitRepo\2TextKtv\Service\KtvService\KtvService\bin\Debug\KtvService.exe
+G:\3VSText\GitRepo\2TextKtv\Service\KtvService\KtvService\bin\Debug\KtvService.pdb
+G:\3VSText\GitRepo\2TextKtv\Service\KtvService\KtvService\obj\Debug\KtvService.csprojResolveAssemblyReference.cache
+G:\3VSText\GitRepo\2TextKtv\Service\KtvService\KtvService\obj\Debug\MainWindow.g.cs
+G:\3VSText\GitRepo\2TextKtv\Service\KtvService\KtvService\obj\Debug\App.g.cs
+G:\3VSText\GitRepo\2TextKtv\Service\KtvService\KtvService\obj\Debug\KtvService_MarkupCompile.cache
+G:\3VSText\GitRepo\2TextKtv\Service\KtvService\KtvService\obj\Debug\KtvService_MarkupCompile.lref
+G:\3VSText\GitRepo\2TextKtv\Service\KtvService\KtvService\obj\Debug\MainWindow.baml
+G:\3VSText\GitRepo\2TextKtv\Service\KtvService\KtvService\obj\Debug\KtvService.g.resources
+G:\3VSText\GitRepo\2TextKtv\Service\KtvService\KtvService\obj\Debug\KtvService.Properties.Resources.resources
+G:\3VSText\GitRepo\2TextKtv\Service\KtvService\KtvService\obj\Debug\KtvService.csproj.GenerateResource.Cache
+G:\3VSText\GitRepo\2TextKtv\Service\KtvService\KtvService\obj\Debug\KtvService.csproj.CoreCompileInputs.cache
+G:\3VSText\GitRepo\2TextKtv\Service\KtvService\KtvService\obj\Debug\KtvService.exe
+G:\3VSText\GitRepo\2TextKtv\Service\KtvService\KtvService\obj\Debug\KtvService.pdb
