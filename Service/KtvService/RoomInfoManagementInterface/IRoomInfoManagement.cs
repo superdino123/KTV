@@ -14,12 +14,16 @@ namespace RoomInfoManagementInterface
     {
         [OperationContract]
         DataTable GetAllRoomInfo();
+
         [OperationContract]
         int InsertRoomInfo(RoomInfo roomInfo);
+
         [OperationContract]
-        int RemoveRoomInfo(RoomInfo roomInfo);
+        int RemoveRoomInfo(string roomId);
+
         [OperationContract]
         int UpdateRoomInfo(RoomInfo roomInfo);
+        
         [OperationContract]
         DataTable GetActionSource(string groupCode);
     }

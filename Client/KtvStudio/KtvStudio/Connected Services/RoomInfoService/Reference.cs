@@ -23,19 +23,40 @@ namespace KtvStudio.RoomInfoService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AirConditionerNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EffectorNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ImageUrlField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LCDTVNumberField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string MicroPhoneNumberField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PowerAmplifierNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string RoomIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RoomRemarkField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string RoomSizeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string RoomTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SongDeskNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SoundNumberField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -48,6 +69,32 @@ namespace KtvStudio.RoomInfoService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string AirConditionerNumber {
+            get {
+                return this.AirConditionerNumberField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AirConditionerNumberField, value) != true)) {
+                    this.AirConditionerNumberField = value;
+                    this.RaisePropertyChanged("AirConditionerNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string EffectorNumber {
+            get {
+                return this.EffectorNumberField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EffectorNumberField, value) != true)) {
+                    this.EffectorNumberField = value;
+                    this.RaisePropertyChanged("EffectorNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string ImageUrl {
             get {
                 return this.ImageUrlField;
@@ -56,6 +103,19 @@ namespace KtvStudio.RoomInfoService {
                 if ((object.ReferenceEquals(this.ImageUrlField, value) != true)) {
                     this.ImageUrlField = value;
                     this.RaisePropertyChanged("ImageUrl");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LCDTVNumber {
+            get {
+                return this.LCDTVNumberField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LCDTVNumberField, value) != true)) {
+                    this.LCDTVNumberField = value;
+                    this.RaisePropertyChanged("LCDTVNumber");
                 }
             }
         }
@@ -74,6 +134,19 @@ namespace KtvStudio.RoomInfoService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PowerAmplifierNumber {
+            get {
+                return this.PowerAmplifierNumberField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PowerAmplifierNumberField, value) != true)) {
+                    this.PowerAmplifierNumberField = value;
+                    this.RaisePropertyChanged("PowerAmplifierNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string RoomId {
             get {
                 return this.RoomIdField;
@@ -82,6 +155,19 @@ namespace KtvStudio.RoomInfoService {
                 if ((object.ReferenceEquals(this.RoomIdField, value) != true)) {
                     this.RoomIdField = value;
                     this.RaisePropertyChanged("RoomId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RoomRemark {
+            get {
+                return this.RoomRemarkField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RoomRemarkField, value) != true)) {
+                    this.RoomRemarkField = value;
+                    this.RaisePropertyChanged("RoomRemark");
                 }
             }
         }
@@ -108,6 +194,32 @@ namespace KtvStudio.RoomInfoService {
                 if ((object.ReferenceEquals(this.RoomTypeField, value) != true)) {
                     this.RoomTypeField = value;
                     this.RaisePropertyChanged("RoomType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SongDeskNumber {
+            get {
+                return this.SongDeskNumberField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SongDeskNumberField, value) != true)) {
+                    this.SongDeskNumberField = value;
+                    this.RaisePropertyChanged("SongDeskNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SoundNumber {
+            get {
+                return this.SoundNumberField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SoundNumberField, value) != true)) {
+                    this.SoundNumberField = value;
+                    this.RaisePropertyChanged("SoundNumber");
                 }
             }
         }
@@ -139,10 +251,10 @@ namespace KtvStudio.RoomInfoService {
         System.Threading.Tasks.Task<int> InsertRoomInfoAsync(KtvStudio.RoomInfoService.RoomInfo roomInfo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoomInfoManagement/RemoveRoomInfo", ReplyAction="http://tempuri.org/IRoomInfoManagement/RemoveRoomInfoResponse")]
-        int RemoveRoomInfo(KtvStudio.RoomInfoService.RoomInfo roomInfo);
+        int RemoveRoomInfo(string roomId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoomInfoManagement/RemoveRoomInfo", ReplyAction="http://tempuri.org/IRoomInfoManagement/RemoveRoomInfoResponse")]
-        System.Threading.Tasks.Task<int> RemoveRoomInfoAsync(KtvStudio.RoomInfoService.RoomInfo roomInfo);
+        System.Threading.Tasks.Task<int> RemoveRoomInfoAsync(string roomId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoomInfoManagement/UpdateRoomInfo", ReplyAction="http://tempuri.org/IRoomInfoManagement/UpdateRoomInfoResponse")]
         int UpdateRoomInfo(KtvStudio.RoomInfoService.RoomInfo roomInfo);
@@ -200,12 +312,12 @@ namespace KtvStudio.RoomInfoService {
             return base.Channel.InsertRoomInfoAsync(roomInfo);
         }
         
-        public int RemoveRoomInfo(KtvStudio.RoomInfoService.RoomInfo roomInfo) {
-            return base.Channel.RemoveRoomInfo(roomInfo);
+        public int RemoveRoomInfo(string roomId) {
+            return base.Channel.RemoveRoomInfo(roomId);
         }
         
-        public System.Threading.Tasks.Task<int> RemoveRoomInfoAsync(KtvStudio.RoomInfoService.RoomInfo roomInfo) {
-            return base.Channel.RemoveRoomInfoAsync(roomInfo);
+        public System.Threading.Tasks.Task<int> RemoveRoomInfoAsync(string roomId) {
+            return base.Channel.RemoveRoomInfoAsync(roomId);
         }
         
         public int UpdateRoomInfo(KtvStudio.RoomInfoService.RoomInfo roomInfo) {

@@ -16,3 +16,12 @@ G:\3VSText\GitKtv\Service\KtvService\Helpers\obj\Debug\Helpers.csprojResolveAsse
 G:\3VSText\GitKtv\Service\KtvService\Helpers\obj\Debug\Helpers.csproj.CoreCompileInputs.cache
 G:\3VSText\GitKtv\Service\KtvService\Helpers\obj\Debug\Helpers.dll
 G:\3VSText\GitKtv\Service\KtvService\Helpers\obj\Debug\Helpers.pdb
+G:\3VSText\GitTest\KTV\Service\KtvService\Helpers\bin\Debug\NLog.config
+G:\3VSText\GitTest\KTV\Service\KtvService\Helpers\bin\Debug\Helpers.dll
+G:\3VSText\GitTest\KTV\Service\KtvService\Helpers\bin\Debug\Helpers.pdb
+G:\3VSText\GitTest\KTV\Service\KtvService\Helpers\bin\Debug\NLog.dll
+G:\3VSText\GitTest\KTV\Service\KtvService\Helpers\bin\Debug\NLog.xml
+G:\3VSText\GitTest\KTV\Service\KtvService\Helpers\obj\Debug\Helpers.csprojResolveAssemblyReference.cache
+G:\3VSText\GitTest\KTV\Service\KtvService\Helpers\obj\Debug\Helpers.csproj.CoreCompileInputs.cache
+G:\3VSText\GitTest\KTV\Service\KtvService\Helpers\obj\Debug\Helpers.dll
+G:\3VSText\GitTest\KTV\Service\KtvService\Helpers\obj\Debug\Helpers.pdb

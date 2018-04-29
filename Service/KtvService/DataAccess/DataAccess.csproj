@@ -43,6 +43,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoomInfoManagementDataAccess.cs" />
     <Compile Include="RoomTaskManagementDataAccess.cs" />
+    <Compile Include="SingerInfoManagementDataAccess.cs" />
+    <Compile Include="SongInfoManagementDataAccess.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataHelper\DataHelper.csproj">

@@ -325,11 +325,23 @@ namespace KtvStudio.RoomTaskService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoomTaskManagement/HasExistUser", ReplyAction="http://tempuri.org/IRoomTaskManagement/HasExistUserResponse")]
         System.Threading.Tasks.Task<int> HasExistUserAsync(string customerIdCard);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoomTaskManagement/GetCustomerIdByIdCard", ReplyAction="http://tempuri.org/IRoomTaskManagement/GetCustomerIdByIdCardResponse")]
+        string GetCustomerIdByIdCard(string customerIdCard);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoomTaskManagement/GetCustomerIdByIdCard", ReplyAction="http://tempuri.org/IRoomTaskManagement/GetCustomerIdByIdCardResponse")]
+        System.Threading.Tasks.Task<string> GetCustomerIdByIdCardAsync(string customerIdCard);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoomTaskManagement/AddConsumeLog", ReplyAction="http://tempuri.org/IRoomTaskManagement/AddConsumeLogResponse")]
         int AddConsumeLog(KtvStudio.RoomTaskService.RoomTask roomTask);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoomTaskManagement/AddConsumeLog", ReplyAction="http://tempuri.org/IRoomTaskManagement/AddConsumeLogResponse")]
         System.Threading.Tasks.Task<int> AddConsumeLogAsync(KtvStudio.RoomTaskService.RoomTask roomTask);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoomTaskManagement/GetRoomPriceSource", ReplyAction="http://tempuri.org/IRoomTaskManagement/GetRoomPriceSourceResponse")]
+        System.Data.DataTable GetRoomPriceSource();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoomTaskManagement/GetRoomPriceSource", ReplyAction="http://tempuri.org/IRoomTaskManagement/GetRoomPriceSourceResponse")]
+        System.Threading.Tasks.Task<System.Data.DataTable> GetRoomPriceSourceAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -415,12 +427,28 @@ namespace KtvStudio.RoomTaskService {
             return base.Channel.HasExistUserAsync(customerIdCard);
         }
         
+        public string GetCustomerIdByIdCard(string customerIdCard) {
+            return base.Channel.GetCustomerIdByIdCard(customerIdCard);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetCustomerIdByIdCardAsync(string customerIdCard) {
+            return base.Channel.GetCustomerIdByIdCardAsync(customerIdCard);
+        }
+        
         public int AddConsumeLog(KtvStudio.RoomTaskService.RoomTask roomTask) {
             return base.Channel.AddConsumeLog(roomTask);
         }
         
         public System.Threading.Tasks.Task<int> AddConsumeLogAsync(KtvStudio.RoomTaskService.RoomTask roomTask) {
             return base.Channel.AddConsumeLogAsync(roomTask);
+        }
+        
+        public System.Data.DataTable GetRoomPriceSource() {
+            return base.Channel.GetRoomPriceSource();
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> GetRoomPriceSourceAsync() {
+            return base.Channel.GetRoomPriceSourceAsync();
         }
     }
 }

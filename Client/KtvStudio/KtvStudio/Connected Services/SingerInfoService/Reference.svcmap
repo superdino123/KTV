@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="333500d0-d0c8-4ecf-ad19-5a6339edcf67" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:9918/SingerInfoManagement/MEX" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="MEX.xsd" MetadataType="Schema" ID="30c2a7a7-ae60-4bd5-9f9a-7dcbba9cba4e" SourceId="1" SourceUrl="http://localhost:9918/SingerInfoManagement/MEX?xsd=xsd2" />
+    <MetadataFile FileName="MEX1.xsd" MetadataType="Schema" ID="f15f3d52-fef6-4f53-b112-917395170dff" SourceId="1" SourceUrl="http://localhost:9918/SingerInfoManagement/MEX?xsd=xsd3" />
+    <MetadataFile FileName="MEX2.xsd" MetadataType="Schema" ID="fbb87061-280d-4185-a9c1-d9b873ec2509" SourceId="1" SourceUrl="http://localhost:9918/SingerInfoManagement/MEX?xsd=xsd0" />
+    <MetadataFile FileName="SingerInfoManagementImplementation.wsdl" MetadataType="Wsdl" ID="d7cdbbbb-5e5a-4339-8ecd-1621f3cf69b8" SourceId="1" SourceUrl="http://localhost:9918/SingerInfoManagement/MEX" />
+    <MetadataFile FileName="MEX3.xsd" MetadataType="Schema" ID="39c47a61-7bb9-4f89-97ac-8e21da195f6a" SourceId="1" SourceUrl="http://localhost:9918/SingerInfoManagement/MEX?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

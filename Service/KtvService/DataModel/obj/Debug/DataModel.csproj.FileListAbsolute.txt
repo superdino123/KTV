@@ -10,3 +10,9 @@ G:\3VSText\GitKtv\Service\KtvService\DataModel\obj\Debug\DataModel.csprojResolve
 G:\3VSText\GitKtv\Service\KtvService\DataModel\obj\Debug\DataModel.csproj.CoreCompileInputs.cache
 G:\3VSText\GitKtv\Service\KtvService\DataModel\obj\Debug\DataModel.dll
 G:\3VSText\GitKtv\Service\KtvService\DataModel\obj\Debug\DataModel.pdb
+G:\3VSText\GitTest\KTV\Service\KtvService\DataModel\bin\Debug\DataModel.dll
+G:\3VSText\GitTest\KTV\Service\KtvService\DataModel\bin\Debug\DataModel.pdb
+G:\3VSText\GitTest\KTV\Service\KtvService\DataModel\obj\Debug\DataModel.csprojResolveAssemblyReference.cache
+G:\3VSText\GitTest\KTV\Service\KtvService\DataModel\obj\Debug\DataModel.csproj.CoreCompileInputs.cache
+G:\3VSText\GitTest\KTV\Service\KtvService\DataModel\obj\Debug\DataModel.dll
+G:\3VSText\GitTest\KTV\Service\KtvService\DataModel\obj\Debug\DataModel.pdb

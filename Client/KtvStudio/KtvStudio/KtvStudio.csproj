@@ -80,12 +80,32 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\SingerInfoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\SongInfoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\CommonFields.cs" />
+    <Compile Include="Helpers\Converters\DateTimeNullToDefaultConverter.cs" />
+    <Compile Include="Helpers\Converters\ImageUrlNullToDefaultConverter.cs" />
+    <Compile Include="Helpers\Converters\LanguageTypeCodeToNameConverter.cs" />
     <Compile Include="Helpers\Converters\RoomStateCodeToNameConverter.cs" />
     <Compile Include="Helpers\Converters\RoomTypeNameToCodeConverter.cs" />
+    <Compile Include="Helpers\Converters\SexNameToBoolConverter.cs" />
+    <Compile Include="Helpers\Converters\SingerSexCodeToNameConverter.cs" />
     <Compile Include="Helpers\NotifyPropertyHelper.cs" />
     <Compile Include="Helpers\QiniuService\QiniuService.cs" />
     <Compile Include="Helpers\SimpleClock.cs" />
+    <Compile Include="Models\LanguageTypeEnum.cs" />
+    <Compile Include="SplashScreen.xaml.cs">
+      <DependentUpon>SplashScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\CategoryEditViewModel.cs" />
     <Compile Include="ViewModels\ClientViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\RoomInfoEditUc.xaml.cs">
@@ -93,6 +113,15 @@
     </Compile>
     <Compile Include="Views\RoomTaskEditWnd.xaml.cs">
       <DependentUpon>RoomTaskEditWnd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SingerInfoEditUc.xaml.cs">
+      <DependentUpon>SingerInfoEditUc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SongInfoEditUc.xaml.cs">
+      <DependentUpon>SongInfoEditUc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SongManageUc.xaml.cs">
+      <DependentUpon>SongManageUc.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -106,11 +135,27 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="SplashScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\RoomInfoEditUc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\RoomTaskEditWnd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SingerInfoEditUc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SongInfoEditUc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SongManageUc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -162,6 +207,35 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\RoomTaskService\RoomTaskManagementImplementation.wsdl" />
+    <None Include="Connected Services\SingerInfoService\MEX.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SingerInfoService\MEX1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SingerInfoService\MEX2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SingerInfoService\MEX3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SingerInfoService\SingerInfoManagementImplementation.wsdl" />
+    <None Include="Connected Services\SongInfoService\KtvStudio.SongInfoService.SingerInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SongInfoService\MEX.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SongInfoService\MEX1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SongInfoService\MEX2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SongInfoService\MEX3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SongInfoService\SongInfoManagementImplementation.wsdl" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\System.Data.DataSet.datasource" />
     <None Include="Properties\DataSources\System.Data.DataTable.datasource" />
@@ -173,9 +247,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\..\类库\MahApps.Metro-develop\MahApps.Metro-develop\src\MahApps.Metro\MahApps.Metro\MahApps.Metro.NET45.csproj">
       <Project>{579d4fa7-0946-4592-ae9b-a73d2d1262c6}</Project>
@@ -195,6 +267,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Splash.png" />
     <None Include="Connected Services\RoomInfoService\configuration91.svcinfo" />
     <None Include="Connected Services\RoomInfoService\configuration.svcinfo" />
     <None Include="Connected Services\RoomInfoService\Reference.svcmap">
@@ -207,6 +280,18 @@
     <None Include="Connected Services\RoomTaskService\configuration91.svcinfo" />
     <None Include="Connected Services\RoomTaskService\configuration.svcinfo" />
     <None Include="Connected Services\RoomTaskService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\SingerInfoService\configuration91.svcinfo" />
+    <None Include="Connected Services\SingerInfoService\configuration.svcinfo" />
+    <None Include="Connected Services\SingerInfoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\SongInfoService\configuration91.svcinfo" />
+    <None Include="Connected Services\SongInfoService\configuration.svcinfo" />
+    <None Include="Connected Services\SongInfoService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -245,6 +330,8 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\RoomInfoService\" />
     <WCFMetadataStorage Include="Connected Services\RoomTaskService\" />
+    <WCFMetadataStorage Include="Connected Services\SingerInfoService\" />
+    <WCFMetadataStorage Include="Connected Services\SongInfoService\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

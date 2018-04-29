@@ -14,3 +14,11 @@ G:\3VSText\GitKtv\Service\KtvService\RoomInfoManagementInterface\obj\Debug\RoomI
 G:\3VSText\GitKtv\Service\KtvService\RoomInfoManagementInterface\obj\Debug\RoomInfoManagementInterface.csproj.CoreCompileInputs.cache
 G:\3VSText\GitKtv\Service\KtvService\RoomInfoManagementInterface\obj\Debug\RoomInfoManagementInterface.dll
 G:\3VSText\GitKtv\Service\KtvService\RoomInfoManagementInterface\obj\Debug\RoomInfoManagementInterface.pdb
+G:\3VSText\GitTest\KTV\Service\KtvService\RoomInfoManagementInterface\bin\Debug\RoomInfoManagementInterface.dll
+G:\3VSText\GitTest\KTV\Service\KtvService\RoomInfoManagementInterface\bin\Debug\RoomInfoManagementInterface.pdb
+G:\3VSText\GitTest\KTV\Service\KtvService\RoomInfoManagementInterface\bin\Debug\DataModel.dll
+G:\3VSText\GitTest\KTV\Service\KtvService\RoomInfoManagementInterface\bin\Debug\DataModel.pdb
+G:\3VSText\GitTest\KTV\Service\KtvService\RoomInfoManagementInterface\obj\Debug\RoomInfoManagementInterface.csprojResolveAssemblyReference.cache
+G:\3VSText\GitTest\KTV\Service\KtvService\RoomInfoManagementInterface\obj\Debug\RoomInfoManagementInterface.csproj.CoreCompileInputs.cache
+G:\3VSText\GitTest\KTV\Service\KtvService\RoomInfoManagementInterface\obj\Debug\RoomInfoManagementInterface.dll
+G:\3VSText\GitTest\KTV\Service\KtvService\RoomInfoManagementInterface\obj\Debug\RoomInfoManagementInterface.pdb

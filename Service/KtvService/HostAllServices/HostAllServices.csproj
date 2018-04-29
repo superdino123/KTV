@@ -95,7 +95,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Helpers\Helpers.csproj">
@@ -109,6 +111,10 @@
     <ProjectReference Include="..\RoomInfoManagementService\RoomInfoManagementService.csproj">
       <Project>{783396f5-47c8-4336-871c-424d5ee0feff}</Project>
       <Name>RoomInfoManagementService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SingManagementService\SingManagementService.csproj">
+      <Project>{A8639486-07D4-4931-9C35-53784DC5D7C8}</Project>
+      <Name>SingManagementService</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

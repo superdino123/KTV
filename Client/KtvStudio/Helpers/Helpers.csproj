@@ -53,6 +53,7 @@
     <Compile Include="Converters\DateTimeToNullConverter.cs" />
     <Compile Include="Converters\VisibilityInvertConverter.cs" />
     <Compile Include="FtpHelper\FtpHelper.cs" />
+    <Compile Include="GetInitialsHelper.cs" />
     <Compile Include="LinqToXml.cs" />
     <Compile Include="LogHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

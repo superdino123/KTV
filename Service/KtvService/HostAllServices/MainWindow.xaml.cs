@@ -1,4 +1,5 @@
 ﻿using RoomInfoManagementService;
+using SingManagementService;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -55,6 +56,8 @@ namespace HostAllServices
         
         private static ServiceHost RoomInfoManagementServiceHost;
         private static ServiceHost RoomTaskManagementServiceHost;
+        private static ServiceHost SingerInfoManagementServiceHost;
+        private static ServiceHost SongInfoManagementServiceHost;
 
         public MainWindow()
         {
@@ -66,6 +69,10 @@ namespace HostAllServices
                 RoomInfoManagementServiceHost.Open();
                 RoomTaskManagementServiceHost = new ServiceHost(typeof(RoomTaskManagementImplementation));
                 RoomTaskManagementServiceHost.Open();
+                SingerInfoManagementServiceHost = new ServiceHost(typeof(SingerInfoManagementImplementation));
+                SingerInfoManagementServiceHost.Open();
+                SongInfoManagementServiceHost = new ServiceHost(typeof(SongInfoManagementImplementation));
+                SongInfoManagementServiceHost.Open();
             }
             catch (Exception ex)
             {

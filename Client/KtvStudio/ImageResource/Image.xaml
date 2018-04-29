@@ -1,4 +1,5 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <ImageSource x:Key="ROOM0001">Images/0001.jpg</ImageSource>
+    <ImageSource x:Key="icon">Images/icon.png</ImageSource>
+    <ImageSource x:Key="upload">Images/upload.jpg</ImageSource>
 </ResourceDictionary>

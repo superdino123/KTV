@@ -51,5 +51,15 @@ namespace RoomInfoManagementService
         {
             return RoomTaskManagementDataAccess.AddConsumeLogDataAccess(roomTask);
         }
+
+        public DataTable GetRoomPriceSource()
+        {
+            return RoomTaskManagementDataAccess.GetRoomPriceSourceDataAccess();
+        }
+
+        public string GetCustomerIdByIdCard(string customerIdCard)
+        {
+            return RoomTaskManagementDataAccess.GetCustomerIdByIdCardDataAccess(customerIdCard);
+        }
     }
 }

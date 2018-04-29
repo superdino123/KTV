@@ -22,9 +22,9 @@ namespace RoomInfoManagementService
             return RoomInfoManagementDataAccess.InSertRoomInfoDataAccess(roomInfo);
         }
 
-        public int RemoveRoomInfo(RoomInfo roomInfo)
+        public int RemoveRoomInfo(String roomId)
         {
-            throw new NotImplementedException();
+            return RoomInfoManagementDataAccess.RemoveRoomInfoDataAccess(roomId);
         }
 
         public int UpdateRoomInfo(RoomInfo roomInfo)

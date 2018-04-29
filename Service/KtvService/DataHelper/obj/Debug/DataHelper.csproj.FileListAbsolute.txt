@@ -20,3 +20,14 @@ G:\3VSText\GitKtv\Service\KtvService\DataHelper\obj\Debug\DataHelper.csprojResol
 G:\3VSText\GitKtv\Service\KtvService\DataHelper\obj\Debug\DataHelper.csproj.CoreCompileInputs.cache
 G:\3VSText\GitKtv\Service\KtvService\DataHelper\obj\Debug\DataHelper.dll
 G:\3VSText\GitKtv\Service\KtvService\DataHelper\obj\Debug\DataHelper.pdb
+G:\3VSText\GitTest\KTV\Service\KtvService\DataHelper\bin\Debug\NLog.config
+G:\3VSText\GitTest\KTV\Service\KtvService\DataHelper\bin\Debug\DataHelper.dll
+G:\3VSText\GitTest\KTV\Service\KtvService\DataHelper\bin\Debug\DataHelper.pdb
+G:\3VSText\GitTest\KTV\Service\KtvService\DataHelper\bin\Debug\Helpers.dll
+G:\3VSText\GitTest\KTV\Service\KtvService\DataHelper\bin\Debug\NLog.dll
+G:\3VSText\GitTest\KTV\Service\KtvService\DataHelper\bin\Debug\Helpers.pdb
+G:\3VSText\GitTest\KTV\Service\KtvService\DataHelper\bin\Debug\NLog.xml
+G:\3VSText\GitTest\KTV\Service\KtvService\DataHelper\obj\Debug\DataHelper.csprojResolveAssemblyReference.cache
+G:\3VSText\GitTest\KTV\Service\KtvService\DataHelper\obj\Debug\DataHelper.csproj.CoreCompileInputs.cache
+G:\3VSText\GitTest\KTV\Service\KtvService\DataHelper\obj\Debug\DataHelper.dll
+G:\3VSText\GitTest\KTV\Service\KtvService\DataHelper\obj\Debug\DataHelper.pdb

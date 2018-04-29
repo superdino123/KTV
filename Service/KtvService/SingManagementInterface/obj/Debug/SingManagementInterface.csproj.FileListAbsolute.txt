@@ -1,0 +1,8 @@
+G:\3VSText\GitTest\KTV\Service\KtvService\SingManagementInterface\bin\Debug\SingManagementInterface.dll
+G:\3VSText\GitTest\KTV\Service\KtvService\SingManagementInterface\bin\Debug\SingManagementInterface.pdb
+G:\3VSText\GitTest\KTV\Service\KtvService\SingManagementInterface\bin\Debug\DataModel.dll
+G:\3VSText\GitTest\KTV\Service\KtvService\SingManagementInterface\bin\Debug\DataModel.pdb
+G:\3VSText\GitTest\KTV\Service\KtvService\SingManagementInterface\obj\Debug\SingManagementInterface.csprojResolveAssemblyReference.cache
+G:\3VSText\GitTest\KTV\Service\KtvService\SingManagementInterface\obj\Debug\SingManagementInterface.csproj.CoreCompileInputs.cache
+G:\3VSText\GitTest\KTV\Service\KtvService\SingManagementInterface\obj\Debug\SingManagementInterface.dll
+G:\3VSText\GitTest\KTV\Service\KtvService\SingManagementInterface\obj\Debug\SingManagementInterface.pdb

@@ -1,6 +1,8 @@
 ﻿using KtvStudio.Helpers;
 using KtvStudio.RoomInfoService;
 using KtvStudio.RoomTaskService;
+using KtvStudio.SingerInfoService;
+using KtvStudio.SongInfoService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +36,34 @@ namespace KtvStudio.ViewModels
             get
             {
                 return roomtaskManagementClient;
+            }
+        }
+
+        #endregion
+
+        #region SingerInfoManagementServiceCaller
+
+        private SingerInfoManagementClient singerInfoManagementClient = new SingerInfoManagementClient();
+
+        public SingerInfoManagementClient SingerInfoManagementServiceCaller
+        {
+            get
+            {
+                return singerInfoManagementClient;
+            }
+        }
+
+        #endregion
+
+        #region SongInfoManagementServiceCaller
+
+        private SongInfoManagementClient songInfoManagementClient = new SongInfoManagementClient();
+
+        public SongInfoManagementClient SongInfoManagementServiceCaller
+        {
+            get
+            {
+                return songInfoManagementClient;
             }
         }
 

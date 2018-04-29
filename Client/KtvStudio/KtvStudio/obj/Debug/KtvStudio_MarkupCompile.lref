@@ -1,6 +1,10 @@
-﻿G:\3VSText\GitKtv\Client\KtvStudio\KtvStudio\obj\Debug\GeneratedInternalTypeHelper.g.cs
-FG:\3VSText\GitKtv\Client\KtvStudio\KtvStudio\App.xaml;;
-FG:\3VSText\GitKtv\Client\KtvStudio\KtvStudio\MainWindow.xaml;;
-FG:\3VSText\GitKtv\Client\KtvStudio\KtvStudio\Views\RoomInfoEditUc.xaml;;
-FG:\3VSText\GitKtv\Client\KtvStudio\KtvStudio\Views\RoomTaskEditWnd.xaml;;
+﻿
+FG:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\App.xaml;;
+FG:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\MainWindow.xaml;;
+FG:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\SplashScreen.xaml;;
+FG:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\Views\RoomInfoEditUc.xaml;;
+FG:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\Views\RoomTaskEditWnd.xaml;;
+FG:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\Views\SingerInfoEditUc.xaml;;
+FG:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\Views\SongInfoEditUc.xaml;;
+FG:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\Views\SongManageUc.xaml;;
 

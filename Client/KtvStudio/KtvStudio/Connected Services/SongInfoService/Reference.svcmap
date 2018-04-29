@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4fc35c8b-5063-42ce-b165-d05ea02b0e46" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:9918/SongInfoManagement/MEX" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SongInfoManagementImplementation.wsdl" MetadataType="Wsdl" ID="6824750f-9639-441e-abe3-9cfd54a990b0" SourceId="1" SourceUrl="http://localhost:9918/SongInfoManagement/MEX" />
+    <MetadataFile FileName="MEX.xsd" MetadataType="Schema" ID="597e6dfc-7d7d-4b24-8650-3a29b9e1b77a" SourceId="1" SourceUrl="http://localhost:9918/SongInfoManagement/MEX?xsd=xsd0" />
+    <MetadataFile FileName="MEX1.xsd" MetadataType="Schema" ID="e6e7bdfd-e02c-4eca-847c-f7d791f25e84" SourceId="1" SourceUrl="http://localhost:9918/SongInfoManagement/MEX?xsd=xsd1" />
+    <MetadataFile FileName="MEX2.xsd" MetadataType="Schema" ID="cbab782f-defe-4705-ab42-9c2e79ed5b4d" SourceId="1" SourceUrl="http://localhost:9918/SongInfoManagement/MEX?xsd=xsd2" />
+    <MetadataFile FileName="MEX3.xsd" MetadataType="Schema" ID="d788b7c7-6679-40b0-a891-5225ee35e872" SourceId="1" SourceUrl="http://localhost:9918/SongInfoManagement/MEX?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-G:\3VSText\GitKtv\Client\KtvStudio\KtvStudio\obj\Debug\
+G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\obj\Debug\
 KtvStudio
 none
 false
 DEBUG;TRACE
-G:\3VSText\GitKtv\Client\KtvStudio\KtvStudio\App.xaml
-3408535729
+G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\App.xaml
+7-168611136
 11-771186213
-171755011592
-241890300913
-MainWindow.xaml;Views\RoomInfoEditUc.xaml;Views\RoomTaskEditWnd.xaml;
+30-1440208077
+2481728491
+MainWindow.xaml;SplashScreen.xaml;Views\RoomInfoEditUc.xaml;Views\RoomTaskEditWnd.xaml;Views\SingerInfoEditUc.xaml;Views\SongInfoEditUc.xaml;Views\SongManageUc.xaml;
 
 False
 

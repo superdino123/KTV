@@ -1,0 +1,29 @@
+﻿<Window x:Class="KtvStudio.SplashScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KtvStudio"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False"
+        Topmost="True"
+        AllowsTransparency="True"
+        Background="Transparent"
+        SizeToContent="WidthAndHeight"
+        x:Name="Th">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="btvc"/>
+    </Window.Resources>
+    <Grid DataContext="{Binding ElementName=ThisControl}">
+        <Image Source="Splash.png" Height="300"/>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+            <TextBlock Text="正在加载中..." TextAlignment="Left" Foreground="#f2f2f2" FontSize="16"
+                       Margin="28,0,0,28" />
+        </StackPanel>
+        <TextBlock Text="V1.0.0.1" TextAlignment="Right" HorizontalAlignment="Right"
+                   VerticalAlignment="Bottom" Foreground="#f2f2f2" FontSize="16" Margin="0,0,28,28" />
+    </Grid>
+</Window>

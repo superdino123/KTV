@@ -1,21 +1,25 @@
-﻿<controls:MetroWindow
-    xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
-    x:Class="KtvStudio.Views.RoomTaskEditWnd"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:local="clr-namespace:KtvStudio.Views"
-    xmlns:converters="clr-namespace:Helpers.Converters;assembly=Helpers"
-    mc:Ignorable="d"
-    Name="ThisWindow"
-    BorderThickness="1"
-    BorderBrush="DarkGray"
-    DataContext="{Binding ElementName=ThisWindow, Path=ClientViewModel}"
-    Title="包房管理" Height="350" Width="575"
-    WindowStartupLocation="CenterScreen" WindowState="Normal">
+﻿<controls:MetroWindow xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+                      x:Class="KtvStudio.Views.RoomTaskEditWnd"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                      xmlns:local="clr-namespace:KtvStudio.Views"
+                      xmlns:converters="clr-namespace:Helpers.Converters;assembly=Helpers"
+                      xmlns:converters1="clr-namespace:KtvStudio.Helpers.Converters"
+                      xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+                      mc:Ignorable="d"
+                      Name="ThisWindow"
+                      BorderThickness="1"
+                      BorderBrush="DarkGray"
+                      DataContext="{Binding ElementName=ThisWindow, Path=ClientViewModel}"
+                      Title="包房管理" Height="350" Width="575"
+WindowStartupLocation="CenterScreen" WindowState="Normal">
     <controls:MetroWindow.Resources>
         <converters:BooleanInvertVisibilityConverter x:Key="Bivc"/>
+        <converters1:DateTimeNullToDefaultConverter x:Key="Dntdc"/>
+        <converters1:SexNameToBoolConverter x:Key="Sntbc"/>
+        <converters:BooleanInvertConverter x:Key="Bic"/>
     </controls:MetroWindow.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -69,27 +73,27 @@
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="房间号"
                                VerticalAlignment="Center" Margin="5 5 0 5"/>
                     <TextBox Grid.Row="0" Grid.Column="1" MinWidth="200" Margin="5"
-                             Text="{Binding RoomTaskEditItem.RoomId}"/>
-                    <TextBlock Grid.Row="0" Grid.Column="2" Text="预计消费"
+                             Text="{Binding RoomTaskEditItem.RoomId}" IsEnabled="False"/>
+                    <TextBlock Grid.Row="0" Grid.Column="2" Text="预计消费[元]"
                                VerticalAlignment="Center" Margin="5 5 0 5"/>
                     <TextBox Grid.Row="0" Grid.Column="3" MinWidth="200" Margin="5"
-                             Text="{Binding RoomTaskEditItem.RoomConsume}"/>
+                             Text="{Binding RoomTaskEditItem.RoomConsume}" IsEnabled="False"/>
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="消费时间"
                                VerticalAlignment="Center" Margin="5 5 0 5"/>
                     <controls:DateTimePicker Grid.Row="1" Grid.Column="1" MinWidth="200" Margin="5"
-                                             SelectedDate="{Binding RoomTaskEditItem.StartTime}"
+                                             SelectedDate="{Binding RoomTaskEditItem.StartTime, Converter={StaticResource Dntdc}}"
                                              SelectedTimeChanged="DateTimePicker_SelectedTimeChanged"
                                              SelectedDateChanged="DateTimePicker_SelectedDateChanged"/>
                     <TextBlock Grid.Row="1" Grid.Column="2" Text="-"
                                VerticalAlignment="Center" Margin="5 5 0 5"/>
                     <controls:DateTimePicker Grid.Row="1" Grid.Column="3" MinWidth="200" Margin="5"
-                                             SelectedDate="{Binding RoomTaskEditItem.EndTime}"
+                                             SelectedDate="{Binding RoomTaskEditItem.EndTime, Converter={StaticResource Dntdc}}"
                                              SelectedTimeChanged="DateTimePicker_SelectedTimeChanged"
                                              SelectedDateChanged="DateTimePicker_SelectedDateChanged"/>
                 </Grid>
             </Border>
         </Grid>
-        <Grid Grid.Row="1" Visibility="{Binding UserInfoWhenRenewNoVisibility, Converter={StaticResource Bivc}}">
+        <Grid IsEnabled="{Binding UserInfoWhenRenewNoVisibility, Converter={StaticResource Bic}}" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -138,8 +142,10 @@
                              Text="{Binding UserInfo.CustomerName}"/>
                     <TextBlock Grid.Row="0" Grid.Column="2" Text="性别"
                            VerticalAlignment="Center" Margin="5 5 0 5"/>
-                    <TextBox Grid.Row="0" Grid.Column="3" MinWidth="200" Margin="5"
-                             Text="{Binding UserInfo.CustomerSex}"/>
+                    <Controls:ToggleSwitch Grid.Row="0" Grid.Column="3" MinWidth="200" Margin="5"
+                                           IsChecked="{Binding UserInfo.CustomerSex, Converter={StaticResource Sntbc}}"
+                                           OffLabel="男" OnLabel="女"
+                                           Style="{StaticResource MahApps.Metro.Styles.ToggleSwitch.Win10}" />
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="年龄"
                            VerticalAlignment="Center" Margin="5 5 0 5"/>
                     <TextBox Grid.Row="1" Grid.Column="1" MinWidth="200" Margin="5"

@@ -35,5 +35,47 @@ namespace DataModel
         /// </summary>
         [DataMember]
         public string MicroPhoneNumber { get; set; }
+
+        /// <summary>
+        /// 空调的数量
+        /// </summary>
+        [DataMember]
+        public string AirConditionerNumber { get; set; }
+
+        /// <summary>
+        /// 功放机的数量
+        /// </summary>
+        [DataMember]
+        public string PowerAmplifierNumber { get; set; }
+
+        /// <summary>
+        /// 音响的数量
+        /// </summary>
+        [DataMember]
+        public string SoundNumber { get; set; }
+
+        /// <summary>
+        /// 效果器的数量
+        /// </summary>
+        [DataMember]
+        public string EffectorNumber { get; set; }
+
+        /// <summary>
+        /// 点歌台的数量
+        /// </summary>
+        [DataMember]
+        public string SongDeskNumber { get; set; }
+
+        /// <summary>
+        /// 液晶电视的数量
+        /// </summary>
+        [DataMember]
+        public string LCDTVNumber { get; set; }
+
+        /// <summary>
+        /// 房间备注
+        /// </summary>
+        [DataMember]
+        public string RoomRemark { get; set; }
     }
 }

@@ -362,6 +362,44 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRoomTaskManagement_GetCustomerIdByIdCard_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRoomTaskManagement_GetCustomerIdByIdCard_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsp:Policy wsu:Id="WSHttpBinding_IRoomTaskManagement_AddConsumeLog_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
@@ -382,6 +420,44 @@
     </wsp:ExactlyOne>
   </wsp:Policy>
   <wsp:Policy wsu:Id="WSHttpBinding_IRoomTaskManagement_AddConsumeLog_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRoomTaskManagement_GetRoomPriceSource_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRoomTaskManagement_GetRoomPriceSource_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -450,11 +526,23 @@
   <wsdl:message name="IRoomTaskManagement_HasExistUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:HasExistUserResponse" />
   </wsdl:message>
+  <wsdl:message name="IRoomTaskManagement_GetCustomerIdByIdCard_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerIdByIdCard" />
+  </wsdl:message>
+  <wsdl:message name="IRoomTaskManagement_GetCustomerIdByIdCard_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerIdByIdCardResponse" />
+  </wsdl:message>
   <wsdl:message name="IRoomTaskManagement_AddConsumeLog_InputMessage">
     <wsdl:part name="parameters" element="tns:AddConsumeLog" />
   </wsdl:message>
   <wsdl:message name="IRoomTaskManagement_AddConsumeLog_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddConsumeLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRoomTaskManagement_GetRoomPriceSource_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRoomPriceSource" />
+  </wsdl:message>
+  <wsdl:message name="IRoomTaskManagement_GetRoomPriceSource_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRoomPriceSourceResponse" />
   </wsdl:message>
   <wsdl:portType name="IRoomTaskManagement">
     <wsdl:operation name="GetAllRoomTask">
@@ -485,9 +573,17 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IRoomTaskManagement/HasExistUser" message="tns:IRoomTaskManagement_HasExistUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRoomTaskManagement/HasExistUserResponse" message="tns:IRoomTaskManagement_HasExistUser_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetCustomerIdByIdCard">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRoomTaskManagement/GetCustomerIdByIdCard" message="tns:IRoomTaskManagement_GetCustomerIdByIdCard_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRoomTaskManagement/GetCustomerIdByIdCardResponse" message="tns:IRoomTaskManagement_GetCustomerIdByIdCard_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="AddConsumeLog">
       <wsdl:input wsaw:Action="http://tempuri.org/IRoomTaskManagement/AddConsumeLog" message="tns:IRoomTaskManagement_AddConsumeLog_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRoomTaskManagement/AddConsumeLogResponse" message="tns:IRoomTaskManagement_AddConsumeLog_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRoomPriceSource">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRoomTaskManagement/GetRoomPriceSource" message="tns:IRoomTaskManagement_GetRoomPriceSource_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRoomTaskManagement/GetRoomPriceSourceResponse" message="tns:IRoomTaskManagement_GetRoomPriceSource_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_IRoomTaskManagement" type="tns:IRoomTaskManagement">
@@ -570,6 +666,17 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetCustomerIdByIdCard">
+      <soap12:operation soapAction="http://tempuri.org/IRoomTaskManagement/GetCustomerIdByIdCard" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRoomTaskManagement_GetCustomerIdByIdCard_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRoomTaskManagement_GetCustomerIdByIdCard_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="AddConsumeLog">
       <soap12:operation soapAction="http://tempuri.org/IRoomTaskManagement/AddConsumeLog" style="document" />
       <wsdl:input>
@@ -578,6 +685,17 @@
       </wsdl:input>
       <wsdl:output>
         <wsp:PolicyReference URI="#WSHttpBinding_IRoomTaskManagement_AddConsumeLog_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoomPriceSource">
+      <soap12:operation soapAction="http://tempuri.org/IRoomTaskManagement/GetRoomPriceSource" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRoomTaskManagement_GetRoomPriceSource_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRoomTaskManagement_GetRoomPriceSource_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>

@@ -35,7 +35,13 @@ namespace RoomInfoManagementInterface
         int HasExistUser(string customerIdCard);
 
         [OperationContract]
+        string GetCustomerIdByIdCard(string customerIdCard);
+
+        [OperationContract]
         int AddConsumeLog(RoomTask roomTask);
-        
+
+        [OperationContract]
+        DataTable GetRoomPriceSource();
+
     }
 }
