@@ -1,0 +1,140 @@
+﻿<UserControl x:Class="KtvMusic.Views.SingerSearchUc"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:KtvMusic.Views"
+             xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <Style x:Key="SingerTypeTabItem" TargetType="{x:Type TabItem}">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Padding" Value="25 10"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="Foreground" Value="Black" />
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="Black" />
+                    <Setter Property="Margin" Value="0 0 0 1" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <!-- 歌手地区筛选 -->
+        <Grid Grid.Row="0">
+            <Border BorderThickness="1" BorderBrush="White"/>
+            <TabControl Controls:TabControlHelper.Underlined="None"
+                        TabStripPlacement="Top"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Background="Transparent"
+                        Height="43"
+                        SelectionChanged="SingerAreaSearchTabControl_SelectionChanged">
+                <TabItem Header="全部" Style="{StaticResource SingerTypeTabItem}"/>
+                <TabItem Header="华语男歌星" Style="{StaticResource SingerTypeTabItem}"/>
+                <TabItem Header="华语女歌星" Style="{StaticResource SingerTypeTabItem}"/>
+                <TabItem Header="华语组合歌星" Style="{StaticResource SingerTypeTabItem}"/>
+                <TabItem Header="外国男歌星" Style="{StaticResource SingerTypeTabItem}"/>
+                <TabItem Header="外国女歌星" Style="{StaticResource SingerTypeTabItem}"/>
+                <TabItem Header="外国组合歌星" Style="{StaticResource SingerTypeTabItem}"/>
+            </TabControl>
+        </Grid>
+        
+        <Grid Grid.Row="1" Margin="0 20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            
+            <!-- 歌手列表 -->
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <WrapPanel Grid.Row="0" x:Name="SingerInfoWrapPanel" HorizontalAlignment="Center"/>
+                <Border Grid.Row="1" Margin="10" Background="White" Opacity="0.3"/>
+                <Grid Grid.Row="1" Margin=" 10 20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Orientation="Horizontal">
+                        <TextBlock Text="第" Foreground="White" FontSize="18" Margin="10"/>
+                        <TextBlock Text="{Binding SingerInfoAccentPage}" Foreground="White" FontSize="18" Margin="10"/>
+                        <TextBlock Text="页" Foreground="White" FontSize="18" Margin="10"/>
+                        <TextBlock Text="共" Foreground="White" FontSize="18" Margin="35 10 10 10"/>
+                        <TextBlock Text="{Binding SingerInfoAllPage}" Foreground="White" FontSize="18" Margin="10"/>
+                        <TextBlock Text="页" Foreground="White" FontSize="18" Margin="10"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button Content="上一页" Foreground="White" FontSize="18" Background="Transparent" Margin="10 0" BorderThickness="0"
+                                Command="{Binding PrePageCmd}"/>
+                        <Button Content="下一页" Foreground="White" FontSize="18" Background="Transparent" Margin="10 0" BorderThickness="0"
+                                Command="{Binding NextPageCmd}"/>
+                        <Button Content="返回" Foreground="White" FontSize="18" Background="Transparent" Margin="10 0" BorderThickness="0"
+                                Command="{Binding ReturnHomeCmd}"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+
+            <!-- 拼音输入 -->
+            <Grid Grid.Column="1" Margin="20 10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0" BorderThickness="1" BorderBrush="White" CornerRadius="15"/>
+                <TextBox Grid.Row="0" Text="{Binding SingerNameSearchStr}" Background="Transparent" FontSize="20" Foreground="White" Padding="0 0" BorderThickness="0 0 0 1" Margin="20 0 20 5"/>
+                <WrapPanel Grid.Row="1" Margin="0 20" Width="300">
+                    <Button Content="A" Style="{StaticResource ATOZButton}" Click="ATOZButton_Click"/>
+                    <Button Content="B" Style="{StaticResource ATOZButton}" Click="ATOZButton_Click"/>
+                    <Button Content="C" Style="{StaticResource ATOZButton}" Click="ATOZButton_Click"/>
+                    <Button Content="D" Style="{StaticResource ATOZButton}" Click="ATOZButton_Click"/>
+                    <Button Content="E" Style="{StaticResource ATOZButton}" Click="ATOZButton_Click"/>
+                    <Button Content="F" Style="{StaticResource ATOZButton}" Click="ATOZButton_Click"/>
+                    <Button Content="G" Style="{StaticResource ATOZButton}" Click="ATOZButton_Click"/>
+                    <Button Content="H" Style="{StaticResource ATOZButton}" Click="ATOZButton_Click"/>
+                    <Button Content="I" Style="{StaticResource ATOZButton}" Click="ATOZButton_Click"/>
+                    <Button Content="J" Style="{StaticResource ATOZButton}" Click="ATOZButton_Click"/>
+                    <Button Content="K" Style="{StaticResource ATOZButton}" Click="ATOZButton_Click"/>
+                    <Button Content="L" Style="{StaticResource ATOZButton}" Click="ATOZButton_Click"/>
+                    <Button Content="M" Style="{StaticResource ATOZButton}" Click="ATOZButton_Click"/>
+                    <Button Content="N" Style="{StaticResource ATOZButton}" Click="ATOZButton_Click"/>
+                    <Button Content="O" Style="{StaticResource ATOZButton}" Click="ATOZButton_Click"/>
+                    <Button Content="P" Style="{StaticResource ATOZButton}" Click="ATOZButton_Click"/>
+                    <Button Content="Q" Style="{StaticResource ATOZButton}" Click="ATOZButton_Click"/>
+                    <Button Content="R" Style="{StaticResource ATOZButton}" Click="ATOZButton_Click"/>
+                    <Button Content="S" Style="{StaticResource ATOZButton}" Click="ATOZButton_Click"/>
+                    <Button Content="T" Style="{StaticResource ATOZButton}" Click="ATOZButton_Click"/>
+                    <Button Content="U" Style="{StaticResource ATOZButton}" Click="ATOZButton_Click"/>
+                    <Button Content="V" Style="{StaticResource ATOZButton}" Click="ATOZButton_Click"/>
+                    <Button Content="W" Style="{StaticResource ATOZButton}" Click="ATOZButton_Click"/>
+                    <Button Content="X" Style="{StaticResource ATOZButton}" Click="ATOZButton_Click"/>
+                    <Button Content="Y" Style="{StaticResource ATOZButton}" Click="ATOZButton_Click"/>
+                    <Button Content="Z" Style="{StaticResource ATOZButton}" Click="ATOZButton_Click"/>
+                    <Button Content="删除" Style="{StaticResource ATOZButton}" Width="100" Command="{Binding SingerSearchStrDeleteCmd}"/>
+                    <Button Content="清空" Style="{StaticResource ATOZButton}" Width="100" Command="{Binding SingerSearchStrClearCmd}"/>
+                </WrapPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

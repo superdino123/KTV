@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/DataModel" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DataModel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="SongInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Category" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="LanguageType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MVUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MusicName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MusicNameInitials" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RecordNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReleaseDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SingRail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SingerId" type="xs:int" />
+      <xs:element minOccurs="0" name="SingerName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SongInfo" nillable="true" type="tns:SongInfo" />
+  <xs:complexType name="ArrayOfSongRecord">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SongRecord" nillable="true" type="tns:SongRecord" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSongRecord" nillable="true" type="tns:ArrayOfSongRecord" />
+  <xs:complexType name="SongRecord">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClickNum" type="xs:int" />
+      <xs:element minOccurs="0" name="SongId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SongRecord" nillable="true" type="tns:SongRecord" />
+</xs:schema>

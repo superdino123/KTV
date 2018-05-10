@@ -48,5 +48,15 @@ namespace DataAccess
             var sql = $"select actioncode, actionname from actioninfo where groupcode = {groupCode}";
             return SqlServerHelper.GetDataFromKtvdb(sql);
         }
+
+        public static int AddRoomTaskRemarkDataAccess(string roomId, string remark, string name)
+        {
+            string getRemarkSql = $"select roomremark from {TABLENAME} where roomid = {roomId}";
+            DataTable resultRemark = SqlServerHelper.GetDataFromKtvdb(getRemarkSql);
+            string remarkHas = resultRemark.Rows[0]["roomremark"].ToString();
+            string remarkAdd = remarkHas + $"[{name}]{remark}";
+            var sql = $"update {TABLENAME} set roomremark = '{remarkAdd}' where roomid = '{roomId}'";
+            return SqlServerHelper.ExecuteNonQuery(CommandType.Text, sql, 30, null);
+        }
     }
 }

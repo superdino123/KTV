@@ -29,8 +29,8 @@ namespace DataModel
         [DataMember]
         public string MusicNameInitials { get; set; }
         [DataMember]
-        public string DubbingUrl { get; set; }
-        [DataMember]
         public DateTime? ReleaseDate { get; set; }
+        [DataMember]
+        public string SingRail { get; set; }
     }
 }

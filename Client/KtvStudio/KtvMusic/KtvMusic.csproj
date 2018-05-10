@@ -41,7 +41,10 @@
       <HintPath>..\KtvStudio\ThirdParty\MahApps.Metro.IconPacks.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -60,6 +63,31 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Connected Services\SingerInfoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\SongInfoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\Converters\MusicStrNullToDefaultConverter.cs" />
+    <Compile Include="Helpers\Converters\MVUploadUrlToLocationUrlConverter.cs" />
+    <Compile Include="Helpers\NotifyPropertyHelper.cs" />
+    <Compile Include="Helpers\SimpleClock.cs" />
+    <Compile Include="ViewModels\MusicViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Views\SelectedSongListUc.xaml.cs">
+      <DependentUpon>SelectedSongListUc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SingerFilterListUc.xaml.cs">
+      <DependentUpon>SingerFilterListUc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SingerSearchUc.xaml.cs">
+      <DependentUpon>SingerSearchUc.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -72,6 +100,18 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\SelectedSongListUc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SingerFilterListUc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SingerSearchUc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -91,6 +131,36 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Connected Services\SingerInfoService\KtvMusic.SingerInfoService.SingerInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SingerInfoService\MEX.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SingerInfoService\MEX1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SingerInfoService\MEX2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SingerInfoService\MEX3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SingerInfoService\SingerInfoManagementImplementation.wsdl" />
+    <None Include="Connected Services\SongInfoService\MEX.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SongInfoService\MEX1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SongInfoService\MEX2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SongInfoService\MEX3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SongInfoService\SongInfoManagementImplementation.wsdl" />
+    <None Include="Properties\DataSources\System.Data.DataTable.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -112,6 +182,41 @@
       <Project>{c7792901-f230-43c5-bec5-d7ae524b7953}</Project>
       <Name>Helpers</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ImageResource\ImageResource.csproj">
+      <Project>{2912b7dc-1d38-4039-9c31-122de4fc494f}</Project>
+      <Name>ImageResource</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\SingerInfoService\" />
+    <WCFMetadataStorage Include="Connected Services\SongInfoService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SingerInfoService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SingerInfoService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SingerInfoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SongInfoService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SongInfoService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SongInfoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

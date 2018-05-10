@@ -83,7 +83,8 @@ WindowStartupLocation="CenterScreen" WindowState="Normal">
                     <controls:DateTimePicker Grid.Row="1" Grid.Column="1" MinWidth="200" Margin="5"
                                              SelectedDate="{Binding RoomTaskEditItem.StartTime, Converter={StaticResource Dntdc}}"
                                              SelectedTimeChanged="DateTimePicker_SelectedTimeChanged"
-                                             SelectedDateChanged="DateTimePicker_SelectedDateChanged"/>
+                                             SelectedDateChanged="DateTimePicker_SelectedDateChanged"
+                                             IsEnabled="{Binding UserInfoWhenRenewNoVisibility, Converter={StaticResource Bic}}"/>
                     <TextBlock Grid.Row="1" Grid.Column="2" Text="-"
                                VerticalAlignment="Center" Margin="5 5 0 5"/>
                     <controls:DateTimePicker Grid.Row="1" Grid.Column="3" MinWidth="200" Margin="5"

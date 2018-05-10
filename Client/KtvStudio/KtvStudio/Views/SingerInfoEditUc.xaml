@@ -4,12 +4,20 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:KtvStudio.Views"
+             xmlns:converters="clr-namespace:KtvStudio.Helpers.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <converters:ImageUrlNullToDefaultConverter x:Key="Iuntdc"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Border Grid.Row="0" Height="40" Background="White" Margin="0">
             <DockPanel>
@@ -49,44 +57,89 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Row="0" Grid.Column="0" Text="歌手姓名"
                            VerticalAlignment="Center" Margin="5 5 0 5"/>
                 <TextBox Grid.Row="0" Grid.Column="1" MinWidth="200" Margin="5"
                          Text="{Binding SingerInfoEditItem.SingerName}"/>
-                <TextBlock Grid.Row="0" Grid.Column="2" Text="歌手英文名"
+                <TextBlock Grid.Row="0" Grid.Column="2" Text="歌手外文名"
                            VerticalAlignment="Center" Margin="5 5 0 5"/>
                 <TextBox Grid.Row="0" Grid.Column="3" MinWidth="200" Margin="5"
                          Text="{Binding SingerInfoEditItem.SingerEnglishName}"/>
-
-                <TextBlock Grid.Row="1" Grid.Column="0" Text="歌手别名"
+                <TextBlock Grid.Row="0" Grid.Column="4" Text="歌手别名"
+                           VerticalAlignment="Center" Margin="5 5 0 5"/>
+                <TextBox Grid.Row="0" Grid.Column="5" MinWidth="200" Margin="5"
+                         Text="{Binding SingerInfoEditItem.SingerOtherName}"/>
+                <TextBlock Grid.Row="0" Grid.Column="6" Text="歌手性别"
+                           VerticalAlignment="Center" Margin="5 5 0 5"/>
+                <ComboBox Grid.Row="0" Grid.Column="7" MinWidth="200" Margin="5"
+                          SelectedIndex="{Binding SingerInfoEditItem.SingerSex}">
+                    <ComboBoxItem Content="男"/>
+                    <ComboBoxItem Content="女"/>
+                    <ComboBoxItem Content="组合"/>
+                </ComboBox>
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="歌手热度"
                            VerticalAlignment="Center" Margin="5 5 0 5"/>
                 <TextBox Grid.Row="1" Grid.Column="1" MinWidth="200" Margin="5"
-                         Text="{Binding SingerInfoEditItem.SingerOtherName}"/>
-                <TextBlock Grid.Row="1" Grid.Column="2" Text="歌手性别"
-                           VerticalAlignment="Center" Margin="5 5 0 5"/>
-                <TextBox Grid.Row="1" Grid.Column="3" MinWidth="200" Margin="5"
-                         Text="{Binding SingerInfoEditItem.SingerSex}"/>
-
-                <TextBlock Grid.Row="2" Grid.Column="0" Text="歌手热度"
-                           VerticalAlignment="Center" Margin="5 5 0 5"/>
-                <TextBox Grid.Row="2" Grid.Column="1" MinWidth="200" Margin="5"
                          Text="{Binding SingerInfoEditItem.SingerClickNum}"/>
-                <TextBlock Grid.Row="2" Grid.Column="2" Text="歌手地区"
+                <TextBlock Grid.Row="1" Grid.Column="2" Text="歌手国籍"
                            VerticalAlignment="Center" Margin="5 5 0 5"/>
-                <TextBox Grid.Row="2" Grid.Column="3" MinWidth="200" Margin="5"
-                         Text="{Binding SingerInfoEditItem.SingerNationality}"/>
-
-                <TextBlock Grid.Row="3" Grid.Column="0" Text="歌手介绍"
+                <ComboBox Grid.Row="1" Grid.Column="3" MinWidth="200" Margin="5"
+                          ItemsSource="{Binding CountryInfoSource}" IsEditable="True"
+                          DisplayMemberPath="actionname" SelectedValuePath="actionname"
+                          SelectedValue="{Binding SingerInfoEditItem.SingerNationality}"/>
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="歌手介绍"
                            VerticalAlignment="Center" Margin="5 5 0 5"/>
-                <TextBox Grid.Row="3" Grid.Column="1" MinWidth="200" Margin="5"
+                <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="7" MaxWidth="1000" MinWidth="200" Margin="5" MinHeight="80" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True"
                          Text="{Binding SingerInfoEditItem.SingerIntroduce}"/>
-                <TextBlock Grid.Row="3" Grid.Column="2" Text="歌手照片"
-                           VerticalAlignment="Center" Margin="5 5 0 5"/>
-                <Image Grid.Row="3" Grid.Column="3" Width="50" Margin="5 5 0 5"
-                       Source="{Binding SingerInfoEditItem.SingerPhotoUrl}"/>
-                <Button Grid.Row="4" Grid.Column="0" Content="上传图片" HorizontalAlignment="Center" Height="30"
+            </Grid>
+        </Border>
+        <Border Grid.Row="2" Height="40" Background="White" Margin="0">
+            <DockPanel>
+                <TextBlock DockPanel.Dock="Left" Margin="2 5 5 5" Width="10"
+                                       Height="{Binding ElementName=toggleButtonBaseInfo1,Path=Height}"
+                                       Background="#A0D8F0" />
+                <ToggleButton Name="toggleButtonBaseInfo1"
+                                          DockPanel.Dock="Right"
+                                          IsTabStop="False"
+                                          HorizontalAlignment="Left"
+                                          Background="White"
+                                          BorderThickness="0"
+                                          BorderBrush="Transparent"
+                                          Padding="5 0"
+                                          IsChecked="True"
+                                          Content="歌手信息"
+                                          FontSize="13"
+                                          FontWeight="Normal"
+                                          HorizontalContentAlignment="Left" />
+            </DockPanel>
+        </Border>
+        <Border Grid.Row="3"
+                Background="#FFE0E0E0"
+                BorderThickness="0 2 0 0"
+                BorderBrush="#A0D8F0"
+                Padding="0 3"
+                Visibility="{Binding ElementName=toggleButtonBaseInfo1,Path=IsChecked,Converter={StaticResource BooleanToVisibilityConverter}}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Row="0" Grid.Column="0" Margin="10" Width="80" Height="80"
+                       Source="{Binding SingerInfoEditItem.SingerPhotoUrl, Converter={StaticResource Iuntdc}}"/>
+                <Button Grid.Row="1" Grid.Column="0" Content="上传图片" HorizontalAlignment="Center" Padding="20 0" Height="40"
                         Command="{Binding SingerImageUpLoadCmd}"/>
+                <Image Grid.Row="0" Grid.RowSpan="3" Grid.Column="1" Margin="10" MaxHeight="420"
+                       Source="{Binding SingerInfoEditItem.SingerPhotoUrl}"/>
             </Grid>
         </Border>
     </Grid>

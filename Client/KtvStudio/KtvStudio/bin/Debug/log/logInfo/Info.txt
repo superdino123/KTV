@@ -1,16 +1,4 @@
-2018-04-27 14:28:29 245|Info
+2018-05-05 16:16:53 451|Info
    |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
-   |message = {"hash":"FoCnT8q55LF_9VSpMLC_2DfgP6vM","key":"188b2f36cd574e28a0fa274ef0b6a87e.jpg"}
-
-2018-04-27 14:32:19 210|Info
-   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
-   |message = {"hash":"FoqaBfF7uNqYwEunjYqLS0Jo-pLz","key":"58f8423f29c34b81a10dad9079b093df.jpg"}
-
-2018-04-27 14:32:23 712|Info
-   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
-   |message = {"hash":"Fns0ISFk4jPJKHpsnU_1E_yyZvZu","key":"19833dcea4ec4011b136d1f479b8b00e.jpg"}
-
-2018-04-27 15:00:47 226|Info
-   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
-   |message = {"hash":"FqtONugV3TsXjlG1c9ssXaZqMgi9","key":"0a7ecff2dec94cb49318b50bfd644206.jpg"}
+   |message = {"hash":"Fmk1X8egem0HZ-Kjl50e6WvzraVm","key":"77a1304dd5ed4cdebcc37ab801ac9b33.png"}
 

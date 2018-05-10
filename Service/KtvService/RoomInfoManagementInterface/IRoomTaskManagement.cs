@@ -43,5 +43,7 @@ namespace RoomInfoManagementInterface
         [OperationContract]
         DataTable GetRoomPriceSource();
 
+        [OperationContract]
+        DataTable GetConsumeLog();
     }
 }

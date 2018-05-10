@@ -22,7 +22,7 @@ namespace SingManagementInterface
         int UpdateSongeInfo(SongInfo songInfo);
 
         [OperationContract]
-        int DeleteSongInfo(SongInfo songInfo);
+        int DeleteSongInfo(string id);
 
         [OperationContract]
         DataTable GetSongInfoBySingerId(string singerId);
@@ -32,20 +32,13 @@ namespace SingManagementInterface
 
         [OperationContract]
         DataTable GetCategorySourceByFatherId(string fatherId);
-        
-        [OperationContract]
-        DataTable GetSingerFilterSourceByInitial(string nationality, string sex, string initial);
+
 
         [OperationContract]
-        DataTable GetSingerFilterSourceByRank(string nationality, string sex);
+        int AddSongRecord(List<SongRecord> records);
 
         [OperationContract]
-        DataTable GetSingerFilterSourceAllNationalityByInitial(string initial);
+        DataTable GetAllSongRecord();
 
-        [OperationContract]
-        DataTable GetSingerFilterSourceAllNationalityByRank();
-
-        [OperationContract]
-        SingerInfo GetSingerInfoById(string id);
     }
 }

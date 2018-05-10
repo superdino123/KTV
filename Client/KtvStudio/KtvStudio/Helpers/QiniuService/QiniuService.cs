@@ -4,6 +4,7 @@ using Qiniu.Storage;
 using System.IO;
 using Qiniu.Http;
 using Helpers;
+using System.Windows;
 
 namespace KtvStudio.Helpers.QiniuService
 {
@@ -30,7 +31,7 @@ namespace KtvStudio.Helpers.QiniuService
             // 上传策略的过期时间(单位:秒)
             putPolicy.SetExpires(3600);
             // 文件上传完毕后，在多少天后自动被删除
-            putPolicy.DeleteAfterDays = 1;
+            putPolicy.DeleteAfterDays = 360;
 
             // 请注意这里的Zone设置(如果不设置，就默认为华东机房)
             // var zoneId = Qiniu.Common.AutoZone.Query(AK,BUCKET);
@@ -46,7 +47,7 @@ namespace KtvStudio.Helpers.QiniuService
             UpCompletionHandler uploadCompleted = new UpCompletionHandler(OnUploadCompleted);
 
             // 方式1：使用UploadManager
-            //默认设置 Qiniu.Common.Config.PUT_THRESHOLD = 512*1024;
+            Qiniu.Common.Config.PUT_THRESHOLD = 1024*1024;
             //可以适当修改,UploadManager会根据这个阈值自动选择是否使用分片(Resumable)上传    
             UploadManager um = new UploadManager();
             um.uploadFile(localFile, saveKey, uploadToken, uploadOptions, uploadCompleted);
@@ -61,7 +62,7 @@ namespace KtvStudio.Helpers.QiniuService
         {
             // respInfo.StatusCode
             // respJson是返回的json消息，示例: { "key":"FILE","hash":"HASH","fsize":FILE_SIZE }
-
+            MessageBox.Show($"文件上传成功！{respJson}", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
             LogHelper.LogInfo($"{respJson}");
         }
     }

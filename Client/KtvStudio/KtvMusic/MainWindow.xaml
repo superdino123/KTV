@@ -6,115 +6,335 @@
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:local="clr-namespace:KtvMusic"
+        xmlns:views="clr-namespace:KtvMusic.Views"
+        xmlns:converters="clr-namespace:KtvMusic.Helpers.Converters"
         mc:Ignorable="d"
         WindowStyle="None"
-        WindowState="Maximized">
+        WindowState="Maximized"
+        x:Name="ThisWindow">
+    <Window.Background>
+        <VisualBrush TileMode="Tile"  Viewport="0,0,1,1">
+            <VisualBrush.Visual>
+                <Image Source="{DynamicResource musicBackground}"></Image>
+            </VisualBrush.Visual>
+        </VisualBrush>
+    </Window.Background>
     <Window.Resources>
-        <ResourceDictionary>
-            <Style x:Key="LargeTileStyle" TargetType="Controls:Tile">
-                <Setter Property="Height" Value="125" />
-                <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
-                <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
-                <Setter Property="TitleFontSize" Value="14" />
-                <Setter Property="Width" Value="300" />
-            </Style>
+        <BooleanToVisibilityConverter x:Key="Btvc"/>
+        <converters:MusicStrNullToDefaultConverter x:Key="Msntdc"/>
 
-            <Style x:Key="SmallTileStyle" TargetType="Controls:Tile">
-                <Setter Property="Height" Value="125" />
-                <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
-                <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
-                <Setter Property="TitleFontSize" Value="10" />
-                <Setter Property="Width" Value="147" />
-            </Style>
-        </ResourceDictionary>
+        <!-- UICommand -->
+        <RoutedUICommand x:Key="CloseWindow" Text="关闭窗口" />
     </Window.Resources>
-    <Grid>
-        <MediaElement x:Name="vedio" Source="G:\Songs\01140177.mpg" LoadedBehavior="Manual"
-                      Stretch="Fill"/>
-    </Grid>
-    <!--  
-    <Grid Background="{DynamicResource AccentColorBrush4}">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100" />
-            <ColumnDefinition Width="430*" />
-        </Grid.ColumnDefinitions>
+    <Window.InputBindings>
+        <KeyBinding Key="Esc" Command="{StaticResource CloseWindow}" />
+    </Window.InputBindings>
+    <Window.CommandBindings>
+        <CommandBinding Command="{StaticResource CloseWindow}"
+                        CanExecute="CloseWindow_CanExecute"
+                        Executed="CloseWindow_Executed" />
+    </Window.CommandBindings>
+    <Grid DataContext="{Binding ElementName=ThisWindow, Path=MusicViewModel}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="83*" />
-            <RowDefinition Height="259*" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+        <Border Grid.Row="0" Background="White" Opacity="0.1"></Border>
+        <Grid Grid.Row="0" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="2" Grid.ColumnSpan="5" BorderThickness="1" BorderBrush="White" CornerRadius="20" Margin="15"/>
+            <Image Grid.Column="0" Width="70" Source="{DynamicResource icon}"/>
+            <Border Grid.Column="1" BorderThickness="0 1" BorderBrush="White" CornerRadius="20" Margin="0 10 100 10"/>
+            <TextBlock Grid.Column="1" Text="DiplantKTV" FontFamily="等线Light" Foreground="White" FontSize="28" VerticalAlignment="Center" Margin="16 0 120 0"/>
+            <TextBlock Grid.Column="2" Text="正在播放：" Foreground="White" FontSize="18" VerticalAlignment="Center" Margin="35 0 0 0 "/>
+            <TextBlock Grid.Column="3" Text="{Binding PlayingSongName, Converter={StaticResource Msntdc}}" Foreground="White" FontSize="18" VerticalAlignment="Center" Margin="15 0" Width="300"/>
+            <TextBlock Grid.Column="4" Text="即将播放：" Foreground="White" FontSize="18" VerticalAlignment="Center" />
+            <TextBlock Grid.Column="5" Text="{Binding NextPlaySongName, Converter={StaticResource Msntdc}}" Foreground="White" FontSize="18" VerticalAlignment="Center" Margin="15 0" Width="300"/>
+            <Button Grid.Column="7" Content="已选" FontSize="18" Margin="50 0 30 0" Width="60" Height="60"
+                    Style="{StaticResource AccentCircleButtonStyle}"
+                    Command="{Binding TurnToSelectedSongCmd}"/>
+        </Grid>
 
-        <TextBlock Grid.Column="1"
-                       VerticalAlignment="Center"
-                       FontFamily="Segoe UI"
-                       FontSize="30"
-                       FontWeight="Light"
-                       Foreground="{DynamicResource BlackBrush}"
-                       Text="Only some Tiles in a WrapPanel" />
+        <Controls:MetroAnimatedTabControl Controls:TabControlHelper.Underlined="TabPanel"
+                                          Visibility="Collapsed"
+                                          TabStripPlacement="Left"
+                                          SelectedIndex="{Binding PageSelectedIndex}">
+            <TabItem x:Name="Home" Header="首页"/>
+            <Controls:MetroTabItem x:Name="SingerSearch" Header="歌手"/>
+            <Controls:MetroTabItem x:Name="SongFilterList" Header="歌曲列表" Padding="10 20" Controls:ControlsHelper.HeaderFontSize="18"/>
+            <Controls:MetroTabItem x:Name="SelectedSongList" Header="已选" Padding="10 20" Controls:ControlsHelper.HeaderFontSize="18"/>
+        </Controls:MetroAnimatedTabControl>
 
-        <WrapPanel Grid.Row="1"
-                       Grid.Column="1"
-                       Width="940"
-                       Height="382"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Top">
-            <Controls:Tile Title="Mail"
-                               Margin="3"
+        <Grid Grid.Row="1" Margin="5">
+            <!-- 首页 -->
+            <WrapPanel Visibility="{Binding ElementName=Home, Path=IsSelected, Converter={StaticResource Btvc}}" HorizontalAlignment="Center" VerticalAlignment="Center"
+                       Orientation="Vertical">
+                <Controls:Tile Title="歌名点歌"
                                Controls:ControlsHelper.MouseOverBorderBrush="{DynamicResource BlackBrush}"
-                               Background="Teal"
-                               HorizontalTitleAlignment="Right"
-                               Style="{StaticResource LargeTileStyle}">
-                <iconPacks:PackIconModern Width="40"
-                                              Height="40"
-                                              Kind="Email" />
-            </Controls:Tile>
-            <Controls:Tile Title="Desktop"
-                               Margin="3"
-                               Controls:ControlsHelper.MouseOverBorderBrush="{DynamicResource BlackBrush}"
-                               Style="{StaticResource LargeTileStyle}">
-                <iconPacks:PackIconFontAwesome Width="40"
-                                                   Height="40"
-                                                   Kind="DesktopSolid" />
-            </Controls:Tile>
-            <Controls:Tile Title="Finance"
-                               Background="DimGray"
-                               Style="{StaticResource LargeTileStyle}">
-                <iconPacks:PackIconModern Width="40"
-                                              Height="40"
-                                              Kind="Money" />
-            </Controls:Tile>
-            <Controls:Tile Title="People"
-                               Background="#D2691E"
-                               HorizontalTitleAlignment="Right"
-                               Style="{StaticResource LargeTileStyle}">
-                <iconPacks:PackIconModern Width="40"
-                                              Height="40"
-                                              Kind="PeopleMultiple" />
-            </Controls:Tile>
-            <Controls:Tile Title="Count"
-                               Background="#FF842D"
-                               Count="28"
-                               CountFontSize="42"
                                HorizontalTitleAlignment="Center"
-                               IsEnabled="False"
+                               VerticalTitleAlignment="Top"
+                               Style="{StaticResource LargeTileStyle}"
+                               Command="{Binding SongNameFilterCmd}">
+                    <Controls:Tile.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                            <GradientStop Color="#FFCB12" Offset="0"/>
+                            <GradientStop Color="#FF710C" Offset="0.93"/>
+                        </LinearGradientBrush>
+                    </Controls:Tile.Background>
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <Image Source="{DynamicResource musicLogo}" Height="400"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Controls:Tile>
+                <Controls:Tile Title="歌星点歌"
+                               Margin="3"
+                               Controls:ControlsHelper.MouseOverBorderBrush="{DynamicResource BlackBrush}"
+                               HorizontalTitleAlignment="Center"
+                               Style="{StaticResource LargeTileStyle}"
+                               Command="{Binding SingerSearchOpenCmd}">
+                    <Controls:Tile.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                            <GradientStop Color="#EA47A9" Offset="0"/>
+                            <GradientStop Color="#FD0063" Offset="0.93"/>
+                        </LinearGradientBrush>
+                    </Controls:Tile.Background>
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <Image Source="{DynamicResource singerPhoto}" Height="400"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Controls:Tile>
+                <Controls:Tile Title="分类歌单              "
+                               HorizontalTitleAlignment="Center"
+                               VerticalTitleAlignment="Center"
+                               Controls:ControlsHelper.MouseOverBorderBrush="{DynamicResource BlackBrush}"
                                Style="{StaticResource SmallTileStyle}"
-                               TitleFontSize="16"
-                               VerticalTitleAlignment="Top" />
-            <Controls:Tile Title="Weather"
-                               Background="#1E90FF"
-                               Style="{StaticResource SmallTileStyle}">
-                <iconPacks:PackIconMaterial Width="40"
-                                                Height="40"
-                                                Kind="WeatherCloudy" />
-            </Controls:Tile>
-            <Controls:Tile Title="Store"
-                               Background="Green"
-                               Style="{StaticResource LargeTileStyle}">
-                <iconPacks:PackIconEntypo Width="40"
-                                              Height="40"
-                                              Kind="WindowsStore" />
-            </Controls:Tile>
-        </WrapPanel>
+                               Command="{Binding SongTypeCmd}">
+                    <Controls:Tile.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                            <GradientStop Color="#95F2FE" Offset="0"/>
+                            <GradientStop Color="#10E1FC" Offset="0.93"/>
+                        </LinearGradientBrush>
+                    </Controls:Tile.Background>
+                    <iconPacks:PackIconOcticons Width="50"
+                                                Height="50"
+                                                Kind="FileDirectory"
+                                                Margin="90 0 0 0" />
+                </Controls:Tile>
+                <Controls:Tile Title="新歌上线              "
+                               HorizontalTitleAlignment="Center"
+                               VerticalTitleAlignment="Center"
+                               Controls:ControlsHelper.MouseOverBorderBrush="{DynamicResource BlackBrush}"
+                               Style="{StaticResource SmallTileStyle}"
+                               Command="{Binding NewSongFilterCmd}">
+                    <Controls:Tile.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                            <GradientStop Color="#D5F3A5" Offset="0"/>
+                            <GradientStop Color="#8EDF0A" Offset="0.93"/>
+                        </LinearGradientBrush>
+                    </Controls:Tile.Background>
+                    <iconPacks:PackIconFontAwesome Width="70"
+                                                   Height="70"
+                                                   Kind="StarSolid"
+                                                   Margin="90 0 0 0"/>
+                </Controls:Tile>
+                <Controls:Tile Title="             语 种"
+                               Controls:ControlsHelper.MouseOverBorderBrush="{DynamicResource BlackBrush}"
+                               HorizontalTitleAlignment="Center"
+                               VerticalTitleAlignment="Center"
+                               Style="{StaticResource SmallTileStyle}"
+                               Command="{Binding LanguageTypeCmd}">
+                    <Controls:Tile.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                            <GradientStop Color="#F3B3BC" Offset="0"/>
+                            <GradientStop Color="#E4566A" Offset="0.93"/>
+                        </LinearGradientBrush>
+                    </Controls:Tile.Background>
+                    <iconPacks:PackIconFontAwesome Width="80"
+                                                   Height="80"
+                                                   Kind="CommentsRegular" Margin="0 0 70 0" />
+                </Controls:Tile>
+                <Controls:Tile Title="             榜 单"
+                               Margin="3"
+                               Controls:ControlsHelper.MouseOverBorderBrush="{DynamicResource BlackBrush}"
+                               HorizontalTitleAlignment="Center"
+                               VerticalTitleAlignment="Center"
+                               Style="{StaticResource SmallTileStyle}"
+                               Command="{Binding SongRankCmd}">
+                    <Controls:Tile.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                            <GradientStop Color="#DB9FEE" Offset="0"/>
+                            <GradientStop Color="#AA1ED6" Offset="0.93"/>
+                        </LinearGradientBrush>
+                    </Controls:Tile.Background>
+                    <iconPacks:PackIconFontAwesome Width="60"
+                                                   Height="60"
+                                                   Kind="TrophySolid"
+                                                   Margin="0 0 70 0"/>
+                </Controls:Tile>
+            </WrapPanel>
+            
+            <!-- 歌手点歌 -->
+            <Grid Visibility="{Binding ElementName=SingerSearch, Path=IsSelected, Converter={StaticResource Btvc}}">
+                <views:SingerSearchUc x:Name="singerSearchUc" DataContext="{Binding ElementName=ThisWindow, Path=MusicViewModel}"/>
+            </Grid>
+            <Grid Visibility="{Binding ElementName=SongFilterList, Path=IsSelected, Converter={StaticResource Btvc}}">
+                <views:SingerFilterListUc x:Name="singerFilterListUc" DataContext="{Binding ElementName=ThisWindow, Path=MusicViewModel}"/>
+            </Grid>
+            <Grid Visibility="{Binding ElementName=SelectedSongList, Path=IsSelected, Converter={StaticResource Btvc}}">
+                <views:SelectedSongListUc x:Name="selectedSongListUc" DataContext="{Binding ElementName=ThisWindow, Path=MusicViewModel}"/>
+            </Grid>
+
+        </Grid>
+        
+        <Grid Grid.Row="2" Margin="5" HorizontalAlignment="Center">
+            <Grid.Resources>
+                <Style x:Key="MenuButtonStyle"
+                       TargetType="{x:Type ButtonBase}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="Margin" Value="20 0"/>
+                    <Setter Property="Padding" Value="20 10"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="White"/>
+                            <Setter Property="Foreground" Value="Black" />
+                            <Setter Property="BorderThickness" Value="0"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Style="{StaticResource MenuButtonStyle}"
+                    Command="{Binding ReturnHomeCmd}">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <iconPacks:PackIconMaterial Kind="Home" Width="40" Height="40" HorizontalAlignment="Center"/>
+                            <TextBlock Text="首页" FontSize="18" TextAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+            <!--
+            <Button Grid.Column="1" Style="{StaticResource MenuButtonStyle}">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <iconPacks:PackIconEntypo Kind="SoundMix" Width="40" Height="40"/>
+                            <TextBlock Text="调音" FontSize="18" TextAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+            -->
+            <Button Grid.Column="2" Style="{StaticResource MenuButtonStyle}" Command="{Binding SoundDownCmd}">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <iconPacks:PackIconMaterial Kind="MinusCircleOutline" Width="40" Height="40" HorizontalAlignment="Center"/>
+                            <TextBlock Text="调小" FontSize="18" TextAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+            <Button Grid.Column="3" Style="{StaticResource MenuButtonStyle}" Command="{Binding SoundCancelCmd}">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <iconPacks:PackIconOcticons Kind="Mute" Width="40" Height="40" HorizontalAlignment="Center"/>
+                            <TextBlock Text="静音" FontSize="18" TextAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+            <Button Grid.Column="4" Style="{StaticResource MenuButtonStyle}" Command="{Binding SoundUpCmd}">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <iconPacks:PackIconMaterial Kind="PlusCircleOutline" Width="40" Height="40" HorizontalAlignment="Center"/>
+                            <TextBlock Text="调大" FontSize="18" TextAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+            <Button Grid.Column="5" Style="{StaticResource MenuButtonStyle}" Command="{Binding SongToNextCmd}">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <iconPacks:PackIconEntypo Kind="ControllerNext" Width="40" Height="40" HorizontalAlignment="Center"/>
+                            <TextBlock Text="切歌" FontSize="18" TextAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+            <Button Grid.Column="6" Style="{StaticResource MenuButtonStyle}" Command="{Binding SongPauseAndPlayCmd}">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <iconPacks:PackIconModern Kind="ControlPause" Width="40" Height="40" HorizontalAlignment="Center"/>
+                            <TextBlock Text="暂停/播放" FontSize="18" TextAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+            <Button Grid.Column="7" Style="{StaticResource MenuButtonStyle}" Command="{Binding SongAgainCmd}">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <iconPacks:PackIconFontAwesome Kind="UndoSolid" Width="40" Height="40" HorizontalAlignment="Center"/>
+                            <TextBlock Text="重唱" FontSize="18" TextAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+            <Button Grid.Column="8" Style="{StaticResource MenuButtonStyle}" Command="{Binding SongAccompanyOrSingCmd}">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <iconPacks:PackIconOcticons Kind="Person" Width="40" Height="40" HorizontalAlignment="Center"/>
+                            <TextBlock Text="原/伴唱" FontSize="18" TextAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+            <Button Grid.Column="9" Style="{StaticResource MenuButtonStyle}" Command="{Binding ShowMVCmd}">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <iconPacks:PackIconMaterial Kind="Airplay" Width="40" Height="40" HorizontalAlignment="Center"/>
+                            <TextBlock Text="MV" FontSize="18" TextAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+        </Grid>
     </Grid>
-    -->
-    
 </Window>

@@ -76,7 +76,7 @@ namespace KtvStudio.Helpers
         public const string RECORDNUMBER = "recordnumber";
         public const string MVURL = "mvurl";
         public const string MUSICNAMEINITIALS = "musicnameinitials";
-        public const string DUBBINGURL = "dubbingurl";
+        public const string SINGRAIL = "singrail";
         public const string RELEASEDATE = "releasedate";
     }
 }

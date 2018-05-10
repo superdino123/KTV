@@ -36,5 +36,10 @@ namespace RoomInfoManagementService
         {
             return RoomInfoManagementDataAccess.GetActionSourceDataAccess(groupCode);
         }
+
+        public int AddRoomTaskRemark(string roomId, string remark, string name)
+        {
+            return RoomInfoManagementDataAccess.AddRoomTaskRemarkDataAccess(roomId, remark, name);
+        }
     }
 }

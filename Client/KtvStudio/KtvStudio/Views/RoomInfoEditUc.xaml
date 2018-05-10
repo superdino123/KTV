@@ -21,7 +21,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Border Grid.Row="0" Height="40" Background="White" Margin="0">
             <DockPanel>
@@ -184,7 +184,7 @@
                 Padding="0 3"
                 Visibility="{Binding ElementName=toggleButtonBaseInfo2,Path=IsChecked,Converter={StaticResource BooleanToVisibilityConverter}}">
             <Grid>
-                <TextBox Margin="5" MinHeight="100"
+                <TextBox Margin="5" MinHeight="50"
                          TextWrapping="Wrap" Text="{Binding RoomInfoEditItem.RoomRemark}"/>
             </Grid>
         </Border>

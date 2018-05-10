@@ -56,7 +56,7 @@
   <xs:element name="DeleteSongInfo">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/DataModel" minOccurs="0" name="songInfo" nillable="true" type="q3:SongInfo" />
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -143,96 +143,29 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetSingerFilterSourceByInitial">
+  <xs:element name="AddSongRecord">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="nationality" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="sex" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="initial" nillable="true" type="xs:string" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/DataModel" minOccurs="0" name="records" nillable="true" type="q3:ArrayOfSongRecord" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetSingerFilterSourceByInitialResponse">
+  <xs:element name="AddSongRecordResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="GetSingerFilterSourceByInitialResult" nillable="true">
-          <xs:complexType>
-            <xs:annotation>
-              <xs:appinfo>
-                <ActualType Name="DataTable" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
-              </xs:appinfo>
-            </xs:annotation>
-            <xs:sequence>
-              <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
-              <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
+        <xs:element minOccurs="0" name="AddSongRecordResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetSingerFilterSourceByRank">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="nationality" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="sex" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetSingerFilterSourceByRankResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="GetSingerFilterSourceByRankResult" nillable="true">
-          <xs:complexType>
-            <xs:annotation>
-              <xs:appinfo>
-                <ActualType Name="DataTable" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
-              </xs:appinfo>
-            </xs:annotation>
-            <xs:sequence>
-              <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
-              <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetSingerFilterSourceAllNationalityByInitial">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="initial" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetSingerFilterSourceAllNationalityByInitialResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="GetSingerFilterSourceAllNationalityByInitialResult" nillable="true">
-          <xs:complexType>
-            <xs:annotation>
-              <xs:appinfo>
-                <ActualType Name="DataTable" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
-              </xs:appinfo>
-            </xs:annotation>
-            <xs:sequence>
-              <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
-              <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetSingerFilterSourceAllNationalityByRank">
+  <xs:element name="GetAllSongRecord">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetSingerFilterSourceAllNationalityByRankResponse">
+  <xs:element name="GetAllSongRecordResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="GetSingerFilterSourceAllNationalityByRankResult" nillable="true">
+        <xs:element minOccurs="0" name="GetAllSongRecordResult" nillable="true">
           <xs:complexType>
             <xs:annotation>
               <xs:appinfo>
@@ -245,20 +178,6 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetSingerInfoById">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetSingerInfoByIdResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/DataModel" minOccurs="0" name="GetSingerInfoByIdResult" nillable="true" type="q4:SingerInfo" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -1,0 +1,144 @@
+2018-04-29 12:44:59 329|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"hash":"FrucAfL8QYrR9jW1G2cdBjen0k1w","key":"BEYOND-2-中国"}
+
+2018-04-29 12:47:56 271|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"error":"file exists"}
+
+2018-04-29 12:48:27 430|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"error":"file exists"}
+
+2018-04-29 12:49:12 916|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"error":"file exists"}
+
+2018-04-29 12:49:17 711|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"error":"file exists"}
+
+2018-04-29 12:50:04 044|Info
+   |stacktrace = <>c__DisplayClass2.<.ctor>b__0 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"hash":"FjBXkVzw4qgVGRIkz31QE0x1oPdf","key":"BEYOND-2-中国"}
+
+2018-04-29 12:50:16 681|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"error":"file exists"}
+
+2018-04-29 13:04:08 042|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"error":"file exists"}
+
+2018-04-29 13:08:29 640|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"error":"file exists"}
+
+2018-04-29 13:10:08 068|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"hash":"FhQRXJ4n7-b2P3Dsde3ZMRgtTIFO","key":"57ff47246a3f456bb25a0330f52d8dee.jpg"}
+
+2018-04-29 13:16:44 790|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"hash":"Fk9XfoTQgtoya52Nw4PmsKoFwueE","key":"dfe54631045a4867af5c7b97de4e3f7f.jpg"}
+
+2018-04-29 13:21:16 534|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"hash":"FgELKozFkCNznHteycm7EfgsOOBN","key":"8ef9b2810ce94c7e919caf082a1f9556.jpg"}
+
+2018-04-29 13:24:13 987|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"hash":"FgKgDw1vCVr-pZm8j-oTHatHgX_P","key":"741d3fa381934e4e90c9449231bf09f8.jpg"}
+
+2018-04-29 13:26:14 254|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"hash":"Fo7DJjjtFi0FxCCfnEwUJ6b345k1","key":"1bebe350abc44ca59330f4a94baf598b.jpg"}
+
+2018-04-29 14:54:58 561|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"hash":"FjIxdqXpw5V8zP0E3_JPsI49F96X","key":"a9feb1b053ca4996b41ede10b7b1e78c.jpg"}
+
+2018-04-29 15:02:26 912|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"hash":"FoJmohBEpGjvSZSrBfThxamvrEy0","key":"002874e279024c358fa74de01984dc54.jpg"}
+
+2018-04-29 15:05:05 135|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"hash":"FmN4y1VVTMhUg4hEUC8D6btcFrvz","key":"1c34104d42224e68b23ade1f71a4b2ef.jpg"}
+
+2018-04-29 15:08:09 600|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"hash":"FrJJR3KrxyI8oXcf7Z_zb_TqVS94","key":"5889021bd21747e296d44e05dfc9b9dc.jpg"}
+
+2018-04-29 15:10:55 447|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"hash":"FqBP4dB53nmAEZqHASX2Us3lKwvn","key":"0555105da50d46228c26782b45375cc1.jpg"}
+
+2018-04-29 15:12:27 752|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"hash":"Fh4pS8z-rxoQ7GVS1PM-v2qhU-hO","key":"6d50c596ff084749b150fe7c45447650.jpg"}
+
+2018-04-29 15:14:00 112|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"hash":"Fklri1AN-H2okSIOEYyyN--qci75","key":"fbefe78875fa4ca8ba350a0641c646da.jpg"}
+
+2018-04-29 15:15:32 624|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"hash":"FmQyY-rkbUeVNm6YPHM0JRSIl2dV","key":"090e4ed58ae044969e35f64ca3caff8f.jpg"}
+
+2018-04-29 15:18:32 112|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"hash":"FkW3Xt2Winw4vwKkRGSCRIZHO9Qz","key":"d76a32d407414faf85b0fd6a24ed8435.jpg"}
+
+2018-04-29 15:20:01 697|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"hash":"FqJiELZANbIwx0Eo93xA0wtZN6co","key":"c1d20d71fef34ae59c7fd6b64c955e2e.jpg"}
+
+2018-04-29 15:22:03 297|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"hash":"Fp3di4wk5HJ9D1QgjbGN-v7cTpNa","key":"72b16b67d1504444beb3650585978f1f.jpg"}
+
+2018-04-29 15:23:48 919|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"hash":"FiU0Pao4cwJEG0LB2mB8jA169WaY","key":"454178f9169849599040f35f75537f4e.jpg"}
+
+2018-04-29 15:25:36 215|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"hash":"Fp83JtMUOxd6YqN39HLqVqubA9vr","key":"eb38b9d5bc0645bfa67aa8af07961a68.jpg"}
+
+2018-04-29 15:28:18 270|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"hash":"FoFSmB-ppGAPFbzuLgDOOAkQZ-HC","key":"9fd8d6ee42de4db6b043ebad2fcd4146.jpg"}
+
+2018-04-29 15:30:18 572|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"hash":"FowTrrLJNcyZzHVSVRLHnUENHMqZ","key":"6ed466e5e35f4098b6af60d2a799b71d.jpg"}
+
+2018-04-29 15:32:05 947|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"hash":"FhPoeUxKI9T44E2ZPQFAc9QspD4d","key":"bc1515441fcc44f3b48e9e038da69f28.jpg"}
+
+2018-04-29 15:33:38 849|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"hash":"Fk7Sti5dstpcADStYUiaE6J0JlPk","key":"6e82d4ff07ad45a4ba0f1a4618d03139.jpg"}
+
+2018-04-29 15:34:37 543|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"hash":"Fh2raGIphzXTkFZ5QaWl1AtHg6Qn","key":"e15ce669446e49c5a07e73b239652179.jpg"}
+
+2018-04-29 15:37:21 098|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"hash":"Fl4eKtpcEpMPEROtJ5AHP9N3jVf6","key":"6671d621d3e54da8a6936c3a3793334d.jpg"}
+
+2018-04-29 15:39:58 362|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"hash":"FjFer6l1YL7rhyjYF85wplkZ8zWM","key":"ed6c78f7c6d8456281883942401ae43e.jpg"}
+
+2018-04-29 15:41:22 546|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"hash":"FsNEz3RKE0PwBJ080R3xAmhlqV_i","key":"f44d5f84f9cd442ab27f18384c23b790.jpg"}
+
+2018-04-29 15:43:15 613|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"hash":"FtjiV_rXvRopK3_t5tY55ukExm_Z","key":"e6ac42e11022496f8f98d0bda337f0ee.jpg"}
+

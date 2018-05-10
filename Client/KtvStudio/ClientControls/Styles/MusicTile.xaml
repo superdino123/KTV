@@ -1,0 +1,27 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:System="clr-namespace:System;assembly=mscorlib"
+                    xmlns:local="clr-namespace:ClientControls.Styles"
+                    xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls">
+    <Style x:Key="LargeTileStyle" TargetType="Controls:Tile">
+        <Setter Property="Height" Value="603" />
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+        <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
+        <Setter Property="TitleFontSize" Value="30" />
+        <Setter Property="Width" Value="300" />
+    </Style>
+    <Style x:Key="SmallTileStyle" TargetType="Controls:Tile">
+        <Setter Property="Height" Value="300" />
+        <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
+        <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
+        <Setter Property="TitleFontSize" Value="25" />
+        <Setter Property="Width" Value="300" />
+    </Style>
+    <Style x:Key="MiddleTileStyle" TargetType="Controls:Tile">
+        <Setter Property="Height" Value="100" />
+        <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
+        <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
+        <Setter Property="TitleFontSize" Value="25" />
+        <Setter Property="Width" Value="200" />
+    </Style>
+</ResourceDictionary>

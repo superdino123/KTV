@@ -2,4 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ImageSource x:Key="icon">Images/icon.png</ImageSource>
     <ImageSource x:Key="upload">Images/upload.jpg</ImageSource>
+    <ImageSource x:Key="musicBackground">Images/musicBackground.jpg</ImageSource>
+    <ImageSource x:Key="singerPhoto">Images/singerPhoto.png</ImageSource>
+    <ImageSource x:Key="musicLogo">Images/musicLogo.png</ImageSource>
+    <ImageSource x:Key="dataAnalysisIndex">Images/dataAnalysisIndex.png</ImageSource>
 </ResourceDictionary>

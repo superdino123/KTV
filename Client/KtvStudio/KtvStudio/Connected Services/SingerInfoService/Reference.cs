@@ -212,6 +212,12 @@ namespace KtvStudio.SingerInfoService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISingerInfoManagement/GetAllSingerInfo", ReplyAction="http://tempuri.org/ISingerInfoManagement/GetAllSingerInfoResponse")]
         System.Threading.Tasks.Task<System.Data.DataTable> GetAllSingerInfoAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISingerInfoManagement/GetSingerInfoPaging", ReplyAction="http://tempuri.org/ISingerInfoManagement/GetSingerInfoPagingResponse")]
+        System.Data.DataTable GetSingerInfoPaging(string nationality, string sex, string initial);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISingerInfoManagement/GetSingerInfoPaging", ReplyAction="http://tempuri.org/ISingerInfoManagement/GetSingerInfoPagingResponse")]
+        System.Threading.Tasks.Task<System.Data.DataTable> GetSingerInfoPagingAsync(string nationality, string sex, string initial);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISingerInfoManagement/AddSingerInfo", ReplyAction="http://tempuri.org/ISingerInfoManagement/AddSingerInfoResponse")]
         int AddSingerInfo(KtvStudio.SingerInfoService.SingerInfo singerInfo);
         
@@ -225,16 +231,28 @@ namespace KtvStudio.SingerInfoService {
         System.Threading.Tasks.Task<int> UpdateSingerInfoAsync(KtvStudio.SingerInfoService.SingerInfo singerInfo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISingerInfoManagement/DeleteSingerInfo", ReplyAction="http://tempuri.org/ISingerInfoManagement/DeleteSingerInfoResponse")]
-        int DeleteSingerInfo(KtvStudio.SingerInfoService.SingerInfo singerInfo);
+        int DeleteSingerInfo(string singerId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISingerInfoManagement/DeleteSingerInfo", ReplyAction="http://tempuri.org/ISingerInfoManagement/DeleteSingerInfoResponse")]
-        System.Threading.Tasks.Task<int> DeleteSingerInfoAsync(KtvStudio.SingerInfoService.SingerInfo singerInfo);
+        System.Threading.Tasks.Task<int> DeleteSingerInfoAsync(string singerId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISingerInfoManagement/GetSingerInfoByName", ReplyAction="http://tempuri.org/ISingerInfoManagement/GetSingerInfoByNameResponse")]
         System.Data.DataTable GetSingerInfoByName(string singerName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISingerInfoManagement/GetSingerInfoByName", ReplyAction="http://tempuri.org/ISingerInfoManagement/GetSingerInfoByNameResponse")]
         System.Threading.Tasks.Task<System.Data.DataTable> GetSingerInfoByNameAsync(string singerName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISingerInfoManagement/GetSingerInfoById", ReplyAction="http://tempuri.org/ISingerInfoManagement/GetSingerInfoByIdResponse")]
+        KtvStudio.SingerInfoService.SingerInfo GetSingerInfoById(string id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISingerInfoManagement/GetSingerInfoById", ReplyAction="http://tempuri.org/ISingerInfoManagement/GetSingerInfoByIdResponse")]
+        System.Threading.Tasks.Task<KtvStudio.SingerInfoService.SingerInfo> GetSingerInfoByIdAsync(string id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISingerInfoManagement/GetNationalityInfoSource", ReplyAction="http://tempuri.org/ISingerInfoManagement/GetNationalityInfoSourceResponse")]
+        System.Data.DataTable GetNationalityInfoSource();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISingerInfoManagement/GetNationalityInfoSource", ReplyAction="http://tempuri.org/ISingerInfoManagement/GetNationalityInfoSourceResponse")]
+        System.Threading.Tasks.Task<System.Data.DataTable> GetNationalityInfoSourceAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -272,6 +290,14 @@ namespace KtvStudio.SingerInfoService {
             return base.Channel.GetAllSingerInfoAsync();
         }
         
+        public System.Data.DataTable GetSingerInfoPaging(string nationality, string sex, string initial) {
+            return base.Channel.GetSingerInfoPaging(nationality, sex, initial);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> GetSingerInfoPagingAsync(string nationality, string sex, string initial) {
+            return base.Channel.GetSingerInfoPagingAsync(nationality, sex, initial);
+        }
+        
         public int AddSingerInfo(KtvStudio.SingerInfoService.SingerInfo singerInfo) {
             return base.Channel.AddSingerInfo(singerInfo);
         }
@@ -288,12 +314,12 @@ namespace KtvStudio.SingerInfoService {
             return base.Channel.UpdateSingerInfoAsync(singerInfo);
         }
         
-        public int DeleteSingerInfo(KtvStudio.SingerInfoService.SingerInfo singerInfo) {
-            return base.Channel.DeleteSingerInfo(singerInfo);
+        public int DeleteSingerInfo(string singerId) {
+            return base.Channel.DeleteSingerInfo(singerId);
         }
         
-        public System.Threading.Tasks.Task<int> DeleteSingerInfoAsync(KtvStudio.SingerInfoService.SingerInfo singerInfo) {
-            return base.Channel.DeleteSingerInfoAsync(singerInfo);
+        public System.Threading.Tasks.Task<int> DeleteSingerInfoAsync(string singerId) {
+            return base.Channel.DeleteSingerInfoAsync(singerId);
         }
         
         public System.Data.DataTable GetSingerInfoByName(string singerName) {
@@ -302,6 +328,22 @@ namespace KtvStudio.SingerInfoService {
         
         public System.Threading.Tasks.Task<System.Data.DataTable> GetSingerInfoByNameAsync(string singerName) {
             return base.Channel.GetSingerInfoByNameAsync(singerName);
+        }
+        
+        public KtvStudio.SingerInfoService.SingerInfo GetSingerInfoById(string id) {
+            return base.Channel.GetSingerInfoById(id);
+        }
+        
+        public System.Threading.Tasks.Task<KtvStudio.SingerInfoService.SingerInfo> GetSingerInfoByIdAsync(string id) {
+            return base.Channel.GetSingerInfoByIdAsync(id);
+        }
+        
+        public System.Data.DataTable GetNationalityInfoSource() {
+            return base.Channel.GetNationalityInfoSource();
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> GetNationalityInfoSourceAsync() {
+            return base.Channel.GetNationalityInfoSourceAsync();
         }
     }
 }

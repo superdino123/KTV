@@ -27,6 +27,7 @@ G:\3VSText\GitKtv\Service\KtvService\DataAccess\obj\Debug\DataAccess.csprojResol
 G:\3VSText\GitKtv\Service\KtvService\DataAccess\obj\Debug\DataAccess.csproj.CoreCompileInputs.cache
 G:\3VSText\GitKtv\Service\KtvService\DataAccess\obj\Debug\DataAccess.dll
 G:\3VSText\GitKtv\Service\KtvService\DataAccess\obj\Debug\DataAccess.pdb
+G:\3VSText\GitTest\KTV\Service\KtvService\DataAccess\bin\Debug\NLog.config
 G:\3VSText\GitTest\KTV\Service\KtvService\DataAccess\bin\Debug\DataAccess.dll
 G:\3VSText\GitTest\KTV\Service\KtvService\DataAccess\bin\Debug\DataAccess.pdb
 G:\3VSText\GitTest\KTV\Service\KtvService\DataAccess\bin\Debug\DataHelper.dll

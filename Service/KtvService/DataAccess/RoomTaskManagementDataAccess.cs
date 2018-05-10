@@ -34,7 +34,7 @@ namespace DataAccess
         }
 
         #region User
-        
+
         public static string USERTABLENAME = "customerinfo";
         public static string USERFIELDNAME = "customername, customersex, customertel, customerage, customeridcard";
         
@@ -112,6 +112,11 @@ namespace DataAccess
             return hours * price;
         }
 
+        #region ConsumeLog
+
+        public static string CONSUMELOGTABLENAME = "consumelog";
+        public static string CONSUMELOGFIELDNAME = "roomid, customerid, roomconsume, starttime, endtime";
+
         /// <summary>
         /// 添加流水日志
         /// </summary>
@@ -119,9 +124,16 @@ namespace DataAccess
         /// <returns></returns>
         public static int AddConsumeLogDataAccess(RoomTask roomTask)
         {
-            var sql = $"insert into consumelog(roomid, customerid, roomconsume, starttime, endtime) values('{roomTask.RoomId}', '{roomTask.CustomerId}', '{roomTask.RoomConsume}', '{roomTask.StartTime}', '{roomTask.EndTime}')";
+            var sql = $"insert into {CONSUMELOGTABLENAME}({CONSUMELOGFIELDNAME}) values('{roomTask.RoomId}', '{roomTask.CustomerId}', '{roomTask.RoomConsume}', '{roomTask.StartTime}', '{roomTask.EndTime}')";
             return SqlServerHelper.ExecuteNonQuery(CommandType.Text, sql, 30, null);
         }
 
+        public static DataTable GetConsumeLogDataAccess()
+        {
+            var sql = $"select {CONSUMELOGTABLENAME}.roomid, customerid, roomconsume, starttime, endtime, roomtype from {CONSUMELOGTABLENAME},roominfo where {CONSUMELOGTABLENAME}.roomid = roominfo.roomid";
+            return SqlServerHelper.GetDataFromKtvdb(sql);
+        }
+        
+        #endregion
     }
 }

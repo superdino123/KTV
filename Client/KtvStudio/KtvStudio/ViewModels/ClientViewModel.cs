@@ -8,6 +8,10 @@ using KtvStudio.RoomTaskService;
 using KtvStudio.SingerInfoService;
 using KtvStudio.SongInfoService;
 using KtvStudio.Views;
+using LiveCharts;
+using LiveCharts.Defaults;
+using LiveCharts.Wpf;
+using MahApps.Metro.Controls;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -15,9 +19,14 @@ using System.Data;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
+using System.Threading;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace KtvStudio.ViewModels
 {
@@ -81,6 +90,8 @@ namespace KtvStudio.ViewModels
 
         public MainWindow mainWindow;
         public RoomTaskEditWnd roomTaskEditWnd;
+        public SongManageUc songManageUc;
+        public SongInfoEditUc songInfoEditUc;
 
         #endregion
 
@@ -96,13 +107,16 @@ namespace KtvStudio.ViewModels
             RoomPriceSource = GetRoomPriceSource();
             RoomTypeSource = RoomInfoManagementServiceCaller.GetActionSource("0001");
             LanguageTypeSource = RoomInfoManagementServiceCaller.GetActionSource("0002");
-            SingerInfoSource = SingerInfoManagementServiceCaller.GetAllSingerInfo();
+            SingerInfoSource = GetSingerInfoSource();
+            SingerInfoShowSource = GetSingerInfoShowSource(SingerInfoNationality, SingerInfoSex, SingerInfoInitial);
+            SongSingerInfoShowSource = GetSingerInfoShowSource(SongSingerInfoNationality, SongSingerInfoSex, SongSingerInfoInitial);
+            CountryInfoSource = SingerInfoManagementServiceCaller.GetNationalityInfoSource();
             CategorySource = SongInfoManagementServiceCaller.GetAllCategorySource();
             CategorySourceDict = getCategorySourceDict();
             FirstCategorySource = SongInfoManagementServiceCaller.GetAllCategorySource();
             SecondCategorySource = SongInfoManagementServiceCaller.GetAllCategorySource();
             FirstCategorySourceView.RowFilter = $"fatherid = '0'";
-            SongInfoSource = SongInfoManagementServiceCaller.GetAllSongInfo();
+            SongInfoSource = GetSongInfoSource();
         }
 
         #endregion
@@ -123,6 +137,7 @@ namespace KtvStudio.ViewModels
                 if (_SongInfoSource != null && _SongInfoSource.Equals(value)) return;
                 _SongInfoSource = value;
                 RaisePropertyChanged("SongInfoSource");
+                SongInfoSource.DefaultView.RowFilter = SongInfoFilter;
             }
         }
 
@@ -255,20 +270,157 @@ namespace KtvStudio.ViewModels
 
         #endregion
 
-        #region SingerFilterSource
+        #region 分页筛选
 
-        private DataTable _SingerFilterSource = new DataTable();
+        #region SongSingerInfoShowSource
 
-        public DataTable SingerFilterSource
+        private DataTable _SongSingerInfoShowSource = new DataTable();
+
+        public DataTable SongSingerInfoShowSource
         {
-            get { return _SingerFilterSource; }
+            get { return _SongSingerInfoShowSource; }
             set
             {
-                if (_SingerFilterSource != null && _SingerFilterSource.Equals(value)) return;
-                _SingerFilterSource = value;
-                RaisePropertyChanged("SingerFilterSource");
+                if (_SongSingerInfoShowSource != null && _SongSingerInfoShowSource.Equals(value)) return;
+                _SongSingerInfoShowSource = value;
+                RaisePropertyChanged("SongSingerInfoShowSource");
+                SongSingerInfoShowSelectLastIndex = GetSongSingerInfoShowSelectLastIndex();
+                if (songManageUc != null)
+                    songManageUc.AddSingerInfo();
             }
         }
+
+        #endregion
+
+        #region SongSingerInfoShowSelectIndex
+
+        private int _SongSingerInfoShowSelectIndex = 1;
+
+        public int SongSingerInfoShowSelectIndex
+        {
+            get { return _SongSingerInfoShowSelectIndex; }
+            set
+            {
+                if (_SongSingerInfoShowSelectIndex.Equals(value)) return;
+                _SongSingerInfoShowSelectIndex = value;
+                RaisePropertyChanged("SongSingerInfoShowSelectIndex");
+                if (songManageUc != null)
+                    songManageUc.AddSingerInfo();
+            }
+        }
+
+        #endregion
+
+        #region SongSingerInfoShowGoToIndex
+
+        private int _SongSingerInfoShowGoToIndex = 1;
+
+        public int SongSingerInfoShowGoToIndex
+        {
+            get { return _SongSingerInfoShowGoToIndex; }
+            set
+            {
+                if (_SongSingerInfoShowGoToIndex.Equals(value)) return;
+                _SongSingerInfoShowGoToIndex = value;
+                RaisePropertyChanged("SongSingerInfoShowGoToIndex");
+            }
+        }
+
+        #endregion
+
+        #region SongSingerInfoShowSelectLastIndex
+
+        private int _SongSingerInfoShowSelectLastIndex = 1;
+
+        public int SongSingerInfoShowSelectLastIndex
+        {
+            get { return _SongSingerInfoShowSelectLastIndex; }
+            set
+            {
+                if (_SongSingerInfoShowSelectLastIndex.Equals(value)) return;
+                _SongSingerInfoShowSelectLastIndex = value;
+                RaisePropertyChanged("SongSingerInfoShowSelectLastIndex");
+            }
+        }
+
+        #endregion
+
+        #region SongSingerInfoShowPageSize
+
+        private int _SongSingerInfoShowPageSize = 20;
+
+        public int SongSingerInfoShowPageSize
+        {
+            get { return _SongSingerInfoShowPageSize; }
+            set
+            {
+                if (_SongSingerInfoShowPageSize.Equals(value)) return;
+                _SongSingerInfoShowPageSize = value;
+                RaisePropertyChanged("SongSingerInfoShowPageSize");
+                SongSingerInfoShowSelectLastIndex = GetSongSingerInfoShowSelectLastIndex();
+                if (songManageUc != null)
+                    songManageUc.AddSingerInfo();
+            }
+        }
+
+        #endregion
+        
+        #region SongSingerInfoNationality
+
+        private string _SongSingerInfoNationality = string.Empty;
+
+        public string SongSingerInfoNationality
+        {
+            get { return _SongSingerInfoNationality; }
+            set
+            {
+                if (_SongSingerInfoNationality.Equals(value)) return;
+                _SongSingerInfoNationality = value;
+                RaisePropertyChanged("SongSingerInfoNationality");
+                SongSingerInfoShowSelectIndex = 1;
+                SongSingerInfoShowSource = GetSingerInfoShowSource(SongSingerInfoNationality, SongSingerInfoSex, SongSingerInfoInitial);
+            }
+        }
+
+        #endregion
+
+        #region SongSingerInfoSex
+
+        private string _SongSingerInfoSex = string.Empty;
+
+        public string SongSingerInfoSex
+        {
+            get { return _SongSingerInfoSex; }
+            set
+            {
+                if (_SongSingerInfoSex.Equals(value)) return;
+                _SongSingerInfoSex = value;
+                RaisePropertyChanged("SongSingerInfoSex");
+                SongSingerInfoShowSelectIndex = 1;
+                SongSingerInfoShowSource = GetSingerInfoShowSource(SongSingerInfoNationality, SongSingerInfoSex, SongSingerInfoInitial);
+            }
+        }
+
+        #endregion
+
+        #region SongSingerInfoInitial
+
+        private string _SongSingerInfoInitial = string.Empty;
+
+        public string SongSingerInfoInitial
+        {
+            get { return _SongSingerInfoInitial; }
+            set
+            {
+                if (_SongSingerInfoInitial.Equals(value)) return;
+                _SongSingerInfoInitial = value;
+                RaisePropertyChanged("SongSingerInfoInitial");
+                SongSingerInfoShowSelectIndex = 1;
+                SongSingerInfoShowSource = GetSingerInfoShowSource(SongSingerInfoNationality, SongSingerInfoSex, SongSingerInfoInitial);
+            }
+        }
+
+        #endregion
 
         #endregion
 
@@ -291,9 +443,9 @@ namespace KtvStudio.ViewModels
 
         #region SingerInfoSelectedSource
 
-        private SongInfoService.SingerInfo _SingerInfoSelectedSource = new SongInfoService.SingerInfo();
+        private SingerInfo _SingerInfoSelectedSource = new SingerInfo();
 
-        public SongInfoService.SingerInfo SingerInfoSelectedSource
+        public SingerInfo SingerInfoSelectedSource
         {
             get { return _SingerInfoSelectedSource; }
             set
@@ -306,25 +458,103 @@ namespace KtvStudio.ViewModels
 
         #endregion
 
+        #region Vedio
+
+        #region SongLocationMVUrl
+
+        private string _SongLocationMVUrl = string.Empty;
+
+        public string SongLocationMVUrl
+        {
+            get { return _SongLocationMVUrl; }
+            set
+            {
+                if (_SongLocationMVUrl != null && _SongLocationMVUrl.Equals(value)) return;
+                _SongLocationMVUrl = value;
+                RaisePropertyChanged("SongLocationMVUrl");
+            }
+        }
+
+        #endregion
+      
+        #region VedioIsPlay
+
+        private bool _VedioIsPlay = false;
+
+        public bool VedioIsPlay
+        {
+            get { return _VedioIsPlay; }
+            set
+            {
+                if (_VedioIsPlay.Equals(value)) return;
+                _VedioIsPlay = value;
+                RaisePropertyChanged("VedioIsPlay");
+
+            }
+        }
+
+        #endregion
+
+        #endregion
+
+        #region SongInfoFilter
+
+        private string _SongInfoFilter = string.Empty;
+
+        public string SongInfoFilter
+        {
+            get { return _SongInfoFilter; }
+            set
+            {
+                if (_SongInfoFilter != null && _SongInfoFilter.Equals(value)) return;
+                _SongInfoFilter = value;
+                RaisePropertyChanged("SongInfoFilter");
+                if (SongInfoSource != null)
+                    SongInfoSource.DefaultView.RowFilter = SongInfoFilter;
+            }
+        }
+
+        #endregion
+
+        #region SongInfoSort
+
+        private string _SongInfoSort = string.Empty;
+
+        public string SongInfoSort
+        {
+            get { return _SongInfoSort; }
+            set
+            {
+                if (_SongInfoSort != null && _SongInfoSort.Equals(value)) return;
+                _SongInfoSort = value;
+                RaisePropertyChanged("SongInfoSort");
+                if (SongInfoSource != null)
+                    SongInfoSource.DefaultView.Sort = SongInfoSort;
+            }
+        }
+
+        #endregion
+        
         #endregion
 
         #region Command
 
-        #region GetAllSongInfoCmd
+        #region SongInfoRefreshCmd
 
-        private RelayCommand _GetAllSongInfoCmd;
+        private RelayCommand _SongInfoRefreshCmd;
 
-        public ICommand GetAllSongInfoCmd
+        public ICommand SongInfoRefreshCmd
         {
-            get { return _GetAllSongInfoCmd ?? (_GetAllSongInfoCmd = new RelayCommand(param => OnGetAllSongInfo(), param => CanGetAllSongInfo())); }
+            get { return _SongInfoRefreshCmd ?? (_SongInfoRefreshCmd = new RelayCommand(param => OnSongInfoRefresh(), param => CanSongInfoRefresh())); }
         }
 
-        public void OnGetAllSongInfo()
+        public void OnSongInfoRefresh()
         {
-            SongInfoSource = SongInfoManagementServiceCaller.GetAllSongInfo();
+            SongInfoSource = GetSongInfoSource();
+            SongSingerInfoShowSource = GetSingerInfoShowSource(SongSingerInfoNationality, SongSingerInfoSex, SongSingerInfoInitial);
         }
 
-        public bool CanGetAllSongInfo()
+        public bool CanSongInfoRefresh()
         {
             return true;
         }
@@ -345,6 +575,9 @@ namespace KtvStudio.ViewModels
             SongInfoEditVisibility = true;
             SongInfoEditItem = new SongInfo();
             SongInfoAddOrUpdate = true;
+
+            SongInfoEditItem.SingerId = SingerInfoSelectedSource.Id;
+            SongInfoEditItem.SingerName = SingerInfoSelectedSource.SingerName;
         }
 
         public bool CanSongInfoAdd()
@@ -377,7 +610,7 @@ namespace KtvStudio.ViewModels
             SongInfoEditItem.RecordNumber = SongInfoSelectedItem[MUSICINFO.RECORDNUMBER].ToString();
             SongInfoEditItem.MVUrl = SongInfoSelectedItem[MUSICINFO.MVURL].ToString();
             SongInfoEditItem.MusicNameInitials = SongInfoSelectedItem[MUSICINFO.MUSICNAMEINITIALS].ToString();
-            SongInfoEditItem.DubbingUrl = SongInfoSelectedItem[MUSICINFO.DUBBINGURL].ToString();
+            SongInfoEditItem.SingRail = SongInfoSelectedItem[MUSICINFO.SINGRAIL].ToString();
             if (string.IsNullOrEmpty(SongInfoSelectedItem[MUSICINFO.RELEASEDATE].ToString()))
                 SongInfoEditItem.ReleaseDate = null;
             else
@@ -388,6 +621,36 @@ namespace KtvStudio.ViewModels
         }
 
         public bool CanSongInfoEdit()
+        {
+            return true;
+        }
+
+        #endregion
+
+        #region SongInfoDeleteCmd
+
+        private RelayCommand _SongInfoDeleteCmd;
+
+        public ICommand SongInfoDeleteCmd
+        {
+            get { return _SongInfoDeleteCmd ?? (_SongInfoDeleteCmd = new RelayCommand(param => OnSongInfoDelete(), param => CanSongInfoDelete())); }
+        }
+
+        public void OnSongInfoDelete()
+        {
+            if (SongInfoSelectedItem == null || !SongInfoSelectedItem.Table.Columns.Contains(MUSICINFO.ID))
+                return;
+
+            string id = SongInfoSelectedItem[MUSICINFO.ID].ToString();
+            string songName = SongInfoSelectedItem[MUSICINFO.MUSICNAME].ToString();
+            if (MessageBox.Show($"是否删除歌曲{songName}?", "提示", MessageBoxButton.OKCancel, MessageBoxImage.Question) == MessageBoxResult.OK)
+            {
+                SongInfoManagementServiceCaller.DeleteSongInfo(id);
+                SongInfoSource = GetSongInfoSource();
+            }
+        }
+
+        public bool CanSongInfoDelete()
         {
             return true;
         }
@@ -406,6 +669,7 @@ namespace KtvStudio.ViewModels
         public void OnSongInfoCancel()
         {
             SongInfoEditVisibility = false;
+            songInfoEditUc.vedio.Close();
         }
 
         public bool CanSongInfoCancel()
@@ -447,18 +711,86 @@ namespace KtvStudio.ViewModels
 
         public void OnSongInfoSave()
         {
+            /*
+             * 批量添加所有音乐的首字母
+            for (int i = 0; i < SongInfoSource.Rows.Count; i++)
+            {
+                SongInfoSelectedItem = SongInfoSource.Rows[i];
+                SongInfoEditItem.Category = SongInfoSelectedItem[MUSICINFO.CATEGORY].ToString();//Category，SingerId需要在MusicName之前赋值
+                SongInfoEditItem.Id = int.Parse(SongInfoSelectedItem[MUSICINFO.ID].ToString());
+                SongInfoEditItem.SingerId = int.Parse(SongInfoSelectedItem[MUSICINFO.SINGERID].ToString());
+                SongInfoEditItem.SingerName = SongInfoSelectedItem[MUSICINFO.SINGERNAME].ToString();
+                SongInfoEditItem.LanguageType = SongInfoSelectedItem[MUSICINFO.LANGUAGETYPE].ToString();
+                SongInfoEditItem.RecordNumber = SongInfoSelectedItem[MUSICINFO.RECORDNUMBER].ToString();
+                SongInfoEditItem.MVUrl = SongInfoSelectedItem[MUSICINFO.MVURL].ToString();
+                SongInfoEditItem.MusicNameInitials = SongInfoSelectedItem[MUSICINFO.MUSICNAMEINITIALS].ToString();
+                SongInfoEditItem.SingRail = SongInfoSelectedItem[MUSICINFO.SINGRAIL].ToString();
+                if (string.IsNullOrEmpty(SongInfoSelectedItem[MUSICINFO.RELEASEDATE].ToString()))
+                    SongInfoEditItem.ReleaseDate = null;
+                else
+                    SongInfoEditItem.ReleaseDate = DateTime.Parse(SongInfoSelectedItem[MUSICINFO.RELEASEDATE].ToString());
+
+                SongInfoEditItem.MusicName = SongInfoSelectedItem[MUSICINFO.MUSICNAME].ToString();
+                //添加首字母列内容
+                if (string.IsNullOrEmpty(SongInfoEditItem.MusicNameInitials))
+                    SongInfoEditItem.MusicNameInitials = GetStrInitials(SongInfoEditItem.MusicName);
+
+                if (SongInfoManagementServiceCaller.UpdateSongeInfo(SongInfoEditItem) == 0)
+                {
+                    MessageBox.Show($"{SongInfoEditItem.MusicName}失败");
+                }
+            }
+             */
+
             if (SongInfoEditItem == null)
                 return;
+
+            //添加首字母列内容
+            if (string.IsNullOrEmpty(SongInfoEditItem.MusicNameInitials))
+                SongInfoEditItem.MusicNameInitials = GetStrInitials(SongInfoEditItem.MusicNameInitials);
 
             if ((SongInfoAddOrUpdate && SongInfoManagementServiceCaller.AddSongInfo(SongInfoEditItem) != 0) ||
                 !SongInfoAddOrUpdate && SongInfoManagementServiceCaller.UpdateSongeInfo(SongInfoEditItem) != 0)
             {
                 SongInfoEditVisibility = false;
-                SongInfoSource = SongInfoManagementServiceCaller.GetAllSongInfo();
+                SongInfoSource = GetSongInfoSource();
+                songInfoEditUc.vedio.Close();
             }
         }
 
         public bool CanSongInfoSave()
+        {
+            return true;
+        }
+
+        #endregion
+        
+        #region SongMVUrlSelectCmd
+
+        private RelayCommand _SongMVUrlSelectCmd;
+
+        public ICommand SongMVUrlSelectCmd
+        {
+            get { return _SongMVUrlSelectCmd ?? (_SongMVUrlSelectCmd = new RelayCommand(param => OnSongMVUrlSelect(), param => CanSongMVUrlSelectCmd())); }
+        }
+
+        public void OnSongMVUrlSelect()
+        {
+            //选择文件
+            OpenFileDialog op = new OpenFileDialog
+            {
+                InitialDirectory = null,//默认的打开路径
+                RestoreDirectory = true,
+                Filter = "视频文件(*.mpg)|*.mpg|所有文件(*.*)|*.*"
+            };
+            op.ShowDialog();
+
+            if (string.IsNullOrEmpty(op.FileName))
+                return;
+            SongLocationMVUrl = op.FileName;
+        }
+
+        public bool CanSongMVUrlSelectCmd()
         {
             return true;
         }
@@ -476,22 +808,23 @@ namespace KtvStudio.ViewModels
 
         public void OnSongMVUpLoad()
         {
-            //选择图片
-            OpenFileDialog op = new OpenFileDialog
+            if (string.IsNullOrEmpty(SongLocationMVUrl))
             {
-                InitialDirectory = null,//默认的打开路径
-                RestoreDirectory = true,
-                Filter = "视频文件(*.mpg)|*.mpg|所有文件(*.*)|*.*"
-            };
-            op.ShowDialog();
-
-            if (string.IsNullOrEmpty(op.FileName))
+                MessageBox.Show($"请选择本地文件?", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
+            }
+            if (MessageBox.Show($"确认上传文件{SongLocationMVUrl}?", "提示", MessageBoxButton.OKCancel, MessageBoxImage.Question) == MessageBoxResult.OK)
+            {
+                Uri tempSource = songInfoEditUc.vedio.Source;
+                songInfoEditUc.vedio.Close();
 
-            string saveKey = SongInfoEditItem.MusicName + "-" + SongInfoEditItem.SingerName + ".mpg";
-            //上传图片到七牛云
-            QiniuService.UploadImage(saveKey, op.FileName);
-            SongInfoEditItem.MVUrl = QiniuService.QINIU_URL + "/" + saveKey;
+                string saveKey = SongInfoEditItem.MusicName + "-" + SongInfoEditItem.SingerName + ".mpg";
+                //上传文件到七牛云
+                QiniuService.UploadImage(saveKey, SongLocationMVUrl);
+                SongInfoEditItem.MVUrl = QiniuService.QINIU_URL + "/" + saveKey;
+                songInfoEditUc.vedio.Source = null;
+                songInfoEditUc.vedio.Source = tempSource;
+            }
         }
 
         public bool CanSongMVUpLoad()
@@ -501,9 +834,108 @@ namespace KtvStudio.ViewModels
 
         #endregion
 
+        #region SongSingerShowLeftIndexCmd
+
+        private RelayCommand _SongSingerShowLeftIndexCmd;
+
+        public ICommand SongSingerShowLeftIndexCmd
+        {
+            get { return _SongSingerShowLeftIndexCmd ?? (_SongSingerShowLeftIndexCmd = new RelayCommand(param => OnSongSingerShowLeftIndex(), param => CanSongSingerShowLeftIndex())); }
+        }
+
+        public void OnSongSingerShowLeftIndex()
+        {
+            if (SongSingerInfoShowSelectIndex == 1)
+                return;
+            SongSingerInfoShowSelectIndex--;
+        }
+
+        public bool CanSongSingerShowLeftIndex()
+        {
+            return true;
+        }
+
+        #endregion
+
+        #region SongSingerShowRightIndexCmd
+
+        private RelayCommand _SongSingerShowRightIndexCmd;
+
+        public ICommand SongSingerShowRightIndexCmd
+        {
+            get { return _SongSingerShowRightIndexCmd ?? (_SongSingerShowRightIndexCmd = new RelayCommand(param => OnSongSingerShowRightIndex(), param => CanSongSingerShowRightIndex())); }
+        }
+
+        public void OnSongSingerShowRightIndex()
+        {
+            if (SongSingerInfoShowSelectIndex >= SongSingerInfoShowSelectLastIndex)
+                return;
+            SongSingerInfoShowSelectIndex++;
+        }
+
+        public bool CanSongSingerShowRightIndex()
+        {
+            return true;
+        }
+
+        #endregion
+
+        #region SongSingerShowGoToIndexCmd
+
+        private RelayCommand _SongSingerShowGoToIndexCmd;
+
+        public ICommand SongSingerShowGoToIndexCmd
+        {
+            get { return _SongSingerShowGoToIndexCmd ?? (_SongSingerShowGoToIndexCmd = new RelayCommand(param => OnSongSingerShowGoToIndex(), param => CanSongSingerShowGoToIndex())); }
+        }
+
+        public void OnSongSingerShowGoToIndex()
+        {
+            if (SongSingerInfoShowGoToIndex < 1 || SongSingerInfoShowGoToIndex > SongSingerInfoShowSelectLastIndex)
+                return;
+            SongSingerInfoShowSelectIndex = SongSingerInfoShowGoToIndex;
+        }
+
+        public bool CanSongSingerShowGoToIndex()
+        {
+            return true;
+        }
+
+        #endregion
+        
+        #region SongDownloadCmd
+
+        private RelayCommand _SongDownloadCmd;
+
+        public ICommand SongDownloadCmd
+        {
+            get { return _SongDownloadCmd ?? (_SongDownloadCmd = new RelayCommand(param => OnSongDownload(), param => CanSongDownload())); }
+        }
+
+        public void OnSongDownload()
+        {
+            if (SongInfoSelectedItem == null || !SongInfoSelectedItem.Table.Columns.Contains("musicname"))
+                return;
+            if (SongInfoSelectedItem["mvurl"] == null || string.IsNullOrEmpty(SongInfoSelectedItem["mvurl"].ToString()))
+                return;
+            string url = SongInfoSelectedItem["mvurl"].ToString();
+            DownloadFile(url);
+        }
+
+        public bool CanSongDownload()
+        {
+            return true;
+        }
+
+        #endregion
+        
         #endregion
 
         #region Method
+
+        private DataTable GetSongInfoSource() {
+            return SongInfoManagementServiceCaller.GetAllSongInfo();
+        }
 
         private Dictionary<string, string> getCategorySourceDict() {
             Dictionary<string, string> result = new Dictionary<string, string>();
@@ -513,6 +945,266 @@ namespace KtvStudio.ViewModels
             }
             return result;
         }
+
+        public void AddSingerInfo(WrapPanel SingerInfoFilterWrapPanel) {
+            int startIndex = (SongSingerInfoShowSelectIndex - 1) * SongSingerInfoShowPageSize + 1;
+            int endIndex = SongSingerInfoShowSelectIndex * SongSingerInfoShowPageSize;
+            SingerInfoFilterWrapPanel.Children.Clear();
+            int i = 0;
+            if (startIndex == 1) {
+                for (i = 0; i < SongSingerInfoShowSource.Rows.Count; i++)
+                {
+                    if (i < startIndex - 1) continue;
+                    if (i > 31 || i > SongSingerInfoShowPageSize - 1) break;
+                    WrapPanel itemWrap = new WrapPanel() {
+                        Orientation = Orientation.Vertical,
+                    };
+                    Image itemImage = new Image
+                    {
+                        Width = 120,
+                        Height = 120,
+                        Stretch = System.Windows.Media.Stretch.UniformToFill,
+                        StretchDirection = StretchDirection.Both,
+                    };
+                    if (SongSingerInfoShowSource.Rows[i]["singerphotourl"] != null && !string.IsNullOrEmpty(SongSingerInfoShowSource.Rows[i]["singerphotourl"].ToString()))
+                        itemImage.Source = new BitmapImage(new Uri(SongSingerInfoShowSource.Rows[i]["singerphotourl"].ToString(), UriKind.Absolute));
+
+                    Button item = new Button
+                    {
+                        Width = 120,
+                        FontSize = 13,
+                        Background = new SolidColorBrush(Colors.Transparent),
+                        BorderThickness = new Thickness(0),
+                        Margin = new Thickness(20, 5, 20, 5),
+                        Content = SongSingerInfoShowSource.Rows[i]["singername"].ToString(),
+                        Tag = SongSingerInfoShowSource.Rows[i]["id"].ToString(),
+                    };
+                    item.Click += SingerMusicInfoItem_Click;
+
+                    itemWrap.Children.Add(itemImage);
+                    itemWrap.Children.Add(item);
+                    SingerInfoFilterWrapPanel.Children.Add(itemWrap);
+                }
+
+            }
+
+            for (; i < SongSingerInfoShowSource.Rows.Count; i++)
+            {
+                if (i < startIndex - 1) continue;
+                if (i > endIndex - 1) break;
+                Button item = new Button
+                {
+                    Width = 120,
+                    FontSize = 13,
+                    Background = new SolidColorBrush(Colors.Transparent),
+                    BorderThickness = new Thickness(0),
+                    Margin = new Thickness(20, 5, 20, 5),
+                    Content = SongSingerInfoShowSource.Rows[i]["singername"].ToString(),
+                    Tag = SongSingerInfoShowSource.Rows[i]["id"].ToString(),
+                };
+                item.Click += SingerMusicInfoItem_Click;
+                SingerInfoFilterWrapPanel.Children.Add(item);
+            }
+        }
+        
+        private void SingerMusicInfoItem_Click(object sender, RoutedEventArgs e)
+        {
+            Button item = sender as Button;
+            string singerid = item.Tag.ToString();
+            SongInfoFilter = $"singerid = '{singerid}'";
+            SingerSelectedInfoVisibility = !SingerSelectedInfoVisibility;
+
+            SingerInfoSelectedSource = SingerInfoManagementServiceCaller.GetSingerInfoById(singerid);
+        }
+
+        private int GetSongSingerInfoShowSelectLastIndex() {
+            if (SongSingerInfoShowSource == null)
+                return 0;
+            return SongSingerInfoShowSource.Rows.Count % SongSingerInfoShowPageSize == 0 ? SongSingerInfoShowSource.Rows.Count / SongSingerInfoShowPageSize : SongSingerInfoShowSource.Rows.Count / SongSingerInfoShowPageSize + 1;
+        }
+
+        public void AddNewSongButtonInGrid(Grid newSongGrid) {
+            if (newSongGrid.Children.Count != 0) return;
+            for (int i = 0; i < 9; i++)
+            {
+                Button item = new Button
+                {
+                    Padding = new Thickness(25, 0, 25, 0),
+                    Content = string.Format("{0:yyyy-MM}", DateTime.Parse(DateTimeNow).AddMonths(-1 * i)),
+                };
+                item.Click += NewSongButtonInGridItem_Click;
+                Grid.SetColumn(item, 2 * i);
+                ControlsHelper.SetCornerRadius(item, new CornerRadius(20));
+                newSongGrid.Children.Add(item);
+
+                Border itemLine = new Border
+                {
+                    Width = 25,
+                    Height = 1,
+                    BorderBrush = new SolidColorBrush(Colors.Gray),
+                    BorderThickness = new Thickness(1)
+                };
+                Grid.SetColumn(itemLine, 2 * i + 1);
+                newSongGrid.Children.Add(itemLine);
+            }
+
+            Button itemLast = new Button
+            {
+                Padding = new Thickness(30, 0, 30, 0),
+                Content = string.Format("{0:yyyy-MM}", DateTime.Parse(DateTimeNow).AddMonths(-1 * 9)),
+            };
+            itemLast.Click += NewSongButtonInGridItem_Click;
+            Grid.SetColumn(itemLast, 18);
+            ControlsHelper.SetCornerRadius(itemLast, new CornerRadius(20));
+            newSongGrid.Children.Add(itemLast);
+        }
+
+        private void NewSongButtonInGridItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender == null) return;
+            Button item = sender as Button;
+            if (item == null) return;
+            string dateStr = item.Content.ToString();
+            if (string.IsNullOrEmpty(dateStr)) return;
+            DateTime date = DateTime.Parse(dateStr);
+            SongInfoFilter = $"releasedate > ('{date}')";
+        }
+
+        #region 下载文件
+
+
+        private void DownloadFile(string url)
+        {
+            string fileName = url.Substring(url.LastIndexOf('/') + 1);
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+
+
+            //设置文件类型
+            //书写规则例如：txt files(*.txt)|*.txt
+            saveFileDialog.Filter = "mpg files(*.mpg)|*.mpg|All files(*.*)|*.*";
+            //设置默认文件名（可以不设置）
+            saveFileDialog.FileName = fileName;
+            //主设置默认文件extension（可以不设置）
+            saveFileDialog.DefaultExt = "mpg";
+            //获取或设置一个值，该值指示如果用户省略扩展名，文件对话框是否自动在文件名中添加扩展名。（可以不设置）
+            saveFileDialog.AddExtension = true;
+
+            //设置默认文件类型显示顺序（可以不设置）
+            saveFileDialog.FilterIndex = 2;
+
+            //保存对话框是否记忆上次打开的目录
+            saveFileDialog.RestoreDirectory = true;
+
+            // Show save file dialog box
+            bool? result = saveFileDialog.ShowDialog();
+            //点了保存按钮进入
+            if (result != null && result.Value)
+            {
+                //获得文件路径
+                string localFilePath = saveFileDialog.FileName.ToString();
+
+                //获取文件名，不带路径
+                //string fileNameExt = localFilePath.Substring(localFilePath.LastIndexOf("\\") + 1);
+
+                //获取文件路径，不带文件名
+                //string FilePath = localFilePath.Substring(0, localFilePath.LastIndexOf("\\"));
+
+                //给文件名前加上时间
+                //string newFileName = DateTime.Now.ToString("yyyyMMdd") + fileNameExt;
+
+                //在文件名里加字符
+                //saveFileDialog.FileName.Insert(1,"dameng");
+                //为用户使用 SaveFileDialog 选定的文件名创建读/写文件流。
+                //System.IO.FileStream fs = (System.IO.FileStream)saveFileDialog.OpenFile();//输出文件
+
+                //fs可以用于其他要写入的操作
+                
+                if (HttpFileExist(url))
+                    DownloadHttpFile(url, localFilePath);
+                else
+                    MessageBox.Show($"{url}文件不存在", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+
+            
+        }
+
+        public void DownloadHttpFile(String http_url, String save_url)
+        {
+            WebResponse response = null;
+            //获取远程文件
+            WebRequest request = WebRequest.Create(http_url);
+            response = request.GetResponse();
+            if (response == null) return;
+            //读远程文件的大小
+            mainWindow.DownloadRatioProgressBar.Maximum = response.ContentLength;
+            //下载远程文件
+            ThreadPool.QueueUserWorkItem((obj) =>
+            {
+                Stream netStream = response.GetResponseStream();
+                Stream fileStream = new FileStream(save_url, FileMode.Create);
+                byte[] read = new byte[1024];
+                long progressBarValue = 0;
+                int realReadLen = netStream.Read(read, 0, read.Length);
+                while (realReadLen > 0)
+                {
+                    fileStream.Write(read, 0, realReadLen);
+                    progressBarValue += realReadLen;
+                    mainWindow.DownloadRatioProgressBar.Dispatcher.BeginInvoke(new ProgressBarSetter(SetProgressBar), progressBarValue);
+                    realReadLen = netStream.Read(read, 0, read.Length);
+                }
+                netStream.Close();
+                fileStream.Close();
+
+            }, null);
+        }
+        
+        /// <summary>
+        ///  判断远程文件是否存在
+        /// </summary>
+        /// <param name="fileUrl">文件URL</param>
+        /// <returns>存在-true，不存在-false</returns>
+        private bool HttpFileExist(string http_file_url)
+        {
+            WebResponse response = null;
+            bool result = false;//下载结果
+            try
+            {
+                response = WebRequest.Create(http_file_url).GetResponse();
+                result = response == null ? false : true;
+            }
+            catch (Exception ex)
+            {
+                result = false;
+            }
+            finally
+            {
+                if (response != null)
+                {
+                    response.Close();
+                }
+            }
+            return result;
+        }
+
+        public delegate void ProgressBarSetter(double value);
+
+        public void SetProgressBar(double value)
+        {
+            //显示进度条
+            mainWindow.DownloadRatioProgressBar.Value = value;
+            //显示百分比
+            mainWindow.DownloadRatioLabel.Content = (int)((value / mainWindow.DownloadRatioProgressBar.Maximum) * 100) + "%";
+
+            if(mainWindow.DownloadRatioLabel.Content.Equals("100%"))
+            {
+                if (MessageBox.Show("文件下载成功", "提示", MessageBoxButton.OK, MessageBoxImage.Information) == MessageBoxResult.OK) {
+                    mainWindow.DownloadRatioLabel.Content = "0%";
+                    mainWindow.DownloadRatioProgressBar.Value = 0.0;
+                }  
+            }
+        }
+
+        #endregion
 
         #endregion
 
@@ -534,6 +1226,172 @@ namespace KtvStudio.ViewModels
                 if (_SingerInfoSource != null && _SingerInfoSource.Equals(value)) return;
                 _SingerInfoSource = value;
                 RaisePropertyChanged("SingerInfoSource");
+            }
+        }
+
+        #endregion
+
+        #region 分页筛选
+
+        #region SingerInfoShowSource
+
+        private DataTable _SingerInfoShowSource = new DataTable();
+
+        public DataTable SingerInfoShowSource
+        {
+            get { return _SingerInfoShowSource; }
+            set
+            {
+                if (_SingerInfoShowSource != null && _SingerInfoShowSource.Equals(value)) return;
+                _SingerInfoShowSource = value;
+                RaisePropertyChanged("SingerInfoShowSource");
+                SingerInfoShowSelectLastIndex = GetSingerInfoShowSelectLastIndex();
+                SingerInfoShowSource.DefaultView.RowFilter = GetSingerInfoShowSourceFilter();
+            }
+        }
+
+        #endregion
+
+        #region SingerInfoShowSelectIndex
+
+        private int _SingerInfoShowSelectIndex = 1;
+
+        public int SingerInfoShowSelectIndex
+        {
+            get { return _SingerInfoShowSelectIndex; }
+            set
+            {
+                if (_SingerInfoShowSelectIndex.Equals(value)) return;
+                _SingerInfoShowSelectIndex = value;
+                RaisePropertyChanged("SingerInfoShowSelectIndex");
+                SingerInfoShowSource.DefaultView.RowFilter = GetSingerInfoShowSourceFilter();
+            }
+        }
+
+        #endregion
+
+        #region SingerInfoShowGoToIndex
+
+        private int _SingerInfoShowGoToIndex = 1;
+
+        public int SingerInfoShowGoToIndex
+        {
+            get { return _SingerInfoShowGoToIndex; }
+            set
+            {
+                if (_SingerInfoShowGoToIndex.Equals(value)) return;
+                _SingerInfoShowGoToIndex = value;
+                RaisePropertyChanged("SingerInfoShowGoToIndex");
+            }
+        }
+
+        #endregion
+
+        #region SingerInfoShowSelectLastIndex
+
+        private int _SingerInfoShowSelectLastIndex = 1;
+
+        public int SingerInfoShowSelectLastIndex
+        {
+            get { return _SingerInfoShowSelectLastIndex; }
+            set
+            {
+                if (_SingerInfoShowSelectLastIndex.Equals(value)) return;
+                _SingerInfoShowSelectLastIndex = value;
+                RaisePropertyChanged("SingerInfoShowSelectLastIndex");
+            }
+        }
+
+        #endregion
+
+        #region SingerInfoShowPageSize
+
+        private int _SingerInfoShowPageSize = 20;
+
+        public int SingerInfoShowPageSize
+        {
+            get { return _SingerInfoShowPageSize; }
+            set
+            {
+                if (_SingerInfoShowPageSize.Equals(value)) return;
+                _SingerInfoShowPageSize = value;
+                RaisePropertyChanged("SingerInfoShowPageSize");
+                SingerInfoShowSelectIndex = 1;
+                SingerInfoShowSelectLastIndex = GetSingerInfoShowSelectLastIndex();
+                SingerInfoShowSource.DefaultView.RowFilter = GetSingerInfoShowSourceFilter();
+            }
+        }
+
+        #endregion
+
+        #region SingerInfoNationality
+
+        private string _SingerInfoNationality = string.Empty;
+
+        public string SingerInfoNationality
+        {
+            get { return _SingerInfoNationality; }
+            set
+            {
+                if (_SingerInfoNationality.Equals(value)) return;
+                _SingerInfoNationality = value;
+                RaisePropertyChanged("SingerInfoNationality");
+                SingerFilterChanged(SingerInfoNationality, SingerInfoSex, SingerInfoInitial);
+            }
+        }
+
+        #endregion
+
+        #region SingerInfoSex
+
+        private string _SingerInfoSex = string.Empty;
+
+        public string SingerInfoSex
+        {
+            get { return _SingerInfoSex; }
+            set
+            {
+                if (_SingerInfoSex.Equals(value)) return;
+                _SingerInfoSex = value;
+                RaisePropertyChanged("SingerInfoSex");
+                SingerFilterChanged(SingerInfoNationality, SingerInfoSex, SingerInfoInitial);
+            }
+        }
+
+        #endregion
+
+        #region SingerInfoInitial
+
+        private string _SingerInfoInitial = string.Empty;
+
+        public string SingerInfoInitial
+        {
+            get { return _SingerInfoInitial; }
+            set
+            {
+                if (_SingerInfoInitial.Equals(value)) return;
+                _SingerInfoInitial = value;
+                RaisePropertyChanged("SingerInfoInitial");
+                SingerFilterChanged(SingerInfoNationality, SingerInfoSex, SingerInfoInitial);
+            }
+        }
+
+        #endregion
+
+        #endregion
+
+        #region CountryInfoSource
+
+        private DataTable _CountryInfoSource = new DataTable();
+
+        public DataTable CountryInfoSource
+        {
+            get { return _CountryInfoSource; }
+            set
+            {
+                if (_CountryInfoSource != null && _CountryInfoSource.Equals(value)) return;
+                _CountryInfoSource = value;
+                RaisePropertyChanged("CountryInfoSource");
             }
         }
 
@@ -606,7 +1464,7 @@ namespace KtvStudio.ViewModels
         }
 
         #endregion
-
+        
         #endregion
 
         #region Command
@@ -623,6 +1481,7 @@ namespace KtvStudio.ViewModels
         public void OnGetAllSingerInfo()
         {
             SingerInfoSource = SingerInfoManagementServiceCaller.GetAllSingerInfo();
+            SingerInfoShowSource = GetSingerInfoShowSource(SingerInfoNationality, SingerInfoSex, SingerInfoInitial);
         }
 
         public bool CanGetAllSingerInfo()
@@ -721,14 +1580,19 @@ namespace KtvStudio.ViewModels
 
         public void OnSingerInfoSave()
         {
-            if (SingerInfoEditItem == null)
+            if (SingerInfoEditItem == null || !SingerInfoRobustnessVerification())
                 return;
+
+            //添加首字母列内容
+            if (string.IsNullOrEmpty(SingerInfoEditItem.SingerInitials))
+                SingerInfoEditItem.SingerInitials = GetStrInitials(SingerInfoEditItem.SingerName);
 
             if ((SingerInfoAddOrUpdate && SingerInfoManagementServiceCaller.AddSingerInfo(SingerInfoEditItem) != 0) ||
                 !SingerInfoAddOrUpdate && SingerInfoManagementServiceCaller.UpdateSingerInfo(SingerInfoEditItem) != 0)
             {
                 SingerInfoEditVisibility = false;
-                SingerInfoSource = SingerInfoManagementServiceCaller.GetAllSingerInfo();
+                SingerInfoSource = GetSingerInfoSource();
+                SingerInfoShowSource = GetSingerInfoShowSource(SingerInfoNationality, SingerInfoSex, SingerInfoInitial);
             }
         }
 
@@ -761,8 +1625,9 @@ namespace KtvStudio.ViewModels
 
             if (string.IsNullOrEmpty(op.FileName))
                 return;
+            string saveKey = (Guid.NewGuid().ToString() + op.FileName.Substring(op.FileName.LastIndexOf('.'))).Replace("-", "");
 
-            string saveKey = SingerInfoEditItem.SingerName + "-" + SingerInfoEditItem.SingerSex + "-" + SingerInfoEditItem.SingerNationality;
+            //string saveKey = SingerInfoEditItem.SingerName + "-" + SingerInfoEditItem.SingerSex + "-" + SingerInfoEditItem.SingerNationality;
             //上传图片到七牛云
             QiniuService.UploadImage(saveKey, op.FileName);
             SingerInfoEditItem.SingerPhotoUrl = QiniuService.QINIU_URL + "/" + saveKey;
@@ -774,51 +1639,170 @@ namespace KtvStudio.ViewModels
         }
 
         #endregion
+        
+        #region SingerShowLeftIndexCmd
 
+        private RelayCommand _SingerShowLeftIndexCmd;
 
-        #region Test
-
-        private RelayCommand _Test;
-
-        public ICommand Test
+        public ICommand SingerShowLeftIndexCmd
         {
-            get { return _Test ?? (_Test = new RelayCommand(param => OnTest(), param => CanTest())); }
+            get { return _SingerShowLeftIndexCmd ?? (_SingerShowLeftIndexCmd = new RelayCommand(param => OnSingerShowLeftIndex(), param => CanSingerShowLeftIndex())); }
         }
 
-        public void OnTest()
+        public void OnSingerShowLeftIndex()
         {
-            //填写首字母
-            for (int i = 0; i < SingerInfoSource.Rows.Count; i++)
-            {
-                string name = SingerInfoSource.Rows[i][SINGERINFO.SINGERNAME].ToString();
-                string initials = GetInitialsHelper.GetChineseSpell(name);
-                SingerInfoSource.Rows[i][SINGERINFO.SINGERINITIALS] = initials;
-            }
-            SingerInfoService.SingerInfo info = new SingerInfoService.SingerInfo();
-            for (int i = 0; i < SingerInfoSource.Rows.Count; i++)
-            {
-                info.Id = int.Parse(SingerInfoSource.Rows[i][SINGERINFO.ID].ToString());
-                info.SingerName = SingerInfoSource.Rows[i][SINGERINFO.SINGERNAME].ToString();
-                info.SingerEnglishName = SingerInfoSource.Rows[i][SINGERINFO.SINGERENGLISHNAME].ToString();
-                info.SingerOtherName = SingerInfoSource.Rows[i][SINGERINFO.SINGEROTHERNAME].ToString();
-                info.SingerInitials = SingerInfoSource.Rows[i][SINGERINFO.SINGERINITIALS].ToString();
-                info.SingerNationality = SingerInfoSource.Rows[i][SINGERINFO.SINGERNATIONALITY].ToString();
-                info.SingerPhotoUrl = SingerInfoSource.Rows[i][SINGERINFO.SINGERPHOTOURL].ToString();
-                info.SingerClickNum = SingerInfoSource.Rows[i][SINGERINFO.SINGERCLICKNUM].ToString();
-                info.SingerSex = SingerInfoSource.Rows[i][SINGERINFO.SINGERSEX].ToString();
-                info.SingerIntroduce = SingerInfoSource.Rows[i][SINGERINFO.SINGERINTRODUCE].ToString();
-                SingerInfoManagementServiceCaller.UpdateSingerInfo(info);
-            }
+            if (SingerInfoShowSelectIndex == 1)
+                return;
+            SingerInfoShowSelectIndex--;
         }
 
-        public bool CanTest()
+        public bool CanSingerShowLeftIndex()
+        {
+            return true;
+        }
+
+        #endregion
+        
+        #region SingerShowRightIndexCmd
+
+        private RelayCommand _SingerShowRightIndexCmd;
+
+        public ICommand SingerShowRightIndexCmd
+        {
+            get { return _SingerShowRightIndexCmd ?? (_SingerShowRightIndexCmd = new RelayCommand(param => OnSingerShowRightIndex(), param => CanSingerShowRightIndex())); }
+        }
+
+        public void OnSingerShowRightIndex()
+        {
+            if (SingerInfoShowSelectIndex >= SingerInfoShowSelectLastIndex)
+                return;
+            SingerInfoShowSelectIndex++;
+        }
+
+        public bool CanSingerShowRightIndex()
         {
             return true;
         }
 
         #endregion
 
+        #region SingerShowGoToIndexCmd
 
+        private RelayCommand _SingerShowGoToIndexCmd;
+
+        public ICommand SingerShowGoToIndexCmd
+        {
+            get { return _SingerShowGoToIndexCmd ?? (_SingerShowGoToIndexCmd = new RelayCommand(param => OnSingerShowGoToIndex(), param => CanSingerShowGoToIndex())); }
+        }
+
+        public void OnSingerShowGoToIndex()
+        {
+            if (SingerInfoShowGoToIndex < 1 || SingerInfoShowGoToIndex > SingerInfoShowSelectLastIndex)
+                return;
+            SingerInfoShowSelectIndex = SingerInfoShowGoToIndex;
+        }
+
+        public bool CanSingerShowGoToIndex()
+        {
+            return true;
+        }
+
+        #endregion
+        
+        #region SingerInfoDeleteCmd
+
+        private RelayCommand _SingerInfoDeleteCmdd;
+
+        public ICommand SingerInfoDeleteCmd
+        {
+            get { return _SingerInfoDeleteCmdd ?? (_SingerInfoDeleteCmdd = new RelayCommand(param => OnSingerInfoDelete(), param => CanSingerInfoDelete())); }
+        }
+
+        public void OnSingerInfoDelete()
+        {
+            if (SingerInfoSelectedItem == null || !SingerInfoSelectedItem.Table.Columns.Contains(SINGERINFO.ID))
+                return;
+
+            string singerId = SingerInfoSelectedItem[SINGERINFO.ID].ToString();
+            string singerName = SingerInfoSelectedItem[SINGERINFO.SINGERNAME].ToString();
+            if (MessageBox.Show($"是否删除歌手{singerName}的基本信息?", "提示", MessageBoxButton.OKCancel, MessageBoxImage.Question) == MessageBoxResult.OK)
+            {
+                SingerInfoManagementServiceCaller.DeleteSingerInfo(singerId);
+                SingerInfoSource = GetSingerInfoSource();
+                SingerInfoShowSource = GetSingerInfoShowSource(SingerInfoNationality, SingerInfoSex, SingerInfoInitial);
+            }
+        }
+
+        public bool CanSingerInfoDelete()
+        {
+            return true;
+        }
+
+        #endregion
+        
+        #endregion
+
+        #region Method
+
+        private DataTable GetSingerInfoSource()
+        {
+            return SingerInfoManagementServiceCaller.GetAllSingerInfo();
+        }
+
+        private DataTable GetSingerInfoShowSource(string nationality, string sex, string initial) {
+            return SingerInfoManagementServiceCaller.GetSingerInfoPaging(nationality, sex, initial);
+        }
+
+        private int GetSingerInfoShowSelectLastIndex() {
+            if (SingerInfoShowSource == null)
+                return 0;
+            return SingerInfoShowSource.Rows.Count % SingerInfoShowPageSize == 0 ? SingerInfoShowSource.Rows.Count / SingerInfoShowPageSize : SingerInfoShowSource.Rows.Count / SingerInfoShowPageSize + 1;
+        }
+
+        public void SingerFilterChanged(string nationality, string sex, string initial) {
+            if ((string.IsNullOrEmpty(nationality) && !string.IsNullOrEmpty(sex)) ||
+                (!string.IsNullOrEmpty(nationality) && string.IsNullOrEmpty(sex)))
+                return;
+            //当前页置1，页大小不变
+            SingerInfoShowSelectIndex = 1;
+            //更新ShowSource
+            SingerInfoShowSource = GetSingerInfoShowSource(nationality, sex, initial);
+        }
+
+        private string GetSingerInfoShowSourceFilter() {
+            int startIndex = SingerInfoShowPageSize * (SingerInfoShowSelectIndex - 1) + 1;
+            int endIndex = SingerInfoShowPageSize * SingerInfoShowSelectIndex;
+            return $"rownum >= {startIndex} and rownum <= {endIndex}";
+        }
+
+        private bool SingerInfoRobustnessVerification()
+        {
+            StringBuilder message = new StringBuilder();
+            if (string.IsNullOrEmpty(SingerInfoEditItem.SingerName) || string.IsNullOrWhiteSpace(SingerInfoEditItem.SingerName))
+                message.Append(" 歌手名称 ");
+            if (string.IsNullOrEmpty(SingerInfoEditItem.SingerNationality) || string.IsNullOrWhiteSpace(SingerInfoEditItem.SingerNationality))
+                message.Append(" 歌手国籍 ");
+            if (string.IsNullOrEmpty(SingerInfoEditItem.SingerSex) || string.IsNullOrWhiteSpace(SingerInfoEditItem.SingerSex))
+                message.Append(" 歌手性别 ");
+            if (string.IsNullOrEmpty(SingerInfoEditItem.SingerClickNum) || string.IsNullOrWhiteSpace(SingerInfoEditItem.SingerClickNum))
+                message.Append(" 歌手热度 ");
+            if (string.IsNullOrEmpty(SingerInfoEditItem.SingerPhotoUrl) || string.IsNullOrWhiteSpace(SingerInfoEditItem.SingerPhotoUrl))
+                message.Append(" 歌手照片 ");
+            if (string.IsNullOrEmpty(message.ToString()))
+                return true;
+            else
+                MessageBox.Show($"{message.ToString()}不得为空！", "警告", MessageBoxButton.OK, MessageBoxImage.Warning);
+            return false;
+        }
+
+        /// <summary>
+        /// 获取字符串的首字母序列
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        private string GetStrInitials(string str) {
+            return GetInitialsHelper.GetChineseSpell(str);
+        }
 
         #endregion
 
@@ -947,7 +1931,41 @@ namespace KtvStudio.ViewModels
         }
 
         #endregion
-        
+
+        #region RoomTaskIsAddRemark
+
+        private bool _RoomTaskIsAddRemark = false;
+
+        public bool RoomTaskIsAddRemark
+        {
+            get { return _RoomTaskIsAddRemark; }
+            set
+            {
+                if (_RoomTaskIsAddRemark.Equals(value)) return;
+                _RoomTaskIsAddRemark = value;
+                RaisePropertyChanged("RoomTaskIsAddRemark");
+            }
+        }
+
+        #endregion
+
+        #region RoomTaskAddRemarkString
+
+        private string _RoomTaskAddRemarkString;
+
+        public string RoomTaskAddRemarkString
+        {
+            get { return _RoomTaskAddRemarkString; }
+            set
+            {
+                if (_RoomTaskAddRemarkString != null && _RoomTaskAddRemarkString.Equals(value)) return;
+                _RoomTaskAddRemarkString = value;
+                RaisePropertyChanged("RoomTaskAddRemarkString");
+            }
+        }
+
+        #endregion
+
         #endregion
 
         #region Commands
@@ -1013,6 +2031,8 @@ namespace KtvStudio.ViewModels
 
         public void OnRoomTaskSave()
         {
+            if (!RoomTaskRobustnessVerification())
+                return;
             if (!UserInfoWhenRenewNoVisibility) //订购
             {
                 //修改使用状态
@@ -1073,7 +2093,7 @@ namespace KtvStudio.ViewModels
 
         public void OnRoomTaskBalance()
         {
-            if (MessageBox.Show($"此次消费{RoomTaskEditItem.RoomConsume}元，是否提交本次订单?", "提示", MessageBoxButton.OKCancel, MessageBoxImage.Question) == MessageBoxResult.OK)
+            if (MessageBox.Show($"此次消费{RoomTaskSelectedItem["roomconsume"].ToString()}元，是否提交本次订单?", "提示", MessageBoxButton.OKCancel, MessageBoxImage.Question) == MessageBoxResult.OK)
             {
                 //添加日志流水
                 SelectedItemToEditItem();
@@ -1111,8 +2131,11 @@ namespace KtvStudio.ViewModels
             SelectedItemToEditItem();
             //CustomerId不为空，读取用户具体信息
             DataTable user = RoomTaskManagementServiceCaller.GetUserInfoById(RoomTaskEditItem.CustomerId.ToString());
-            if (user.Rows.Count != 1)
-                LogHelper.LogError($"用户ID:{RoomTaskEditItem.CustomerId},读取数据库用户信息数应为1，实际为{user.Rows.Count}");
+            if (user == null || user.Rows.Count != 1)
+            {
+                string count = user == null ? "stirng.Empty" : user.Rows.Count.ToString();
+                LogHelper.LogError($"用户ID:{RoomTaskEditItem.CustomerId},读取数据库用户信息数应为1，实际为{count}");
+            }
             else
             {
                 UserInfo.CustomerId = user.Rows[0][CUSTOMERINFO.CUSTOMERID].ToString();
@@ -1170,12 +2193,61 @@ namespace KtvStudio.ViewModels
 
         public void OnRoomTaskRemark()
         {
-            if (MessageBox.Show($"此次消费{RoomTaskEditItem.RoomConsume}元，是否提交本次订单?", "提示", MessageBoxButton.OKCancel, MessageBoxImage.Question) == MessageBoxResult.OK)
-            {
-            }
+            if(RoomTaskSelectedItem["roomid"] != null && !string.IsNullOrEmpty(RoomTaskSelectedItem["roomid"].ToString()))
+                RoomTaskIsAddRemark = true;
         }
 
         public bool CanRoomTaskRemark()
+        {
+            return true;
+        }
+
+        #endregion
+
+        #region RoomTaskRemarkCommitCmd
+
+        private RelayCommand _RoomTaskRemarkCommitCmd;
+
+        public ICommand RoomTaskRemarkCommitCmd
+        {
+            get { return _RoomTaskRemarkCommitCmd ?? (_RoomTaskRemarkCommitCmd = new RelayCommand(param => OnRoomTaskRemarkCommit(), param => CanRoomTaskRemarkCommit())); }
+        }
+
+        public void OnRoomTaskRemarkCommit()
+        {
+            if (!string.IsNullOrEmpty(RoomTaskAddRemarkString))
+            {
+                RoomInfoManagementServiceCaller.AddRoomTaskRemark(RoomTaskSelectedItem["roomid"].ToString(), RoomTaskAddRemarkString, "操作员");
+                RoomInfoSource = GetRoomInfoSource();
+                RoomTaskSource = GetRoomTaskSource();
+            }
+            RoomTaskIsAddRemark = false;
+
+        }
+
+        public bool CanRoomTaskRemarkCommit()
+        {
+            return true;
+        }
+
+        #endregion
+
+        #region RoomTaskRemarkCancelCmd
+
+        private RelayCommand _RoomTaskRemarkCancelCmd;
+
+        public ICommand RoomTaskRemarkCancelCmd
+        {
+            get { return _RoomTaskRemarkCancelCmd ?? (_RoomTaskRemarkCancelCmd = new RelayCommand(param => OnRoomTaskRemarkCancel(), param => CanRoomTaskRemarkCancel())); }
+        }
+
+        public void OnRoomTaskRemarkCancel()
+        {
+            RoomTaskIsAddRemark = false;
+            RoomTaskAddRemarkString = string.Empty;
+        }
+
+        public bool CanRoomTaskRemarkCancel()
         {
             return true;
         }
@@ -1279,6 +2351,30 @@ namespace KtvStudio.ViewModels
                 resultShow.Rows.Add(tempRow);
             }
             return resultShow;
+        }
+
+        private bool RoomTaskRobustnessVerification() {
+            StringBuilder message = new StringBuilder();
+            if (RoomTaskEditItem.EndTime <= RoomTaskEditItem.StartTime)
+             {
+                message.Append($" 请调整消费时间 ");
+                MessageBox.Show($"{message.ToString()}！", "警告", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+            if (string.IsNullOrEmpty(UserInfo.CustomerName) || string.IsNullOrWhiteSpace(UserInfo.CustomerName))
+                message.Append($" 用户名 ");
+            if (string.IsNullOrEmpty(UserInfo.CustomerTel) || string.IsNullOrWhiteSpace(UserInfo.CustomerTel))
+                message.Append($" 联系方式 ");
+            if (string.IsNullOrEmpty(UserInfo.CustomerIdCard) || string.IsNullOrWhiteSpace(UserInfo.CustomerIdCard))
+                message.Append($" 身份证号 ");
+            if (string.IsNullOrEmpty(message.ToString()))
+            {
+                return true;
+            }
+            else {
+                MessageBox.Show($"{message.ToString()}不得为空！", "警告", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
         }
 
         #endregion
@@ -1689,5 +2785,767 @@ namespace KtvStudio.ViewModels
         #endregion
 
         #endregion
+
+        #region DataAnalysis
+
+        #region NotifyProperty
+
+        #region DataAnalysisSelectedIndex
+
+        private int _DataAnalysisSelectedIndex = 0;
+
+        public int DataAnalysisSelectedIndex
+        {
+            get { return _DataAnalysisSelectedIndex; }
+            set
+            {
+                if (_DataAnalysisSelectedIndex.Equals(value)) return;
+                _DataAnalysisSelectedIndex = value;
+                RaisePropertyChanged("DataAnalysisSelectedIndex");
+            }
+        }
+
+        #endregion
+
+        #region ConsumeLogSource
+
+        private DataTable _ConsumeLogSource = new DataTable();
+
+        public DataTable ConsumeLogSource
+        {
+            get { return _ConsumeLogSource; }
+            set
+            {
+                if (_ConsumeLogSource != null && _ConsumeLogSource.Equals(value)) return;
+                _ConsumeLogSource = value;
+                RaisePropertyChanged("ConsumeLogSource");
+            }
+        }
+
+        #endregion
+
+        #region 营业额-时间
+
+        #region ConsumeSeriesCollection
+
+        private SeriesCollection _ConsumeSeriesCollection = new SeriesCollection();
+
+        public SeriesCollection ConsumeSeriesCollection
+        {
+            get { return _ConsumeSeriesCollection; }
+            set
+            {
+                if (_ConsumeSeriesCollection != null && _ConsumeSeriesCollection.Equals(value)) return;
+                _ConsumeSeriesCollection = value;
+                RaisePropertyChanged("ConsumeSeriesCollection");
+            }
+        }
+
+        #endregion
+
+        #region ConsumeLabels
+
+        private string[] _ConsumeLabels;
+
+        public string[] ConsumeLabels
+        {
+            get { return _ConsumeLabels; }
+            set
+            {
+                if (_ConsumeLabels != null && _ConsumeLabels.Equals(value)) return;
+                _ConsumeLabels = value;
+                RaisePropertyChanged("ConsumeLabels");
+            }
+        }
+
+        #endregion
+
+        #region ConsumeYFormatter
+
+        private Func<double, string> _ConsumeYFormatter;
+
+        public Func<double, string> ConsumeYFormatter
+        {
+            get { return _ConsumeYFormatter; }
+            set
+            {
+                if (_ConsumeYFormatter != null && _ConsumeYFormatter.Equals(value)) return;
+                _ConsumeYFormatter = value;
+                RaisePropertyChanged("ConsumeYFormatter");
+            }
+        }
+
+        #endregion
+
+        #region ConsumeTimeSpanType
+
+        private int _ConsumeTimeSpanType = 1;// 0-近10年; 1-年; 2-月; 3-日
+
+        public int ConsumeTimeSpanType
+        {
+            get { return _ConsumeTimeSpanType; }
+            set
+            {
+                if (_ConsumeTimeSpanType.Equals(value)) return;
+                _ConsumeTimeSpanType = value;
+                RaisePropertyChanged("ConsumeTimeSpanType");
+            }
+        }
+
+        #endregion
+
+        #region ConsumeYearValue
+
+        private int _ConsumeYearValue = DateTime.Now.Year;
+
+        public int ConsumeYearValue
+        {
+            get { return _ConsumeYearValue; }
+            set
+            {
+                if (_ConsumeYearValue.Equals(value)) return;
+                _ConsumeYearValue = value;
+                RaisePropertyChanged("ConsumeYearValue");
+            }
+        }
+
+        #endregion
+
+        #region ConsumeMonthValue
+
+        private int _ConsumeMonthValue = DateTime.Now.Month;
+
+        public int ConsumeMonthValue
+        {
+            get { return _ConsumeMonthValue; }
+            set
+            {
+                if (_ConsumeMonthValue.Equals(value)) return;
+                _ConsumeMonthValue = value;
+                RaisePropertyChanged("ConsumeMonthValue");
+            }
+        }
+
+        #endregion
+
+        #endregion
+
+        #region 营业额-包间类型
+        
+        #region ConsumeRoomTypeSeriesCollection
+
+        private SeriesCollection _ConsumeRoomTypeSeriesCollection = new SeriesCollection();
+
+        public SeriesCollection ConsumeRoomTypeSeriesCollection
+        {
+            get { return _ConsumeRoomTypeSeriesCollection; }
+            set
+            {
+                if (_ConsumeRoomTypeSeriesCollection != null && _ConsumeRoomTypeSeriesCollection.Equals(value)) return;
+                _ConsumeRoomTypeSeriesCollection = value;
+                RaisePropertyChanged("ConsumeRoomTypeSeriesCollection");
+            }
+        }
+
+        #endregion
+
+
+        #endregion
+
+        #region 包间使用率-时间
+
+        #region RoomTimeSeriesCollection
+
+        private SeriesCollection _RoomTimeSeriesCollection = new SeriesCollection();
+
+        public SeriesCollection RoomTimeSeriesCollection
+        {
+            get { return _RoomTimeSeriesCollection; }
+            set
+            {
+                if (_RoomTimeSeriesCollection != null && _RoomTimeSeriesCollection.Equals(value)) return;
+                _RoomTimeSeriesCollection = value;
+                RaisePropertyChanged("RoomTimeSeriesCollection");
+            }
+        }
+
+        #endregion
+        
+        #region RoomTimeLabels
+
+        private string[] _RoomTimeLabels;
+
+        public string[] RoomTimeLabels
+        {
+            get { return _RoomTimeLabels; }
+            set
+            {
+                if (_RoomTimeLabels != null && _RoomTimeLabels.Equals(value)) return;
+                _RoomTimeLabels = value;
+                RaisePropertyChanged("RoomTimeLabels");
+            }
+        }
+
+        #endregion
+
+        #region RoomTimeYFormatter
+
+        private Func<double, string> _RoomTimeYFormatter;
+
+        public Func<double, string> RoomTimeYFormatter
+        {
+            get { return _RoomTimeYFormatter; }
+            set
+            {
+                if (_RoomTimeYFormatter != null && _RoomTimeYFormatter.Equals(value)) return;
+                _RoomTimeYFormatter = value;
+                RaisePropertyChanged("RoomTimeYFormatter");
+            }
+        }
+
+        #endregion
+
+        #endregion
+
+        #region SongRecordSource
+
+        private DataTable _SongRecordSource = new DataTable();
+
+        public DataTable SongRecordSource
+        {
+            get { return _SongRecordSource; }
+            set
+            {
+                if (_SongRecordSource != null && _SongRecordSource.Equals(value)) return;
+                _SongRecordSource = value;
+                RaisePropertyChanged("SongRecordSource");
+            }
+        }
+
+        #endregion
+
+        #region 新歌管理
+        
+        #region MinReleaseDate
+
+        private DateTime _MinReleaseDate = DateTime.Today.AddMonths(-90);
+
+        public DateTime MinReleaseDate
+        {
+            get { return _MinReleaseDate; }
+            set
+            {
+                if (_MinReleaseDate != null && _MinReleaseDate.Equals(value)) return;
+                _MinReleaseDate = value;
+                RaisePropertyChanged("MinReleaseDate");
+            }
+        }
+
+        #endregion
+
+        #region MinRecordNumber
+
+        private int _MinRecordNumber = 1;
+
+        public int MinRecordNumber
+        {
+            get { return _MinRecordNumber; }
+            set
+            {
+                if (_MinRecordNumber.Equals(value)) return;
+                _MinRecordNumber = value;
+                RaisePropertyChanged("MinRecordNumber");
+            }
+        }
+
+        #endregion
+
+        #region HalfLifeValue
+
+        private int _HalfLifeValue = 1000;
+
+        public int HalfLifeValue
+        {
+            get { return _HalfLifeValue; }
+            set
+            {
+                if (_HalfLifeValue.Equals(value)) return;
+                _HalfLifeValue = value;
+                RaisePropertyChanged("HalfLifeValue");
+            }
+        }
+
+        #endregion
+
+        #region SongRecordTempResultSource
+
+        private DataTable _SongRecordTempResultSource = new DataTable();
+
+        public DataTable SongRecordTempResultSource
+        {
+            get { return _SongRecordTempResultSource; }
+            set
+            {
+                if (_SongRecordTempResultSource != null && _SongRecordTempResultSource.Equals(value)) return;
+                _SongRecordTempResultSource = value;
+                RaisePropertyChanged("SongRecordTempResultSource");
+            }
+        }
+
+        #endregion
+
+
+
+        #endregion
+
+        #endregion
+
+        #region Commands
+
+        #region TurnOverCmd
+
+        private RelayCommand _TurnOverCmd;
+
+        public ICommand TurnOverCmd
+        {
+            get { return _TurnOverCmd ?? (_TurnOverCmd = new RelayCommand(param => OnTurnOver(), param => CanTurnOver())); }
+        }
+
+        public void OnTurnOver()
+        {
+            if(DataAnalysisSelectedIndex != 1)
+                DataAnalysisSelectedIndex = 1;
+
+            ConsumeLogSource = GetConsumeLogSource();
+
+            #region 营业额-时间
+
+            ChartValues<int> consumeData = GetConsumeData(ConsumeTimeSpanType, ConsumeYearValue, ConsumeMonthValue);
+
+            //数据集赋值
+            ConsumeSeriesCollection = new SeriesCollection
+            {
+                new ColumnSeries//ColumnSeries-柱状图; LineSeries-曲线图 
+                {
+                    Title = "营业额",
+                    Values = consumeData,
+                },
+            };
+
+            //x,y轴
+            ConsumeLabels = GetConsumeX(ConsumeTimeSpanType, ConsumeYearValue, ConsumeMonthValue);
+            ConsumeYFormatter = value => value.ToString("C");
+
+            #endregion
+
+            #region 营业额-房间类型
+
+            Dictionary<string, int> consumeRoomTypeRate = GetConsumeDataByRoomType(ConsumeTimeSpanType, ConsumeYearValue, ConsumeMonthValue);
+
+            ConsumeRoomTypeSeriesCollection = new SeriesCollection();
+            foreach (KeyValuePair<string, int> item in consumeRoomTypeRate)
+            {
+                ConsumeRoomTypeSeriesCollection.Add(new PieSeries
+                {
+                    Title = GetRoomTypeNameFromCode(item.Key),
+                    Values = new ChartValues<ObservableValue> { new ObservableValue(item.Value) },
+                    DataLabels = true
+                });
+            }
+
+            #endregion
+        }
+
+        public bool CanTurnOver()
+        {
+            return true;
+        }
+
+        #endregion
+        
+        #region RoomUseRateCmd
+
+        private RelayCommand _RoomUseRateCmd;
+
+        public ICommand RoomUseRateCmd
+        {
+            get { return _RoomUseRateCmd ?? (_RoomUseRateCmd = new RelayCommand(param => OnRoomUseRate(), param => CanRoomUseRate())); }
+        }
+
+        public void OnRoomUseRate()
+        {
+            if (DataAnalysisSelectedIndex != 2)
+                DataAnalysisSelectedIndex = 2;
+
+            ConsumeLogSource = GetConsumeLogSource();
+
+            #region 房间使用率-时间
+
+            ChartValues<double> consumeData = GetRoomUseRateData(ConsumeTimeSpanType, ConsumeYearValue, ConsumeMonthValue);
+
+            //数据集赋值
+            RoomTimeSeriesCollection = new SeriesCollection
+            {
+                new LineSeries//ColumnSeries-柱状图; LineSeries-曲线图 
+                {
+                    Title = "房间使用率",
+                    Values = consumeData,
+                },
+            };
+
+            //x,y轴
+            RoomTimeLabels = GetConsumeX(ConsumeTimeSpanType, ConsumeYearValue, ConsumeMonthValue);
+            RoomTimeYFormatter = value => value.ToString("p");
+
+            #endregion
+            
+        }
+
+        public bool CanRoomUseRate()
+        {
+            return true;
+        }
+
+        #endregion
+
+        #region NewSongHotCmd
+
+        private RelayCommand _NewSongHotCmd;
+
+        public ICommand NewSongHotCmd
+        {
+            get { return _NewSongHotCmd ?? (_NewSongHotCmd = new RelayCommand(param => OnNewSongHot(), param => CanNewSongHot())); }
+        }
+
+        public void OnNewSongHot()
+        {
+            if (DataAnalysisSelectedIndex != 3)
+                DataAnalysisSelectedIndex = 3;
+
+            SongRecordSource = GetSongRecordSource();
+
+            SongRecordSource.DefaultView.RowFilter = $"releasedate >= '{MinReleaseDate}'";
+
+            //计算发行时间内所有歌曲的总点击量，过滤掉点击量不够的，计算出热度，确认是否更新现有排行榜
+            SongRecordTempResultSource = GetSongRecordTimeResultSource(SongRecordSource);
+            SongRecordTempResultSource.DefaultView.Sort = "hotnumber desc";
+        }
+
+        public bool CanNewSongHot()
+        {
+            return true;
+        }
+
+        #endregion
+
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// 获取经营流水数据源
+        /// </summary>
+        /// <returns></returns>
+        private DataTable GetConsumeLogSource() {
+            return RoomTaskManagementServiceCaller.GetConsumeLog();
+        }
+
+        /// <summary>
+        /// 获取经营流水数据集合
+        /// </summary>
+        /// <param name="timeSpanType"></param>
+        /// <param name="yearValue"></param>
+        /// <param name="monthValue"></param>
+        /// <returns></returns>
+        private ChartValues<int> GetConsumeData(int timeSpanType, int yearValue, int monthValue)
+        {
+            ChartValues<int> result = new ChartValues<int>();
+
+            Dictionary<int, int> tempResult = GetTempResultDictionary(timeSpanType, yearValue, monthValue);
+
+            ConsumeLogSource.DefaultView.RowFilter = GetRowFilterByTime(timeSpanType, yearValue, monthValue);
+            
+            for (int i = 0; i < ConsumeLogSource.DefaultView.Count; i++)
+            {
+                DateTime date = DateTime.Parse(ConsumeLogSource.DefaultView[i]["starttime"].ToString());
+                if (timeSpanType == 0)
+                    tempResult[date.Year] = tempResult[date.Year] + int.Parse(ConsumeLogSource.DefaultView[i]["roomconsume"].ToString());
+                if (timeSpanType == 1)
+                    tempResult[date.Month] = tempResult[date.Month] + int.Parse(ConsumeLogSource.DefaultView[i]["roomconsume"].ToString());
+                if (timeSpanType == 2)
+                    tempResult[date.Day] = tempResult[date.Day] + int.Parse(ConsumeLogSource.DefaultView[i]["roomconsume"].ToString());
+            }
+
+            foreach (KeyValuePair<int, int> item in tempResult)
+            {
+                result.Add(item.Value);
+            }
+
+            return result;
+        }
+
+        private Dictionary<int, int> GetTempResultDictionary(int timeSpanType, int yearValue, int monthValue)
+        {
+            Dictionary<int, int> tempResult = new Dictionary<int, int>();
+
+            if (timeSpanType == 0)//近10年
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    tempResult.Add(DateTime.Now.Year - i, 0);
+                }
+            }
+            else if (timeSpanType == 1)//某一年
+            {
+                for (int i = 1; i <= 12; i++)
+                {
+                    tempResult.Add(i, 0);
+                }
+            }
+            else if (timeSpanType == 2)//某个月
+            {
+                DateTime date = new DateTime(yearValue, monthValue, 1);
+                int days = DateTime.DaysInMonth(yearValue, monthValue);
+                for (int i = 1; i <= days; i++)
+                {
+                    tempResult.Add(i, 0);
+                }
+            }
+            return tempResult;
+        }
+
+        private Dictionary<int, double> GetTempResultDictionaryReturnDouble(int timeSpanType, int yearValue, int monthValue)
+        {
+            Dictionary<int, double> tempResult = new Dictionary<int, double>();
+
+            if (timeSpanType == 0)//近10年
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    tempResult.Add(DateTime.Now.Year - i, 0);
+                }
+            }
+            else if (timeSpanType == 1)//某一年
+            {
+                for (int i = 1; i <= 12; i++)
+                {
+                    tempResult.Add(i, 0);
+                }
+            }
+            else if (timeSpanType == 2)//某个月
+            {
+                DateTime date = new DateTime(yearValue, monthValue, 1);
+                int days = DateTime.DaysInMonth(yearValue, monthValue);
+                for (int i = 1; i <= days; i++)
+                {
+                    tempResult.Add(i, 0);
+                }
+            }
+            return tempResult;
+        }
+        
+        private string GetRowFilterByTime(int timeSpanType, int yearValue, int monthValue) {
+            if (timeSpanType == 0)
+            {
+                DateTime startDate = DateTime.Now.AddYears(-10);
+                return $"starttime >= ('{startDate}')";
+            }
+            if (timeSpanType == 1)
+            {
+                DateTime startDate = new DateTime(yearValue, 1, 1);
+                DateTime endDate = new DateTime(yearValue + 1, 1, 1).AddDays(-1);
+                return $"starttime >= ('{startDate}') and starttime <= ('{endDate}')";
+            }
+            if (timeSpanType == 2)
+            {
+                DateTime startDate = new DateTime(yearValue, monthValue, 1);
+                DateTime endDate = new DateTime(yearValue, monthValue, 1).AddDays(DateTime.DaysInMonth(yearValue, monthValue) - 1);
+                return $"starttime >= ('{startDate}') and starttime <= ('{endDate}')";
+            }
+            else
+                return string.Empty;
+        }
+
+        /// <summary>
+        /// 根据时间获取X轴时间段值
+        /// </summary>
+        /// <param name="timeSpanType"></param>
+        /// <param name="yearValue"></param>
+        /// <param name="monthValue"></param>
+        /// <returns></returns>
+        private string[] GetConsumeX(int timeSpanType, int yearValue, int monthValue)
+        {
+            List<string> result = new List<string>();
+            if(timeSpanType == 0)
+                for (int i = 0; i < 10; i++)
+                {
+                    result.Add((yearValue - i).ToString());
+                }
+            if (timeSpanType == 1)
+                return new[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
+            if (timeSpanType == 2)
+            {
+                int days = DateTime.DaysInMonth(yearValue, monthValue);
+                for (int i = 1; i <= days; i++)
+                {
+                    result.Add(i.ToString());
+                }
+            }
+            string[] resultStr = new string[result.Count];
+            for (int i = 0; i < result.Count; i++)
+            {
+                resultStr[i] = result[i];
+            }
+            return resultStr;
+        }
+
+        /// <summary>
+        /// 获取经营流水(房间类型)数据集合
+        /// </summary>
+        /// <param name="timeSpanType"></param>
+        /// <param name="yearValue"></param>
+        /// <param name="monthValue"></param>
+        /// <returns></returns>
+        private Dictionary<string, int> GetConsumeDataByRoomType(int timeSpanType, int yearValue, int monthValue) {
+
+            Dictionary<string, int> result = new Dictionary<string, int>() {
+                { "0", 0},//小型包间
+                { "1", 0},//中型包间
+                { "2", 0},//大型包间
+                { "3", 0},//情侣包间
+                { "4", 0},//豪华包间
+                { "5", 0},//商务包间
+            };
+            
+            ConsumeLogSource.DefaultView.RowFilter = GetRowFilterByTime(timeSpanType, yearValue, monthValue);
+
+            for (int i = 0; i < ConsumeLogSource.DefaultView.Count; i++)
+            {
+                string roomType = ConsumeLogSource.DefaultView[i]["roomtype"].ToString();
+                if (result.ContainsKey(roomType))
+                    result[roomType] += int.Parse(ConsumeLogSource.DefaultView[i]["roomconsume"].ToString());
+            }
+            
+            return result;
+        }
+
+        /// <summary>
+        /// 获取房间使用率数据集合
+        /// </summary>
+        /// <param name="timeSpanType"></param>
+        /// <param name="yearValue"></param>
+        /// <param name="monthValue"></param>
+        /// <returns></returns>
+        private ChartValues<double> GetRoomUseRateData(int timeSpanType, int yearValue, int monthValue)
+        {
+            ChartValues<double> result = new ChartValues<double>();
+
+            Dictionary<int, double> tempResult = GetTempResultDictionaryReturnDouble(timeSpanType, yearValue, monthValue);
+
+            ConsumeLogSource.DefaultView.RowFilter = GetRowFilterByTime(timeSpanType, yearValue, monthValue);
+
+            int allHours = 1;
+
+            for (int i = 0; i < ConsumeLogSource.DefaultView.Count; i++)
+            {
+                DateTime date = DateTime.Parse(ConsumeLogSource.DefaultView[i]["starttime"].ToString());
+                if (timeSpanType == 0)
+                {
+                    allHours = DateTime.IsLeapYear(date.Year) ? 366 * 24 : 365 * 24;
+                    tempResult[date.Year] += (DateTime.Parse(ConsumeLogSource.DefaultView[i]["endtime"].ToString()) - DateTime.Parse(ConsumeLogSource.DefaultView[i]["starttime"].ToString())).TotalHours;
+                }
+                if (timeSpanType == 1)
+                {
+                    allHours = DateTime.DaysInMonth(date.Year, date.Month) * 24;
+                    tempResult[date.Month] += (DateTime.Parse(ConsumeLogSource.DefaultView[i]["endtime"].ToString()) - DateTime.Parse(ConsumeLogSource.DefaultView[i]["starttime"].ToString())).TotalHours;
+                }
+                if (timeSpanType == 2)
+                {
+                    allHours = 24;
+                    tempResult[date.Day] += ((DateTime.Parse(ConsumeLogSource.DefaultView[i]["endtime"].ToString()) - DateTime.Parse(ConsumeLogSource.DefaultView[i]["starttime"].ToString())).TotalHours);
+                }
+            }
+
+            foreach (KeyValuePair<int, double> item in tempResult)
+            {
+                result.Add(item.Value / allHours);
+            }
+
+            return result;
+        }
+
+        private DataTable GetSongRecordSource() {
+            return SongInfoManagementServiceCaller.GetAllSongRecord();
+        }
+
+        private DataTable GetSongRecordTimeResultSource(DataTable songRecordSource) {
+            DataTable result = InitSongRecordSource(new DataTable());
+
+            //将歌曲的点击量汇总起来
+            Dictionary<string, RecordNumberAndReleaseDate> tempAllSongNum = new Dictionary<string, RecordNumberAndReleaseDate>();
+            for (int i = 0; i < songRecordSource.DefaultView.Count; i++)
+            {
+                if (tempAllSongNum.ContainsKey(songRecordSource.DefaultView[i]["musicid"].ToString()))
+                    tempAllSongNum[songRecordSource.DefaultView[i]["musicid"].ToString()].recordNumber += int.Parse(songRecordSource.DefaultView[i]["clicknum"].ToString());
+                else
+                {
+                    tempAllSongNum.Add(songRecordSource.DefaultView[i]["musicid"].ToString(),
+                        new RecordNumberAndReleaseDate(int.Parse(songRecordSource.DefaultView[i]["clicknum"].ToString()), DateTime.Parse(songRecordSource.DefaultView[i]["releasedate"].ToString())));
+                }
+            }
+            //过滤掉点击量不够的，且算出热度[点击量 * (0.5)^(发行时间与现在时间的时间差/半衰期)]
+            for (int i = 0; i < songRecordSource.DefaultView.Count; i++)
+            {
+                if (tempAllSongNum.Count == 0) break;
+                if (tempAllSongNum.ContainsKey(songRecordSource.DefaultView[i]["musicid"].ToString()))
+                {
+                    if (tempAllSongNum[songRecordSource.DefaultView[i]["musicid"].ToString()].recordNumber < MinRecordNumber)
+                    {
+                        tempAllSongNum.Remove(songRecordSource.DefaultView[i]["musicid"].ToString());
+                        continue;
+                    }
+                    DataRow row = result.NewRow();
+                    row["musicid"] = songRecordSource.DefaultView[i]["musicid"].ToString();
+                    row["musicname"] = songRecordSource.DefaultView[i]["musicname"].ToString();
+                    row["singername"] = songRecordSource.DefaultView[i]["singername"].ToString();
+                    row["releasedate"] = songRecordSource.DefaultView[i]["releasedate"].ToString();
+                    row["clicknum"] = tempAllSongNum[songRecordSource.DefaultView[i]["musicid"].ToString()].recordNumber.ToString();
+                    row["hotnumber"] = (tempAllSongNum[songRecordSource.DefaultView[i]["musicid"].ToString()].recordNumber *
+                        Math.Pow(0.5, (DateTime.Today - tempAllSongNum[songRecordSource.DefaultView[i]["musicid"].ToString()].releaseDate).TotalDays / HalfLifeValue)).ToString();
+                    result.Rows.Add(row);
+                    tempAllSongNum.Remove(songRecordSource.DefaultView[i]["musicid"].ToString());
+                }
+            }
+            return result;
+        }
+
+        private DataTable InitSongRecordSource(DataTable dataTable) {
+            if (!dataTable.Columns.Contains("musicid"))
+                dataTable.Columns.Add("musicid");
+            if (!dataTable.Columns.Contains("musicname"))
+                dataTable.Columns.Add("musicname");
+            if (!dataTable.Columns.Contains("singername"))
+                dataTable.Columns.Add("singername");
+            if (!dataTable.Columns.Contains("clicknum"))
+                dataTable.Columns.Add("clicknum");
+            if (!dataTable.Columns.Contains("releasedate"))
+                dataTable.Columns.Add("releasedate");
+            if (!dataTable.Columns.Contains("hotnumber"))
+                dataTable.Columns.Add("hotnumber").DataType = typeof(double);
+            return dataTable;
+        }
+
+        #endregion
+
+        #endregion
+    }
+
+    internal class RecordNumberAndReleaseDate {
+        public int recordNumber;
+        public DateTime releaseDate;
+        public RecordNumberAndReleaseDate(int recordNumber, DateTime releaseDate) {
+            this.recordNumber = recordNumber;
+            this.releaseDate = releaseDate;
+        }
     }
 }

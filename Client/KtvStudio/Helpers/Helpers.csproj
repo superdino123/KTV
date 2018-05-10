@@ -51,6 +51,7 @@
     <Compile Include="Converters\BooleanInvertVisibilityConverter.cs" />
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\DateTimeToNullConverter.cs" />
+    <Compile Include="Converters\StringToIntConverter.cs" />
     <Compile Include="Converters\VisibilityInvertConverter.cs" />
     <Compile Include="FtpHelper\FtpHelper.cs" />
     <Compile Include="GetInitialsHelper.cs" />

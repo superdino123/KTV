@@ -192,3 +192,7 @@ G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\obj\Debug\KtvStudio.csproj.Gen
 G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\obj\Debug\KtvStudio.csproj.CoreCompileInputs.cache
 G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\obj\Debug\KtvStudio.exe
 G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\obj\Debug\KtvStudio.pdb
+G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\bin\Debug\LiveCharts.dll
+G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\bin\Debug\LiveCharts.Wpf.dll
+G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\obj\Debug\Views\DataAnalysisManageUc.g.cs
+G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\obj\Debug\Views\DataAnalysisManageUc.baml

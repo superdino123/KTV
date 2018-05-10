@@ -1,0 +1,376 @@
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ChartElementVisibilityPriority 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.VisibilityElementOrientation 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.TextRotation 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.AxisLabelRotationHelper 生成存根: 类型已密封。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.RotationMatrix 生成存根: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.AxisGridItem 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.MeasureUnitsCalculatorBase`2 生成存根: type DevExpress.Charts.Native.MeasureUnitsCalculatorBase`2 unstubbable: 不受支持的约束类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.InteractionKey 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.RangeCorrectionMode 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.SideMarginMode 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ScrollingOrientation 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ZoomingKind 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.NavigationType 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.PatternConstants 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.RangeUpdateEnqueuer 生成存根: method System.Void DevExpress.Charts.Native.RangeUpdateEnqueuer.Update() unstubbable: 方法是抽象的，因此无法用作存根，方法名称与静态成员冲突。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.EmptyRangeUpdateEnqueuer 生成存根: method System.Void DevExpress.Charts.Native.RangeUpdateEnqueuer.Update() unstubbable: 方法是抽象的，因此无法用作存根，方法名称与静态成员冲突。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.RangeUpdateNonDependentEnqueuer 生成存根: method System.Void DevExpress.Charts.Native.RangeUpdateEnqueuer.Update() unstubbable: 方法是抽象的，因此无法用作存根，方法名称与静态成员冲突。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.RangeUpdateDependentEnqueuer 生成存根: method System.Void DevExpress.Charts.Native.RangeUpdateEnqueuer.Update() unstubbable: 方法是抽象的，因此无法用作存根，方法名称与静态成员冲突。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.VisualRangeUpdateMode 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.NativeRange 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.SideMarginCalculator 生成存根: 类型没有系列可见的构造函数。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.SideMarginLogarithmicCalculator 生成存根: 类型没有系列可见的构造函数。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.RefinedSeriesGroup 生成存根: method System.Double DevExpress.Charts.Native.RefinedSeriesGroup.GetMinAbsValue() unstubbable: 方法是抽象的，因此无法用作存根，方法签名类型对于 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) or subtype(RefinedSeriesGroup in assembly DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.RefinedSeriesGroupByValue 生成存根: method System.Double DevExpress.Charts.Native.RefinedSeriesGroup.GetMinAbsValue() unstubbable: 方法是抽象的，因此无法用作存根，方法签名类型对于 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) or subtype(RefinedSeriesGroupByValue in assembly DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.RefinedSeriesGroupByArgument 生成存根: method System.Double DevExpress.Charts.Native.RefinedSeriesGroup.GetMinAbsValue() unstubbable: 方法是抽象的，因此无法用作存根，方法签名类型对于 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) or subtype(RefinedSeriesGroupByArgument in assembly DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ChartCollectionOperation 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.DataItemsHelper 生成存根: 类型已密封。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.SeriesControllerChanges 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.SeriesControllerUpdateSeriesActions 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ChartUpdateType 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ChartUpdateAggregator 生成存根: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ChartUpdate 生成存根: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.RangeResetUpdate 生成存根: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.BatchSeriesUpdate 生成存根: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.PointsAggregationUpdate 生成存根: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ScaleSortingUpdate 生成存根: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.SingleSeriesUpdate 生成存根: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.SinglePointUpdate 生成存根: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.BatchPointsUpdate 生成存根: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.Scale 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ActualScaleType 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.RangeValue 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.RangeIndexes 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.AnnotationLocation 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.AnnotationLayoutCalculator 生成存根: 类型已密封。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.PointsSweepDirection 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.CrosshairSnapModeCore 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.CrosshairLabelModeCore 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.PointPositionInSeries 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.CrosshairValueItem 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.CrosshairPointsGroup 生成存根: 类型没有系列可见的构造函数。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.CrosshairPointComparer 生成存根: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.AxisValuePair 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.PointProjectionOnAxis 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.LargeScaleHelper 生成存根: 类型已密封。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.GRealVector2D 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.GRealSize2D 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.RangeStripTriangulationResult 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.RangeStripTriangulation 生成存根: 类型没有系列可见的构造函数。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.AxisCoordCalculator 生成存根: 类型已密封。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.AxisValueContainerHelper 生成存根: 类型已密封。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.CustomAxisElementsHelper 生成存根: 类型已密封。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.CustomAxisElementsHelperNew 生成存根: 类型已密封。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.GRealRect2D 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.Transformation 生成存根: method System.Double DevExpress.Charts.Native.Transformation.TransformForward(System.Double value) unstubbable: 方法是抽象的，因此无法用作存根，方法名称与静态成员冲突。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IdentityTransformation 生成存根: method System.Double DevExpress.Charts.Native.Transformation.TransformForward(System.Double value) unstubbable: 方法是抽象的，因此无法用作存根，方法名称与静态成员冲突。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.LogarithmicTransformation 生成存根: method System.Double DevExpress.Charts.Native.Transformation.TransformForward(System.Double value) unstubbable: 方法是抽象的，因此无法用作存根，方法名称与静态成员冲突。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.Condition 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.Conjunction 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.SortMode 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.BindingHelperCore 生成存根: 类型已密封。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.SimpleDiagramLayoutDirection 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.SimpleDiagramLayout 生成存根: 类型没有系列可见的构造函数。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.SegmentKind 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.SegmentKindHelper 生成存根: 类型已密封。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IntersectionInfo 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.GeometricUtils 生成存根: 类型已密封。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.GRealLine2D 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.GPoint2D 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.GRealPoint2D 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.GRect2D 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ValueLevelInternal 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.MovingAverageKindInternal 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.CompatibleViewType 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.DockCornerCore 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.AxisPosition 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.DateTimeGridAlignment 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.PaletteEntry 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.FillMode 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.GradientMode 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.DashStyle 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.ModelRect 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.ModelUpdatedEventHandler 生成存根: 类型已密封。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.ColorARGB 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.PieExplodeMode 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.PieSweepDirection 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.DataMemberType 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.DirectionMode 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.CircularDiagramStyle 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.ArgumentScaleType 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.ValueScaleType 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.LegendPosition 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.LegendOrientation 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.MarkerType 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.SeriesLabelPosition 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.LabelPointData 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.Bar3DModel 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.Native.EmptyPropertyBag 生成存根: 类型已密封。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.Native.TransparencyBagSupport 生成存根: 类型已密封。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.Native.ColorEachBagSupport 生成存根: 类型已密封。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.Native.MarkerBagSupport 生成存根: 类型已密封。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.Native.BarWidthBagSupport 生成存根: 类型已密封。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.Native.Bar3DModelBagSupport 生成存根: 类型已密封。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.NotificationCenter.Native.NotificationFilterLevel 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.NotificationCenter.Native.NotificationFilterCredentials 生成存根: 类型已密封。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IScaleOptionsBase`1 生成存根: type DevExpress.Charts.Native.IScaleOptionsBase`1 unstubbable: 不受支持的约束类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.DateTimeGridAlignmentNative 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ScaleModeNative 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ProcessMissingPointsModeNative 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.PointsFilterType 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.AggregateFunctionNative 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.RefinedPointsCluster 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.TypeConversion 生成存根: 类型已密封。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.EnumHelper 生成存根: 类型已密封。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ChartDebug 生成存根: 类型已密封。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.MinMaxValues 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.DateTimeOptionsFormat 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.DateTimeOptionsHelper 生成存根: 类型已密封。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.NumericOptionsFormat 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.NumericOptionsHelper 生成存根: 类型已密封。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.PointViewKind 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.PointOptionsHelper 生成存根: 类型已密封。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.TestPosition 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ResolveOverlappingModeCore 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.XYDiagramResolveOverlappingAlgorithm 生成存根: 类型没有系列可见的构造函数。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.WeekdayCore 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.CustomDate 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.DateTimeUtils 生成存根: 类型已密封。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.DateTimeFormatParts 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.DateTimeUtilsExt 生成存根: 类型已密封。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.PatternUtils 生成存根: 类型已密封。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ToolTipPatternUtils 生成存根: 类型已密封。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.SeriesIncompatibilityType 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.SortingUtils 生成存根: 类型已密封。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ObjectToStringConversion 生成存根: 类型已密封。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.XtraSerializingUtils 生成存根: 类型已密封。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.SeriesPointKeyNative 生成存根: 类型是一个值类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.VisibilityCalculator+<>c__DisplayClass1 生成填充码: 类型不受支持，因为存在内部限制。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.VisibilityCalculator+VisibilityLayerKey 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.VisibilityCalculator+VisibilityLayerKeyComparer 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ChartElementVisibilityPriority 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.VisibilityElementOrientation 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ISupportVisibilityControlElement 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IAxisGridMapping 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.TextRotation 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IAxisLabelLayout 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IAxisLabelResolveOverlappingOptions 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.RotationMatrix 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.AxisLabelOverlappingResolver+LabelItem 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.AxisLabelOverlappingResolver+OverlapState 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.AxisLabelOverlappingResolver+State 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.AxisLabelResolveOverlappingCache+CacheItem 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.UnitSelector`2+UnitContainer 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.MeasureUnitsCalculatorBase`2 生成填充码: type DevExpress.Charts.Native.MeasureUnitsCalculatorBase`2 unstubbable: 不受支持的约束类型。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IRefinedSeriesContainer 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.RefinedSeriesRepository+<>c__DisplayClass1 生成填充码: 类型不受支持，因为存在内部限制。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ISupportMinMaxValues 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IPointInteraction 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.ISupportMarkerSeries 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.ISupportTransparencySeries 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.ISupportColorEachSeries 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.ISupportBarWidthSeries 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.ISupportBar3DModelSeries 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IAxisTitle 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.RangeCorrectionMode 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.SideMarginMode 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IMinMaxValues 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IAxisRangeData 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IVisualAxisRangeData 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IWholeAxisRangeData 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IAxisLabelFormatterCore 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IAxisElementContainer 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IAxisData 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IPaneAxesContainer 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.AxisGridDataEx+GridValueProvider 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.AxisGridDataEx+IdentityGridValueProvider 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.AxisGridDataEx+LogarithmicGridValueProvider 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ScrollingOrientation 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ZoomingKind 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.NavigationType 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IPane 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IZoomablePane 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.PaneAxesContainer+<get_Axes>d__0 生成填充码: 类型不受支持，因为存在内部限制。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.PaneAxesContainer+AxesList 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.PaneAxesContainerRepository+AxesUsingList 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.PaneAxesContainerRepository+AxisUsing 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.PaneAxesContainerRepository+PaneComparer 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.OutOfBoundsCheckerEx+Segment 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IBoundsProvider 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.ChartData.IMinMaxValuesCalculator 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.PatternConstants 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IPatternHolder 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.PatternParser+PatternFragment 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IPatternValuesSource 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IRangeUpdater 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.RangeUpdateNonDependentEnqueuer+UpdateGroup 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.RangeUpdateDependentEnqueuer+DependentPair 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.VisualRangeUpdateMode 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ChartCollectionOperation 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.SeriesControllerChanges 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.SeriesControllerUpdateSeriesActions 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.SeriesController+<>c__DisplayClass1 生成填充码: 类型不受支持，因为存在内部限制。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ChartUpdateType 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ChartUpdateAggregator 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ChartUpdate 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.RangeResetUpdate 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.BatchSeriesUpdate 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.PointsAggregationUpdate 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ScaleSortingUpdate 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.SingleSeriesUpdate 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.SinglePointUpdate 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.BatchPointsUpdate 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.Scale 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ActualScaleType 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IPriorScaleMap 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IScaleMap 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.AxisQualitativeMap+UserValueComparer 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.AxisQualitativeMap+ValueItem 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.AxisQualitativeMap+ValueItemComparer 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.AnnotationLocation 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IAnnotationLayout 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.AnnotationLayoutCalculator+CrosshairLabelsComparer 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ILabelLayout 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IPieLabelLayout 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IFunnelLabelLayout 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.PointsSweepDirection 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ResolveOverlappingByColumn+LabelInfo 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ResolveOverlappingByColumn+LabelInfoComparer 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ResolveOverlappingByEllipse+LabelInfo 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ResolveOverlappingByEllipse+LabelInfoGroup 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.CrosshairSnapModeCore 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.CrosshairLabelModeCore 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.PointPositionInSeries 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.CrosshairPointComparer 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IGeometryStrip 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IBezierStrip 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IAxisValueContainer 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IScaleBreak 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IStripLimit 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IStrip 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IConstantLine 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ICustomAxisLabel 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IAxisLabel 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ILogarithmic 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ITransformation 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.Condition 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.Conjunction 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.SortMode 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IDataFilter 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.SimpleDiagramLayoutDirection 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IDiagram 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ISimpleDiagram 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.SimpleDiagramLayout+TransformRectangle 生成填充码: 类型是一个委托。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.SegmentKind 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.SegmentKindHelper 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IGeometryStripCreator 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ValueLevelInternal 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.MovingAverageKindInternal 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ISeriesPoint 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ISeriesInteractionData 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ISeriesPointFactory 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ISeriesTemplate 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ISeriesBase 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ISeries 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ISeriesView 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ISimpleSeriesView 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ISplineSeriesView 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IAffectsAxisRange 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ISeparatePaneIndicator 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IXYSeriesView 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IXYWSeriesView 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IFinancialSeriesView 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IBarSeriesView 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ISplineView 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IStackedView 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IStackedSplineView 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ISideBySideBarSeriesView 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ISupportSeriesGroups 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.INestedDoughnutSeriesView 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ISideBySideStackedBarSeriesView 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IStepSeriesView 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IRefinedSeries 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IBasePoint 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IArgumentPoint 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IValuePoint 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IFunnelPoint 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IPiePoint 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IXYPoint 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IXYWPoint 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IFinancialPoint 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IRangePoint 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IStackedPoint 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IFullStackedPoint 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ISideBySidePoint 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.INestedDoughnutRefinedSeries 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IChartDataContainer 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IXYDiagram 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IIndicatorCalculator 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ISwiftPlotDiagram 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IAutoScaleBreaksContainer 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IResolveLabelsOverlappingAxis 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ICrosshairAxis 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IAxisRange 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.CompatibleViewType 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IGeometryHolder 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ICrosshairOptions 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.DockCornerCore 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ICrosshairFreePosition 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.IChart3D 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.IOptions3D 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.AxisPosition 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.DateTimeGridAlignment 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.IAxisLabelFormatter 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.FillMode 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.GradientMode 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.DashStyle 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.IModelElementContainer 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.IModelListener 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.IChartRenderContext 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.ModelUpdatedEventHandler 生成填充码: 类型是一个委托。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.PieExplodeMode 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.PieSweepDirection 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.DataMemberType 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.DirectionMode 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.CircularDiagramStyle 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.ArgumentScaleType 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.ValueScaleType 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.LegendPosition 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.LegendOrientation 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.IDataLabelFormatter 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.MarkerType 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.SeriesLabelPosition 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Model.Bar3DModel 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.NotificationCenter.INotificationObserver 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.NotificationCenter.Native.NotificationFilterLevel 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IScaleOptionsBase 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IScaleOptionsBase`1 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.INumericScaleOptions 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.DateTimeGridAlignmentNative 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IDateTimeScaleOptions 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ScaleModeNative 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ProcessMissingPointsModeNative 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IPointsFilterOptions 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.PointsFilterType 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IPointProcessor 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.RefinedPoint+<get_Children>d__0 生成填充码: 类型不受支持，因为存在内部限制。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.AggregateFunctionNative 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.CollectionManager+<>c__DisplayClass14 生成填充码: 类型不受支持，因为存在内部限制。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.CollectionManager+<>c__DisplayClass7 生成填充码: 类型不受支持，因为存在内部限制。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.CollectionManager+<>c__DisplayClass9 生成填充码: 类型不受支持，因为存在内部限制。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.CollectionManager+<>c__DisplayClassf 生成填充码: 类型不受支持，因为存在内部限制。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.DateTimeOptionsFormat 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IDateTimeOptions 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.NumericOptionsFormat 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.INumericOptions 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.PointViewKind 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ResolveOverlappingModeCore 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IXYDiagramLabelLayout 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.WeekdayCore 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IKnownDate 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.IWorkdaysOptions 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.CustomDateCollection+CustomDateComparer 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.SeriesIncompatibilityType 生成填充码: 类型是一个枚举。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.SeriesIncompatibilityCalculatorBase`2+MasterSeriesInfo 生成填充码: 类型对 exported or assembly(DevExpress.Charts.v15.2.Core.15.2.4.0.Fakes) 不可见。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.ICoreReference 生成填充码: 类型是一个接口。
+G:\3VSText\GitTest\KTV\Client\KtvStudio\ChartsTest\Fakes\DevExpress.Charts.v15.2.Core.fakes : warning : 无法为 DevExpress.Charts.Native.SeriesPointKeyNative 生成填充码: 类型是一个枚举。

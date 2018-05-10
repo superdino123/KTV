@@ -1,0 +1,15 @@
+G:\3VSText\GitTest\KTV\Client\KtvStudio\DownloadFileTest\bin\Debug\DownloadFileTest.exe.config
+G:\3VSText\GitTest\KTV\Client\KtvStudio\DownloadFileTest\bin\Debug\DownloadFileTest.exe
+G:\3VSText\GitTest\KTV\Client\KtvStudio\DownloadFileTest\bin\Debug\DownloadFileTest.pdb
+G:\3VSText\GitTest\KTV\Client\KtvStudio\DownloadFileTest\obj\Debug\DownloadFileTest.csprojResolveAssemblyReference.cache
+G:\3VSText\GitTest\KTV\Client\KtvStudio\DownloadFileTest\obj\Debug\MainWindow.g.cs
+G:\3VSText\GitTest\KTV\Client\KtvStudio\DownloadFileTest\obj\Debug\App.g.cs
+G:\3VSText\GitTest\KTV\Client\KtvStudio\DownloadFileTest\obj\Debug\DownloadFileTest_MarkupCompile.cache
+G:\3VSText\GitTest\KTV\Client\KtvStudio\DownloadFileTest\obj\Debug\DownloadFileTest_MarkupCompile.lref
+G:\3VSText\GitTest\KTV\Client\KtvStudio\DownloadFileTest\obj\Debug\MainWindow.baml
+G:\3VSText\GitTest\KTV\Client\KtvStudio\DownloadFileTest\obj\Debug\DownloadFileTest.g.resources
+G:\3VSText\GitTest\KTV\Client\KtvStudio\DownloadFileTest\obj\Debug\DownloadFileTest.Properties.Resources.resources
+G:\3VSText\GitTest\KTV\Client\KtvStudio\DownloadFileTest\obj\Debug\DownloadFileTest.csproj.GenerateResource.Cache
+G:\3VSText\GitTest\KTV\Client\KtvStudio\DownloadFileTest\obj\Debug\DownloadFileTest.csproj.CoreCompileInputs.cache
+G:\3VSText\GitTest\KTV\Client\KtvStudio\DownloadFileTest\obj\Debug\DownloadFileTest.exe
+G:\3VSText\GitTest\KTV\Client\KtvStudio\DownloadFileTest\obj\Debug\DownloadFileTest.pdb

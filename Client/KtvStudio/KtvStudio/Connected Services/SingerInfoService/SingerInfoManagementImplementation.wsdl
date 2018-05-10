@@ -134,6 +134,44 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ISingerInfoManagement_GetSingerInfoPaging_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ISingerInfoManagement_GetSingerInfoPaging_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsp:Policy wsu:Id="WSHttpBinding_ISingerInfoManagement_AddSingerInfo_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
@@ -286,6 +324,82 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ISingerInfoManagement_GetSingerInfoById_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ISingerInfoManagement_GetSingerInfoById_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ISingerInfoManagement_GetNationalityInfoSource_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ISingerInfoManagement_GetNationalityInfoSource_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:9918/SingerInfoManagement/MEX?xsd=xsd0" namespace="http://tempuri.org/" />
@@ -299,6 +413,12 @@
   </wsdl:message>
   <wsdl:message name="ISingerInfoManagement_GetAllSingerInfo_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllSingerInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISingerInfoManagement_GetSingerInfoPaging_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSingerInfoPaging" />
+  </wsdl:message>
+  <wsdl:message name="ISingerInfoManagement_GetSingerInfoPaging_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSingerInfoPagingResponse" />
   </wsdl:message>
   <wsdl:message name="ISingerInfoManagement_AddSingerInfo_InputMessage">
     <wsdl:part name="parameters" element="tns:AddSingerInfo" />
@@ -324,10 +444,26 @@
   <wsdl:message name="ISingerInfoManagement_GetSingerInfoByName_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetSingerInfoByNameResponse" />
   </wsdl:message>
+  <wsdl:message name="ISingerInfoManagement_GetSingerInfoById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSingerInfoById" />
+  </wsdl:message>
+  <wsdl:message name="ISingerInfoManagement_GetSingerInfoById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSingerInfoByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISingerInfoManagement_GetNationalityInfoSource_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNationalityInfoSource" />
+  </wsdl:message>
+  <wsdl:message name="ISingerInfoManagement_GetNationalityInfoSource_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNationalityInfoSourceResponse" />
+  </wsdl:message>
   <wsdl:portType name="ISingerInfoManagement">
     <wsdl:operation name="GetAllSingerInfo">
       <wsdl:input wsaw:Action="http://tempuri.org/ISingerInfoManagement/GetAllSingerInfo" message="tns:ISingerInfoManagement_GetAllSingerInfo_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISingerInfoManagement/GetAllSingerInfoResponse" message="tns:ISingerInfoManagement_GetAllSingerInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSingerInfoPaging">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISingerInfoManagement/GetSingerInfoPaging" message="tns:ISingerInfoManagement_GetSingerInfoPaging_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISingerInfoManagement/GetSingerInfoPagingResponse" message="tns:ISingerInfoManagement_GetSingerInfoPaging_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="AddSingerInfo">
       <wsdl:input wsaw:Action="http://tempuri.org/ISingerInfoManagement/AddSingerInfo" message="tns:ISingerInfoManagement_AddSingerInfo_InputMessage" />
@@ -345,6 +481,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ISingerInfoManagement/GetSingerInfoByName" message="tns:ISingerInfoManagement_GetSingerInfoByName_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISingerInfoManagement/GetSingerInfoByNameResponse" message="tns:ISingerInfoManagement_GetSingerInfoByName_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetSingerInfoById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISingerInfoManagement/GetSingerInfoById" message="tns:ISingerInfoManagement_GetSingerInfoById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISingerInfoManagement/GetSingerInfoByIdResponse" message="tns:ISingerInfoManagement_GetSingerInfoById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNationalityInfoSource">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISingerInfoManagement/GetNationalityInfoSource" message="tns:ISingerInfoManagement_GetNationalityInfoSource_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISingerInfoManagement/GetNationalityInfoSourceResponse" message="tns:ISingerInfoManagement_GetNationalityInfoSource_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_ISingerInfoManagement" type="tns:ISingerInfoManagement">
     <wsp:PolicyReference URI="#WSHttpBinding_ISingerInfoManagement_policy" />
@@ -357,6 +501,17 @@
       </wsdl:input>
       <wsdl:output>
         <wsp:PolicyReference URI="#WSHttpBinding_ISingerInfoManagement_GetAllSingerInfo_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSingerInfoPaging">
+      <soap12:operation soapAction="http://tempuri.org/ISingerInfoManagement/GetSingerInfoPaging" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_ISingerInfoManagement_GetSingerInfoPaging_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_ISingerInfoManagement_GetSingerInfoPaging_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
@@ -401,6 +556,28 @@
       </wsdl:input>
       <wsdl:output>
         <wsp:PolicyReference URI="#WSHttpBinding_ISingerInfoManagement_GetSingerInfoByName_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSingerInfoById">
+      <soap12:operation soapAction="http://tempuri.org/ISingerInfoManagement/GetSingerInfoById" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_ISingerInfoManagement_GetSingerInfoById_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_ISingerInfoManagement_GetSingerInfoById_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNationalityInfoSource">
+      <soap12:operation soapAction="http://tempuri.org/ISingerInfoManagement/GetNationalityInfoSource" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_ISingerInfoManagement_GetNationalityInfoSource_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_ISingerInfoManagement_GetNationalityInfoSource_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>

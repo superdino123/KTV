@@ -1,14 +1,21 @@
-﻿<UserControl x:Class="KtvStudio.Views.SongInfoEditUc"
+﻿<UserControl xmlns:fluent="urn:fluent-ribbon"
+             x:Class="KtvStudio.Views.SongInfoEditUc"
              xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:clientControlsBehaviours="clr-namespace:ClientControls.Behaviours;assembly=ClientControls"     
+             xmlns:clientControlsBehaviours="clr-namespace:ClientControls.Behaviours;assembly=ClientControls"   
+             xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"  
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:local="clr-namespace:KtvStudio.Views"
+             xmlns:converters="clr-namespace:KtvStudio.Helpers.Converters"
              x:Name="ThisUc"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <converters:SingRailValueToComboBoxSelectedIndexConverter x:Key="Srvtcsic"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -16,13 +23,13 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Border Grid.Row="0" Height="40" Background="White" Margin="0">
             <DockPanel>
                 <TextBlock DockPanel.Dock="Left" Margin="2 5 5 5" Width="10"
-                                       Height="{Binding ElementName=toggleButtonBaseInfo,Path=Height}"
-                                       Background="#A0D8F0" />
+                           Height="{Binding ElementName=toggleButtonBaseInfo,Path=Height}"
+                           Background="#A0D8F0" />
                 <ToggleButton Name="toggleButtonBaseInfo"
                                           DockPanel.Dock="Right"
                                           IsTabStop="False"
@@ -56,6 +63,10 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Row="0" Grid.Column="0" Text="歌曲名称"
                            VerticalAlignment="Center" Margin="5 5 0 5"/>
@@ -71,33 +82,27 @@
                           DisplayMemberPath="singername"
                           SelectedValuePath="id"
                           ItemsSource="{Binding SingerInfoSource}"/>
-                
-                <TextBlock Grid.Row="1" Grid.Column="0" Text="语言种类"
+                <TextBlock Grid.Row="0" Grid.Column="4" Text="语言种类"
                            VerticalAlignment="Center" Margin="5 5 0 5"/>
-                <ComboBox Grid.Row="1" Grid.Column="1" MinWidth="200" Margin="5"
+                <ComboBox Grid.Row="0" Grid.Column="5" MinWidth="200" Margin="5"
                           IsEditable="False"
                           SelectedValue="{Binding SongInfoEditItem.LanguageType}"
                           DisplayMemberPath="actionname"
                           SelectedValuePath="actioncode"
                           ItemsSource="{Binding LanguageTypeSource}"/>
-                <TextBlock Grid.Row="1" Grid.Column="2" Text="歌曲热度"
+                <TextBlock Grid.Row="0" Grid.Column="6" Text="歌曲热度"
                            VerticalAlignment="Center" Margin="5 5 0 5"/>
-                <TextBox Grid.Row="1" Grid.Column="3" MinWidth="200" Margin="5"
+                <TextBox Grid.Row="0" Grid.Column="7" MinWidth="200" Margin="5"
                          Text="{Binding SongInfoEditItem.RecordNumber}"/>
 
-                <TextBlock Grid.Row="2" Grid.Column="0" Text="视频路径"
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="发布日期"
                            VerticalAlignment="Center" Margin="5 5 0 5"/>
-                <TextBox Grid.Row="2" Grid.Column="1" MinWidth="200" Margin="5"
-                         Text="{Binding SongInfoEditItem.MVUrl}"/>
-                <TextBlock Grid.Row="2" Grid.Column="2" Text="配音路径"
-                           VerticalAlignment="Center" Margin="5 5 0 5"/>
-                <TextBox Grid.Row="2" Grid.Column="3" MinWidth="200" Margin="5"
-                         Text="{Binding SongInfoEditItem.DubbingUrl}"/>
-
-                <TextBlock Grid.Row="3" Grid.Column="0" Text="发布日期"
-                           VerticalAlignment="Center" Margin="5 5 0 5"/>
-                <controls:DateTimePicker Grid.Row="3" Grid.Column="1" MinWidth="200" Margin="5"
-                                         SelectedDate="{Binding SongInfoEditItem.ReleaseDate}"/>
+                <DatePicker Grid.Row="1" Grid.Column="1" MinWidth="200" Margin="5"
+                            SelectedDate="{Binding SongInfoEditItem.ReleaseDate}"
+                            HorizontalAlignment="Center"
+                            HorizontalContentAlignment="Stretch"
+                            Controls:TextBoxHelper.Watermark="Select a date"
+                            Controls:TextBoxHelper.WatermarkAlignment="Right" />
             </Grid>
         </Border>
         <Border Grid.Row="2" Height="40" Background="White" Margin="0">
@@ -106,18 +111,18 @@
                                        Height="{Binding ElementName=toggleButtonBaseInfo1,Path=Height}"
                                        Background="#A0D8F0" />
                 <ToggleButton Name="toggleButtonBaseInfo1"
-                                          DockPanel.Dock="Right"
-                                          IsTabStop="False"
-                                          HorizontalAlignment="Left"
-                                          Background="White"
-                                          BorderThickness="0"
-                                          BorderBrush="Transparent"
-                                          Padding="5 0"
-                                          IsChecked="True"
-                                          Content="分类设置"
-                                          FontSize="13"
-                                          FontWeight="Normal"
-                                          HorizontalContentAlignment="Left" />
+                              DockPanel.Dock="Right"
+                              IsTabStop="False"
+                              HorizontalAlignment="Left"
+                              Background="White"
+                              BorderThickness="0"
+                              BorderBrush="Transparent"
+                              Padding="5 0"
+                              IsChecked="True"
+                              Content="分类设置"
+                              FontSize="13"
+                              FontWeight="Normal"
+                              HorizontalContentAlignment="Left" />
             </DockPanel>
         </Border>
         <Border Grid.Row="3"
@@ -131,9 +136,11 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
@@ -146,36 +153,19 @@
                           SelectedValuePath="id"
                           ItemsSource="{Binding FirstCategorySourceView}"
                           SelectionChanged="FirstCategoryComboBox_SelectionChanged"/>
-                <TextBlock Grid.Row="1" Grid.Column="0" Text="二级分类"
+                <TextBlock Grid.Row="0" Grid.Column="2" Text="二级分类"
                            VerticalAlignment="Center" Margin="5 5 0 5"/>
-                <ComboBox Grid.Row="1" Grid.Column="1" MinWidth="200" Margin="5"
+                <ComboBox Grid.Row="0" Grid.Column="3" MinWidth="200" Margin="5"
                           IsEditable="False"
                           DisplayMemberPath="categoryname"
                           SelectedValuePath="id"
                           ItemsSource="{Binding SecondCategorySourceView}"
                           SelectionChanged="SecondCategoryComboBox_SelectionChanged"/>
-                <Button DataContext="{Binding ElementName=ThisUc}" Grid.Row="2" Grid.Column="0" Content="添加" Command="{Binding CategoryEditViewModel.AddCategoryCmd}"/>
+                <Button DataContext="{Binding ElementName=ThisUc}" Grid.Row="0" Grid.Column="4" Margin="0 5" Padding="20 0" Content="添加" Command="{Binding CategoryEditViewModel.AddCategoryCmd}"/>
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="已选分类"
+                           VerticalAlignment="Center" Margin="5 5 0 5"/>
+                <Controls:MetroTabControl x:Name="SelectedCategorysTabControl" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5" Margin="5" MinHeight="26"                                          TabItemClosingEvent="SelectedCategorysTabControl_TabItemClosingEvent"/>
 
-                <DataGrid Grid.Row="0" Grid.RowSpan="4" Grid.Column="2" 
-                          DataContext="{Binding ElementName=ThisUc}"
-                          ItemsSource="{Binding CategoryEditViewModel.SelectedCategorySource}"
-                          IsReadOnly="True"
-                          AutoGenerateColumns="False"
-                          RowHeaderWidth="20"
-                          HeadersVisibility="All"
-                          Margin="5 0"
-                          clientControlsBehaviours:DataGridBehavior.DisplayRowNumber="True"
-                          SelectionChanged="SelectedCategoryDataGrid_SelectionChanged">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="分类ID" Binding="{Binding id}" Width="100"/>
-                        <DataGridTextColumn Header="分类名称" Binding="{Binding categoryname}" Width="100"/>
-                    </DataGrid.Columns>
-                    <DataGrid.ContextMenu>
-                        <ContextMenu>
-                            <MenuItem Header="删除" Command="{Binding CategoryEditViewModel.DeleteCategoryCmd}"/>
-                        </ContextMenu>
-                    </DataGrid.ContextMenu>
-                </DataGrid>
             </Grid>
         </Border>
         <Border Grid.Row="4" Height="40" Background="White" Margin="0">
@@ -205,17 +195,96 @@
                 Padding="0 3"
                 Visibility="{Binding ElementName=toggleButtonBaseInfo2,Path=IsChecked,Converter={StaticResource BooleanToVisibilityConverter}}">
             <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" BorderBrush="White" BorderThickness="2" HorizontalAlignment="Left" Margin="5">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <MediaElement Grid.Row="0" Grid.Column="0" x:Name="vedio" LoadedBehavior="Manual" Stretch="Uniform"
+                                      Height="390" MinWidth="500"
+                                      Source="{Binding SongInfoEditItem.MVUrl}"
+                                      MediaOpened="vedio_MediaOpened"/>
+                        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical" Margin="0 5 0 0">
+                            <fluent:Button Click="Replay_Click" Header="重播" Margin="20 0 0 0">
+                                <fluent:Button.LargeIcon>
+                                    <iconPacks:PackIconFontAwesome Margin="5 0 0 0" Kind="UndoSolid" Width="26" Height="26" />
+                                </fluent:Button.LargeIcon>
+                            </fluent:Button>
+                            <fluent:Button Click="PlayOrPause_Click" Header="播放/暂停" Margin="10 0">
+                                <fluent:Button.LargeIcon>
+                                    <iconPacks:PackIconFontAwesome Margin="5 0 0 0" Kind="PlaySolid" Width="26" Height="26" />
+                                </fluent:Button.LargeIcon>
+                            </fluent:Button>
+                            <fluent:Button Click="Stop_Click"  Header="停止" Margin="20 0 0 0">
+                                <fluent:Button.LargeIcon>
+                                    <iconPacks:PackIconMaterial Margin="5 0 0 0" Kind="Stop" Width="26" Height="26" />
+                                </fluent:Button.LargeIcon>
+                            </fluent:Button>
+                        </StackPanel>
+                        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+                            <Slider Margin="5 0 0 0" x:Name="sliderPosition" Width="500"
+                                    ValueChanged="sliderPosition_ValueChanged" Height="18"/>
+                            <TextBlock x:Name="vedioAllTime" Text="0"/>
+                            <TextBlock Text="音量" Margin="10 0 2 0"/>
+                            <Slider Margin="0 0 5 0" Minimum="0" Maximum="1" Value="{Binding ElementName=vedio, Path=Volume, Mode=TwoWay}" Width="50" Height="18"/>
+                            <TextBlock Text="音道" Margin="10 0 2 0"/>
+                            <Slider Margin="0 0 5 0" Minimum="-1" Maximum="1" Value="{Binding ElementName=vedio, Path=Balance, Mode=TwoWay}" Width="50" Height="18"/>
+                        </StackPanel>
 
-                <MediaElement x:Name="vedio" Grid.Row="0" LoadedBehavior="Manual" Stretch="Uniform"  MaxHeight="300"
-                              Source="{Binding SongInfoEditItem.MVUrl}" />
-                <Button Grid.Row="1" Content="上传MV" HorizontalAlignment="Center" Height="30"
-                        Command="{Binding SongMVUpLoadCmd}"/>
-                <Button Grid.Row="2" Content="Open" Click="Button_Click"/>
+                    </Grid>
+                </Border>
+
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Orientation="Horizontal">
+                        <TextBlock Text="预览方式" VerticalAlignment="Center" Margin="5 5 0 5"/>
+                        <Controls:ToggleSwitch Margin="5"
+                                               IsChecked="False"  FontSize="13"
+                                               OffLabel="云端" OnLabel="本地"
+                                               IsCheckedChanged="PreviewType_IsCheckedChanged"
+                                               Style="{StaticResource MahApps.Metro.Styles.ToggleSwitch.Win10}" />
+                        <TextBlock Text="云端播放可能会出现卡顿，请耐心等待！"
+                                   Foreground="Black" Opacity="0.5" VerticalAlignment="Center" Margin="5 5 0 5"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Orientation="Horizontal">
+                        <TextBlock Text="本地路径" VerticalAlignment="Center" Margin="5 5 0 5"/>
+                        <TextBox MinWidth="200" Margin="5"
+                                 Text="{Binding SongLocationMVUrl}" IsEnabled="False"/>
+                        <Button Content="选择" Padding="20 0" HorizontalAlignment="Center" Margin="5"
+                                Command="{Binding SongMVUrlSelectCmd}"/>
+                        <Button Content="上传" Padding="20 0" HorizontalAlignment="Center" Margin="5"
+                                Command="{Binding SongMVUpLoadCmd}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2" Orientation="Horizontal">
+                        <TextBlock  Text="云端路径" VerticalAlignment="Center" Margin="5 5 0 5"/>
+                        <TextBox MinWidth="200" Margin="5" Text="{Binding SongInfoEditItem.MVUrl}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="3" Orientation="Horizontal">
+                        <TextBlock Text="原唱音道" VerticalAlignment="Center" Margin="5 5 0 5"/>
+                        <ComboBox MinWidth="200" Margin="5"
+                                  SelectedIndex="{Binding SongInfoEditItem.SingRail, Converter={StaticResource Srvtcsic}}">
+                            <ComboBoxItem Content="左"/>
+                            <ComboBoxItem Content="右"/>
+                        </ComboBox>
+                    </StackPanel>
+                    
+                </Grid>
             </Grid>
         </Border>
     </Grid>

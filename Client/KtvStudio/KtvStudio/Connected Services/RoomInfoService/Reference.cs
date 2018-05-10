@@ -267,6 +267,12 @@ namespace KtvStudio.RoomInfoService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoomInfoManagement/GetActionSource", ReplyAction="http://tempuri.org/IRoomInfoManagement/GetActionSourceResponse")]
         System.Threading.Tasks.Task<System.Data.DataTable> GetActionSourceAsync(string groupCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoomInfoManagement/AddRoomTaskRemark", ReplyAction="http://tempuri.org/IRoomInfoManagement/AddRoomTaskRemarkResponse")]
+        int AddRoomTaskRemark(string roomId, string remark, string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoomInfoManagement/AddRoomTaskRemark", ReplyAction="http://tempuri.org/IRoomInfoManagement/AddRoomTaskRemarkResponse")]
+        System.Threading.Tasks.Task<int> AddRoomTaskRemarkAsync(string roomId, string remark, string name);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -334,6 +340,14 @@ namespace KtvStudio.RoomInfoService {
         
         public System.Threading.Tasks.Task<System.Data.DataTable> GetActionSourceAsync(string groupCode) {
             return base.Channel.GetActionSourceAsync(groupCode);
+        }
+        
+        public int AddRoomTaskRemark(string roomId, string remark, string name) {
+            return base.Channel.AddRoomTaskRemark(roomId, remark, name);
+        }
+        
+        public System.Threading.Tasks.Task<int> AddRoomTaskRemarkAsync(string roomId, string remark, string name) {
+            return base.Channel.AddRoomTaskRemarkAsync(roomId, remark, name);
         }
     }
 }

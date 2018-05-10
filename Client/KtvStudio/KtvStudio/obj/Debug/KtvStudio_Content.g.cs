@@ -8,6 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("thirdparty/livecharts.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("thirdparty/livecharts.wpf.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("thirdparty/mahapps.metro.iconpacks.dll")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("configs/tablenamemap/tablenamemap.xml")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("imageresource/8001.jpg")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("imageresource/8002.jpg")]

@@ -53,14 +53,6 @@ namespace KtvStudio.Views
 
         #endregion
 
-        #region FilterType
-
-        public string singerNationality = string.Empty;
-        public string singerSex = string.Empty;
-        public string singerInitial = string.Empty;
-
-        #endregion
-
         public SongManageUc()
         {
             InitializeComponent();
@@ -68,6 +60,7 @@ namespace KtvStudio.Views
             DataContextChanged += delegate
             {
                 ClientViewModel = (ClientViewModel)DataContext;
+                AddNewSongButtonInGrid();
             };
         }
         
@@ -97,7 +90,7 @@ namespace KtvStudio.Views
                 type = (MusicTypeStyle.SelectedItem as TabItem).Header.ToString();
             ClientViewModel.CategorySourceDict.TryGetValue(type, out key);
             if(!string.IsNullOrEmpty(key))
-                ClientViewModel.SongInfoSource.DefaultView.RowFilter = $"category like '{key}' or " +
+                ClientViewModel.SongInfoFilter = $"category like '{key}' or " +
                     $" category like '{key},%' or " +
                     $" category like '%,{key},%' or " +
                     $" category like '%,{key}' ";
@@ -106,97 +99,135 @@ namespace KtvStudio.Views
         private void MusicSingerAreaTabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (sender == null) return;
-            singerNationality = string.Empty;
-            singerSex = string.Empty;
             TabControl tabControl = sender as TabControl;
             TabItem selectedItem = tabControl.SelectedItem as TabItem;
             if (selectedItem.Header.ToString().Contains("华语"))
-                singerNationality = "中国";
+                ClientViewModel.SongSingerInfoNationality = "中国";
             else if (selectedItem.Header.ToString().Contains("日本"))
-                singerNationality = "日本";
+                ClientViewModel.SongSingerInfoNationality = "日本";
             else if (selectedItem.Header.ToString().Contains("韩国"))
-                singerNationality = "韩国";
+                ClientViewModel.SongSingerInfoNationality = "韩国";
             else if (selectedItem.Header.ToString().Contains("欧美"))
-                singerNationality = "美国";
+                ClientViewModel.SongSingerInfoNationality = "美国";
             else if (selectedItem.Header.ToString().Contains("全部"))
             {
-                singerNationality = "全部";
-                singerSex = "0";
+                ClientViewModel.SongSingerInfoNationality = string.Empty;
+                ClientViewModel.SongSingerInfoSex = string.Empty;
             }
 
             if (selectedItem.Header.ToString().Contains("男"))
-                singerSex = "0";
+                ClientViewModel.SongSingerInfoSex = "0";
             else if (selectedItem.Header.ToString().Contains("女"))
-                singerSex = "1";
+                ClientViewModel.SongSingerInfoSex = "1";
             else if (selectedItem.Header.ToString().Contains("组合"))
-                singerSex = "2";
-
-            if (!string.IsNullOrEmpty(singerInitial)) {
-                if (singerInitial.Equals("热门") && singerNationality.Equals("全部"))
-                    ClientViewModel.SingerFilterSource = ClientViewModel.SongInfoManagementServiceCaller.GetSingerFilterSourceAllNationalityByRank();
-                else if (singerInitial.Equals("热门") && !singerNationality.Equals("全部"))
-                    ClientViewModel.SingerFilterSource = ClientViewModel.SongInfoManagementServiceCaller.GetSingerFilterSourceByRank(singerNationality, singerSex);
-                else if(!singerInitial.Equals("热门") && !singerNationality.Equals("全部"))
-                    ClientViewModel.SingerFilterSource = ClientViewModel.SongInfoManagementServiceCaller.GetSingerFilterSourceByInitial(singerNationality, singerSex, singerInitial);
-                else
-                    ClientViewModel.SingerFilterSource = ClientViewModel.SongInfoManagementServiceCaller.GetSingerFilterSourceAllNationalityByInitial(singerInitial);
-
-                AddSingerInfoFilter();
-            }
+                ClientViewModel.SongSingerInfoSex = "2";
         }
 
         private void MusicSingerNameTabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (sender == null) return;
-            singerInitial = string.Empty;
             TabControl tabControl = sender as TabControl;
             TabItem selectedItem = tabControl.SelectedItem as TabItem;
-            singerInitial = selectedItem.Header.ToString();
-
-            if (!string.IsNullOrEmpty(singerNationality) && !string.IsNullOrEmpty(singerSex))
-            {
-                if (singerInitial.Equals("热门") && singerNationality.Equals("全部"))
-                    ClientViewModel.SingerFilterSource = ClientViewModel.SongInfoManagementServiceCaller.GetSingerFilterSourceAllNationalityByRank();
-                else if (singerInitial.Equals("热门") && !singerNationality.Equals("全部"))
-                    ClientViewModel.SingerFilterSource = ClientViewModel.SongInfoManagementServiceCaller.GetSingerFilterSourceByRank(singerNationality, singerSex);
-                else if (!singerInitial.Equals("热门") && !singerNationality.Equals("全部"))
-                    ClientViewModel.SingerFilterSource = ClientViewModel.SongInfoManagementServiceCaller.GetSingerFilterSourceByInitial(singerNationality, singerSex, singerInitial);
-                else
-                    ClientViewModel.SingerFilterSource = ClientViewModel.SongInfoManagementServiceCaller.GetSingerFilterSourceAllNationalityByInitial(singerInitial);
-
-                AddSingerInfoFilter();
-            }
+            ClientViewModel.SongSingerInfoInitial = selectedItem.Header.ToString();
+            if (string.IsNullOrEmpty(ClientViewModel.SongSingerInfoInitial) || ClientViewModel.SongSingerInfoInitial.Equals("热门"))
+                ClientViewModel.SongSingerInfoInitial = string.Empty;
         }
 
         #region Method
 
-        public void AddSingerInfoFilter()
+        public void AddSingerInfo() {
+            ClientViewModel.AddSingerInfo(SingerInfoFilterWrapPanel);
+        }
+        
+        private void SongInfoDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            SingerInfoFilterWrapPanel.Children.Clear();
-            for (int i = 0; i < ClientViewModel.SingerFilterSource.Rows.Count; i++)
-            {
-                Button item = new Button();
-                item.Width = 100;
-                item.FontSize = 15;
-                item.BorderThickness = new Thickness(0);
-                item.Margin = new Thickness(50, 0, 50, 0);
-                item.Content = ClientViewModel.SingerFilterSource.Rows[i]["singername"].ToString();
-                item.Tag = ClientViewModel.SingerFilterSource.Rows[i]["id"].ToString();
-                item.Click += SingerMusicInfoItem_Click;
-                SingerInfoFilterWrapPanel.Children.Add(item);
-            }
+            ClientViewModel.OnSongInfoEdit();
         }
 
-        private void SingerMusicInfoItem_Click(object sender, RoutedEventArgs e)
-        {
-            Button item = sender as Button;
-            string singerid = item.Tag.ToString();
-            ClientViewModel.SongInfoSource.DefaultView.RowFilter = $"singerid = '{singerid}'";
-            ClientViewModel.SingerSelectedInfoVisibility = !ClientViewModel.SingerSelectedInfoVisibility;
-
-            ClientViewModel.SingerInfoSelectedSource = ClientViewModel.SongInfoManagementServiceCaller.GetSingerInfoById(singerid);
+        public void AddNewSongButtonInGrid() {
+            ClientViewModel.AddNewSongButtonInGrid(NewSongGrid);
         }
 
         #endregion
+
+        private void SongBasicTypeTabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (sender == null) return;
+            TabControl tabControl = sender as TabControl;
+            TabItem selectedItem = tabControl.SelectedItem as TabItem;
+            
+            if (!selectedItem.Header.Equals("歌 星") && ClientViewModel.SingerSelectedInfoVisibility)
+                ClientViewModel.SingerSelectedInfoVisibility = false;
+            else if (selectedItem.Header.Equals("歌 星") && !ClientViewModel.SingerSelectedInfoVisibility)
+                ClientViewModel.SingerSelectedInfoVisibility = true;
+            else if(selectedItem.Header.Equals("分 类"))
+            {
+                string key = string.Empty;
+                ClientViewModel.CategorySourceDict.TryGetValue("流行", out key);
+                if (!string.IsNullOrEmpty(key))
+                    ClientViewModel.SongInfoFilter = $"category like '{key}' or " +
+                        $" category like '{key},%' or " +
+                        $" category like '%,{key},%' or " +
+                        $" category like '%,{key}' ";
+            }
+            else if (selectedItem.Header.Equals("新 歌"))
+            {
+                DateTime date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+                ClientViewModel.SongInfoFilter = $"releasedate > ('{date}')";
+            }
+            //取消编辑状态
+            ClientViewModel.SongInfoEditVisibility = false;
+            ClientViewModel.songInfoEditUc.vedio.Close();
+        }
+
+        private void SongRankTabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (sender == null) return;
+            TabControl tabControl = sender as TabControl;
+            TabItem selectedItem = tabControl.SelectedItem as TabItem;
+
+            if (selectedItem.Header.Equals("华语榜"))
+            {
+                DateTime time = DateTime.Now.AddMonths(-100);//-6
+                ClientViewModel.SongInfoFilter = $"(languagetype = '0001' or languagetype = '0002') and releasedate > ('{time}')";
+                ClientViewModel.SongInfoSort = $"recordnumber desc";
+            }
+            else if (selectedItem.Header.Equals("情歌对唱"))
+            {
+                DateTime time = DateTime.Now.AddYears(-5);
+                string key = string.Empty;
+                ClientViewModel.CategorySourceDict.TryGetValue("情歌对唱", out key);
+                if (!string.IsNullOrEmpty(key))
+                    ClientViewModel.SongInfoFilter = $"category like '{key}' or " +
+                        $" category like '{key},%' or " +
+                        $" category like '%,{key},%' or " +
+                        $" category like '%,{key}' and releasedate > ('{time}')";
+                ClientViewModel.SongInfoSort = $"recordnumber desc";
+            }
+            else if (selectedItem.Header.Equals("影视金曲"))
+            {
+                DateTime time = DateTime.Now.AddMonths(-100);//-6
+                string key = string.Empty;
+                ClientViewModel.CategorySourceDict.TryGetValue("影视", out key);
+                if (!string.IsNullOrEmpty(key))
+                    ClientViewModel.SongInfoFilter = $"category like '{key}' or " +
+                        $" category like '{key},%' or " +
+                        $" category like '%,{key},%' or " +
+                        $" category like '%,{key}' and releasedate > ('{time}')";
+                ClientViewModel.SongInfoSort = $"recordnumber desc";
+            }
+            else if (selectedItem.Header.Equals("经典老歌"))
+            {
+                ClientViewModel.SongInfoFilter = $"";
+                ClientViewModel.SongInfoSort = $"recordnumber desc";
+            }
+            else if (selectedItem.Header.Equals("新歌榜"))
+            {
+                DateTime time = DateTime.Now.AddDays(-100);
+                ClientViewModel.SongInfoFilter = $"releasedate > ('{time}')";
+                ClientViewModel.SongInfoSort = $"recordnumber desc";
+            }
+        }
+
     }
 }

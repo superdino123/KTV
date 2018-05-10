@@ -3,7 +3,6 @@
   <xs:complexType name="SongInfo">
     <xs:sequence>
       <xs:element minOccurs="0" name="Category" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="DubbingUrl" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="LanguageType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MVUrl" nillable="true" type="xs:string" />
@@ -11,24 +10,23 @@
       <xs:element minOccurs="0" name="MusicNameInitials" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RecordNumber" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ReleaseDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SingRail" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SingerId" type="xs:int" />
       <xs:element minOccurs="0" name="SingerName" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="SongInfo" nillable="true" type="tns:SongInfo" />
-  <xs:complexType name="SingerInfo">
+  <xs:complexType name="ArrayOfSongRecord">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="SingerClickNum" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="SingerEnglishName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="SingerInitials" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="SingerIntroduce" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="SingerName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="SingerNationality" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="SingerOtherName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="SingerPhotoUrl" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="SingerSex" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SongRecord" nillable="true" type="tns:SongRecord" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="SingerInfo" nillable="true" type="tns:SingerInfo" />
+  <xs:element name="ArrayOfSongRecord" nillable="true" type="tns:ArrayOfSongRecord" />
+  <xs:complexType name="SongRecord">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClickNum" type="xs:int" />
+      <xs:element minOccurs="0" name="SongId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SongRecord" nillable="true" type="tns:SongRecord" />
 </xs:schema>

@@ -38,6 +38,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>ThirdParty\Fluent.dll</HintPath>
     </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ChartsTest\DLL\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ChartsTest\DLL\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="MahApps.Metro.IconPacks">
       <HintPath>ThirdParty\MahApps.Metro.IconPacks.dll</HintPath>
     </Reference>
@@ -91,13 +99,20 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CommonFields.cs" />
+    <Compile Include="Helpers\Converters\ConsumeMonthVisibilityConverter.cs" />
+    <Compile Include="Helpers\Converters\ConsumeYearVisibilityConverter.cs" />
     <Compile Include="Helpers\Converters\DateTimeNullToDefaultConverter.cs" />
     <Compile Include="Helpers\Converters\ImageUrlNullToDefaultConverter.cs" />
     <Compile Include="Helpers\Converters\LanguageTypeCodeToNameConverter.cs" />
+    <Compile Include="Helpers\Converters\RoomStateCodeToColorConverter.cs" />
     <Compile Include="Helpers\Converters\RoomStateCodeToNameConverter.cs" />
     <Compile Include="Helpers\Converters\RoomTypeNameToCodeConverter.cs" />
     <Compile Include="Helpers\Converters\SexNameToBoolConverter.cs" />
     <Compile Include="Helpers\Converters\SingerSexCodeToNameConverter.cs" />
+    <Compile Include="Helpers\Converters\SingerShowPageSizeToIndexConverter.cs" />
+    <Compile Include="Helpers\Converters\SingRailBalanceToLeftOrRightConverter.cs" />
+    <Compile Include="Helpers\Converters\SingRailValueToComboBoxSelectedIndexConverter.cs" />
+    <Compile Include="Helpers\Converters\StringDateTimeToMonthConverter.cs" />
     <Compile Include="Helpers\NotifyPropertyHelper.cs" />
     <Compile Include="Helpers\QiniuService\QiniuService.cs" />
     <Compile Include="Helpers\SimpleClock.cs" />
@@ -108,6 +123,9 @@
     <Compile Include="ViewModels\CategoryEditViewModel.cs" />
     <Compile Include="ViewModels\ClientViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Views\DataAnalysisManageUc.xaml.cs">
+      <DependentUpon>DataAnalysisManageUc.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\RoomInfoEditUc.xaml.cs">
       <DependentUpon>RoomInfoEditUc.xaml</DependentUpon>
     </Compile>
@@ -136,6 +154,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="SplashScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DataAnalysisManageUc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -207,6 +229,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\RoomTaskService\RoomTaskManagementImplementation.wsdl" />
+    <None Include="Connected Services\SingerInfoService\KtvStudio.SingerInfoService.SingerInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\SingerInfoService\MEX.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -220,9 +245,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\SingerInfoService\SingerInfoManagementImplementation.wsdl" />
-    <None Include="Connected Services\SongInfoService\KtvStudio.SongInfoService.SingerInfo.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Connected Services\SongInfoService\MEX.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -245,7 +267,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -267,6 +291,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ThirdParty\LiveCharts.dll" />
+    <Content Include="ThirdParty\LiveCharts.Wpf.dll" />
+    <Content Include="ThirdParty\MahApps.Metro.IconPacks.dll" />
     <Resource Include="Splash.png" />
     <None Include="Connected Services\RoomInfoService\configuration91.svcinfo" />
     <None Include="Connected Services\RoomInfoService\configuration.svcinfo" />

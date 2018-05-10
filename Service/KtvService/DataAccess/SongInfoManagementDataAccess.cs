@@ -12,24 +12,25 @@ namespace DataAccess
     public class SongInfoManagementDataAccess
     {
         public static string TABLENAME = "musicinfo";
-        public static string FIELDNAME = "musicname, singerid, singername, languagetype, category, recordnumber, mvurl, musicnameinitials, dubbingurl, releasedate";
+        public static string FIELDNAME = "musicname, singerid, singername, languagetype, category, recordnumber, mvurl, musicnameinitials, singrail, releasedate";
+        public static string INVERTFIELDNAME = "musicname, singerid, singername, languagetype, category, convert(int,recordnumber) recordnumber, mvurl, musicnameinitials, singrail, releasedate";
 
         public static int AddSongInfoDataAccess(SongInfo songInfo)
         {
             var sql = $"insert into {TABLENAME}({FIELDNAME})" +
-                $" values('{songInfo.MusicName}','{songInfo.SingerId}','{songInfo.SingerName}','{songInfo.LanguageType}','{songInfo.Category}','{songInfo.RecordNumber}','{songInfo.MVUrl}','{songInfo.MusicNameInitials}','{songInfo.DubbingUrl}','{songInfo.ReleaseDate}')";
+                $" values('{songInfo.MusicName}','{songInfo.SingerId}','{songInfo.SingerName}','{songInfo.LanguageType}','{songInfo.Category}','{songInfo.RecordNumber}','{songInfo.MVUrl}','{songInfo.MusicNameInitials}','{songInfo.SingRail}','{songInfo.ReleaseDate}')";
             return SqlServerHelper.ExecuteNonQuery(CommandType.Text, sql, 30, null);
         }
 
-        public static int DeleteSongInfoDataAccess(SongInfo songInfo)
+        public static int DeleteSongInfoDataAccess(string id)
         {
-            var sql = $"delete from {TABLENAME} where id = {songInfo.Id}";
+            var sql = $"delete from {TABLENAME} where id = {id}";
             return SqlServerHelper.ExecuteNonQuery(CommandType.Text, sql, 30, null);
         }
 
         public static DataTable GetAllSongInfoDataAccess()
         {
-            var sql = $"select id, {FIELDNAME} from {TABLENAME}";
+            var sql = $"select id, {INVERTFIELDNAME} from {TABLENAME}";
             return SqlServerHelper.GetDataFromKtvdb(sql);
         }
 
@@ -41,7 +42,7 @@ namespace DataAccess
 
         public static int UpdateSongeInfoDataAccess(SongInfo songInfo)
         {
-            var sql = $"update {TABLENAME} set musicname = '{songInfo.MusicName}', singerid = '{songInfo.SingerId}', singername = '{songInfo.SingerName}', languagetype = '{songInfo.LanguageType}',category = '{songInfo.Category}',recordnumber = '{songInfo.RecordNumber}',mvurl = '{songInfo.MVUrl}',musicnameinitials = '{songInfo.MusicNameInitials}',dubbingurl = '{songInfo.DubbingUrl}',releasedate = '{songInfo.ReleaseDate}' where id = {songInfo.Id}";
+            var sql = $"update {TABLENAME} set musicname = '{songInfo.MusicName}', singerid = '{songInfo.SingerId}', singername = '{songInfo.SingerName}', languagetype = '{songInfo.LanguageType}',category = '{songInfo.Category}',recordnumber = '{songInfo.RecordNumber}',mvurl = '{songInfo.MVUrl}',musicnameinitials = '{songInfo.MusicNameInitials}',singrail = '{songInfo.SingRail}',releasedate = '{songInfo.ReleaseDate}' where id = {songInfo.Id}";
             return SqlServerHelper.ExecuteNonQuery(CommandType.Text, sql, 30, null);
         }
 
@@ -55,47 +56,33 @@ namespace DataAccess
             return SqlServerHelper.GetDataFromKtvdb(sql);
         }
 
-        public static DataTable GetSingerFilterSourceByInitialDataAccess(string nationality, string sex, string initial)
+
+        #region MusicRecord
+
+        public static string MusicRecordTABLENAME = "musicrecord";
+        public static string MusicRecordFIELDNAME = "musicid, clicknum, clickdate";
+
+
+        public static int AddSongRecordDataAccess(List<SongRecord> records)
         {
-            var sql = $"select id, singername, singerphotourl from singerinfo where singernationality = '{nationality}' and singersex = '{sex}' and singerinitials like '{initial}%'";
+            int returnNum = 0;
+            DateTime clickDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            for (int i = 0; i < records.Count; i++)
+            {
+                var sql = $"insert into {MusicRecordTABLENAME}({MusicRecordFIELDNAME})" +
+                          $" values('{records[i].SongId}','{records[i].ClickNum}','{clickDate}')";
+                returnNum += SqlServerHelper.ExecuteNonQuery(CommandType.Text, sql, 30, null);
+            }
+            if (returnNum == records.Count) return 1;
+            return 0;
+        }
+
+        public static DataTable GetAllSongRecordDataAccess() {
+            var sql = $"select {MusicRecordTABLENAME}.musicid, clicknum, clickdate, musicname, singerid, singername, releasedate from {MusicRecordTABLENAME}, {TABLENAME} where {MusicRecordTABLENAME}.musicid = {TABLENAME}.id";
             return SqlServerHelper.GetDataFromKtvdb(sql);
         }
 
-        public static DataTable GetSingerFilterSourceByRankDataAccess(string nationality, string sex)
-        {
-            var sql = $"select id, singername, singerphotourl from singerinfo where singernationality = '{nationality}' and singersex = '{sex}' order by singerclicknum DESC";
-            return SqlServerHelper.GetDataFromKtvdb(sql);
-        }
-        
-        public static DataTable GetSingerFilterSourceAllNationalityByInitialDataAccess(string initial)
-        {
-            var sql = $"select id, singername, singerphotourl from singerinfo where singerinitials like '{initial}%'";
-            return SqlServerHelper.GetDataFromKtvdb(sql);
-        }
+        #endregion
 
-        public static DataTable GetSingerFilterSourceAllNationalityByRankDataAccess()
-        {
-            var sql = $"select id, singername, singerphotourl from singerinfo order by singerclicknum DESC";
-            return SqlServerHelper.GetDataFromKtvdb(sql);
-        }
-        
-        public static SingerInfo GetSingerInfoByIdDataAccess(string id)
-        {
-            var sql = $"select id,singername, singerenglishname,singerothername,singerinitials,singernationality,singerphotourl,singerclicknum,singersex,singerintroduce from singerinfo where id = '{id}'";
-            DataTable result = SqlServerHelper.GetDataFromKtvdb(sql);
-            DataRow row = result.Rows[0];
-            SingerInfo resultReturn = new SingerInfo();
-            resultReturn.Id = int.Parse(row["id"].ToString());
-            resultReturn.SingerName = row["singername"].ToString();
-            resultReturn.SingerEnglishName = row["singerenglishname"].ToString();
-            resultReturn.SingerOtherName = row["singerothername"].ToString();
-            resultReturn.SingerInitials = row["singerinitials"].ToString();
-            resultReturn.SingerNationality = row["singernationality"].ToString();
-            resultReturn.SingerPhotoUrl = row["singerphotourl"].ToString();
-            resultReturn.SingerClickNum = row["singerclicknum"].ToString();
-            resultReturn.SingerSex = row["singersex"].ToString();
-            resultReturn.SingerIntroduce = row["singerintroduce"].ToString();
-            return resultReturn;
-        }
     }
 }

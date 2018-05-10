@@ -48,7 +48,7 @@ namespace DataHelper
         }
 
         /// <summary>
-        /// 增删改操作使用此方法（需要一个存在的连接）
+        /// 增删改操作使用此方法（需要一个存在的连接)
         /// </summary> 
         /// <param name="commandType">命令类型（sql或者存储过程）</param>
         /// <param name="commandText">sql语句或者存储过程名称</param>
@@ -76,6 +76,46 @@ namespace DataHelper
                 cmd.Parameters.Clear();
                 return val;
             }  
+        }
+
+        #region 分页查询
+
+        /// <summary>
+        /// 执行分页查询多条语句
+        /// </summary>
+        /// <param name="cmdText"></param>
+        /// <param name="timeOut"></param>
+        /// <returns></returns>
+        public static DataTable ExecuteNonQuerys(string[] cmdText, int timeOut)
+        {
+            using (var connection = ConnectionHelper.GetSqlConnection())
+            {
+                connection.Open();
+                var trans = connection.BeginTransaction();
+                try
+                {
+                    //创建临时表
+                    ExecuteNonQuery(trans, CommandType.Text, cmdText[0], timeOut, null);
+                    //查询结果
+                    DataTable result = GetDataFromKtvdb(trans, CommandType.Text, cmdText[1], timeOut, null);
+                    //删除临时表
+                    ExecuteNonQuery(trans, CommandType.Text, cmdText[2], timeOut, null);
+                    
+                    trans.Commit();
+                    return result;
+                }
+                catch (Exception ex)
+                {
+                    trans.Rollback();
+                    LogHelper.LogError($"分页查询数据库失败", ex);
+                    return null;
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+
         }
 
         /// <summary>
@@ -106,6 +146,29 @@ namespace DataHelper
             cmd.Parameters.Clear();
             return val;
         }
+
+        /// <summary>
+        /// 在KTVDB库执行Sql, 事务内执行SQL返回查询结果
+        /// </summary>
+        /// <param name="strSql"></param>
+        /// <returns></returns>
+        public static DataTable GetDataFromKtvdb(SqlTransaction trans, CommandType cmdType, string cmdText, int timeOut, params SqlParameter[] commandParameters)
+        {
+            // 创建一个SqlCommand
+            SqlCommand cmd = new SqlCommand();
+            //调用静态方法PrepareCommand完成赋值操作
+            PrepareCommand(cmd, trans.Connection, trans, cmdType, cmdText, timeOut, commandParameters);
+
+            var ds = new DataSet();
+            using (var dataAdapter = new SqlDataAdapter(cmd))
+            {
+                dataAdapter.Fill(ds);
+            }
+
+            return ds.Tables.Count > 0 ? ds.Tables[0] : null;
+        }
+
+        #endregion
 
         /// <summary>
         /// 一个静态的预处理函数

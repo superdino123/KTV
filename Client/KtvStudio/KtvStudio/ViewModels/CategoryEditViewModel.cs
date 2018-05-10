@@ -1,11 +1,15 @@
 ﻿using Helpers.Commands;
+using KtvStudio.Views;
+using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace KtvStudio.ViewModels
 {
@@ -25,6 +29,7 @@ namespace KtvStudio.ViewModels
                 if (_SelectedCategorySource != null && _SelectedCategorySource.Equals(value)) return;
                 _SelectedCategorySource = value;
                 RaisePropertyChanged("SelectedCategorySource");
+                songInfoEditUc.AddSelectedCategory();
             }
         }
 
@@ -48,13 +53,13 @@ namespace KtvStudio.ViewModels
 
         #endregion
 
+        public SongInfoEditUc songInfoEditUc;
+
         #region SelectedCategory
 
         public string selectedCategoryId;
         public string selectedCategoryName;
-
-        public DataRow selectedDataGridCategory;
-
+        
         #endregion
 
         #endregion
@@ -85,10 +90,19 @@ namespace KtvStudio.ViewModels
 
         public void OnAddCategory()
         {
+            if (string.IsNullOrEmpty(selectedCategoryId) || string.IsNullOrEmpty(selectedCategoryName) ||
+                (ClientViewModel.SongInfoEditItem.Category != null && 
+                    (ClientViewModel.SongInfoEditItem.Category.Equals(selectedCategoryId) ||
+                    ClientViewModel.SongInfoEditItem.Category.StartsWith(selectedCategoryId + ",") ||
+                    ClientViewModel.SongInfoEditItem.Category.EndsWith("," + selectedCategoryId) ||
+                    ClientViewModel.SongInfoEditItem.Category.Contains("," + selectedCategoryId + ","))
+                ))
+                return;
             DataRow row = SelectedCategorySource.NewRow();
             row["id"] = selectedCategoryId;
             row["categoryname"] = selectedCategoryName;
             SelectedCategorySource.Rows.Add(row);
+            songInfoEditUc.AddSelectedCategory();
 
             if (string.IsNullOrEmpty(ClientViewModel.SongInfoEditItem.Category))
                 ClientViewModel.SongInfoEditItem.Category = selectedCategoryId;
@@ -103,38 +117,6 @@ namespace KtvStudio.ViewModels
 
         #endregion
         
-        #region DeleteCategoryCmd
-
-        private RelayCommand _DeleteCategoryCmd;
-
-        public ICommand DeleteCategoryCmd
-        {
-            get { return _DeleteCategoryCmd ?? (_DeleteCategoryCmd = new RelayCommand(param => OnDeleteCategory(), param => CanDeleteCategory())); }
-        }
-
-        public void OnDeleteCategory()
-        {
-            string code = selectedDataGridCategory["id"].ToString();
-            for (int i = 0; i < SelectedCategorySource.Rows.Count; i++)
-            {
-                if (SelectedCategorySource.Rows[i]["id"].Equals(code)) {
-                    if (ClientViewModel.SongInfoEditItem.Category.Equals(SelectedCategorySource.Rows[i]["id"]))
-                        ClientViewModel.SongInfoEditItem.Category = string.Empty;
-                    else
-                        ClientViewModel.SongInfoEditItem.Category = ClientViewModel.SongInfoEditItem.Category.Replace($",{SelectedCategorySource.Rows[i]["id"]}", "").Replace($"{SelectedCategorySource.Rows[i]["id"]}", "");
-                    SelectedCategorySource.Rows.RemoveAt(i);
-                    break;
-                }
-            }
-        }
-
-        public bool CanDeleteCategory()
-        {
-            return true;
-        }
-
-        #endregion
-
         #endregion
 
         #region Method
@@ -143,7 +125,7 @@ namespace KtvStudio.ViewModels
             DataTable result = new DataTable();
             result.Columns.Add("id");
             result.Columns.Add("categoryname");
-            if (ClientViewModel.SongInfoEditItem.Category == null)
+            if (ClientViewModel.SongInfoEditItem.Category == null || string.IsNullOrEmpty(ClientViewModel.SongInfoEditItem.Category))
                 return result;
 
             string code = ClientViewModel.SongInfoEditItem.Category;
@@ -168,6 +150,41 @@ namespace KtvStudio.ViewModels
                 }
             }
             return result;
+        }
+
+        public void AddSelectedCategory(MetroTabControl tabControl)
+        {
+            tabControl.Items.Clear();
+            for (int i = 0; i < SelectedCategorySource.Rows.Count; i++)
+            {
+                MetroTabItem item = new MetroTabItem() {
+                    CloseButtonEnabled = true,
+                    Header = SelectedCategorySource.Rows[i]["categoryname"].ToString(),
+                    Tag = SelectedCategorySource.Rows[i]["id"].ToString(),
+                    Padding = new Thickness(20, 3, 20, 3),
+                    BorderThickness = new Thickness(1),
+                    BorderBrush = new SolidColorBrush(Colors.DeepSkyBlue),
+
+                };
+                ControlsHelper.SetHeaderFontSize(item, 14.0);
+                  
+                tabControl.Items.Add(item);
+            }
+        }
+
+        public void DeleteSelectedCategory(string categoryId)
+        {
+            for (int i = 0; i < SelectedCategorySource.Rows.Count; i++)
+            {
+                if (SelectedCategorySource.Rows[i]["id"].Equals(categoryId)) {
+                    if (ClientViewModel.SongInfoEditItem.Category.Equals(SelectedCategorySource.Rows[i]["id"]))
+                        ClientViewModel.SongInfoEditItem.Category = string.Empty;
+                    else
+                        ClientViewModel.SongInfoEditItem.Category = ClientViewModel.SongInfoEditItem.Category.Replace($",{SelectedCategorySource.Rows[i]["id"]}", "").Replace($"{SelectedCategorySource.Rows[i]["id"]}", "");
+                    SelectedCategorySource.Rows.RemoveAt(i);
+                    break;
+                }
+            }
         }
 
         #endregion

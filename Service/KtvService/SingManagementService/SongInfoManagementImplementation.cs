@@ -17,9 +17,14 @@ namespace SingManagementService
             return SongInfoManagementDataAccess.AddSongInfoDataAccess(songInfo);
         }
 
-        public int DeleteSongInfo(SongInfo songInfo)
+        public int AddSongRecord(List<SongRecord> records)
         {
-            return SongInfoManagementDataAccess.DeleteSongInfoDataAccess(songInfo);
+            return SongInfoManagementDataAccess.AddSongRecordDataAccess(records);
+        }
+
+        public int DeleteSongInfo(string id)
+        {
+            return SongInfoManagementDataAccess.DeleteSongInfoDataAccess(id);
         }
 
         public DataTable GetAllCategorySource()
@@ -31,35 +36,15 @@ namespace SingManagementService
         {
             return SongInfoManagementDataAccess.GetAllSongInfoDataAccess();
         }
-        
+
+        public DataTable GetAllSongRecord()
+        {
+            return SongInfoManagementDataAccess.GetAllSongRecordDataAccess();
+        }
+
         public DataTable GetCategorySourceByFatherId(string fatherId)
         {
             return SongInfoManagementDataAccess.GetCategorySourceByFatherIdDataAccess(fatherId);
-        }
-
-        public DataTable GetSingerFilterSourceAllNationalityByInitial(string initial)
-        {
-            return SongInfoManagementDataAccess.GetSingerFilterSourceAllNationalityByInitialDataAccess(initial);
-        }
-
-        public DataTable GetSingerFilterSourceAllNationalityByRank()
-        {
-            return SongInfoManagementDataAccess.GetSingerFilterSourceAllNationalityByRankDataAccess();
-        }
-
-        public DataTable GetSingerFilterSourceByInitial(string nationality, string sex, string initial)
-        {
-            return SongInfoManagementDataAccess.GetSingerFilterSourceByInitialDataAccess(nationality, sex, initial);
-        }
-
-        public DataTable GetSingerFilterSourceByRank(string nationality, string sex)
-        {
-            return SongInfoManagementDataAccess.GetSingerFilterSourceByRankDataAccess(nationality, sex);
-        }
-
-        public SingerInfo GetSingerInfoById(string id)
-        {
-            return SongInfoManagementDataAccess.GetSingerInfoByIdDataAccess(id);
         }
 
         public DataTable GetSongInfoBySingerId(string singerId)

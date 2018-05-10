@@ -26,5 +26,8 @@ namespace RoomInfoManagementInterface
         
         [OperationContract]
         DataTable GetActionSource(string groupCode);
+
+        [OperationContract]
+        int AddRoomTaskRemark(string roomId, string remark, string name);
     }
 }

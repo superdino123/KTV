@@ -342,6 +342,12 @@ namespace KtvStudio.RoomTaskService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoomTaskManagement/GetRoomPriceSource", ReplyAction="http://tempuri.org/IRoomTaskManagement/GetRoomPriceSourceResponse")]
         System.Threading.Tasks.Task<System.Data.DataTable> GetRoomPriceSourceAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoomTaskManagement/GetConsumeLog", ReplyAction="http://tempuri.org/IRoomTaskManagement/GetConsumeLogResponse")]
+        System.Data.DataTable GetConsumeLog();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoomTaskManagement/GetConsumeLog", ReplyAction="http://tempuri.org/IRoomTaskManagement/GetConsumeLogResponse")]
+        System.Threading.Tasks.Task<System.Data.DataTable> GetConsumeLogAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -449,6 +455,14 @@ namespace KtvStudio.RoomTaskService {
         
         public System.Threading.Tasks.Task<System.Data.DataTable> GetRoomPriceSourceAsync() {
             return base.Channel.GetRoomPriceSourceAsync();
+        }
+        
+        public System.Data.DataTable GetConsumeLog() {
+            return base.Channel.GetConsumeLog();
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> GetConsumeLogAsync() {
+            return base.Channel.GetConsumeLogAsync();
         }
     }
 }

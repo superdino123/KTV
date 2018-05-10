@@ -61,5 +61,10 @@ namespace RoomInfoManagementService
         {
             return RoomTaskManagementDataAccess.GetCustomerIdByIdCardDataAccess(customerIdCard);
         }
+
+        public DataTable GetConsumeLog()
+        {
+            return RoomTaskManagementDataAccess.GetConsumeLogDataAccess();
+        }
     }
 }

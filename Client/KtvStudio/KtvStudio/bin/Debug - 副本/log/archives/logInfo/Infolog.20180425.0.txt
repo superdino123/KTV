@@ -1,0 +1,12 @@
+2018-04-25 13:19:55 786|Info
+   |stacktrace = <>c__DisplayClass2.<.ctor>b__0 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"hash":"lpP38c0RkeRfAdzfxUeZM_itx7J3","key":"演员-薛之谦.mpg"}
+
+2018-04-25 14:17:41 745|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"hash":"Fr5T8L2MNmTzVglcKcF6QJRvqh4W","key":"薛之谦-0-中国"}
+
+2018-04-25 14:19:26 607|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"hash":"Fr5T8L2MNmTzVglcKcF6QJRvqh4W","key":"薛之谦-0-中国"}
+

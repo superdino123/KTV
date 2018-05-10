@@ -1,0 +1,184 @@
+﻿<UserControl x:Class="KtvStudio.Views.DataAnalysisManageUc"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:KtvStudio.Views"
+             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             xmlns:converters="clr-namespace:KtvStudio.Helpers.Converters"
+             xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:clientControlsBehaviours="clr-namespace:ClientControls.Behaviours;assembly=ClientControls"   
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <converters:ConsumeYearVisibilityConverter x:Key="Cyvc"/>
+        <converters:ConsumeMonthVisibilityConverter x:Key="Cmvc"/>
+    </UserControl.Resources>
+    <Grid>
+        <TabControl SelectedIndex="{Binding DataAnalysisSelectedIndex}" Visibility="Collapsed">
+            <TabItem x:Name="Index" Header="封面"/>
+            <TabItem x:Name="MoneyManage" Header="营业额"/>
+            <TabItem x:Name="RoomTimeManage" Header="包间使用率"/>
+            <TabItem x:Name="SongHotManage" Header="歌曲热度"/>
+        </TabControl>
+
+        <Image Source="{StaticResource dataAnalysisIndex}" Margin="150"
+               Visibility="{Binding ElementName=Index, Path=IsSelected, Converter={StaticResource bool2VisibilityConverter}}"/>
+
+        <!-- 营业额 -->
+        <Grid Visibility="{Binding ElementName=MoneyManage, Path=IsSelected, Converter={StaticResource bool2VisibilityConverter}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Margin="20" Orientation="Horizontal">
+                <TextBlock Text="时间范围" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                <ComboBox SelectedIndex="{Binding ConsumeTimeSpanType}" Margin="10 0 50 0">
+                    <ComboBoxItem Content="近十年"/>
+                    <ComboBoxItem Content="某一年"/>
+                    <ComboBoxItem Content="某一月"/>
+                </ComboBox>
+                <controls:NumericUpDown Width="100"
+                                    VerticalAlignment="Center"
+                                    ButtonsAlignment="Left"
+                                    Maximum="2300"
+                                    Minimum="1900"
+                                    Value="{Binding ConsumeYearValue}"
+                                    Visibility="{Binding ConsumeTimeSpanType, Converter={StaticResource Cyvc}}"/>
+                <TextBlock Text="年" VerticalAlignment="Center" Margin="10 0 30 0"
+                       Visibility="{Binding ConsumeTimeSpanType, Converter={StaticResource Cyvc}}"/>
+                <controls:NumericUpDown Width="100"
+                                    VerticalAlignment="Center"
+                                    ButtonsAlignment="Left"
+                                    Maximum="12"
+                                    Minimum="1"
+                                    Value="{Binding ConsumeMonthValue}"
+                                    Visibility="{Binding ConsumeTimeSpanType, Converter={StaticResource Cmvc}}"/>
+                <TextBlock Text="月" VerticalAlignment="Center" Margin="10 0 30 0"
+                       Visibility="{Binding ConsumeTimeSpanType, Converter={StaticResource Cmvc}}"/>
+                <Button Content="刷新" Command="{Binding TurnOverCmd}" Padding="20 0" FontSize="13"/>
+            </StackPanel>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <lvc:CartesianChart Grid.Row="0" Series="{Binding ConsumeSeriesCollection}" LegendLocation="Right" >
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis Title="Sales" LabelFormatter="{Binding ConsumeYFormatter}"></lvc:Axis>
+                    </lvc:CartesianChart.AxisY>
+                    <lvc:CartesianChart.AxisX>
+                        <lvc:Axis Title="Month" Labels="{Binding ConsumeLabels}"></lvc:Axis>
+                    </lvc:CartesianChart.AxisX>
+                </lvc:CartesianChart>
+                <lvc:PieChart Grid.Row="1" Series="{Binding ConsumeRoomTypeSeriesCollection}" 
+                      LegendLocation="Right" InnerRadius="100" Margin="0 15">
+                    <lvc:PieChart.ChartLegend>
+                        <lvc:DefaultLegend BulletSize="20"></lvc:DefaultLegend>
+                    </lvc:PieChart.ChartLegend>
+                    <lvc:PieChart.DataTooltip>
+                        <lvc:DefaultTooltip BulletSize="20"></lvc:DefaultTooltip>
+                    </lvc:PieChart.DataTooltip>
+                </lvc:PieChart>
+            </Grid>
+        </Grid>
+
+        <!-- 包间使用率 -->
+        <Grid Visibility="{Binding ElementName=RoomTimeManage, Path=IsSelected, Converter={StaticResource bool2VisibilityConverter}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Margin="20" Orientation="Horizontal">
+                <TextBlock Text="时间范围" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                <ComboBox SelectedIndex="{Binding ConsumeTimeSpanType}" Margin="10 0 50 0">
+                    <ComboBoxItem Content="近十年"/>
+                    <ComboBoxItem Content="某一年"/>
+                    <ComboBoxItem Content="某一月"/>
+                </ComboBox>
+                <controls:NumericUpDown Width="100"
+                                    VerticalAlignment="Center"
+                                    ButtonsAlignment="Left"
+                                    Maximum="2300"
+                                    Minimum="1900"
+                                    Value="{Binding ConsumeYearValue}"
+                                    Visibility="{Binding ConsumeTimeSpanType, Converter={StaticResource Cyvc}}"/>
+                <TextBlock Text="年" VerticalAlignment="Center" Margin="10 0 30 0"
+                       Visibility="{Binding ConsumeTimeSpanType, Converter={StaticResource Cyvc}}"/>
+                <controls:NumericUpDown Width="100"
+                                    VerticalAlignment="Center"
+                                    ButtonsAlignment="Left"
+                                    Maximum="12"
+                                    Minimum="1"
+                                    Value="{Binding ConsumeMonthValue}"
+                                    Visibility="{Binding ConsumeTimeSpanType, Converter={StaticResource Cmvc}}"/>
+                <TextBlock Text="月" VerticalAlignment="Center" Margin="10 0 30 0"
+                       Visibility="{Binding ConsumeTimeSpanType, Converter={StaticResource Cmvc}}"/>
+                <Button Content="刷新" Command="{Binding RoomUseRateCmd}" Padding="20 0" FontSize="13"/>
+            </StackPanel>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <lvc:CartesianChart Grid.Row="0" Series="{Binding RoomTimeSeriesCollection}" LegendLocation="Right" >
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis Title="Sales" LabelFormatter="{Binding RoomTimeYFormatter}"></lvc:Axis>
+                    </lvc:CartesianChart.AxisY>
+                    <lvc:CartesianChart.AxisX>
+                        <lvc:Axis Title="Month" Labels="{Binding RoomTimeLabels}"></lvc:Axis>
+                    </lvc:CartesianChart.AxisX>
+                </lvc:CartesianChart>
+            </Grid>
+        </Grid>
+
+        <!-- 歌曲热度 -->
+        <Grid Visibility="{Binding ElementName=SongHotManage, Path=IsSelected, Converter={StaticResource bool2VisibilityConverter}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Margin="20" Orientation="Horizontal">
+                <TextBlock Text="发行时间限制" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                <DatePicker Width="150" Margin="10 0 0 0"
+                            SelectedDate="{Binding MinReleaseDate}"/>
+                <TextBlock Text="内" VerticalAlignment="Center" Margin="10 0 50 0"/>
+
+                <TextBlock Text="点唱人数限制" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                <controls:NumericUpDown Width="100"
+                                        VerticalAlignment="Center"
+                                        ButtonsAlignment="Left"
+                                        Minimum="0"
+                                        Margin="10 0 0 0"
+                                        Value="{Binding MinRecordNumber}"/>
+                <TextBlock Text="以上" VerticalAlignment="Center" Margin="10 0 50 0"/>
+
+                <TextBlock Text="半衰期" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                <controls:NumericUpDown Width="100"
+                                        VerticalAlignment="Center"
+                                        ButtonsAlignment="Left"
+                                        Minimum="1"
+                                        Margin="10 0 0 0"
+                                        Value="{Binding HalfLifeValue}"/>
+                <TextBlock Text="天" VerticalAlignment="Center" Margin="10 0 50 0"/>
+                <Button Content="刷新" Command="{Binding NewSongHotCmd}" Padding="20 0" FontSize="13"/>
+            </StackPanel>
+            <DataGrid Grid.Row="1"
+                      ItemsSource="{Binding SongRecordTempResultSource}"
+                      IsReadOnly="True"
+                      AutoGenerateColumns="False"
+                      RowHeaderWidth="20"
+                      HeadersVisibility="All"
+                      Margin="5 0"
+                      clientControlsBehaviours:DataGridBehavior.DisplayRowNumber="True"
+                      Style="{DynamicResource AzureDataGrid}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="歌曲名称" Binding="{Binding musicname}" Width="200"/>
+                    <DataGridTextColumn Header="歌手姓名" Binding="{Binding singername}" Width="200"/>
+                    <DataGridTextColumn Header="热度得分" Binding="{Binding hotnumber, StringFormat='{}{0:N2}'}" Width="200"/>
+                    <DataGridTextColumn Header="点击量" Binding="{Binding clicknum}" Width="200"/>
+                    <DataGridTextColumn Header="发行日期" Binding="{Binding releasedate}" Width="200"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Grid>
+</UserControl>

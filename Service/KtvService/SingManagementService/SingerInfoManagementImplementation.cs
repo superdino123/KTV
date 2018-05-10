@@ -17,9 +17,9 @@ namespace SingManagementService
             return SingerInfoManagementDataAccess.AddSingerInfoDataAccess(singerInfo);
         }
 
-        public int DeleteSingerInfo(SingerInfo singerInfo)
+        public int DeleteSingerInfo(string singerId)
         {
-            return SingerInfoManagementDataAccess.DeleteSingerInfoDataAccess(singerInfo);
+            return SingerInfoManagementDataAccess.DeleteSingerInfoDataAccess(singerId);
         }
 
         public DataTable GetAllSingerInfo()
@@ -35,6 +35,21 @@ namespace SingManagementService
         public int UpdateSingerInfo(SingerInfo singerInfo)
         {
             return SingerInfoManagementDataAccess.UpdateSingerInfoDataAccess(singerInfo);
+        }
+
+        public SingerInfo GetSingerInfoById(string id)
+        {
+            return SingerInfoManagementDataAccess.GetSingerInfoByIdDataAccess(id);
+        }
+
+        public DataTable GetSingerInfoPaging( string nationality, string sex, string initial)
+        {
+            return SingerInfoManagementDataAccess.GetSingerInfoPagingDataAccess(nationality, sex, initial);
+        }
+
+        public DataTable GetNationalityInfoSource()
+        {
+            return SingerInfoManagementDataAccess.GetNationalityInfoSourceDataAccess();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿<UserControl x:Class="KtvStudio.Views.SongManageUc"
+﻿<UserControl xmlns:fluent="urn:fluent-ribbon"
+             x:Class="KtvStudio.Views.SongManageUc"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -9,12 +10,16 @@
              xmlns:clientControlsBehaviours="clr-namespace:ClientControls.Behaviours;assembly=ClientControls"
              xmlns:converters="clr-namespace:Helpers.Converters;assembly=Helpers"
              xmlns:converters1="clr-namespace:KtvStudio.Helpers.Converters"
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
         <converters:BooleanInvertVisibilityConverter x:Key="Bivc"/>
         <converters1:LanguageTypeCodeToNameConverter x:Key="Ltctnc"/>
         <BooleanToVisibilityConverter x:Key="Btvc"/>
+        <converters1:SingerShowPageSizeToIndexConverter x:Key="Sspstic"/>
+        <converters1:SingRailBalanceToLeftOrRightConverter x:Key="Sbtlorc"/>
+        <converters1:StringDateTimeToMonthConverter x:Key="Sdttmc"/>
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -22,7 +27,8 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Controls:MetroAnimatedTabControl Grid.Column="0" Controls:TabControlHelper.Underlined="TabPanel"
-                                          TabStripPlacement="Left">
+                                          TabStripPlacement="Left"
+                                          SelectionChanged="SongBasicTypeTabControl_SelectionChanged">
             <TabItem x:Name="MusicSingerTabItem" Header="歌 星" Padding="10 20" Controls:ControlsHelper.HeaderFontSize="18"/>
             <Controls:MetroTabItem x:Name="MusicTypeTabItem" Header="分 类" Padding="10 20" Controls:ControlsHelper.HeaderFontSize="18"/>
             <Controls:MetroTabItem x:Name="MusicRankTabItem" Header="排 行" Padding="10 20" Controls:ControlsHelper.HeaderFontSize="18"/>
@@ -34,13 +40,13 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
-                <!-- 筛选条件 -->
-                <!-- 歌手 -->
+                <!-- 歌手选择界面 -->
                 <Grid Visibility="{Binding ElementName=MusicSingerTabItem, Path=IsSelected, Converter={StaticResource Btvc}}">
                     <Grid Visibility="{Binding SingerSelectedInfoVisibility, Converter={StaticResource Btvc}}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Controls:MetroAnimatedTabControl Grid.Row="0"
@@ -95,44 +101,284 @@
                             <Controls:MetroTabItem Header="Y" Padding="3 0" Controls:ControlsHelper.HeaderFontSize="15"/>
                             <Controls:MetroTabItem Header="Z" Padding="3 0" Controls:ControlsHelper.HeaderFontSize="15"/>
                         </Controls:MetroAnimatedTabControl>
-                        <WrapPanel Grid.Row="2" Margin="5 0 0 5" x:Name="SingerInfoFilterWrapPanel"/>
+                        <ScrollViewer Grid.Row="2" Margin="5 0 0 5" x:Name="SingerInfoFilterScrollViewer" Width="1300" Height="610" HorizontalScrollBarVisibility="Disabled"  VerticalScrollBarVisibility="Auto">
+                            <WrapPanel x:Name="SingerInfoFilterWrapPanel" Width="{Binding ElementName=SingerInfoFilterScrollViewer, Path=Width, Mode=OneWay}"/>
+                        </ScrollViewer>
+                        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0 5" HorizontalAlignment="Center">
+                            <TextBlock Text="每页显示" Margin="5 3 5 0" FontSize="15"/>
+                            <ComboBox SelectedIndex="{Binding SongSingerInfoShowPageSize, Converter={StaticResource Sspstic}}">
+                                <ComboBoxItem Content="20"/>
+                                <ComboBoxItem Content="50"/>
+                                <ComboBoxItem Content="200"/>
+                            </ComboBox>
+                            <TextBlock Text="个" Margin="5 3 50 0" FontSize="15"/>
+                            <fluent:Button Margin="5 0 0 0" Height="22" Command="{Binding SongSingerShowLeftIndexCmd}">
+                                <fluent:Button.LargeIcon>
+                                    <iconPacks:PackIconMaterial Kind="ArrowLeftDropCircleOutline" Width="20" Height="20" HorizontalAlignment="Center"/>
+                                </fluent:Button.LargeIcon>
+                            </fluent:Button>
+                            <TextBlock Text="{Binding SongSingerInfoShowSelectIndex, StringFormat='{}第{0}页'}" Margin="0 5 0 0" FontSize="15"/>
+                            <fluent:Button Margin="0 0 50 0" Height="22" Command="{Binding SongSingerShowRightIndexCmd}">
+                                <fluent:Button.LargeIcon>
+                                    <iconPacks:PackIconMaterial Kind="ArrowRightDropCircleOutline" Width="20" Height="20" HorizontalAlignment="Center"/>
+                                </fluent:Button.LargeIcon>
+                            </fluent:Button>
+                            <TextBlock Text="共" Margin="5 5 0 0" FontSize="15"/>
+                            <TextBlock Text="{Binding SongSingerInfoShowSelectLastIndex, StringFormat='{}{0}页'}" Margin="0 5 15 0" FontSize="15"/>
+                            <TextBlock Text="跳转至" Margin="50 3 0 0" FontSize="15"/>
+                            <TextBox Text="{Binding SongSingerInfoShowGoToIndex}" Margin="5 0" Padding="20 0" FontSize="15"/>
+                            <TextBlock Text="页" Margin="0 3 0 0" FontSize="15"/>
+                            <fluent:Button Margin="5 0" Height="22" Command="{Binding SongSingerShowGoToIndexCmd}">
+                                <fluent:Button.LargeIcon>
+                                    <iconPacks:PackIconMaterial Kind="KeyboardReturn" Width="20" Height="20" HorizontalAlignment="Center"/>
+                                </fluent:Button.LargeIcon>
+                            </fluent:Button>
+                        </StackPanel>
                     </Grid>
-                    <Grid Visibility="{Binding SingerSelectedInfoVisibility, Converter={StaticResource Bivc}}">
-                        <Grid Visibility="{Binding SongInfoEditVisibility, Converter={StaticResource Bivc}}">
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid Visibility="{Binding SingerSelectedInfoVisibility, Converter={StaticResource Bivc}}">
+                    <Grid Visibility="{Binding SongInfoEditVisibility, Converter={StaticResource Bivc}}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <!-- 歌手基本信息 -->
+                        <Grid Grid.Row="0" Margin="5" Visibility="{Binding ElementName=MusicSingerTabItem, Path=IsSelected, Converter={StaticResource Btvc}}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
-                            <!-- 歌手基本信息 -->
-                            <Grid Grid.Row="0" Margin="5">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Row="0" Grid.RowSpan="5" Grid.Column="0" 
+                                       Margin="0 0 10 10" Height="100" Source="{Binding SingerInfoSelectedSource.SingerPhotoUrl}"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="歌手:" Margin="0 5 0 0" FontWeight="Black" FontSize="13"/>
+                            <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding SingerInfoSelectedSource.SingerName}" Margin="0 5 0 0" FontWeight="Black" FontSize="13"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="外文名:  "/>
+                            <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding SingerInfoSelectedSource.SingerEnglishName}"/>
+                            <TextBlock Grid.Row="2" Grid.Column="1" Text="别名:"/>
+                            <TextBlock Grid.Row="2" Grid.Column="2" Text="{Binding SingerInfoSelectedSource.SingerOtherName}"/>
+                            <TextBlock Grid.Row="3" Grid.Column="1" Text="国籍:"/>
+                            <TextBlock Grid.Row="3" Grid.Column="2" Text="{Binding SingerInfoSelectedSource.SingerNationality}"/>
+                            <TextBlock Grid.Row="0" Grid.Column="3" Text="简介:" Margin="30 5 0 0"/>
+                            <ScrollViewer Grid.Row="1" Grid.RowSpan="3" Grid.Column="3" Margin="30 0 0 0" MaxWidth="1000" Height="60" VerticalAlignment="Top">
+                                <TextBlock Text="{Binding SingerInfoSelectedSource.SingerIntroduce}" TextWrapping="Wrap"/>
+                            </ScrollViewer>
+                        </Grid>
+                        <!-- 分类 -->
+                        <Controls:MetroAnimatedTabControl Grid.Row="0" Margin="5"
+                                                          Controls:TabControlHelper.Underlined="SelectedTabItem"
+                                                          TabStripPlacement="Top"
+                                                          SelectionChanged="MusicTypeTabControl_SelectionChanged"
+                                                          Visibility="{Binding ElementName=MusicTypeTabItem, Path=IsSelected, Converter={StaticResource Btvc}}">
+                            <TabItem Header="音乐风格" Padding="20 0" Controls:ControlsHelper.HeaderFontSize="15">
+                                <TabControl x:Name="MusicTypeStyle"
+                                            Controls:TabControlHelper.Underlined="None"
+                                            TabStripPlacement="Top">
+                                    <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="流行"/>
+                                    <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="摇滚"/>
+                                    <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="民谣"/>
+                                    <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="说唱"/>
+                                    <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="乡村"/>
+                                    <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="民族"/>
+                                    <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="爵士"/>
+                                    <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="DJ舞曲"/>
+                                    <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="戏曲"/>
+                                    <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="舞曲"/>
+                                </TabControl>
+                            </TabItem>
+                            <Controls:MetroTabItem Header="主 题" Padding="20 0" Controls:ControlsHelper.HeaderFontSize="15">
+                                <TabControl x:Name="MusicTypeTopic"
+                                            Controls:TabControlHelper.Underlined="None"
+                                            TabStripPlacement="Top">
+                                    <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="军旅"/>
+                                    <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="校园"/>
+                                    <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="影视"/>
+                                    <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="中国好声音"/>
+                                    <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="主旋律"/>
+                                    <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="情歌对唱"/>
+                                    <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="生日"/>
+                                    <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="革命"/>
+                                    <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="儿歌"/>
+                                    <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="民歌"/>
+                                    <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="祝福"/>
+                                    <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="新春"/>
+                                    <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="纯音乐"/>
+                                    <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="春晚"/>
+                                </TabControl>
+                            </Controls:MetroTabItem>
+                            <Controls:MetroTabItem Header="心 情" Padding="20 0" Controls:ControlsHelper.HeaderFontSize="15">
+                                <TabControl x:Name="MusicTypeMood"
+                                    Controls:TabControlHelper.Underlined="None"
+                                    TabStripPlacement="Top">
+                                    <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="烦躁"/>
+                                    <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="寂寞"/>
+                                    <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="励志"/>
+                                    <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="怀念"/>
+                                    <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="开心"/>
+                                    <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="激昂"/>
+                                    <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="思恋"/>
+                                    <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="安静"/>
+                                    <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="伤感"/>
+                                    <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="甜蜜"/>
+                                    <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="欢快"/>
+                                </TabControl>
+                            </Controls:MetroTabItem>
+                        </Controls:MetroAnimatedTabControl>
+                        <!-- 排行 -->
+                        <Grid Grid.Row="0" Margin="5" Visibility="{Binding ElementName=MusicRankTabItem, Path=IsSelected, Converter={StaticResource Btvc}}">
+                            <Controls:MetroAnimatedTabControl Controls:TabControlHelper.Underlined="SelectedTabItem"
+                                                              TabStripPlacement="Top"
+                                                              SelectionChanged="SongRankTabControl_SelectionChanged">
+                                <TabItem Header="华语榜" Padding="20 0" Controls:ControlsHelper.HeaderFontSize="15">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Row="0" Grid.Column="0" Margin="5 5 0 5" Text="更新频率："/>
+                                        <TextBlock Grid.Row="0" Grid.Column="1" Margin="5 5 0 5" Text="周榜"/>
+                                        <TextBlock Grid.Row="0" Grid.Column="2" Margin="5 5 0 5" Text="统计范围："/>
+                                        <TextBlock Grid.Row="0" Grid.Column="3" Margin="5 5 0 5" Text="6个月内发行的国语，粤语歌曲"/>
+                                        <TextBlock Grid.Row="1" Grid.Column="0" Margin="5 5 0 5" Text="统计数量："/>
+                                        <TextBlock Grid.Row="1" Grid.Column="1" Margin="5 5 0 5" Text="100首"/>
+                                        <TextBlock Grid.Row="1" Grid.Column="2" Margin="5 5 0 5" Text="统计方式："/>
+                                        <TextBlock Grid.Row="1" Grid.Column="3" Margin="5 5 0 5" Text="初始分数+用户分数-时间分数"/>
+                                    </Grid>
+                                </TabItem>
+                                <Controls:MetroTabItem Header="情歌对唱" Padding="20 0" Controls:ControlsHelper.HeaderFontSize="15">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Row="0" Grid.Column="0" Margin="5 5 0 5" Text="更新频率："/>
+                                        <TextBlock Grid.Row="0" Grid.Column="1" Margin="5 5 0 5" Text="周榜"/>
+                                        <TextBlock Grid.Row="0" Grid.Column="2" Margin="5 5 0 5" Text="统计范围："/>
+                                        <TextBlock Grid.Row="0" Grid.Column="3" Margin="5 5 0 5" Text="五年内发行的对唱情歌"/>
+                                        <TextBlock Grid.Row="1" Grid.Column="0" Margin="5 5 0 5" Text="统计数量："/>
+                                        <TextBlock Grid.Row="1" Grid.Column="1" Margin="5 5 0 5" Text="100首"/>
+                                        <TextBlock Grid.Row="1" Grid.Column="2" Margin="5 5 0 5" Text="统计方式："/>
+                                        <TextBlock Grid.Row="1" Grid.Column="3" Margin="5 5 0 5" Text="初始分数+用户分数-时间分数"/>
+                                    </Grid>
+                                </Controls:MetroTabItem>
+                                <Controls:MetroTabItem Header="影视金曲" Padding="20 0" Controls:ControlsHelper.HeaderFontSize="15">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Row="0" Grid.Column="0" Margin="5 5 0 5" Text="更新频率："/>
+                                        <TextBlock Grid.Row="0" Grid.Column="1" Margin="5 5 0 5" Text="周榜"/>
+                                        <TextBlock Grid.Row="0" Grid.Column="2" Margin="5 5 0 5" Text="统计范围："/>
+                                        <TextBlock Grid.Row="0" Grid.Column="3" Margin="5 5 0 5" Text="6个月内发行的影视歌曲"/>
+                                        <TextBlock Grid.Row="1" Grid.Column="0" Margin="5 5 0 5" Text="统计数量："/>
+                                        <TextBlock Grid.Row="1" Grid.Column="1" Margin="5 5 0 5" Text="100首"/>
+                                        <TextBlock Grid.Row="1" Grid.Column="2" Margin="5 5 0 5" Text="统计方式："/>
+                                        <TextBlock Grid.Row="1" Grid.Column="3" Margin="5 5 0 5" Text="初始分数+用户分数-时间分数"/>
+                                    </Grid>
+                                </Controls:MetroTabItem>
+                                <Controls:MetroTabItem Header="经典老歌" Padding="20 0" Controls:ControlsHelper.HeaderFontSize="15">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Row="0" Grid.Column="0" Margin="5 5 0 5" Text="更新频率："/>
+                                        <TextBlock Grid.Row="0" Grid.Column="1" Margin="5 5 0 5" Text="周榜"/>
+                                        <TextBlock Grid.Row="0" Grid.Column="2" Margin="5 5 0 5" Text="统计范围："/>
+                                        <TextBlock Grid.Row="0" Grid.Column="3" Margin="5 5 0 5" Text="所有歌曲"/>
+                                        <TextBlock Grid.Row="1" Grid.Column="0" Margin="5 5 0 5" Text="统计数量："/>
+                                        <TextBlock Grid.Row="1" Grid.Column="1" Margin="5 5 0 5" Text="100首"/>
+                                        <TextBlock Grid.Row="1" Grid.Column="2" Margin="5 5 0 5" Text="统计方式："/>
+                                        <TextBlock Grid.Row="1" Grid.Column="3" Margin="5 5 0 5" Text="初始分数+用户分数-时间分数"/>
+                                    </Grid>
+                                </Controls:MetroTabItem>
+                                <Controls:MetroTabItem Header="新歌榜" Padding="20 0" Controls:ControlsHelper.HeaderFontSize="15">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Row="0" Grid.Column="0" Margin="5 5 0 5" Text="更新频率："/>
+                                        <TextBlock Grid.Row="0" Grid.Column="1" Margin="5 5 0 5" Text="日榜"/>
+                                        <TextBlock Grid.Row="0" Grid.Column="2" Margin="5 5 0 5" Text="统计范围："/>
+                                        <TextBlock Grid.Row="0" Grid.Column="3" Margin="5 5 0 5" Text="100天内发行的新歌"/>
+                                        <TextBlock Grid.Row="1" Grid.Column="0" Margin="5 5 0 5" Text="统计数量："/>
+                                        <TextBlock Grid.Row="1" Grid.Column="1" Margin="5 5 0 5" Text="100首"/>
+                                        <TextBlock Grid.Row="1" Grid.Column="2" Margin="5 5 0 5" Text="统计方式："/>
+                                        <TextBlock Grid.Row="1" Grid.Column="3" Margin="5 5 0 5" Text="初始分数+用户分数-时间分数"/>
+                                    </Grid>
+                                </Controls:MetroTabItem>
+                            </Controls:MetroAnimatedTabControl>
+                        </Grid>
+                        <!-- 新歌 -->
+                        <Grid Grid.Row="0" Margin="5" Visibility="{Binding ElementName=MusicNewTabItem, Path=IsSelected, Converter={StaticResource Btvc}}">
+                            <Grid Margin="5" x:Name="NewSongGrid" HorizontalAlignment="Center">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-                                <Image Grid.Row="0" Grid.RowSpan="5" Grid.Column="0" 
-                                       Margin="0 0 10 10" Height="100" Source="{Binding SingerInfoSelectedSource.SingerPhotoUrl}"/>
-                                <TextBlock Grid.Row="0" Grid.Column="1" Text="歌手:" Margin="0 5 0 0" FontWeight="Black" FontSize="13"/>
-                                <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding SingerInfoSelectedSource.SingerName}" Margin="0 5 0 0" FontWeight="Black" FontSize="13"/>
-                                <TextBlock Grid.Row="1" Grid.Column="1" Text="外文名:  "/>
-                                <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding SingerInfoSelectedSource.SingerEnglishName}"/>
-                                <TextBlock Grid.Row="2" Grid.Column="1" Text="别名:"/>
-                                <TextBlock Grid.Row="2" Grid.Column="2" Text="{Binding SingerInfoSelectedSource.SingerOtherName}"/>
-                                <TextBlock Grid.Row="3" Grid.Column="1" Text="国籍:"/>
-                                <TextBlock Grid.Row="3" Grid.Column="2" Text="{Binding SingerInfoSelectedSource.SingerNationality}"/>
-                                <TextBlock Grid.Row="0" Grid.Column="3" Text="简介:" Margin="30 5 0 0"/>
-                                <TextBlock Grid.Row="1" Grid.RowSpan="4" Grid.Column="3" Text="{Binding SingerInfoSelectedSource.SingerIntroduce}"/>
                             </Grid>
-                            <!-- 音乐列表 -->
-                            <DataGrid Grid.Row="1"
+                        </Grid>
+                        <!-- 音乐列表 -->
+                        <DataGrid Grid.Row="1"
                                       ItemsSource="{Binding SongInfoSource}"
                                       IsReadOnly="True"
                                       AutoGenerateColumns="False"
@@ -140,83 +386,23 @@
                                       HeadersVisibility="All"
                                       Margin="5 0"
                                       clientControlsBehaviours:DataGridBehavior.DisplayRowNumber="True"
-                                      SelectionChanged="SongInfoDataGrid_SelectionChanged">
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn Header="歌曲名称" Binding="{Binding musicname}" Width="100"/>
-                                    <DataGridTextColumn Header="歌手姓名" Binding="{Binding singername}" Width="100"/>
-                                    <DataGridTextColumn Header="语言种类" Binding="{Binding languagetype, Converter={StaticResource Ltctnc}}" Width="100"/>
-                                    <DataGridTextColumn Header="歌曲热度" Binding="{Binding recordnumber}" Width="200"/>
-                                    <DataGridTextColumn Header="视频路径" Binding="{Binding mvurl}" Width="300"/>
-                                    <DataGridTextColumn Header="配音路径" Binding="{Binding dubbingurl}" Width="200"/>
-                                </DataGrid.Columns>
-                            </DataGrid>
-                        </Grid>
-                        <!-- 编辑界面 -->
-                        <views:SongInfoEditUc Visibility="{Binding SongInfoEditVisibility, Converter={StaticResource Btvc}}"/>
+                                      SelectionChanged="SongInfoDataGrid_SelectionChanged"
+                                      MouseDoubleClick="SongInfoDataGrid_MouseDoubleClick"
+                                      Height="576">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="歌曲名称" Binding="{Binding musicname}" Width="100"/>
+                                <DataGridTextColumn Header="歌手姓名" Binding="{Binding singername}" Width="100"/>
+                                <DataGridTextColumn Header="语言种类" Binding="{Binding languagetype, Converter={StaticResource Ltctnc}}" Width="100"/>
+                                <DataGridTextColumn Header="歌曲热度" Binding="{Binding recordnumber}" Width="100"/>
+                                <DataGridTextColumn Header="视频路径" Binding="{Binding mvurl}" Width="350"/>
+                                <DataGridTextColumn Header="原唱音道" Binding="{Binding singrail, Converter={StaticResource Sbtlorc}}" Width="100"/>
+                                <DataGridTextColumn Header="发行日期" Binding="{Binding releasedate, StringFormat={}{0:yyyy-MM-dd}}" Width="200"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
                     </Grid>
+                    <!-- 编辑界面 -->
+                    <views:SongInfoEditUc Visibility="{Binding SongInfoEditVisibility, Converter={StaticResource Btvc}}"/>
                 </Grid>
-                <!-- 分类 -->
-                <Controls:MetroAnimatedTabControl Controls:TabControlHelper.Underlined="SelectedTabItem"
-                                                  TabStripPlacement="Top"
-                                                  SelectionChanged="MusicTypeTabControl_SelectionChanged"
-                                                  Visibility="{Binding ElementName=MusicTypeTabItem, Path=IsSelected, Converter={StaticResource Btvc}}">
-                    <TabItem Header="主 题" Padding="20 0" Controls:ControlsHelper.HeaderFontSize="15">
-                        <TabControl x:Name="MusicTypeTopic"
-                                    Controls:TabControlHelper.Underlined="None"
-                                    TabStripPlacement="Top">
-                            <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="军旅"/>
-                            <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="校园"/>
-                            <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="影视"/>
-                            <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="中国好声音"/>
-                            <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="主旋律"/>
-                            <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="情歌对唱"/>
-                            <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="生日"/>
-                            <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="革命"/>
-                            <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="儿歌"/>
-                            <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="民歌"/>
-                            <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="祝福"/>
-                            <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="新春"/>
-                            <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="纯音乐"/>
-                            <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="春晚"/>
-                        </TabControl>
-                    </TabItem>
-                    <Controls:MetroTabItem Header="心 情" Padding="20 0" Controls:ControlsHelper.HeaderFontSize="15">
-                        <TabControl x:Name="MusicTypeMood"
-                                    Controls:TabControlHelper.Underlined="None"
-                                    TabStripPlacement="Top">
-                            <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="烦躁"/>
-                            <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="寂寞"/>
-                            <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="励志"/>
-                            <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="怀念"/>
-                            <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="开心"/>
-                            <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="激昂"/>
-                            <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="思恋"/>
-                            <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="安静"/>
-                            <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="伤感"/>
-                            <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="甜蜜"/>
-                            <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="欢快"/>
-                        </TabControl>
-                    </Controls:MetroTabItem>
-                    <Controls:MetroTabItem Header="音乐风格" Padding="20 0" Controls:ControlsHelper.HeaderFontSize="15">
-                        <TabControl x:Name="MusicTypeStyle"
-                                    Controls:TabControlHelper.Underlined="None"
-                                    TabStripPlacement="Top">
-                            <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="流行"/>
-                            <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="摇滚"/>
-                            <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="民谣"/>
-                            <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="说唱"/>
-                            <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="乡村"/>
-                            <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="民族"/>
-                            <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="爵士"/>
-                            <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="DJ舞曲"/>
-                            <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="戏曲"/>
-                            <TabItem Controls:ControlsHelper.HeaderFontSize="15" Header="舞曲"/>
-                        </TabControl>
-                    </Controls:MetroTabItem>
-                </Controls:MetroAnimatedTabControl>
-            </Grid>
-            <Grid Grid.Row="1">
-                
             </Grid>
             
         </Grid>

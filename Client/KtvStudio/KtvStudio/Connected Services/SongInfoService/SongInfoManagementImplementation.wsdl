@@ -362,7 +362,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_ISongInfoManagement_GetSingerFilterSourceByInitial_Input_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_ISongInfoManagement_AddSongRecord_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -381,7 +381,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_ISongInfoManagement_GetSingerFilterSourceByInitial_output_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_ISongInfoManagement_AddSongRecord_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -400,7 +400,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_ISongInfoManagement_GetSingerFilterSourceByRank_Input_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_ISongInfoManagement_GetAllSongRecord_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -419,121 +419,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_ISongInfoManagement_GetSingerFilterSourceByRank_output_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_ISongInfoManagement_GetSingerFilterSourceAllNationalityByInitial_Input_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_ISongInfoManagement_GetSingerFilterSourceAllNationalityByInitial_output_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_ISongInfoManagement_GetSingerFilterSourceAllNationalityByRank_Input_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_ISongInfoManagement_GetSingerFilterSourceAllNationalityByRank_output_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_ISongInfoManagement_GetSingerInfoById_Input_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_ISongInfoManagement_GetSingerInfoById_output_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_ISongInfoManagement_GetAllSongRecord_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -602,35 +488,17 @@
   <wsdl:message name="ISongInfoManagement_GetCategorySourceByFatherId_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetCategorySourceByFatherIdResponse" />
   </wsdl:message>
-  <wsdl:message name="ISongInfoManagement_GetSingerFilterSourceByInitial_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetSingerFilterSourceByInitial" />
+  <wsdl:message name="ISongInfoManagement_AddSongRecord_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddSongRecord" />
   </wsdl:message>
-  <wsdl:message name="ISongInfoManagement_GetSingerFilterSourceByInitial_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetSingerFilterSourceByInitialResponse" />
+  <wsdl:message name="ISongInfoManagement_AddSongRecord_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddSongRecordResponse" />
   </wsdl:message>
-  <wsdl:message name="ISongInfoManagement_GetSingerFilterSourceByRank_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetSingerFilterSourceByRank" />
+  <wsdl:message name="ISongInfoManagement_GetAllSongRecord_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSongRecord" />
   </wsdl:message>
-  <wsdl:message name="ISongInfoManagement_GetSingerFilterSourceByRank_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetSingerFilterSourceByRankResponse" />
-  </wsdl:message>
-  <wsdl:message name="ISongInfoManagement_GetSingerFilterSourceAllNationalityByInitial_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetSingerFilterSourceAllNationalityByInitial" />
-  </wsdl:message>
-  <wsdl:message name="ISongInfoManagement_GetSingerFilterSourceAllNationalityByInitial_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetSingerFilterSourceAllNationalityByInitialResponse" />
-  </wsdl:message>
-  <wsdl:message name="ISongInfoManagement_GetSingerFilterSourceAllNationalityByRank_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetSingerFilterSourceAllNationalityByRank" />
-  </wsdl:message>
-  <wsdl:message name="ISongInfoManagement_GetSingerFilterSourceAllNationalityByRank_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetSingerFilterSourceAllNationalityByRankResponse" />
-  </wsdl:message>
-  <wsdl:message name="ISongInfoManagement_GetSingerInfoById_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetSingerInfoById" />
-  </wsdl:message>
-  <wsdl:message name="ISongInfoManagement_GetSingerInfoById_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetSingerInfoByIdResponse" />
+  <wsdl:message name="ISongInfoManagement_GetAllSongRecord_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSongRecordResponse" />
   </wsdl:message>
   <wsdl:portType name="ISongInfoManagement">
     <wsdl:operation name="GetAllSongInfo">
@@ -661,25 +529,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ISongInfoManagement/GetCategorySourceByFatherId" message="tns:ISongInfoManagement_GetCategorySourceByFatherId_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISongInfoManagement/GetCategorySourceByFatherIdResponse" message="tns:ISongInfoManagement_GetCategorySourceByFatherId_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetSingerFilterSourceByInitial">
-      <wsdl:input wsaw:Action="http://tempuri.org/ISongInfoManagement/GetSingerFilterSourceByInitial" message="tns:ISongInfoManagement_GetSingerFilterSourceByInitial_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ISongInfoManagement/GetSingerFilterSourceByInitialResponse" message="tns:ISongInfoManagement_GetSingerFilterSourceByInitial_OutputMessage" />
+    <wsdl:operation name="AddSongRecord">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISongInfoManagement/AddSongRecord" message="tns:ISongInfoManagement_AddSongRecord_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISongInfoManagement/AddSongRecordResponse" message="tns:ISongInfoManagement_AddSongRecord_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetSingerFilterSourceByRank">
-      <wsdl:input wsaw:Action="http://tempuri.org/ISongInfoManagement/GetSingerFilterSourceByRank" message="tns:ISongInfoManagement_GetSingerFilterSourceByRank_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ISongInfoManagement/GetSingerFilterSourceByRankResponse" message="tns:ISongInfoManagement_GetSingerFilterSourceByRank_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetSingerFilterSourceAllNationalityByInitial">
-      <wsdl:input wsaw:Action="http://tempuri.org/ISongInfoManagement/GetSingerFilterSourceAllNationalityByInitial" message="tns:ISongInfoManagement_GetSingerFilterSourceAllNationalityByInitial_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ISongInfoManagement/GetSingerFilterSourceAllNationalityByInitialResponse" message="tns:ISongInfoManagement_GetSingerFilterSourceAllNationalityByInitial_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetSingerFilterSourceAllNationalityByRank">
-      <wsdl:input wsaw:Action="http://tempuri.org/ISongInfoManagement/GetSingerFilterSourceAllNationalityByRank" message="tns:ISongInfoManagement_GetSingerFilterSourceAllNationalityByRank_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ISongInfoManagement/GetSingerFilterSourceAllNationalityByRankResponse" message="tns:ISongInfoManagement_GetSingerFilterSourceAllNationalityByRank_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetSingerInfoById">
-      <wsdl:input wsaw:Action="http://tempuri.org/ISongInfoManagement/GetSingerInfoById" message="tns:ISongInfoManagement_GetSingerInfoById_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ISongInfoManagement/GetSingerInfoByIdResponse" message="tns:ISongInfoManagement_GetSingerInfoById_OutputMessage" />
+    <wsdl:operation name="GetAllSongRecord">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISongInfoManagement/GetAllSongRecord" message="tns:ISongInfoManagement_GetAllSongRecord_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISongInfoManagement/GetAllSongRecordResponse" message="tns:ISongInfoManagement_GetAllSongRecord_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_ISongInfoManagement" type="tns:ISongInfoManagement">
@@ -762,58 +618,25 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetSingerFilterSourceByInitial">
-      <soap12:operation soapAction="http://tempuri.org/ISongInfoManagement/GetSingerFilterSourceByInitial" style="document" />
+    <wsdl:operation name="AddSongRecord">
+      <soap12:operation soapAction="http://tempuri.org/ISongInfoManagement/AddSongRecord" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_ISongInfoManagement_GetSingerFilterSourceByInitial_Input_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_ISongInfoManagement_AddSongRecord_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_ISongInfoManagement_GetSingerFilterSourceByInitial_output_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_ISongInfoManagement_AddSongRecord_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetSingerFilterSourceByRank">
-      <soap12:operation soapAction="http://tempuri.org/ISongInfoManagement/GetSingerFilterSourceByRank" style="document" />
+    <wsdl:operation name="GetAllSongRecord">
+      <soap12:operation soapAction="http://tempuri.org/ISongInfoManagement/GetAllSongRecord" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_ISongInfoManagement_GetSingerFilterSourceByRank_Input_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_ISongInfoManagement_GetAllSongRecord_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_ISongInfoManagement_GetSingerFilterSourceByRank_output_policy" />
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetSingerFilterSourceAllNationalityByInitial">
-      <soap12:operation soapAction="http://tempuri.org/ISongInfoManagement/GetSingerFilterSourceAllNationalityByInitial" style="document" />
-      <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_ISongInfoManagement_GetSingerFilterSourceAllNationalityByInitial_Input_policy" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_ISongInfoManagement_GetSingerFilterSourceAllNationalityByInitial_output_policy" />
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetSingerFilterSourceAllNationalityByRank">
-      <soap12:operation soapAction="http://tempuri.org/ISongInfoManagement/GetSingerFilterSourceAllNationalityByRank" style="document" />
-      <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_ISongInfoManagement_GetSingerFilterSourceAllNationalityByRank_Input_policy" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_ISongInfoManagement_GetSingerFilterSourceAllNationalityByRank_output_policy" />
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetSingerInfoById">
-      <soap12:operation soapAction="http://tempuri.org/ISongInfoManagement/GetSingerInfoById" style="document" />
-      <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_ISongInfoManagement_GetSingerInfoById_Input_policy" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_ISongInfoManagement_GetSingerInfoById_output_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_ISongInfoManagement_GetAllSongRecord_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
