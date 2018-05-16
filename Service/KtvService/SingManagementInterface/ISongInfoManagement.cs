@@ -40,5 +40,8 @@ namespace SingManagementInterface
         [OperationContract]
         DataTable GetAllSongRecord();
 
+        [OperationContract]
+        int UpdateNewSongRank(Dictionary<string, double> newRank);
+
     }
 }

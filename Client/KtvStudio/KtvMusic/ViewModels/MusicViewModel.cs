@@ -4,6 +4,7 @@ using KtvMusic.Views;
 using MahApps.Metro.IconPacks;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Globalization;
 using System.Linq;
@@ -74,7 +75,7 @@ namespace KtvMusic.ViewModels
         #endregion
         
         /// <summary>
-        /// 程序关闭后提交所有被点歌曲的点击量<songId, >
+        /// 程序关闭后提交所有被点歌曲的点击量<songId, clicknum>
         /// </summary>
         public Dictionary<string, int> TempSongRecordNumberDict = new Dictionary<string, int>();
 
@@ -1571,6 +1572,24 @@ namespace KtvMusic.ViewModels
 
         #endregion
 
+        #region MinClickDate
+
+        private DateTime _MinClickDate = new DateTime(2013, 11, 11);
+
+        public DateTime MinClickDate
+        {
+            get { return _MinClickDate; }
+            set
+            {
+                if (_MinClickDate != null && _MinClickDate.Equals(value)) return;
+                _MinClickDate = value;
+                RaisePropertyChanged("MinClickDate");
+            }
+        }
+
+        #endregion
+
+
         #endregion
 
         #region Command
@@ -1770,44 +1789,101 @@ namespace KtvMusic.ViewModels
         public void GetRankFilter(string rankName) {
             if (rankName.Equals("华语榜"))
             {
-                DateTime time = DateTime.Now.AddMonths(-100);//-6
-                SongInfoFilter = $"(languagetype = '0001' or languagetype = '0002') and releasedate > ('{time}')";
-                SongInfoSort = $"recordnumber desc";
+                /*
+                 * 华语榜排序规则
+                 * 1.按热度字段排序
+                 * 2.去掉非国语和粤语类别的
+                 * 3.最多选取100首
+                 */
+                SongInfoSort = $"newsonghot desc";
+                SongInfoFilter = $"languagetype in ('0001', '0002')";
+                if (MusicInfoSource.DefaultView.Count != 0)
+                    if (MusicInfoSource.DefaultView.Count <= 100)
+                        SongInfoFilter = $"newsonghot >= {MusicInfoSource.DefaultView[MusicInfoSource.DefaultView.Count - 1]["newsonghot"].ToString()} and {SongInfoFilter}";
+                    else
+                        SongInfoFilter = $"newsonghot >= {MusicInfoSource.DefaultView[99]["newsonghot"].ToString()} and {SongInfoFilter}";
             }
             else if (rankName.Equals("情歌对唱"))
             {
-                DateTime time = DateTime.Now.AddYears(-5);
+                /*
+                 * 情歌对唱排序规则
+                 * 1.按热度字段排序
+                 * 2.去掉非情歌对唱类别的
+                 * 3.最多选取100首
+                 */
+                SongInfoSort = $"newsonghot desc";
                 string key = string.Empty;
                 CategorySourceDict.TryGetValue("情歌对唱", out key);
                 if (!string.IsNullOrEmpty(key))
-                    SongInfoFilter = $"category like '{key}' or " +
-                        $" category like '{key},%' or " +
-                        $" category like '%,{key},%' or " +
-                        $" category like '%,{key}' and releasedate > ('{time}')";
-                SongInfoSort = $"recordnumber desc";
+                {
+                    string categoryFilter = $" category like '{key}' or " +
+                                            $" category like '{key},%' or " +
+                                            $" category like '%,{key},%' or " +
+                                            $" category like '%,{key}' ";
+                    SongInfoFilter = categoryFilter;
+                    if (MusicInfoSource.DefaultView.Count != 0)
+                        if (MusicInfoSource.DefaultView.Count <= 100)
+                            SongInfoFilter = $"newsonghot >= {MusicInfoSource.DefaultView[MusicInfoSource.DefaultView.Count - 1]["newsonghot"].ToString()} and {categoryFilter}";
+                        else
+                            SongInfoFilter = $"newsonghot >= {MusicInfoSource.DefaultView[99]["newsonghot"].ToString()} and {categoryFilter}";
+                }
             }
             else if (rankName.Equals("影视金曲"))
             {
-                DateTime time = DateTime.Now.AddMonths(-100);//-6
+                /*
+                 * 影视金曲排序规则
+                 * 1.按热度字段排序
+                 * 2.去掉非影视金曲类别的
+                 * 3.最多选取100首
+                 */
+                SongInfoSort = $"newsonghot desc";
                 string key = string.Empty;
                 CategorySourceDict.TryGetValue("影视", out key);
                 if (!string.IsNullOrEmpty(key))
-                    SongInfoFilter = $"category like '{key}' or " +
-                        $" category like '{key},%' or " +
-                        $" category like '%,{key},%' or " +
-                        $" category like '%,{key}' and releasedate > ('{time}')";
-                SongInfoSort = $"recordnumber desc";
+                {
+                    string categoryFilter = $" category like '{key}' or " +
+                                            $" category like '{key},%' or " +
+                                            $" category like '%,{key},%' or " +
+                                            $" category like '%,{key}' ";
+                    SongInfoFilter = categoryFilter;
+                    if (MusicInfoSource.DefaultView.Count != 0)
+                        if (MusicInfoSource.DefaultView.Count <= 100)
+                            SongInfoFilter = $"newsonghot >= {MusicInfoSource.DefaultView[MusicInfoSource.DefaultView.Count - 1]["newsonghot"].ToString()} and {categoryFilter}";
+                        else
+                            SongInfoFilter = $"newsonghot >= {MusicInfoSource.DefaultView[99]["newsonghot"].ToString()} and {categoryFilter}";
+                }
             }
             else if (rankName.Equals("经典老歌"))
             {
-                SongInfoFilter = $"";
-                SongInfoSort = $"recordnumber desc";
+                /*
+                 * 经典老歌排序规则
+                 * 1.按热度字段排序
+                 * 2.去掉发行日期晚于新老歌分割日期的
+                 * 3.最多选取100首
+                 */
+                SongInfoSort = $"newsonghot desc";
+                SongInfoFilter = $"releasedate < '{MinClickDate}'";
+                if (MusicInfoSource.DefaultView.Count != 0)
+                    if (MusicInfoSource.DefaultView.Count <= 100)
+                        SongInfoFilter = $"newsonghot >= {MusicInfoSource.DefaultView[MusicInfoSource.DefaultView.Count - 1]["newsonghot"].ToString()} and releasedate < '{MinClickDate}'";
+                    else
+                        SongInfoFilter = $"newsonghot >= {MusicInfoSource.DefaultView[99]["newsonghot"].ToString()} and releasedate < '{MinClickDate}'";
             }
             else if (rankName.Equals("新歌榜"))
             {
-                DateTime time = DateTime.Now.AddDays(-100);
-                SongInfoFilter = $"releasedate > ('{time}')";
-                SongInfoSort = $"recordnumber desc";
+                /*
+                 * 新歌榜排序规则
+                 * 1.按热度字段排序
+                 * 2.去掉发行日期早于新老歌分割日期的
+                 * 3.最多选取100首
+                 */
+                SongInfoSort = $"newsonghot desc";
+                SongInfoFilter = $"releasedate >= '{MinClickDate}'";
+                if (MusicInfoSource.DefaultView.Count != 0)
+                    if (MusicInfoSource.DefaultView.Count <= 100)
+                        SongInfoFilter = $"newsonghot >= {MusicInfoSource.DefaultView[MusicInfoSource.DefaultView.Count - 1]["newsonghot"].ToString()} and releasedate >= '{MinClickDate}'";
+                    else
+                        SongInfoFilter = $"newsonghot >= {MusicInfoSource.DefaultView[99]["newsonghot"].ToString()} and releasedate >= '{MinClickDate}'";
             }
         }
 

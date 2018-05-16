@@ -23,10 +23,10 @@ namespace DataModel
         public string RoomConsume { get; set; }
 
         [DataMember]
-        public DateTime? StartTime { get; set; }
+        public DateTime StartTime { get; set; }
 
         [DataMember]
-        public DateTime? EndTime { get; set; }
+        public DateTime EndTime { get; set; }
 
         [DataMember]
         public int? CustomerId { get; set; }

@@ -35,7 +35,7 @@ namespace RoomInfoManagementInterface
         int HasExistUser(string customerIdCard);
 
         [OperationContract]
-        string GetCustomerIdByIdCard(string customerIdCard);
+        string GetCustomerIdByTel(string customerIdCard);
 
         [OperationContract]
         int AddConsumeLog(RoomTask roomTask);

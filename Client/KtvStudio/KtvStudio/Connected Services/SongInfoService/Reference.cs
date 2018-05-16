@@ -9,275 +9,7 @@
 //------------------------------------------------------------------------------
 
 namespace KtvStudio.SongInfoService {
-    using System.Runtime.Serialization;
-    using System;
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="SongInfo", Namespace="http://schemas.datacontract.org/2004/07/DataModel")]
-    [System.SerializableAttribute()]
-    public partial class SongInfo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CategoryField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LanguageTypeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string MVUrlField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string MusicNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string MusicNameInitialsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string RecordNumberField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> ReleaseDateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SingRailField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int SingerIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SingerNameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Category {
-            get {
-                return this.CategoryField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CategoryField, value) != true)) {
-                    this.CategoryField = value;
-                    this.RaisePropertyChanged("Category");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string LanguageType {
-            get {
-                return this.LanguageTypeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LanguageTypeField, value) != true)) {
-                    this.LanguageTypeField = value;
-                    this.RaisePropertyChanged("LanguageType");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string MVUrl {
-            get {
-                return this.MVUrlField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MVUrlField, value) != true)) {
-                    this.MVUrlField = value;
-                    this.RaisePropertyChanged("MVUrl");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string MusicName {
-            get {
-                return this.MusicNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MusicNameField, value) != true)) {
-                    this.MusicNameField = value;
-                    this.RaisePropertyChanged("MusicName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string MusicNameInitials {
-            get {
-                return this.MusicNameInitialsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MusicNameInitialsField, value) != true)) {
-                    this.MusicNameInitialsField = value;
-                    this.RaisePropertyChanged("MusicNameInitials");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string RecordNumber {
-            get {
-                return this.RecordNumberField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RecordNumberField, value) != true)) {
-                    this.RecordNumberField = value;
-                    this.RaisePropertyChanged("RecordNumber");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> ReleaseDate {
-            get {
-                return this.ReleaseDateField;
-            }
-            set {
-                if ((this.ReleaseDateField.Equals(value) != true)) {
-                    this.ReleaseDateField = value;
-                    this.RaisePropertyChanged("ReleaseDate");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string SingRail {
-            get {
-                return this.SingRailField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SingRailField, value) != true)) {
-                    this.SingRailField = value;
-                    this.RaisePropertyChanged("SingRail");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int SingerId {
-            get {
-                return this.SingerIdField;
-            }
-            set {
-                if ((this.SingerIdField.Equals(value) != true)) {
-                    this.SingerIdField = value;
-                    this.RaisePropertyChanged("SingerId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string SingerName {
-            get {
-                return this.SingerNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SingerNameField, value) != true)) {
-                    this.SingerNameField = value;
-                    this.RaisePropertyChanged("SingerName");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="SongRecord", Namespace="http://schemas.datacontract.org/2004/07/DataModel")]
-    [System.SerializableAttribute()]
-    public partial class SongRecord : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int ClickNumField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SongIdField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int ClickNum {
-            get {
-                return this.ClickNumField;
-            }
-            set {
-                if ((this.ClickNumField.Equals(value) != true)) {
-                    this.ClickNumField = value;
-                    this.RaisePropertyChanged("ClickNum");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string SongId {
-            get {
-                return this.SongIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SongIdField, value) != true)) {
-                    this.SongIdField = value;
-                    this.RaisePropertyChanged("SongId");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SongInfoService.ISongInfoManagement")]
@@ -290,16 +22,16 @@ namespace KtvStudio.SongInfoService {
         System.Threading.Tasks.Task<System.Data.DataTable> GetAllSongInfoAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISongInfoManagement/AddSongInfo", ReplyAction="http://tempuri.org/ISongInfoManagement/AddSongInfoResponse")]
-        int AddSongInfo(KtvStudio.SongInfoService.SongInfo songInfo);
+        int AddSongInfo(KtvMusic.SongInfoService.SongInfo songInfo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISongInfoManagement/AddSongInfo", ReplyAction="http://tempuri.org/ISongInfoManagement/AddSongInfoResponse")]
-        System.Threading.Tasks.Task<int> AddSongInfoAsync(KtvStudio.SongInfoService.SongInfo songInfo);
+        System.Threading.Tasks.Task<int> AddSongInfoAsync(KtvMusic.SongInfoService.SongInfo songInfo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISongInfoManagement/UpdateSongeInfo", ReplyAction="http://tempuri.org/ISongInfoManagement/UpdateSongeInfoResponse")]
-        int UpdateSongeInfo(KtvStudio.SongInfoService.SongInfo songInfo);
+        int UpdateSongeInfo(KtvMusic.SongInfoService.SongInfo songInfo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISongInfoManagement/UpdateSongeInfo", ReplyAction="http://tempuri.org/ISongInfoManagement/UpdateSongeInfoResponse")]
-        System.Threading.Tasks.Task<int> UpdateSongeInfoAsync(KtvStudio.SongInfoService.SongInfo songInfo);
+        System.Threading.Tasks.Task<int> UpdateSongeInfoAsync(KtvMusic.SongInfoService.SongInfo songInfo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISongInfoManagement/DeleteSongInfo", ReplyAction="http://tempuri.org/ISongInfoManagement/DeleteSongInfoResponse")]
         int DeleteSongInfo(string id);
@@ -326,16 +58,22 @@ namespace KtvStudio.SongInfoService {
         System.Threading.Tasks.Task<System.Data.DataTable> GetCategorySourceByFatherIdAsync(string fatherId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISongInfoManagement/AddSongRecord", ReplyAction="http://tempuri.org/ISongInfoManagement/AddSongRecordResponse")]
-        int AddSongRecord(KtvStudio.SongInfoService.SongRecord[] records);
+        int AddSongRecord(KtvMusic.SongInfoService.SongRecord[] records);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISongInfoManagement/AddSongRecord", ReplyAction="http://tempuri.org/ISongInfoManagement/AddSongRecordResponse")]
-        System.Threading.Tasks.Task<int> AddSongRecordAsync(KtvStudio.SongInfoService.SongRecord[] records);
+        System.Threading.Tasks.Task<int> AddSongRecordAsync(KtvMusic.SongInfoService.SongRecord[] records);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISongInfoManagement/GetAllSongRecord", ReplyAction="http://tempuri.org/ISongInfoManagement/GetAllSongRecordResponse")]
         System.Data.DataTable GetAllSongRecord();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISongInfoManagement/GetAllSongRecord", ReplyAction="http://tempuri.org/ISongInfoManagement/GetAllSongRecordResponse")]
         System.Threading.Tasks.Task<System.Data.DataTable> GetAllSongRecordAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISongInfoManagement/UpdateNewSongRank", ReplyAction="http://tempuri.org/ISongInfoManagement/UpdateNewSongRankResponse")]
+        int UpdateNewSongRank(System.Collections.Generic.Dictionary<string, double> newRank);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISongInfoManagement/UpdateNewSongRank", ReplyAction="http://tempuri.org/ISongInfoManagement/UpdateNewSongRankResponse")]
+        System.Threading.Tasks.Task<int> UpdateNewSongRankAsync(System.Collections.Generic.Dictionary<string, double> newRank);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -373,19 +111,19 @@ namespace KtvStudio.SongInfoService {
             return base.Channel.GetAllSongInfoAsync();
         }
         
-        public int AddSongInfo(KtvStudio.SongInfoService.SongInfo songInfo) {
+        public int AddSongInfo(KtvMusic.SongInfoService.SongInfo songInfo) {
             return base.Channel.AddSongInfo(songInfo);
         }
         
-        public System.Threading.Tasks.Task<int> AddSongInfoAsync(KtvStudio.SongInfoService.SongInfo songInfo) {
+        public System.Threading.Tasks.Task<int> AddSongInfoAsync(KtvMusic.SongInfoService.SongInfo songInfo) {
             return base.Channel.AddSongInfoAsync(songInfo);
         }
         
-        public int UpdateSongeInfo(KtvStudio.SongInfoService.SongInfo songInfo) {
+        public int UpdateSongeInfo(KtvMusic.SongInfoService.SongInfo songInfo) {
             return base.Channel.UpdateSongeInfo(songInfo);
         }
         
-        public System.Threading.Tasks.Task<int> UpdateSongeInfoAsync(KtvStudio.SongInfoService.SongInfo songInfo) {
+        public System.Threading.Tasks.Task<int> UpdateSongeInfoAsync(KtvMusic.SongInfoService.SongInfo songInfo) {
             return base.Channel.UpdateSongeInfoAsync(songInfo);
         }
         
@@ -421,11 +159,11 @@ namespace KtvStudio.SongInfoService {
             return base.Channel.GetCategorySourceByFatherIdAsync(fatherId);
         }
         
-        public int AddSongRecord(KtvStudio.SongInfoService.SongRecord[] records) {
+        public int AddSongRecord(KtvMusic.SongInfoService.SongRecord[] records) {
             return base.Channel.AddSongRecord(records);
         }
         
-        public System.Threading.Tasks.Task<int> AddSongRecordAsync(KtvStudio.SongInfoService.SongRecord[] records) {
+        public System.Threading.Tasks.Task<int> AddSongRecordAsync(KtvMusic.SongInfoService.SongRecord[] records) {
             return base.Channel.AddSongRecordAsync(records);
         }
         
@@ -435,6 +173,14 @@ namespace KtvStudio.SongInfoService {
         
         public System.Threading.Tasks.Task<System.Data.DataTable> GetAllSongRecordAsync() {
             return base.Channel.GetAllSongRecordAsync();
+        }
+        
+        public int UpdateNewSongRank(System.Collections.Generic.Dictionary<string, double> newRank) {
+            return base.Channel.UpdateNewSongRank(newRank);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateNewSongRankAsync(System.Collections.Generic.Dictionary<string, double> newRank) {
+            return base.Channel.UpdateNewSongRankAsync(newRank);
         }
     }
 }

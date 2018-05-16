@@ -438,12 +438,51 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ISongInfoManagement_UpdateNewSongRank_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ISongInfoManagement_UpdateNewSongRank_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:9918/SongInfoManagement/MEX?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:9918/SongInfoManagement/MEX?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:9918/SongInfoManagement/MEX?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/System.Data" />
       <xsd:import schemaLocation="http://localhost:9918/SongInfoManagement/MEX?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/DataModel" />
+      <xsd:import schemaLocation="http://localhost:9918/SongInfoManagement/MEX?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="ISongInfoManagement_GetAllSongInfo_InputMessage">
@@ -500,6 +539,12 @@
   <wsdl:message name="ISongInfoManagement_GetAllSongRecord_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllSongRecordResponse" />
   </wsdl:message>
+  <wsdl:message name="ISongInfoManagement_UpdateNewSongRank_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateNewSongRank" />
+  </wsdl:message>
+  <wsdl:message name="ISongInfoManagement_UpdateNewSongRank_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateNewSongRankResponse" />
+  </wsdl:message>
   <wsdl:portType name="ISongInfoManagement">
     <wsdl:operation name="GetAllSongInfo">
       <wsdl:input wsaw:Action="http://tempuri.org/ISongInfoManagement/GetAllSongInfo" message="tns:ISongInfoManagement_GetAllSongInfo_InputMessage" />
@@ -536,6 +581,10 @@
     <wsdl:operation name="GetAllSongRecord">
       <wsdl:input wsaw:Action="http://tempuri.org/ISongInfoManagement/GetAllSongRecord" message="tns:ISongInfoManagement_GetAllSongRecord_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISongInfoManagement/GetAllSongRecordResponse" message="tns:ISongInfoManagement_GetAllSongRecord_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNewSongRank">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISongInfoManagement/UpdateNewSongRank" message="tns:ISongInfoManagement_UpdateNewSongRank_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISongInfoManagement/UpdateNewSongRankResponse" message="tns:ISongInfoManagement_UpdateNewSongRank_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_ISongInfoManagement" type="tns:ISongInfoManagement">
@@ -637,6 +686,17 @@
       </wsdl:input>
       <wsdl:output>
         <wsp:PolicyReference URI="#WSHttpBinding_ISongInfoManagement_GetAllSongRecord_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNewSongRank">
+      <soap12:operation soapAction="http://tempuri.org/ISongInfoManagement/UpdateNewSongRank" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_ISongInfoManagement_UpdateNewSongRank_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_ISongInfoManagement_UpdateNewSongRank_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>

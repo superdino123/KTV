@@ -36,7 +36,7 @@ namespace DataAccess
         #region User
 
         public static string USERTABLENAME = "customerinfo";
-        public static string USERFIELDNAME = "customername, customersex, customertel, customerage, customeridcard";
+        public static string USERFIELDNAME = "customername, customersex, customertel";
         
         /// <summary>
         /// 获取某一用户信息
@@ -57,7 +57,7 @@ namespace DataAccess
         public static int UpdateUserInfoDataAccess(CustomerInfo customerInfo)
         {
             var sql = $"update {USERTABLENAME} set customername = '{customerInfo.CustomerName}', customersex = '{customerInfo.CustomerSex}'," +
-                $" customertel = '{customerInfo.CustomerTel}', customerage = '{customerInfo.CustomerAge}', customeridcard = '{customerInfo.CustomerIdCard}' where customerid = '{customerInfo.CustomerId}'";
+                $" customertel = '{customerInfo.CustomerTel}' where customerid = '{customerInfo.CustomerId}'";
             return SqlServerHelper.ExecuteNonQuery(CommandType.Text, sql, 30, null);
         }
 
@@ -68,29 +68,28 @@ namespace DataAccess
         /// <returns></returns>
         public static int InsertUserInfoDataAccess(CustomerInfo customerInfo)
         {
-            var sql = $"insert into {USERTABLENAME}({USERFIELDNAME}) values ('{customerInfo.CustomerName}','{customerInfo.CustomerSex}','{customerInfo.CustomerTel}'," +
-                $"'{customerInfo.CustomerAge}','{customerInfo.CustomerIdCard}')";
+            var sql = $"insert into {USERTABLENAME}({USERFIELDNAME}) values ('{customerInfo.CustomerName}','{customerInfo.CustomerSex}','{customerInfo.CustomerTel}')";
             return SqlServerHelper.ExecuteNonQuery(CommandType.Text, sql, 30, null);
         }
 
         /// <summary>
         /// 判断是否有此用户
         /// </summary>
-        /// <param name="customerIdCard"></param>
+        /// <param name="customerTel"></param>
         /// <returns></returns>
-        public static int HasExistUserDataAccess(string customerIdCard) {
-            var sql = $"select count(customeridcard) from {USERTABLENAME} where customeridcard = '{customerIdCard}'";
+        public static int HasExistUserDataAccess(string customerTel) {
+            var sql = $"select count(customertel) from {USERTABLENAME} where customertel = '{customerTel}'";
             return int.Parse(SqlServerHelper.GetDataFromKtvdb(sql).Rows[0][0].ToString());
         }
 
         /// <summary>
-        /// 根据用IdCard获取用户Id
+        /// 根据用Tel获取用户Id
         /// </summary>
         /// <param name="customerIdCard"></param>
         /// <returns></returns>
-        public static string GetCustomerIdByIdCardDataAccess(string customerIdCard)
+        public static string GetCustomerIdByTelDataAccess(string customerTel)
         {
-            var sql = $"select customerid from {USERTABLENAME} where customeridcard = '{customerIdCard}'";
+            var sql = $"select customerid from {USERTABLENAME} where customertel = '{customerTel}'";
             return SqlServerHelper.GetDataFromKtvdb(sql).Rows[0][0].ToString();
         }
 
@@ -106,9 +105,9 @@ namespace DataAccess
             if (roomTask.StartTime == null || roomTask.EndTime == null)
                 return 0;
             //获取单价
-            var sql = $"select roomprice from roompriceinfo where roomtype in (select roomtype from roominfo where roomid = '{roomTask.RoomId}' and starttime <= {roomTask.StartTime.Value.Hour} and endtime > {roomTask.StartTime.Value.Hour})";
+            var sql = $"select roomprice from roompriceinfo where roomtype in (select roomtype from roominfo where roomid = '{roomTask.RoomId}' and starttime <= {roomTask.StartTime.Hour} and endtime > {roomTask.StartTime.Hour})";
             int price = int.Parse(SqlServerHelper.GetDataFromKtvdb(sql).Rows[0][0].ToString());
-            int hours = (int)((roomTask.EndTime.Value - roomTask.StartTime.Value).TotalHours + 0.1);
+            int hours = (int)((roomTask.EndTime - roomTask.StartTime).TotalHours + 0.1);
             return hours * price;
         }
 

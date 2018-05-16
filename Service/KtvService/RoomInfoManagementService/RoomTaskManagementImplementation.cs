@@ -57,9 +57,9 @@ namespace RoomInfoManagementService
             return RoomTaskManagementDataAccess.GetRoomPriceSourceDataAccess();
         }
 
-        public string GetCustomerIdByIdCard(string customerIdCard)
+        public string GetCustomerIdByTel(string customerIdCard)
         {
-            return RoomTaskManagementDataAccess.GetCustomerIdByIdCardDataAccess(customerIdCard);
+            return RoomTaskManagementDataAccess.GetCustomerIdByTelDataAccess(customerIdCard);
         }
 
         public DataTable GetConsumeLog()

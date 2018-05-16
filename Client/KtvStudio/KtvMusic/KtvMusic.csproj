@@ -146,6 +146,9 @@
     <None Include="Connected Services\SingerInfoService\MEX3.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\SingerInfoService\MEX4.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\SingerInfoService\SingerInfoManagementImplementation.wsdl" />
     <None Include="Connected Services\SongInfoService\MEX.xsd">
       <SubType>Designer</SubType>
@@ -157,6 +160,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\SongInfoService\MEX3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SongInfoService\MEX4.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\SongInfoService\SongInfoManagementImplementation.wsdl" />

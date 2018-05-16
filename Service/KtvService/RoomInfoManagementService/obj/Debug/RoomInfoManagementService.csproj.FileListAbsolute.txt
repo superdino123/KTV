@@ -35,7 +35,6 @@ G:\3VSText\GitKtv\Service\KtvService\RoomInfoManagementService\obj\Debug\RoomInf
 G:\3VSText\GitKtv\Service\KtvService\RoomInfoManagementService\obj\Debug\RoomInfoManagementService.csproj.CoreCompileInputs.cache
 G:\3VSText\GitKtv\Service\KtvService\RoomInfoManagementService\obj\Debug\RoomInfoManagementService.dll
 G:\3VSText\GitKtv\Service\KtvService\RoomInfoManagementService\obj\Debug\RoomInfoManagementService.pdb
-G:\3VSText\GitTest\KTV\Service\KtvService\RoomInfoManagementService\bin\Debug\NLog.config
 G:\3VSText\GitTest\KTV\Service\KtvService\RoomInfoManagementService\bin\Debug\RoomInfoManagementService.dll
 G:\3VSText\GitTest\KTV\Service\KtvService\RoomInfoManagementService\bin\Debug\RoomInfoManagementService.pdb
 G:\3VSText\GitTest\KTV\Service\KtvService\RoomInfoManagementService\bin\Debug\DataAccess.dll

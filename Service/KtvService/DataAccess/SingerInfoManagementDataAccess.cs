@@ -80,7 +80,7 @@ namespace DataAccess
             else
                 OrderBySql = $" order by convert(int, singerclicknum) desc ";
             
-            string sql = $"select  id, {FIELDNAME},row_number() over( {OrderBySql} ) as rownum from {TABLENAME} {whereSql.ToString()}";
+            string sql = $"select  id, {INVERTFIELDNAME},row_number() over( {OrderBySql} ) as rownum from {TABLENAME} {whereSql.ToString()}";
             DataTable result = SqlServerHelper.GetDataFromKtvdb(sql);
             return SqlServerHelper.GetDataFromKtvdb(sql);
         }
@@ -89,6 +89,22 @@ namespace DataAccess
         {
             var sql = $"select actionname from actioninfo where groupcode = '0003'";
             return SqlServerHelper.GetDataFromKtvdb(sql);
+        }
+        
+        public static int UpdateNewSingerRankDataAccess(Dictionary<string, int> singerClickNum)
+        {
+            int returnNum = 0;
+            var clearSql = $"update {TABLENAME} set singerclicknum = '0'";
+            SqlServerHelper.ExecuteNonQuery(CommandType.Text, clearSql, 30, null);
+
+            foreach (KeyValuePair<string, int> item in singerClickNum)
+            {
+                var sql = $"update {TABLENAME} set singerclicknum = '{item.Value}' where id = '{item.Key}'";
+                returnNum += SqlServerHelper.ExecuteNonQuery(CommandType.Text, sql, 30, null);
+            }
+
+            if (returnNum == singerClickNum.Count) return 1;
+            return 0;
         }
     }
 }

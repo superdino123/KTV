@@ -1,4 +1,8 @@
-2018-05-05 16:16:53 451|Info
+2018-05-16 09:26:55 380|Info
    |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
-   |message = {"hash":"Fmk1X8egem0HZ-Kjl50e6WvzraVm","key":"77a1304dd5ed4cdebcc37ab801ac9b33.png"}
+   |message = {"hash":"FgQ1bkrjY6Iw_Bme_JJ-3W5fULr5","key":"22cabce742d34b12b990b5122f7134dd.jpg"}
+
+2018-05-16 09:29:24 007|Info
+   |stacktrace = <>c__DisplayClass4.<upload>b__2 => QiniuService.OnUploadCompleted => LogHelper.LogInfo
+   |message = {"hash":"FoOu9azspIMUcHovl7G65hgWWQbu","key":"89bb53d711a142aaa4688450fef6e7ec.jpg"}
 

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,8 +23,9 @@ namespace DataAccess
 
         public static int InSertRoomInfoDataAccess(RoomInfo roomInfo)
         {
+            DateTime date = new DateTime(1900, 1, 1);
             //插入房间的同时插入任务表
-            var tasksql = $"insert into taskinfo(roomid, roomstate) values('{roomInfo.RoomId}','0')";
+            var tasksql = $"insert into taskinfo(roomid, roomstate, starttime, endtime) values('{roomInfo.RoomId}','0','{date}','{date}')";
             SqlServerHelper.ExecuteNonQuery(CommandType.Text, tasksql, 30, null);
             var sql = $"insert into {TABLENAME}({FIELDNAME}) values('{roomInfo.RoomId}','{roomInfo.RoomType}','{roomInfo.RoomSize}','{roomInfo.ImageUrl}','{roomInfo.MicroPhoneNumber}','{roomInfo.AirConditionerNumber}','{roomInfo.PowerAmplifierNumber}','{roomInfo.SoundNumber}','{roomInfo.EffectorNumber}','{roomInfo.SongDeskNumber}','{roomInfo.LCDTVNumber}','{roomInfo.RoomRemark}')";
             return SqlServerHelper.ExecuteNonQuery(CommandType.Text, sql, 30, null);
@@ -58,5 +60,62 @@ namespace DataAccess
             var sql = $"update {TABLENAME} set roomremark = '{remarkAdd}' where roomid = '{roomId}'";
             return SqlServerHelper.ExecuteNonQuery(CommandType.Text, sql, 30, null);
         }
+
+        #region User
+        
+        public static string STAFFTABLENAME = "staffcount";
+        public static string STAFFFIELDNAME = "username, userpassword, authority, adress";
+
+        public static int LoginDataAccess(StaffInfo staffInfo)
+        {
+            string hasUserSql = $"select salt from {STAFFTABLENAME} where username = '{staffInfo.UserName}'";
+            DataTable result = SqlServerHelper.GetDataFromKtvdb(hasUserSql);
+            if (result.Rows.Count == 0) { 
+                return 0;
+            }else{
+                string getSalt = result.Rows[0][0].ToString();
+                string psd = MD5Encoding(staffInfo.UserPassword + getSalt);
+                string sql = $"select count(*) from {STAFFTABLENAME} where username = '{staffInfo.UserName}' and " +
+                    $" userpassword in ('{staffInfo.UserPassword}', '{psd}') ";
+                return int.Parse(SqlServerHelper.GetDataFromKtvdb(sql).Rows[0][0].ToString());
+            }
+        }
+
+        public static int UpdatePasswordDataAccess(StaffInfo staffInfo)
+        {
+            string salt = Guid.NewGuid().ToString();
+            string psd = MD5Encoding(staffInfo.UserPassword + salt);
+
+            var sql = $"update {STAFFTABLENAME} set userpassword = '{psd}', salt = '{salt}' where username = '{staffInfo.UserName}'";
+            return SqlServerHelper.ExecuteNonQuery(CommandType.Text, sql, 30, null);
+        }
+        
+        public static int GetAuthorityDataAccess(string userName)
+        {
+            var sql = $"select authority from {STAFFTABLENAME} where username = '{userName}'";
+            return int.Parse(SqlServerHelper.GetDataFromKtvdb(sql).Rows[0][0].ToString());
+        }
+
+        /// <summary>  
+        /// MD5 加密字符串  
+        /// </summary>  
+        /// <param name="rawPass">源字符串</param>  
+        /// <returns>加密后字符串</returns>  
+        public static string MD5Encoding(string rawPass)
+        {
+            // 创建MD5类的默认实例：MD5CryptoServiceProvider  
+            MD5 md5 = MD5.Create();
+            byte[] bs = Encoding.UTF8.GetBytes(rawPass);
+            byte[] hs = md5.ComputeHash(bs);
+            StringBuilder sb = new StringBuilder();
+            foreach (byte b in hs)
+            {
+                // 以十六进制格式格式化  
+                sb.Append(b.ToString("x2"));
+            }
+            return sb.ToString();
+        }
+
+        #endregion
     }
 }

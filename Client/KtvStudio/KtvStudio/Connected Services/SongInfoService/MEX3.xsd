@@ -8,7 +8,7 @@
       <xs:element minOccurs="0" name="MVUrl" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MusicName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MusicNameInitials" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="RecordNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NewSongHot" type="xs:double" />
       <xs:element minOccurs="0" name="ReleaseDate" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="SingRail" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SingerId" type="xs:int" />

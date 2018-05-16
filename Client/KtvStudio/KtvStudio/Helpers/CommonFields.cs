@@ -49,8 +49,6 @@ namespace KtvStudio.Helpers
         public const string CUSTOMERNAME = "customername";
         public const string CUSTOMERSEX = "customersex";
         public const string CUSTOMERTEL = "customertel";
-        public const string CUSTOMERAGE = "customerage";
-        public const string CUSTOMERIDCARD = "customeridcard";
     }
 
     public class SINGERINFO {
@@ -73,10 +71,10 @@ namespace KtvStudio.Helpers
         public const string SINGERNAME = "singername";
         public const string LANGUAGETYPE = "languagetype";
         public const string CATEGORY = "category";
-        public const string RECORDNUMBER = "recordnumber";
         public const string MVURL = "mvurl";
         public const string MUSICNAMEINITIALS = "musicnameinitials";
         public const string SINGRAIL = "singrail";
         public const string RELEASEDATE = "releasedate";
+        public const string NEWSONGHOT = "newsonghot";
     }
 }

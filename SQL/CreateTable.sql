@@ -48,8 +48,6 @@ create table customerinfo(--顾客人员信息表
 	customername nvarchar(50),--顾客姓名
 	customersex nvarchar(1),--顾客性别 0男 1女
 	customertel nvarchar(50),--顾客联系方式
-	customerage nvarchar(3),--顾客年龄
-	customeridcard nvarchar(24)--顾客身份证号
 )
 
 if exists(select * from dbo.sysobjects where name='actioninfo')  
@@ -95,11 +93,11 @@ create table musicinfo(--音乐信息表
 	singername nvarchar(50),--歌手姓名
 	languagetype nvarchar(10),--语言种类(国语/粤语/韩语/英语/日语/法语/德语/俄语/其他)
 	category nvarchar(50),--分类
-	recordnumber nvarchar(250),--歌曲热度
 	mvurl nvarchar(250),--视频文件URL
 	musicnameinitials nvarchar(50),--歌曲首字母字符串
 	singrail nvarchar(2),--原唱声道（-1，1）
 	releasedate datetime,--发行日期
+	newsonghot float--新歌热度得分
 )
 
 if exists(select * from dbo.sysobjects where name='musiccategory')  
@@ -118,4 +116,16 @@ create table musicrecord(--歌曲点击量表
 	musicname nvarchar(50),--歌曲名称
 	clicknum int,--点击量
 	clickdate datetime,--点击时间
+)
+
+if exists(select * from dbo.sysobjects where name='staffcount')  
+    drop table staffcount  
+create table staffcount(--歌曲点击量表
+	userid int identity(1,1) primary key,
+	userrecord nvarchar(50),--员工工号
+	username nvarchar(50),--员工姓名
+	userpassword nvarchar(50),--员工密码
+	authority int,--员工权限 0-操作员/1-管理员/2-超级管理员
+	useraddress nvarchar(50),--店面地址
+	salt nvarchar(50),--盐
 )

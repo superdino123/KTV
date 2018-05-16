@@ -9,198 +9,7 @@
 //------------------------------------------------------------------------------
 
 namespace KtvStudio.SingerInfoService {
-    using System.Runtime.Serialization;
-    using System;
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="SingerInfo", Namespace="http://schemas.datacontract.org/2004/07/DataModel")]
-    [System.SerializableAttribute()]
-    public partial class SingerInfo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SingerClickNumField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SingerEnglishNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SingerInitialsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SingerIntroduceField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SingerNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SingerNationalityField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SingerOtherNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SingerPhotoUrlField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SingerSexField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string SingerClickNum {
-            get {
-                return this.SingerClickNumField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SingerClickNumField, value) != true)) {
-                    this.SingerClickNumField = value;
-                    this.RaisePropertyChanged("SingerClickNum");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string SingerEnglishName {
-            get {
-                return this.SingerEnglishNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SingerEnglishNameField, value) != true)) {
-                    this.SingerEnglishNameField = value;
-                    this.RaisePropertyChanged("SingerEnglishName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string SingerInitials {
-            get {
-                return this.SingerInitialsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SingerInitialsField, value) != true)) {
-                    this.SingerInitialsField = value;
-                    this.RaisePropertyChanged("SingerInitials");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string SingerIntroduce {
-            get {
-                return this.SingerIntroduceField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SingerIntroduceField, value) != true)) {
-                    this.SingerIntroduceField = value;
-                    this.RaisePropertyChanged("SingerIntroduce");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string SingerName {
-            get {
-                return this.SingerNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SingerNameField, value) != true)) {
-                    this.SingerNameField = value;
-                    this.RaisePropertyChanged("SingerName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string SingerNationality {
-            get {
-                return this.SingerNationalityField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SingerNationalityField, value) != true)) {
-                    this.SingerNationalityField = value;
-                    this.RaisePropertyChanged("SingerNationality");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string SingerOtherName {
-            get {
-                return this.SingerOtherNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SingerOtherNameField, value) != true)) {
-                    this.SingerOtherNameField = value;
-                    this.RaisePropertyChanged("SingerOtherName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string SingerPhotoUrl {
-            get {
-                return this.SingerPhotoUrlField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SingerPhotoUrlField, value) != true)) {
-                    this.SingerPhotoUrlField = value;
-                    this.RaisePropertyChanged("SingerPhotoUrl");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string SingerSex {
-            get {
-                return this.SingerSexField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SingerSexField, value) != true)) {
-                    this.SingerSexField = value;
-                    this.RaisePropertyChanged("SingerSex");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SingerInfoService.ISingerInfoManagement")]
@@ -219,16 +28,16 @@ namespace KtvStudio.SingerInfoService {
         System.Threading.Tasks.Task<System.Data.DataTable> GetSingerInfoPagingAsync(string nationality, string sex, string initial);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISingerInfoManagement/AddSingerInfo", ReplyAction="http://tempuri.org/ISingerInfoManagement/AddSingerInfoResponse")]
-        int AddSingerInfo(KtvStudio.SingerInfoService.SingerInfo singerInfo);
+        int AddSingerInfo(KtvMusic.SingerInfoService.SingerInfo singerInfo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISingerInfoManagement/AddSingerInfo", ReplyAction="http://tempuri.org/ISingerInfoManagement/AddSingerInfoResponse")]
-        System.Threading.Tasks.Task<int> AddSingerInfoAsync(KtvStudio.SingerInfoService.SingerInfo singerInfo);
+        System.Threading.Tasks.Task<int> AddSingerInfoAsync(KtvMusic.SingerInfoService.SingerInfo singerInfo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISingerInfoManagement/UpdateSingerInfo", ReplyAction="http://tempuri.org/ISingerInfoManagement/UpdateSingerInfoResponse")]
-        int UpdateSingerInfo(KtvStudio.SingerInfoService.SingerInfo singerInfo);
+        int UpdateSingerInfo(KtvMusic.SingerInfoService.SingerInfo singerInfo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISingerInfoManagement/UpdateSingerInfo", ReplyAction="http://tempuri.org/ISingerInfoManagement/UpdateSingerInfoResponse")]
-        System.Threading.Tasks.Task<int> UpdateSingerInfoAsync(KtvStudio.SingerInfoService.SingerInfo singerInfo);
+        System.Threading.Tasks.Task<int> UpdateSingerInfoAsync(KtvMusic.SingerInfoService.SingerInfo singerInfo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISingerInfoManagement/DeleteSingerInfo", ReplyAction="http://tempuri.org/ISingerInfoManagement/DeleteSingerInfoResponse")]
         int DeleteSingerInfo(string singerId);
@@ -243,16 +52,22 @@ namespace KtvStudio.SingerInfoService {
         System.Threading.Tasks.Task<System.Data.DataTable> GetSingerInfoByNameAsync(string singerName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISingerInfoManagement/GetSingerInfoById", ReplyAction="http://tempuri.org/ISingerInfoManagement/GetSingerInfoByIdResponse")]
-        KtvStudio.SingerInfoService.SingerInfo GetSingerInfoById(string id);
+        KtvMusic.SingerInfoService.SingerInfo GetSingerInfoById(string id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISingerInfoManagement/GetSingerInfoById", ReplyAction="http://tempuri.org/ISingerInfoManagement/GetSingerInfoByIdResponse")]
-        System.Threading.Tasks.Task<KtvStudio.SingerInfoService.SingerInfo> GetSingerInfoByIdAsync(string id);
+        System.Threading.Tasks.Task<KtvMusic.SingerInfoService.SingerInfo> GetSingerInfoByIdAsync(string id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISingerInfoManagement/GetNationalityInfoSource", ReplyAction="http://tempuri.org/ISingerInfoManagement/GetNationalityInfoSourceResponse")]
         System.Data.DataTable GetNationalityInfoSource();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISingerInfoManagement/GetNationalityInfoSource", ReplyAction="http://tempuri.org/ISingerInfoManagement/GetNationalityInfoSourceResponse")]
         System.Threading.Tasks.Task<System.Data.DataTable> GetNationalityInfoSourceAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISingerInfoManagement/UpdateNewSingerRank", ReplyAction="http://tempuri.org/ISingerInfoManagement/UpdateNewSingerRankResponse")]
+        int UpdateNewSingerRank(System.Collections.Generic.Dictionary<string, int> singerClickNum);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISingerInfoManagement/UpdateNewSingerRank", ReplyAction="http://tempuri.org/ISingerInfoManagement/UpdateNewSingerRankResponse")]
+        System.Threading.Tasks.Task<int> UpdateNewSingerRankAsync(System.Collections.Generic.Dictionary<string, int> singerClickNum);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -298,19 +113,19 @@ namespace KtvStudio.SingerInfoService {
             return base.Channel.GetSingerInfoPagingAsync(nationality, sex, initial);
         }
         
-        public int AddSingerInfo(KtvStudio.SingerInfoService.SingerInfo singerInfo) {
+        public int AddSingerInfo(KtvMusic.SingerInfoService.SingerInfo singerInfo) {
             return base.Channel.AddSingerInfo(singerInfo);
         }
         
-        public System.Threading.Tasks.Task<int> AddSingerInfoAsync(KtvStudio.SingerInfoService.SingerInfo singerInfo) {
+        public System.Threading.Tasks.Task<int> AddSingerInfoAsync(KtvMusic.SingerInfoService.SingerInfo singerInfo) {
             return base.Channel.AddSingerInfoAsync(singerInfo);
         }
         
-        public int UpdateSingerInfo(KtvStudio.SingerInfoService.SingerInfo singerInfo) {
+        public int UpdateSingerInfo(KtvMusic.SingerInfoService.SingerInfo singerInfo) {
             return base.Channel.UpdateSingerInfo(singerInfo);
         }
         
-        public System.Threading.Tasks.Task<int> UpdateSingerInfoAsync(KtvStudio.SingerInfoService.SingerInfo singerInfo) {
+        public System.Threading.Tasks.Task<int> UpdateSingerInfoAsync(KtvMusic.SingerInfoService.SingerInfo singerInfo) {
             return base.Channel.UpdateSingerInfoAsync(singerInfo);
         }
         
@@ -330,11 +145,11 @@ namespace KtvStudio.SingerInfoService {
             return base.Channel.GetSingerInfoByNameAsync(singerName);
         }
         
-        public KtvStudio.SingerInfoService.SingerInfo GetSingerInfoById(string id) {
+        public KtvMusic.SingerInfoService.SingerInfo GetSingerInfoById(string id) {
             return base.Channel.GetSingerInfoById(id);
         }
         
-        public System.Threading.Tasks.Task<KtvStudio.SingerInfoService.SingerInfo> GetSingerInfoByIdAsync(string id) {
+        public System.Threading.Tasks.Task<KtvMusic.SingerInfoService.SingerInfo> GetSingerInfoByIdAsync(string id) {
             return base.Channel.GetSingerInfoByIdAsync(id);
         }
         
@@ -344,6 +159,14 @@ namespace KtvStudio.SingerInfoService {
         
         public System.Threading.Tasks.Task<System.Data.DataTable> GetNationalityInfoSourceAsync() {
             return base.Channel.GetNationalityInfoSourceAsync();
+        }
+        
+        public int UpdateNewSingerRank(System.Collections.Generic.Dictionary<string, int> singerClickNum) {
+            return base.Channel.UpdateNewSingerRank(singerClickNum);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateNewSingerRankAsync(System.Collections.Generic.Dictionary<string, int> singerClickNum) {
+            return base.Channel.UpdateNewSingerRankAsync(singerClickNum);
         }
     }
 }

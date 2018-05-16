@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SongHotConfig>
+  <MinClickDate>2013/11/11 0:00:00</MinClickDate>
+  <!-- 最低发行日期 -->
+  <MinClickNum>100</MinClickNum>
+  <!-- 最低点击量 -->
+  <HalfLifeValue>60</HalfLifeValue>
+  <!-- 半衰期 -->
+  <SingerMinClickDate>2013/11/11 0:00:00</SingerMinClickDate>
+  <!-- 歌手点击量起始统计日期 -->
+</SongHotConfig>

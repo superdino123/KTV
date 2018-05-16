@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("configs/songhotconfig/songhotconfig.xml")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("thirdparty/livecharts.dll")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("thirdparty/livecharts.wpf.dll")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("thirdparty/mahapps.metro.iconpacks.dll")]

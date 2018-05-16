@@ -80,6 +80,8 @@
     <Content Include="Images\8009.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Images\pay.jpg" />
+    <Resource Include="Images\loginBack.jpg" />
     <Resource Include="Images\dataAnalysisIndex.png" />
     <Resource Include="Images\musicLogo.png" />
     <Resource Include="Images\singerPhoto.png" />

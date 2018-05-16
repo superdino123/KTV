@@ -234,6 +234,131 @@ namespace KtvStudio.RoomInfoService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StaffInfo", Namespace="http://schemas.datacontract.org/2004/07/DataModel")]
+    [System.SerializableAttribute()]
+    public partial class StaffInfo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int AuthorityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SaltField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserAddressField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserPasswordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserRecordField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Authority {
+            get {
+                return this.AuthorityField;
+            }
+            set {
+                if ((this.AuthorityField.Equals(value) != true)) {
+                    this.AuthorityField = value;
+                    this.RaisePropertyChanged("Authority");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Salt {
+            get {
+                return this.SaltField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SaltField, value) != true)) {
+                    this.SaltField = value;
+                    this.RaisePropertyChanged("Salt");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserAddress {
+            get {
+                return this.UserAddressField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserAddressField, value) != true)) {
+                    this.UserAddressField = value;
+                    this.RaisePropertyChanged("UserAddress");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserName {
+            get {
+                return this.UserNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
+                    this.UserNameField = value;
+                    this.RaisePropertyChanged("UserName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserPassword {
+            get {
+                return this.UserPasswordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserPasswordField, value) != true)) {
+                    this.UserPasswordField = value;
+                    this.RaisePropertyChanged("UserPassword");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserRecord {
+            get {
+                return this.UserRecordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserRecordField, value) != true)) {
+                    this.UserRecordField = value;
+                    this.RaisePropertyChanged("UserRecord");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="RoomInfoService.IRoomInfoManagement")]
     public interface IRoomInfoManagement {
@@ -273,6 +398,24 @@ namespace KtvStudio.RoomInfoService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoomInfoManagement/AddRoomTaskRemark", ReplyAction="http://tempuri.org/IRoomInfoManagement/AddRoomTaskRemarkResponse")]
         System.Threading.Tasks.Task<int> AddRoomTaskRemarkAsync(string roomId, string remark, string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoomInfoManagement/Login", ReplyAction="http://tempuri.org/IRoomInfoManagement/LoginResponse")]
+        int Login(KtvStudio.RoomInfoService.StaffInfo staffInfo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoomInfoManagement/Login", ReplyAction="http://tempuri.org/IRoomInfoManagement/LoginResponse")]
+        System.Threading.Tasks.Task<int> LoginAsync(KtvStudio.RoomInfoService.StaffInfo staffInfo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoomInfoManagement/UpdatePassword", ReplyAction="http://tempuri.org/IRoomInfoManagement/UpdatePasswordResponse")]
+        int UpdatePassword(KtvStudio.RoomInfoService.StaffInfo staffInfo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoomInfoManagement/UpdatePassword", ReplyAction="http://tempuri.org/IRoomInfoManagement/UpdatePasswordResponse")]
+        System.Threading.Tasks.Task<int> UpdatePasswordAsync(KtvStudio.RoomInfoService.StaffInfo staffInfo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoomInfoManagement/GetAuthority", ReplyAction="http://tempuri.org/IRoomInfoManagement/GetAuthorityResponse")]
+        int GetAuthority(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoomInfoManagement/GetAuthority", ReplyAction="http://tempuri.org/IRoomInfoManagement/GetAuthorityResponse")]
+        System.Threading.Tasks.Task<int> GetAuthorityAsync(string userName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -348,6 +491,30 @@ namespace KtvStudio.RoomInfoService {
         
         public System.Threading.Tasks.Task<int> AddRoomTaskRemarkAsync(string roomId, string remark, string name) {
             return base.Channel.AddRoomTaskRemarkAsync(roomId, remark, name);
+        }
+        
+        public int Login(KtvStudio.RoomInfoService.StaffInfo staffInfo) {
+            return base.Channel.Login(staffInfo);
+        }
+        
+        public System.Threading.Tasks.Task<int> LoginAsync(KtvStudio.RoomInfoService.StaffInfo staffInfo) {
+            return base.Channel.LoginAsync(staffInfo);
+        }
+        
+        public int UpdatePassword(KtvStudio.RoomInfoService.StaffInfo staffInfo) {
+            return base.Channel.UpdatePassword(staffInfo);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdatePasswordAsync(KtvStudio.RoomInfoService.StaffInfo staffInfo) {
+            return base.Channel.UpdatePasswordAsync(staffInfo);
+        }
+        
+        public int GetAuthority(string userName) {
+            return base.Channel.GetAuthority(userName);
+        }
+        
+        public System.Threading.Tasks.Task<int> GetAuthorityAsync(string userName) {
+            return base.Channel.GetAuthorityAsync(userName);
         }
     }
 }

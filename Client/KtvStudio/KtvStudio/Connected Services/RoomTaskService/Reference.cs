@@ -26,7 +26,7 @@ namespace KtvStudio.RoomTaskService {
         private System.Nullable<int> CustomerIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> EndTimeField;
+        private System.DateTime EndTimeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdField;
@@ -41,7 +41,7 @@ namespace KtvStudio.RoomTaskService {
         private string RoomStateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> StartTimeField;
+        private System.DateTime StartTimeField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -67,7 +67,7 @@ namespace KtvStudio.RoomTaskService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> EndTime {
+        public System.DateTime EndTime {
             get {
                 return this.EndTimeField;
             }
@@ -132,7 +132,7 @@ namespace KtvStudio.RoomTaskService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> StartTime {
+        public System.DateTime StartTime {
             get {
                 return this.StartTimeField;
             }
@@ -164,13 +164,7 @@ namespace KtvStudio.RoomTaskService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CustomerAgeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CustomerIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CustomerIdCardField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CustomerNameField;
@@ -192,19 +186,6 @@ namespace KtvStudio.RoomTaskService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CustomerAge {
-            get {
-                return this.CustomerAgeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CustomerAgeField, value) != true)) {
-                    this.CustomerAgeField = value;
-                    this.RaisePropertyChanged("CustomerAge");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public string CustomerId {
             get {
                 return this.CustomerIdField;
@@ -213,19 +194,6 @@ namespace KtvStudio.RoomTaskService {
                 if ((object.ReferenceEquals(this.CustomerIdField, value) != true)) {
                     this.CustomerIdField = value;
                     this.RaisePropertyChanged("CustomerId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CustomerIdCard {
-            get {
-                return this.CustomerIdCardField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CustomerIdCardField, value) != true)) {
-                    this.CustomerIdCardField = value;
-                    this.RaisePropertyChanged("CustomerIdCard");
                 }
             }
         }
@@ -325,11 +293,11 @@ namespace KtvStudio.RoomTaskService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoomTaskManagement/HasExistUser", ReplyAction="http://tempuri.org/IRoomTaskManagement/HasExistUserResponse")]
         System.Threading.Tasks.Task<int> HasExistUserAsync(string customerIdCard);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoomTaskManagement/GetCustomerIdByIdCard", ReplyAction="http://tempuri.org/IRoomTaskManagement/GetCustomerIdByIdCardResponse")]
-        string GetCustomerIdByIdCard(string customerIdCard);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoomTaskManagement/GetCustomerIdByTel", ReplyAction="http://tempuri.org/IRoomTaskManagement/GetCustomerIdByTelResponse")]
+        string GetCustomerIdByTel(string customerIdCard);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoomTaskManagement/GetCustomerIdByIdCard", ReplyAction="http://tempuri.org/IRoomTaskManagement/GetCustomerIdByIdCardResponse")]
-        System.Threading.Tasks.Task<string> GetCustomerIdByIdCardAsync(string customerIdCard);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoomTaskManagement/GetCustomerIdByTel", ReplyAction="http://tempuri.org/IRoomTaskManagement/GetCustomerIdByTelResponse")]
+        System.Threading.Tasks.Task<string> GetCustomerIdByTelAsync(string customerIdCard);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoomTaskManagement/AddConsumeLog", ReplyAction="http://tempuri.org/IRoomTaskManagement/AddConsumeLogResponse")]
         int AddConsumeLog(KtvStudio.RoomTaskService.RoomTask roomTask);
@@ -433,12 +401,12 @@ namespace KtvStudio.RoomTaskService {
             return base.Channel.HasExistUserAsync(customerIdCard);
         }
         
-        public string GetCustomerIdByIdCard(string customerIdCard) {
-            return base.Channel.GetCustomerIdByIdCard(customerIdCard);
+        public string GetCustomerIdByTel(string customerIdCard) {
+            return base.Channel.GetCustomerIdByTel(customerIdCard);
         }
         
-        public System.Threading.Tasks.Task<string> GetCustomerIdByIdCardAsync(string customerIdCard) {
-            return base.Channel.GetCustomerIdByIdCardAsync(customerIdCard);
+        public System.Threading.Tasks.Task<string> GetCustomerIdByTelAsync(string customerIdCard) {
+            return base.Channel.GetCustomerIdByTelAsync(customerIdCard);
         }
         
         public int AddConsumeLog(KtvStudio.RoomTaskService.RoomTask roomTask) {

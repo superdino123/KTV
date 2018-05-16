@@ -26,6 +26,10 @@
         <converters:BooleanInvertConverter x:Key="Bic"/>
         <converters1:RoomStateCodeToColorConverter x:Key="Rsctcc"/>
         <converters1:SingerShowPageSizeToIndexConverter x:Key="Sspstic"/>
+        <converters1:ZeroToNullConverter x:Key="Ztnc"/>
+        <converters1:StaffAuthorityCodeToNameConverter x:Key="Sactnc"/>
+        <converters1:AuthorityToVisibilityConverter x:Key="Atvc"/>
+        <converters1:AuthorityInvertToVisibilityConverter x:Key="Aitvc"/>
         <!-- RoomInfo Command -->
         <RoutedUICommand x:Key="RoomInfoNew" Text="新增包间信息" />
         <RoutedUICommand x:Key="RoomInfoEdit" Text="编辑包间信息" />
@@ -102,32 +106,37 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <!--菜单栏-->
-        <fluent:Ribbon Grid.Row="0" IsQuickAccessToolBarVisible="False">
+        <fluent:Ribbon x:Name="Menu" Grid.Row="0" IsQuickAccessToolBarVisible="False">
             <fluent:Ribbon.ToolBarItems>
                 <Grid Margin="0 3">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="郑伟地" Margin="0 0 10 0"/>
-                    <TextBlock Grid.Column="1" Text="田林东路店" Margin="0 0 10 0"/>
-                    <TextBlock Grid.Column="2" Text="{Binding DateTimeNow}"/>
+                    <TextBlock Grid.Column="0" Text="{Binding CurrentStaffInfo.UserName}" Margin="0 0 10 0"/>
+                    <TextBlock Grid.Column="1" Text="{Binding CurrentStaffInfo.Authority, Converter={StaticResource Sactnc}}" Margin="0 0 10 0"/>
+                    <TextBlock Grid.Column="2" Text="{Binding CurrentStaffInfo.UserAddress}" Margin="0 0 10 0"/>
+                    <TextBlock Grid.Column="3" Text="{Binding DateTimeNow}"/>
                 </Grid>
             </fluent:Ribbon.ToolBarItems>
             <fluent:Ribbon.Menu>
-                <fluent:Backstage Header="设置">
+                <fluent:Backstage Header="用户">
                     <fluent:BackstageTabControl>
-                        <fluent:BackstageTabItem Header="设置">
-                        </fluent:BackstageTabItem>
-                        <fluent:BackstageTabItem Header="工具">
-                        </fluent:BackstageTabItem>
-                        <fluent:BackstageTabItem Header="帮助">
+                        <fluent:BackstageTabItem Header="捐 助">
+                            <Grid>
+                                <Border Background="Black" Margin="200" Opacity="0.4"/>
+                                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <Image Source="{DynamicResource pay}" Width="300" />
+                                        <TextBlock Text="支付宝" FontSize="30" Foreground="White" HorizontalAlignment="Center" Margin="0 30 0 0"/>
+                                    </StackPanel>
+                            </Grid>
                         </fluent:BackstageTabItem>
                     </fluent:BackstageTabControl>
                 </fluent:Backstage>
             </fluent:Ribbon.Menu>
-            <fluent:RibbonTabItem Name="Home" Header="包间消费管理">
+            <fluent:RibbonTabItem Name="Home" Header="包间消费管理" Visibility="{Binding CurrentStaffInfo.Authority, Converter={StaticResource Atvc}}">
                 <fluent:RibbonGroupBox Header="刷新">
                     <fluent:Button Header="刷新" Margin="5 0" ToolTip="Alt+N"
                                    Command="{Binding RoomTaskRefreshCmd}">
@@ -167,8 +176,16 @@
                         </fluent:Button.LargeIcon>
                     </fluent:Button>
                 </fluent:RibbonGroupBox>
+                <fluent:RibbonGroupBox Header="点歌系统">
+                    <fluent:Button Header="打开" Margin="5 0"
+                                   Command="{Binding StartMusicSystemCmd}">
+                        <fluent:Button.LargeIcon>
+                            <iconPacks:PackIconMaterial Kind="OpenInNew" Width="26" Height="26" />
+                        </fluent:Button.LargeIcon>
+                    </fluent:Button>
+                </fluent:RibbonGroupBox>
             </fluent:RibbonTabItem>
-            <fluent:RibbonTabItem Name="InfoManage" Header="包房信息管理">
+            <fluent:RibbonTabItem Name="InfoManage" Header="包房信息管理" Visibility="{Binding CurrentStaffInfo.Authority, Converter={StaticResource Aitvc}}">
                 <fluent:RibbonGroupBox Header="刷新">
                     <fluent:Button Header="刷新" Margin="5 0" ToolTip="Alt+F"
                                    Command="{Binding RoomInfoRefreshCmd}">
@@ -210,7 +227,7 @@
                     </fluent:Button>
                 </fluent:RibbonGroupBox>
             </fluent:RibbonTabItem>
-            <fluent:RibbonTabItem Name="SongInfoManage" Header="歌曲信息管理">
+            <fluent:RibbonTabItem Name="SongInfoManage" Header="歌曲信息管理" Visibility="{Binding CurrentStaffInfo.Authority, Converter={StaticResource Aitvc}}">
                 <fluent:RibbonGroupBox Header="刷新">
                     <fluent:Button Header="刷新" Margin="5 0"
                                    Command="{Binding SongInfoRefreshCmd}">
@@ -219,7 +236,7 @@
                         </fluent:Button.LargeIcon>
                     </fluent:Button>
                 </fluent:RibbonGroupBox>
-                <fluent:RibbonGroupBox Header="分类查询">
+                <fluent:RibbonGroupBox Header="分类查询" Visibility="{Binding IsSelectedSingerSearch, Converter={StaticResource bool2VisibilityConverter}}">
                     <fluent:Button Header="返回" Margin="5 0"
                                    Command="{Binding SongInfoReturnSingerTypeCmd}">
                         <fluent:Button.LargeIcon>
@@ -268,7 +285,7 @@
                     </fluent:Button>
                 </fluent:RibbonGroupBox>
             </fluent:RibbonTabItem>
-            <fluent:RibbonTabItem Name="SingerManage" Header="歌手信息管理">
+            <fluent:RibbonTabItem Name="SingerManage" Header="歌手信息管理" Visibility="{Binding CurrentStaffInfo.Authority, Converter={StaticResource Aitvc}}">
                 <fluent:RibbonGroupBox Header="刷新" ToolTip="Alt+U">
                     <fluent:Button Header="刷新" Margin="5 0"
                                    Command="{Binding GetAllSingerInfoCmd}">
@@ -310,9 +327,10 @@
                     </fluent:Button>
                 </fluent:RibbonGroupBox>
             </fluent:RibbonTabItem>
-            <fluent:RibbonTabItem Name="DownloadManage" Header="正在下载">
+            <fluent:RibbonTabItem Name="DownloadManage" Header="正在下载" Visibility="Collapsed">
+                <!-- {Binding CurrentStaffInfo.Authority, Converter={StaticResource Aitvc}} -->
             </fluent:RibbonTabItem>
-            <fluent:RibbonTabItem Name="DataAnalysisManage" Header="数据分析管理">
+            <fluent:RibbonTabItem Name="DataAnalysisManage" Header="数据分析管理" Visibility="{Binding CurrentStaffInfo.Authority, Converter={StaticResource Aitvc}}">
                 <fluent:RibbonGroupBox Header="经营管理" ToolTip="Alt+U">
                     <fluent:Button Header="营业额" Margin="5 0"
                                    Command="{Binding TurnOverCmd}">
@@ -328,10 +346,16 @@
                     </fluent:Button>
                 </fluent:RibbonGroupBox>
                 <fluent:RibbonGroupBox Header="歌曲管理" ToolTip="Alt+U">
-                    <fluent:Button Header="新歌配置" Margin="5 0"
-                                   Command="{Binding NewSongHotCmd}">
+                    <fluent:Button Header="歌曲热度配置" Margin="5 0"
+                                   Command="{Binding SongHotCmd}">
                         <fluent:Button.LargeIcon>
                             <iconPacks:PackIconOcticons Kind="Flame" Width="26" Height="26" />
+                        </fluent:Button.LargeIcon>
+                    </fluent:Button>
+                    <fluent:Button Header="歌手热度配置" Margin="5 0"
+                                   Command="{Binding SingerHotCmd}">
+                        <fluent:Button.LargeIcon>
+                            <iconPacks:PackIconFontAwesome Kind="UserSolid" Width="26" Height="26" />
                         </fluent:Button.LargeIcon>
                     </fluent:Button>
                 </fluent:RibbonGroupBox>
@@ -408,7 +432,7 @@
                             </DataGridTemplateColumn>
                             <DataGridTextColumn Header="起始时间" Binding="{Binding starttime, Converter={StaticResource Dtnc}, StringFormat={}{0:yyyy-MM-dd HH:mm}}" Width="200"/>
                             <DataGridTextColumn Header="结束时间" Binding="{Binding endtime, Converter={StaticResource Dtnc}, StringFormat={}{0:yyyy-MM-dd HH:mm}}" Width="200"/>
-                            <DataGridTextColumn Header="房间消费" Binding="{Binding roomconsume}" Width="100"/>
+                            <DataGridTextColumn Header="房间消费" Binding="{Binding roomconsume, Converter={StaticResource Ztnc}}" Width="100"/>
                             <DataGridTemplateColumn Header="房间状态" Width="100">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
@@ -674,7 +698,17 @@
         </Grid>
         <!--状态栏-->
         <fluent:StatusBar Grid.Row="2">
-            <fluent:StatusBarItem/>
+            <fluent:StatusBar.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </ItemsPanelTemplate>
+            </fluent:StatusBar.ItemsPanel>
+            <fluent:StatusBarItem>
+                <Controls:TransitioningContentControl Transition="LeftReplace" 
+                                                      Foreground="Yellow"
+                                                      Margin="10 0"
+                                                      Content="{Binding RoomEndTimeHintStr}"/>
+            </fluent:StatusBarItem>
         </fluent:StatusBar>
     </Grid>
 </fluent:RibbonWindow>

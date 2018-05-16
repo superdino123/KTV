@@ -27,6 +27,7 @@
     <MetadataFile FileName="MEX2.xsd" MetadataType="Schema" ID="c7560e8f-d5a7-4d9f-8987-61a3b48e4c1b" SourceId="1" SourceUrl="http://localhost:9918/SingerInfoManagement/MEX?xsd=xsd0" />
     <MetadataFile FileName="SingerInfoManagementImplementation.wsdl" MetadataType="Wsdl" ID="2dc99ebc-185d-4401-80ae-0f5e37b6e893" SourceId="1" SourceUrl="http://localhost:9918/SingerInfoManagement/MEX" />
     <MetadataFile FileName="MEX3.xsd" MetadataType="Schema" ID="97f863c4-d4eb-44e6-a7fb-a46c426bed47" SourceId="1" SourceUrl="http://localhost:9918/SingerInfoManagement/MEX?xsd=xsd1" />
+    <MetadataFile FileName="MEX4.xsd" MetadataType="Schema" ID="018ab673-5d02-4ad6-be2a-556cfb330f82" SourceId="1" SourceUrl="http://localhost:9918/SingerInfoManagement/MEX?xsd=xsd4" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

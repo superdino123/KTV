@@ -3,8 +3,10 @@ using LiveCharts;
 using LiveCharts.Defaults;
 using LiveCharts.Wpf;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -62,6 +64,18 @@ namespace KtvStudio.Views
             {
                 ClientViewModel = (ClientViewModel)DataContext;
             };
+        }
+
+        private void SongTimeHot_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ClientViewModel.SongSelectedDataRowViews.Clear();
+            DataGrid dataGrid = sender as DataGrid;
+            IList rows = dataGrid.SelectedItems;
+            for (int i = 0; i < rows.Count; i++)
+            {
+                DataRowView item = rows[i] as DataRowView;
+                ClientViewModel.SongSelectedDataRowViews.Add(item);
+            }
         }
     }
 }

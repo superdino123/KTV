@@ -6,4 +6,6 @@
     <ImageSource x:Key="singerPhoto">Images/singerPhoto.png</ImageSource>
     <ImageSource x:Key="musicLogo">Images/musicLogo.png</ImageSource>
     <ImageSource x:Key="dataAnalysisIndex">Images/dataAnalysisIndex.png</ImageSource>
+    <ImageSource x:Key="loginBack">Images/loginBack.jpg</ImageSource>
+    <ImageSource x:Key="pay">Images/pay.jpg</ImageSource>
 </ResourceDictionary>

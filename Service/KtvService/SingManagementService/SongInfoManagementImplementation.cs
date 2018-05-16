@@ -52,6 +52,11 @@ namespace SingManagementService
             return SongInfoManagementDataAccess.GetSongInfoBySingerIdDataAccess(singerId);
         }
 
+        public int UpdateNewSongRank(Dictionary<string, double> newRank)
+        {
+            return SongInfoManagementDataAccess.UpdateNewSongRankDataAccess(newRank);
+        }
+
         public int UpdateSongeInfo(SongInfo songInfo)
         {
             return SongInfoManagementDataAccess.UpdateSongeInfoDataAccess(songInfo);

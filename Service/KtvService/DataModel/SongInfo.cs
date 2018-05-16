@@ -23,8 +23,6 @@ namespace DataModel
         [DataMember]
         public string Category { get; set; }
         [DataMember]
-        public string RecordNumber { get; set; }
-        [DataMember]
         public string MVUrl { get; set; }
         [DataMember]
         public string MusicNameInitials { get; set; }
@@ -32,5 +30,7 @@ namespace DataModel
         public DateTime? ReleaseDate { get; set; }
         [DataMember]
         public string SingRail { get; set; }
+        [DataMember]
+        public double NewSongHot { get; set; }
     }
 }

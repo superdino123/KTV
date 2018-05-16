@@ -41,5 +41,20 @@ namespace RoomInfoManagementService
         {
             return RoomInfoManagementDataAccess.AddRoomTaskRemarkDataAccess(roomId, remark, name);
         }
+
+        public int Login(StaffInfo staffInfo)
+        {
+            return RoomInfoManagementDataAccess.LoginDataAccess(staffInfo);
+        }
+
+        public int UpdatePassword(StaffInfo staffInfo)
+        {
+            return RoomInfoManagementDataAccess.UpdatePasswordDataAccess(staffInfo);
+        }
+
+        public int GetAuthority(string userName)
+        {
+            return RoomInfoManagementDataAccess.GetAuthorityDataAccess(userName);
+        }
     }
 }

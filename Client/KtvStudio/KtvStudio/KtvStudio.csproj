@@ -99,6 +99,8 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CommonFields.cs" />
+    <Compile Include="Helpers\Converters\AuthorityInvertToVisibilityConverter.cs" />
+    <Compile Include="Helpers\Converters\AuthorityToVisibilityConverter.cs" />
     <Compile Include="Helpers\Converters\ConsumeMonthVisibilityConverter.cs" />
     <Compile Include="Helpers\Converters\ConsumeYearVisibilityConverter.cs" />
     <Compile Include="Helpers\Converters\DateTimeNullToDefaultConverter.cs" />
@@ -112,7 +114,10 @@
     <Compile Include="Helpers\Converters\SingerShowPageSizeToIndexConverter.cs" />
     <Compile Include="Helpers\Converters\SingRailBalanceToLeftOrRightConverter.cs" />
     <Compile Include="Helpers\Converters\SingRailValueToComboBoxSelectedIndexConverter.cs" />
+    <Compile Include="Helpers\Converters\StaffAuthorityCodeToNameConverter.cs" />
     <Compile Include="Helpers\Converters\StringDateTimeToMonthConverter.cs" />
+    <Compile Include="Helpers\Converters\UserAddressConverter.cs" />
+    <Compile Include="Helpers\Converters\ZeroToNullConverter.cs" />
     <Compile Include="Helpers\NotifyPropertyHelper.cs" />
     <Compile Include="Helpers\QiniuService\QiniuService.cs" />
     <Compile Include="Helpers\SimpleClock.cs" />
@@ -125,6 +130,9 @@
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\DataAnalysisManageUc.xaml.cs">
       <DependentUpon>DataAnalysisManageUc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoginWnd.xaml.cs">
+      <DependentUpon>LoginWnd.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RoomInfoEditUc.xaml.cs">
       <DependentUpon>RoomInfoEditUc.xaml</DependentUpon>
@@ -158,6 +166,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DataAnalysisManageUc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LoginWnd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -229,9 +241,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\RoomTaskService\RoomTaskManagementImplementation.wsdl" />
-    <None Include="Connected Services\SingerInfoService\KtvStudio.SingerInfoService.SingerInfo.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Connected Services\SingerInfoService\MEX.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -242,6 +251,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\SingerInfoService\MEX3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SingerInfoService\MEX4.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\SingerInfoService\SingerInfoManagementImplementation.wsdl" />
@@ -257,8 +269,12 @@
     <None Include="Connected Services\SongInfoService\MEX3.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\SongInfoService\MEX4.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\SongInfoService\SongInfoManagementImplementation.wsdl" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\KtvMusic.SingerInfoService.SingerInfo.datasource" />
     <None Include="Properties\DataSources\System.Data.DataSet.datasource" />
     <None Include="Properties\DataSources\System.Data.DataTable.datasource" />
     <None Include="Properties\Settings.settings">
@@ -289,8 +305,15 @@
       <Project>{2912b7dc-1d38-4039-9c31-122de4fc494f}</Project>
       <Name>ImageResource</Name>
     </ProjectReference>
+    <ProjectReference Include="..\KtvMusic\KtvMusic.csproj">
+      <Project>{76d42ecf-0245-408e-a420-1e10350c0642}</Project>
+      <Name>KtvMusic</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Configs\SongHotConfig\SongHotConfig.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="ThirdParty\LiveCharts.dll" />
     <Content Include="ThirdParty\LiveCharts.Wpf.dll" />
     <Content Include="ThirdParty\MahApps.Metro.IconPacks.dll" />

@@ -35,5 +35,8 @@ namespace SingManagementInterface
         
         [OperationContract]
         DataTable GetNationalityInfoSource();
+
+        [OperationContract]
+        int UpdateNewSingerRank(Dictionary<string, int> singerClickNum);
     }
 }

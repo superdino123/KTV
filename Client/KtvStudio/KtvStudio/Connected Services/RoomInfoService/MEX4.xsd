@@ -17,4 +17,15 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="RoomInfo" nillable="true" type="tns:RoomInfo" />
+  <xs:complexType name="StaffInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Authority" type="xs:int" />
+      <xs:element minOccurs="0" name="Salt" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserPassword" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserRecord" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StaffInfo" nillable="true" type="tns:StaffInfo" />
 </xs:schema>

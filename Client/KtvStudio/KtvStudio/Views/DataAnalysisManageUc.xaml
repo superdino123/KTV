@@ -20,6 +20,7 @@
             <TabItem x:Name="MoneyManage" Header="营业额"/>
             <TabItem x:Name="RoomTimeManage" Header="包间使用率"/>
             <TabItem x:Name="SongHotManage" Header="歌曲热度"/>
+            <TabItem x:Name="SingerHotManage" Header="歌手热度"/>
         </TabControl>
 
         <Image Source="{StaticResource dataAnalysisIndex}" Margin="150"
@@ -119,6 +120,7 @@
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <lvc:CartesianChart Grid.Row="0" Series="{Binding RoomTimeSeriesCollection}" LegendLocation="Right" >
                     <lvc:CartesianChart.AxisY>
@@ -128,6 +130,15 @@
                         <lvc:Axis Title="Month" Labels="{Binding RoomTimeLabels}"></lvc:Axis>
                     </lvc:CartesianChart.AxisX>
                 </lvc:CartesianChart>
+                <lvc:PieChart Grid.Row="1" Series="{Binding UserRateRoomTypeSeriesCollection}" 
+                      LegendLocation="Right" InnerRadius="100" Margin="0 15">
+                    <lvc:PieChart.ChartLegend>
+                        <lvc:DefaultLegend BulletSize="20"></lvc:DefaultLegend>
+                    </lvc:PieChart.ChartLegend>
+                    <lvc:PieChart.DataTooltip>
+                        <lvc:DefaultTooltip BulletSize="20"></lvc:DefaultTooltip>
+                    </lvc:PieChart.DataTooltip>
+                </lvc:PieChart>
             </Grid>
         </Grid>
 
@@ -135,15 +146,18 @@
         <Grid Visibility="{Binding ElementName=SongHotManage, Path=IsSelected, Converter={StaticResource bool2VisibilityConverter}}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <StackPanel Grid.Row="0" Margin="20" Orientation="Horizontal">
-                <TextBlock Text="发行时间限制" VerticalAlignment="Center" Margin="10 0 0 0"/>
+            <StackPanel Grid.Row="0" Margin="20 20 20 5" Orientation="Horizontal">
+                <TextBlock Text="点唱次数统计时间限制" VerticalAlignment="Center" Margin="0"/>
                 <DatePicker Width="150" Margin="10 0 0 0"
-                            SelectedDate="{Binding MinReleaseDate}"/>
+                            SelectedDate="{Binding MinClickDate}"/>
                 <TextBlock Text="内" VerticalAlignment="Center" Margin="10 0 50 0"/>
 
-                <TextBlock Text="点唱人数限制" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                <TextBlock Text="点唱次数限制" VerticalAlignment="Center" Margin="10 0 0 0"/>
                 <controls:NumericUpDown Width="100"
                                         VerticalAlignment="Center"
                                         ButtonsAlignment="Left"
@@ -160,25 +174,99 @@
                                         Margin="10 0 0 0"
                                         Value="{Binding HalfLifeValue}"/>
                 <TextBlock Text="天" VerticalAlignment="Center" Margin="10 0 50 0"/>
-                <Button Content="刷新" Command="{Binding NewSongHotCmd}" Padding="20 0" FontSize="13"/>
+                <Button Content="刷新" Command="{Binding SongHotCmd}" Padding="20 0" FontSize="13" Margin="10 0"/>
+                <Button Content="更新排行" Command="{Binding UpdateSongHotCmd}" Padding="20 0" FontSize="13" Margin="10 0 0 0"/>
             </StackPanel>
-            <DataGrid Grid.Row="1"
+            <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="20 0 20 10" Opacity="0.5">
+                <TextBlock Text="新歌热度计算公式：" VerticalAlignment="Center" Margin="0"/>
+                <TextBlock Text="点击量 * (0.5)^([点唱次数统计时间限制与出版时间的最大值]与现在时间的时间差/半衰期)" VerticalAlignment="Center" Margin="0"/>
+            </StackPanel>
+            <DataGrid Grid.Row="2"
                       ItemsSource="{Binding SongRecordTempResultSource}"
                       IsReadOnly="True"
                       AutoGenerateColumns="False"
                       RowHeaderWidth="20"
                       HeadersVisibility="All"
-                      Margin="5 0"
+                      Margin="20 0"
                       clientControlsBehaviours:DataGridBehavior.DisplayRowNumber="True"
-                      Style="{DynamicResource AzureDataGrid}">
+                      Style="{DynamicResource AzureDataGrid}"
+                      SelectionMode="Extended"
+                      SelectionChanged="SongTimeHot_SelectionChanged">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="歌曲名称" Binding="{Binding musicname}" Width="200"/>
                     <DataGridTextColumn Header="歌手姓名" Binding="{Binding singername}" Width="200"/>
                     <DataGridTextColumn Header="热度得分" Binding="{Binding hotnumber, StringFormat='{}{0:N2}'}" Width="200"/>
                     <DataGridTextColumn Header="点击量" Binding="{Binding clicknum}" Width="200"/>
-                    <DataGridTextColumn Header="发行日期" Binding="{Binding releasedate}" Width="200"/>
+                    <DataGridTextColumn Header="发行日期" Binding="{Binding releasedate, StringFormat='{}{0:yyyy-MM-dd}'}" Width="200"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Grid.Row="3" Margin="20" Orientation="Horizontal">
+                <TextBlock Text="时间范围" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                <ComboBox SelectedIndex="{Binding SongTimeSpanType}" Margin="10 0 50 0">
+                    <ComboBoxItem Content="近十年"/>
+                    <ComboBoxItem Content="某一年"/>
+                    <ComboBoxItem Content="某一月"/>
+                </ComboBox>
+                <controls:NumericUpDown Width="100"
+                                    VerticalAlignment="Center"
+                                    ButtonsAlignment="Left"
+                                    Maximum="2300"
+                                    Minimum="1900"
+                                    Value="{Binding SongYearValue}"
+                                    Visibility="{Binding SongTimeSpanType, Converter={StaticResource Cyvc}}"/>
+                <TextBlock Text="年" VerticalAlignment="Center" Margin="10 0 30 0"
+                       Visibility="{Binding SongTimeSpanType, Converter={StaticResource Cyvc}}"/>
+                <controls:NumericUpDown Width="100"
+                                    VerticalAlignment="Center"
+                                    ButtonsAlignment="Left"
+                                    Maximum="12"
+                                    Minimum="1"
+                                    Value="{Binding SongMonthValue}"
+                                    Visibility="{Binding SongTimeSpanType, Converter={StaticResource Cmvc}}"/>
+                <TextBlock Text="月" VerticalAlignment="Center" Margin="10 0 30 0"
+                       Visibility="{Binding SongTimeSpanType, Converter={StaticResource Cmvc}}"/>
+                <Button Content="刷新" Command="{Binding SongTimeHotCmd}" Padding="20 0" FontSize="13"/>
+            </StackPanel>
+            <lvc:CartesianChart Grid.Row="4" Series="{Binding SongTimeSeriesCollection}" LegendLocation="Right" >
+                <lvc:CartesianChart.AxisY>
+                    <lvc:Axis Title="Number" LabelFormatter="{Binding SongTimeYFormatter}"></lvc:Axis>
+                </lvc:CartesianChart.AxisY>
+                <lvc:CartesianChart.AxisX>
+                    <lvc:Axis Title="Time" Labels="{Binding SongTimeLabels}"></lvc:Axis>
+                </lvc:CartesianChart.AxisX>
+            </lvc:CartesianChart>
+        </Grid>
+
+        <!-- 歌手热度 -->
+        <Grid Visibility="{Binding ElementName=SingerHotManage, Path=IsSelected, Converter={StaticResource bool2VisibilityConverter}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Margin="20 20 20 5" Orientation="Horizontal">
+                <TextBlock Text="点唱次数统计时间限制" VerticalAlignment="Center" Margin="0"/>
+                <DatePicker Width="150" Margin="10 0 0 0"
+                            SelectedDate="{Binding SingerMinClickDate}"/>
+                <TextBlock Text="内" VerticalAlignment="Center" Margin="10 0 50 0"/>
+
+                <Button Content="刷新" Command="{Binding SingerHotCmd}" Padding="20 0" FontSize="13" Margin="10 0"/>
+                <Button Content="更新排行" Command="{Binding UpdateSingerHotCmd}" Padding="20 0" FontSize="13" Margin="10 0 0 0"/>
+            </StackPanel>
+            <DataGrid Grid.Row="1"
+                      ItemsSource="{Binding SingerRecordTempResultSource}"
+                      IsReadOnly="True"
+                      AutoGenerateColumns="False"
+                      RowHeaderWidth="20"
+                      HeadersVisibility="All"
+                      Margin="20 0"
+                      clientControlsBehaviours:DataGridBehavior.DisplayRowNumber="True"
+                      Style="{DynamicResource AzureDataGrid}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="歌手姓名" Binding="{Binding singername}" Width="200"/>
+                    <DataGridTextColumn Header="点击量" Binding="{Binding clicknum}" Width="200"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
+
     </Grid>
 </UserControl>

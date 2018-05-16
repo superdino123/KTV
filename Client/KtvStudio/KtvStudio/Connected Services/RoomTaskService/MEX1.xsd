@@ -121,17 +121,17 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetCustomerIdByIdCard">
+  <xs:element name="GetCustomerIdByTel">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="customerIdCard" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetCustomerIdByIdCardResponse">
+  <xs:element name="GetCustomerIdByTelResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="GetCustomerIdByIdCardResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="GetCustomerIdByTelResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -90,14 +90,9 @@
                           DisplayMemberPath="actionname"
                           SelectedValuePath="actioncode"
                           ItemsSource="{Binding LanguageTypeSource}"/>
-                <TextBlock Grid.Row="0" Grid.Column="6" Text="歌曲热度"
+                <TextBlock Grid.Row="0" Grid.Column="6" Text="发布日期"
                            VerticalAlignment="Center" Margin="5 5 0 5"/>
-                <TextBox Grid.Row="0" Grid.Column="7" MinWidth="200" Margin="5"
-                         Text="{Binding SongInfoEditItem.RecordNumber}"/>
-
-                <TextBlock Grid.Row="1" Grid.Column="0" Text="发布日期"
-                           VerticalAlignment="Center" Margin="5 5 0 5"/>
-                <DatePicker Grid.Row="1" Grid.Column="1" MinWidth="200" Margin="5"
+                <DatePicker Grid.Row="0" Grid.Column="7" MinWidth="200" Margin="5"
                             SelectedDate="{Binding SongInfoEditItem.ReleaseDate}"
                             HorizontalAlignment="Center"
                             HorizontalContentAlignment="Stretch"
@@ -210,7 +205,7 @@
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <MediaElement Grid.Row="0" Grid.Column="0" x:Name="vedio" LoadedBehavior="Manual" Stretch="Uniform"
-                                      Height="390" MinWidth="500"
+                                      Height="425" MinWidth="500"
                                       Source="{Binding SongInfoEditItem.MVUrl}"
                                       MediaOpened="vedio_MediaOpened"/>
                         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical" Margin="0 5 0 0">

@@ -21,11 +21,5 @@ namespace DataModel
 
         [DataMember]
         public string CustomerTel { get; set; }
-
-        [DataMember]
-        public string CustomerAge { get; set; }
-
-        [DataMember]
-        public string CustomerIdCard { get; set; }
     }
 }

@@ -29,5 +29,18 @@ namespace RoomInfoManagementInterface
 
         [OperationContract]
         int AddRoomTaskRemark(string roomId, string remark, string name);
+
+        #region Staff
+
+        [OperationContract]
+        int Login(StaffInfo staffInfo);
+        
+        [OperationContract]
+        int UpdatePassword(StaffInfo staffInfo);
+
+        [OperationContract]
+        int GetAuthority(string userName);
+
+        #endregion
     }
 }

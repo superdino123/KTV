@@ -1,4 +1,5 @@
 ﻿using KtvStudio.ViewModels;
+using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -65,6 +66,13 @@ namespace KtvStudio.Views
         private void DateTimePicker_SelectedDateChanged(object sender, MahApps.Metro.Controls.TimePickerBaseSelectionChangedEventArgs<DateTime?> e)
         {
             ClientViewModel.getRoomConsume(ClientViewModel.RoomTaskEditItem);
+        }
+
+        private void ConsumeTimeValue_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            NumericUpDown item = sender as NumericUpDown;
+            int hours = int.Parse(item.Value.ToString());
+            ClientViewModel.RoomTaskEditItem.EndTime = ClientViewModel.RoomTaskEditItem.StartTime.AddHours(hours);
         }
     }
 }

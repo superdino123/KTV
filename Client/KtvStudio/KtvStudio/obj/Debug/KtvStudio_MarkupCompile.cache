@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\App.xaml
-8802521176
-14-1098145780
-38-612404605
-26619961125
-MainWindow.xaml;SplashScreen.xaml;Views\DataAnalysisManageUc.xaml;Views\RoomInfoEditUc.xaml;Views\RoomTaskEditWnd.xaml;Views\SingerInfoEditUc.xaml;Views\SongInfoEditUc.xaml;Views\SongManageUc.xaml;
+9-473515418
+15221300
+44-1316140819
+27-2124479810
+MainWindow.xaml;SplashScreen.xaml;Views\DataAnalysisManageUc.xaml;Views\LoginWnd.xaml;Views\RoomInfoEditUc.xaml;Views\RoomTaskEditWnd.xaml;Views\SingerInfoEditUc.xaml;Views\SongInfoEditUc.xaml;Views\SongManageUc.xaml;
 
 False
 

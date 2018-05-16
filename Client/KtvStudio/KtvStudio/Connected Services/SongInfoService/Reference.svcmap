@@ -27,6 +27,7 @@
     <MetadataFile FileName="MEX1.xsd" MetadataType="Schema" ID="e6e7bdfd-e02c-4eca-847c-f7d791f25e84" SourceId="1" SourceUrl="http://localhost:9918/SongInfoManagement/MEX?xsd=xsd1" />
     <MetadataFile FileName="MEX2.xsd" MetadataType="Schema" ID="cbab782f-defe-4705-ab42-9c2e79ed5b4d" SourceId="1" SourceUrl="http://localhost:9918/SongInfoManagement/MEX?xsd=xsd2" />
     <MetadataFile FileName="MEX3.xsd" MetadataType="Schema" ID="d788b7c7-6679-40b0-a891-5225ee35e872" SourceId="1" SourceUrl="http://localhost:9918/SongInfoManagement/MEX?xsd=xsd3" />
+    <MetadataFile FileName="MEX4.xsd" MetadataType="Schema" ID="ac2fb9fb-5ef2-4211-9e39-9c915d84fe61" SourceId="1" SourceUrl="http://localhost:9918/SongInfoManagement/MEX?xsd=xsd4" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -1,4 +1,3 @@
-G:\3VSText\GitTest\KTV\Service\KtvService\SingManagementService\bin\Debug\NLog.config
 G:\3VSText\GitTest\KTV\Service\KtvService\SingManagementService\bin\Debug\SingManagementService.dll
 G:\3VSText\GitTest\KTV\Service\KtvService\SingManagementService\bin\Debug\SingManagementService.pdb
 G:\3VSText\GitTest\KTV\Service\KtvService\SingManagementService\bin\Debug\DataAccess.dll

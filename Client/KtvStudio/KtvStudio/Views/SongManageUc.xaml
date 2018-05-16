@@ -240,114 +240,59 @@
                                                               TabStripPlacement="Top"
                                                               SelectionChanged="SongRankTabControl_SelectionChanged">
                                 <TabItem Header="华语榜" Padding="20 0" Controls:ControlsHelper.HeaderFontSize="15">
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
-                                        <TextBlock Grid.Row="0" Grid.Column="0" Margin="5 5 0 5" Text="更新频率："/>
-                                        <TextBlock Grid.Row="0" Grid.Column="1" Margin="5 5 0 5" Text="周榜"/>
-                                        <TextBlock Grid.Row="0" Grid.Column="2" Margin="5 5 0 5" Text="统计范围："/>
-                                        <TextBlock Grid.Row="0" Grid.Column="3" Margin="5 5 0 5" Text="6个月内发行的国语，粤语歌曲"/>
-                                        <TextBlock Grid.Row="1" Grid.Column="0" Margin="5 5 0 5" Text="统计数量："/>
-                                        <TextBlock Grid.Row="1" Grid.Column="1" Margin="5 5 0 5" Text="100首"/>
-                                        <TextBlock Grid.Row="1" Grid.Column="2" Margin="5 5 0 5" Text="统计方式："/>
-                                        <TextBlock Grid.Row="1" Grid.Column="3" Margin="5 5 0 5" Text="初始分数+用户分数-时间分数"/>
-                                    </Grid>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Border BorderThickness="5 1 1 1" BorderBrush="#41B1E1" Padding="10 3 20 3" Margin="0 5">
+                                            <TextBlock Margin="5 5 0 5"
+                                                       Text="统计范围：歌曲语种为国语或粤语"/>
+                                        </Border>
+                                        <Border BorderThickness="5 1 1 1" BorderBrush="#41B1E1" Padding="10 3 20 3" Margin="50 5">
+                                            <TextBlock Margin="5 5 0 5" Text="统计数量：100首以内"/>
+                                        </Border>
+                                    </StackPanel>
                                 </TabItem>
                                 <Controls:MetroTabItem Header="情歌对唱" Padding="20 0" Controls:ControlsHelper.HeaderFontSize="15">
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
-                                        <TextBlock Grid.Row="0" Grid.Column="0" Margin="5 5 0 5" Text="更新频率："/>
-                                        <TextBlock Grid.Row="0" Grid.Column="1" Margin="5 5 0 5" Text="周榜"/>
-                                        <TextBlock Grid.Row="0" Grid.Column="2" Margin="5 5 0 5" Text="统计范围："/>
-                                        <TextBlock Grid.Row="0" Grid.Column="3" Margin="5 5 0 5" Text="五年内发行的对唱情歌"/>
-                                        <TextBlock Grid.Row="1" Grid.Column="0" Margin="5 5 0 5" Text="统计数量："/>
-                                        <TextBlock Grid.Row="1" Grid.Column="1" Margin="5 5 0 5" Text="100首"/>
-                                        <TextBlock Grid.Row="1" Grid.Column="2" Margin="5 5 0 5" Text="统计方式："/>
-                                        <TextBlock Grid.Row="1" Grid.Column="3" Margin="5 5 0 5" Text="初始分数+用户分数-时间分数"/>
-                                    </Grid>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Border BorderThickness="5 1 1 1" BorderBrush="#41B1E1" Padding="10 3 20 3" Margin="0 5">
+                                            <TextBlock Margin="5 5 0 5"
+                                                       Text="统计范围：分类中包含情歌对唱标签"/>
+                                        </Border>
+                                        <Border BorderThickness="5 1 1 1" BorderBrush="#41B1E1" Padding="10 3 20 3" Margin="50 5">
+                                            <TextBlock Margin="5 5 0 5" Text="统计数量：100首以内"/>
+                                        </Border>
+                                    </StackPanel>
                                 </Controls:MetroTabItem>
                                 <Controls:MetroTabItem Header="影视金曲" Padding="20 0" Controls:ControlsHelper.HeaderFontSize="15">
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
-                                        <TextBlock Grid.Row="0" Grid.Column="0" Margin="5 5 0 5" Text="更新频率："/>
-                                        <TextBlock Grid.Row="0" Grid.Column="1" Margin="5 5 0 5" Text="周榜"/>
-                                        <TextBlock Grid.Row="0" Grid.Column="2" Margin="5 5 0 5" Text="统计范围："/>
-                                        <TextBlock Grid.Row="0" Grid.Column="3" Margin="5 5 0 5" Text="6个月内发行的影视歌曲"/>
-                                        <TextBlock Grid.Row="1" Grid.Column="0" Margin="5 5 0 5" Text="统计数量："/>
-                                        <TextBlock Grid.Row="1" Grid.Column="1" Margin="5 5 0 5" Text="100首"/>
-                                        <TextBlock Grid.Row="1" Grid.Column="2" Margin="5 5 0 5" Text="统计方式："/>
-                                        <TextBlock Grid.Row="1" Grid.Column="3" Margin="5 5 0 5" Text="初始分数+用户分数-时间分数"/>
-                                    </Grid>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Border BorderThickness="5 1 1 1" BorderBrush="#41B1E1" Padding="10 3 20 3" Margin="0 5">
+                                            <TextBlock Margin="5 5 0 5"
+                                                       Text="统计范围：分类中包含影视标签"/>
+                                        </Border>
+                                        <Border BorderThickness="5 1 1 1" BorderBrush="#41B1E1" Padding="10 3 20 3" Margin="50 5">
+                                            <TextBlock Margin="5 5 0 5" Text="统计数量：100首以内"/>
+                                        </Border>
+                                    </StackPanel>
                                 </Controls:MetroTabItem>
                                 <Controls:MetroTabItem Header="经典老歌" Padding="20 0" Controls:ControlsHelper.HeaderFontSize="15">
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
-                                        <TextBlock Grid.Row="0" Grid.Column="0" Margin="5 5 0 5" Text="更新频率："/>
-                                        <TextBlock Grid.Row="0" Grid.Column="1" Margin="5 5 0 5" Text="周榜"/>
-                                        <TextBlock Grid.Row="0" Grid.Column="2" Margin="5 5 0 5" Text="统计范围："/>
-                                        <TextBlock Grid.Row="0" Grid.Column="3" Margin="5 5 0 5" Text="所有歌曲"/>
-                                        <TextBlock Grid.Row="1" Grid.Column="0" Margin="5 5 0 5" Text="统计数量："/>
-                                        <TextBlock Grid.Row="1" Grid.Column="1" Margin="5 5 0 5" Text="100首"/>
-                                        <TextBlock Grid.Row="1" Grid.Column="2" Margin="5 5 0 5" Text="统计方式："/>
-                                        <TextBlock Grid.Row="1" Grid.Column="3" Margin="5 5 0 5" Text="初始分数+用户分数-时间分数"/>
-                                    </Grid>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Border BorderThickness="5 1 1 1" BorderBrush="#41B1E1" Padding="10 3 20 3" Margin="0 5">
+                                            <TextBlock Margin="5 5 0 5"
+                                                       Text="{Binding MinClickDate, StringFormat='{}统计范围：{0:D}前发行',ConverterCulture=zh-CN}"/>
+                                        </Border>
+                                        <Border BorderThickness="5 1 1 1" BorderBrush="#41B1E1" Padding="10 3 20 3" Margin="50 5">
+                                            <TextBlock Margin="5 5 0 5" Text="统计数量：100首以内"/>
+                                        </Border>
+                                    </StackPanel>
                                 </Controls:MetroTabItem>
                                 <Controls:MetroTabItem Header="新歌榜" Padding="20 0" Controls:ControlsHelper.HeaderFontSize="15">
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
-                                        <TextBlock Grid.Row="0" Grid.Column="0" Margin="5 5 0 5" Text="更新频率："/>
-                                        <TextBlock Grid.Row="0" Grid.Column="1" Margin="5 5 0 5" Text="日榜"/>
-                                        <TextBlock Grid.Row="0" Grid.Column="2" Margin="5 5 0 5" Text="统计范围："/>
-                                        <TextBlock Grid.Row="0" Grid.Column="3" Margin="5 5 0 5" Text="100天内发行的新歌"/>
-                                        <TextBlock Grid.Row="1" Grid.Column="0" Margin="5 5 0 5" Text="统计数量："/>
-                                        <TextBlock Grid.Row="1" Grid.Column="1" Margin="5 5 0 5" Text="100首"/>
-                                        <TextBlock Grid.Row="1" Grid.Column="2" Margin="5 5 0 5" Text="统计方式："/>
-                                        <TextBlock Grid.Row="1" Grid.Column="3" Margin="5 5 0 5" Text="初始分数+用户分数-时间分数"/>
-                                    </Grid>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Border BorderThickness="5 1 1 1" BorderBrush="#41B1E1" Padding="10 3 20 3" Margin="0 5">
+                                            <TextBlock Margin="5 5 0 5"
+                                                       Text="{Binding MinClickDate, StringFormat='{}统计范围：{0:D}后发行',ConverterCulture=zh-CN}"/>
+                                        </Border>
+                                        <Border BorderThickness="5 1 1 1" BorderBrush="#41B1E1" Padding="10 3 20 3" Margin="50 5">
+                                            <TextBlock Margin="5 5 0 5" Text="统计数量：100首以内"/>
+                                        </Border>
+                                    </StackPanel>
                                 </Controls:MetroTabItem>
                             </Controls:MetroAnimatedTabControl>
                         </Grid>
@@ -393,7 +338,6 @@
                                 <DataGridTextColumn Header="歌曲名称" Binding="{Binding musicname}" Width="100"/>
                                 <DataGridTextColumn Header="歌手姓名" Binding="{Binding singername}" Width="100"/>
                                 <DataGridTextColumn Header="语言种类" Binding="{Binding languagetype, Converter={StaticResource Ltctnc}}" Width="100"/>
-                                <DataGridTextColumn Header="歌曲热度" Binding="{Binding recordnumber}" Width="100"/>
                                 <DataGridTextColumn Header="视频路径" Binding="{Binding mvurl}" Width="350"/>
                                 <DataGridTextColumn Header="原唱音道" Binding="{Binding singrail, Converter={StaticResource Sbtlorc}}" Width="100"/>
                                 <DataGridTextColumn Header="发行日期" Binding="{Binding releasedate, StringFormat={}{0:yyyy-MM-dd}}" Width="200"/>

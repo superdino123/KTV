@@ -49,6 +49,7 @@
     <Compile Include="SingerInfo.cs" />
     <Compile Include="SongInfo.cs" />
     <Compile Include="SongRecord.cs" />
+    <Compile Include="StaffInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

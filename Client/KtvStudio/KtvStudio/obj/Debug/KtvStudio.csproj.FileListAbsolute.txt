@@ -141,6 +141,7 @@ G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\bin\Debug\ImageReSource\8007.j
 G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\bin\Debug\ImageReSource\8008.jpg
 G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\bin\Debug\ImageReSource\8009.jpg
 G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\bin\Debug\NLog.config
+G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\bin\Debug\Configs\SongHotConfig\SongHotConfig.xml
 G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\bin\Debug\Configs\TableNameMap\TableNameMap.xml
 G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\bin\Debug\Configs\LogSettingFile\NLog.dll.nlog
 G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\bin\Debug\KtvStudio.exe.config
@@ -150,6 +151,9 @@ G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\bin\Debug\ClientControls.dll
 G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\bin\Debug\Fluent.dll
 G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\bin\Debug\Helpers.dll
 G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\bin\Debug\ImageResource.dll
+G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\bin\Debug\KtvMusic.exe
+G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\bin\Debug\LiveCharts.dll
+G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\bin\Debug\LiveCharts.Wpf.dll
 G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\bin\Debug\MahApps.Metro.dll
 G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\bin\Debug\MahApps.Metro.IconPacks.dll
 G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\bin\Debug\Newtonsoft.Json.dll
@@ -162,12 +166,16 @@ G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\bin\Debug\MahApps.Metro.xml
 G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\bin\Debug\ClientControls.pdb
 G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\bin\Debug\Helpers.pdb
 G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\bin\Debug\ImageResource.pdb
+G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\bin\Debug\KtvMusic.pdb
+G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\bin\Debug\KtvMusic.exe.config
 G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\bin\Debug\Newtonsoft.Json.xml
 G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\bin\Debug\ControlzEx.pdb
 G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\bin\Debug\NLog.xml
 G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\obj\Debug\KtvStudio.csprojResolveAssemblyReference.cache
 G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\obj\Debug\MainWindow.g.cs
 G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\obj\Debug\SplashScreen.g.cs
+G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\obj\Debug\Views\DataAnalysisManageUc.g.cs
+G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\obj\Debug\Views\LoginWnd.g.cs
 G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\obj\Debug\Views\RoomInfoEditUc.g.cs
 G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\obj\Debug\Views\RoomTaskEditWnd.g.cs
 G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\obj\Debug\Views\SingerInfoEditUc.g.cs
@@ -181,6 +189,8 @@ G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\obj\Debug\KtvStudio_MarkupComp
 G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\obj\Debug\App.baml
 G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\obj\Debug\MainWindow.baml
 G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\obj\Debug\SplashScreen.baml
+G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\obj\Debug\Views\DataAnalysisManageUc.baml
+G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\obj\Debug\Views\LoginWnd.baml
 G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\obj\Debug\Views\RoomInfoEditUc.baml
 G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\obj\Debug\Views\RoomTaskEditWnd.baml
 G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\obj\Debug\Views\SingerInfoEditUc.baml
@@ -192,7 +202,3 @@ G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\obj\Debug\KtvStudio.csproj.Gen
 G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\obj\Debug\KtvStudio.csproj.CoreCompileInputs.cache
 G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\obj\Debug\KtvStudio.exe
 G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\obj\Debug\KtvStudio.pdb
-G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\bin\Debug\LiveCharts.dll
-G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\bin\Debug\LiveCharts.Wpf.dll
-G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\obj\Debug\Views\DataAnalysisManageUc.g.cs
-G:\3VSText\GitTest\KTV\Client\KtvStudio\KtvStudio\obj\Debug\Views\DataAnalysisManageUc.baml

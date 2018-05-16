@@ -8,12 +8,13 @@
                       xmlns:converters="clr-namespace:Helpers.Converters;assembly=Helpers"
                       xmlns:converters1="clr-namespace:KtvStudio.Helpers.Converters"
                       xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+                      xmlns:globalization="clr-namespace:System.Globalization;assembly=mscorlib"
                       mc:Ignorable="d"
                       Name="ThisWindow"
                       BorderThickness="1"
                       BorderBrush="DarkGray"
                       DataContext="{Binding ElementName=ThisWindow, Path=ClientViewModel}"
-                      Title="包房管理" Height="350" Width="575"
+                      Title="包房管理" Height="310" Width="575"
 WindowStartupLocation="CenterScreen" WindowState="Normal">
     <controls:MetroWindow.Resources>
         <converters:BooleanInvertVisibilityConverter x:Key="Bivc"/>
@@ -78,17 +79,22 @@ WindowStartupLocation="CenterScreen" WindowState="Normal">
                                VerticalAlignment="Center" Margin="5 5 0 5"/>
                     <TextBox Grid.Row="0" Grid.Column="3" MinWidth="200" Margin="5"
                              Text="{Binding RoomTaskEditItem.RoomConsume}" IsEnabled="False"/>
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="消费时间"
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="起始时间"
                                VerticalAlignment="Center" Margin="5 5 0 5"/>
                     <controls:DateTimePicker Grid.Row="1" Grid.Column="1" MinWidth="200" Margin="5"
                                              SelectedDate="{Binding RoomTaskEditItem.StartTime, Converter={StaticResource Dntdc}}"
+                                             Culture="{x:Static globalization:CultureInfo.CurrentCulture}"
                                              SelectedTimeChanged="DateTimePicker_SelectedTimeChanged"
                                              SelectedDateChanged="DateTimePicker_SelectedDateChanged"
                                              IsEnabled="{Binding UserInfoWhenRenewNoVisibility, Converter={StaticResource Bic}}"/>
-                    <TextBlock Grid.Row="1" Grid.Column="2" Text="-"
+                    <TextBlock Grid.Row="1" Grid.Column="2" Text="消费时长"
                                VerticalAlignment="Center" Margin="5 5 0 5"/>
-                    <controls:DateTimePicker Grid.Row="1" Grid.Column="3" MinWidth="200" Margin="5"
+                    <Controls:NumericUpDown Grid.Row="1" Grid.Column="3" MinWidth="200" Margin="5" HasDecimals="False" Minimum="0"
+                                            ValueChanged="ConsumeTimeValue_ValueChanged"
+                                            x:Name="ConsumeTimeValue"/>
+                    <controls:DateTimePicker Grid.Row="1" Grid.Column="3" MinWidth="200" Margin="5" Visibility="Collapsed"
                                              SelectedDate="{Binding RoomTaskEditItem.EndTime, Converter={StaticResource Dntdc}}"
+                                             Culture="{x:Static globalization:CultureInfo.CurrentCulture}"
                                              SelectedTimeChanged="DateTimePicker_SelectedTimeChanged"
                                              SelectedDateChanged="DateTimePicker_SelectedDateChanged"/>
                 </Grid>
@@ -102,7 +108,7 @@ WindowStartupLocation="CenterScreen" WindowState="Normal">
             <Border Grid.Row="0" Height="40" Background="White" Margin="0">
                 <DockPanel>
                     <TextBlock DockPanel.Dock="Left" Margin="2 5 5 5" Width="10"
-                                       Height="{Binding ElementName=toggleButtonUserInfo,Path=Height}"
+                                       Height="{Binding ElementName=toggleButtonUserInfo1,Path=Height}"
                                        Background="#A0D8F0" />
                     <ToggleButton Name="toggleButtonUserInfo"
                                           DockPanel.Dock="Right"
@@ -124,7 +130,7 @@ WindowStartupLocation="CenterScreen" WindowState="Normal">
                             BorderThickness="0 2 0 0"
                             BorderBrush="#A0D8F0"
                             Padding="0 3"
-                            Visibility="{Binding ElementName=toggleButtonUserInfo,Path=IsChecked,Converter={StaticResource BooleanToVisibilityConverter}}">
+                            Visibility="{Binding ElementName=toggleButtonUserInfo1,Path=IsChecked,Converter={StaticResource BooleanToVisibilityConverter}}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -137,28 +143,20 @@ WindowStartupLocation="CenterScreen" WindowState="Normal">
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="用户名称"
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="姓氏/姓名"
                            VerticalAlignment="Center" Margin="5 5 0 5"/>
                     <TextBox Grid.Row="0" Grid.Column="1" MinWidth="200" Margin="5"
                              Text="{Binding UserInfo.CustomerName}"/>
                     <TextBlock Grid.Row="0" Grid.Column="2" Text="性别"
                            VerticalAlignment="Center" Margin="5 5 0 5"/>
-                    <Controls:ToggleSwitch Grid.Row="0" Grid.Column="3" MinWidth="200" Margin="5"
+                    <Controls:ToggleSwitch Grid.Row="0" Grid.Column="3" MinWidth="200" Margin="5" VerticalAlignment="Center"
                                            IsChecked="{Binding UserInfo.CustomerSex, Converter={StaticResource Sntbc}}"
                                            OffLabel="男" OnLabel="女"
                                            Style="{StaticResource MahApps.Metro.Styles.ToggleSwitch.Win10}" />
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="年龄"
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="联系方式"
                            VerticalAlignment="Center" Margin="5 5 0 5"/>
                     <TextBox Grid.Row="1" Grid.Column="1" MinWidth="200" Margin="5"
-                             Text="{Binding UserInfo.CustomerAge}"/>
-                    <TextBlock Grid.Row="1" Grid.Column="2" Text="联系方式"
-                           VerticalAlignment="Center" Margin="5 5 0 5"/>
-                    <TextBox Grid.Row="1" Grid.Column="3" MinWidth="200" Margin="5"
                              Text="{Binding UserInfo.CustomerTel}"/>
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="身份证号"
-                           VerticalAlignment="Center" Margin="5 5 0 5"/>
-                    <TextBox Grid.Row="2" Grid.Column="1" MinWidth="200" Margin="5"
-                             Text="{Binding UserInfo.CustomerIdCard}"/>
                 </Grid>
             </Border>
         </Grid>

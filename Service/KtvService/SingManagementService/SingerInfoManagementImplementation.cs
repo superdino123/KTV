@@ -51,5 +51,10 @@ namespace SingManagementService
         {
             return SingerInfoManagementDataAccess.GetNationalityInfoSourceDataAccess();
         }
+
+        public int UpdateNewSingerRank(Dictionary<string, int> singerClickNum)
+        {
+            return SingerInfoManagementDataAccess.UpdateNewSingerRankDataAccess(singerClickNum);
+        }
     }
 }

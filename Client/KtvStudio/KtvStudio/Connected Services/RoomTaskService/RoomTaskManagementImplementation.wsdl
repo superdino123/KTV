@@ -362,7 +362,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IRoomTaskManagement_GetCustomerIdByIdCard_Input_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_IRoomTaskManagement_GetCustomerIdByTel_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -381,7 +381,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IRoomTaskManagement_GetCustomerIdByIdCard_output_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_IRoomTaskManagement_GetCustomerIdByTel_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -564,11 +564,11 @@
   <wsdl:message name="IRoomTaskManagement_HasExistUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:HasExistUserResponse" />
   </wsdl:message>
-  <wsdl:message name="IRoomTaskManagement_GetCustomerIdByIdCard_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetCustomerIdByIdCard" />
+  <wsdl:message name="IRoomTaskManagement_GetCustomerIdByTel_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerIdByTel" />
   </wsdl:message>
-  <wsdl:message name="IRoomTaskManagement_GetCustomerIdByIdCard_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetCustomerIdByIdCardResponse" />
+  <wsdl:message name="IRoomTaskManagement_GetCustomerIdByTel_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerIdByTelResponse" />
   </wsdl:message>
   <wsdl:message name="IRoomTaskManagement_AddConsumeLog_InputMessage">
     <wsdl:part name="parameters" element="tns:AddConsumeLog" />
@@ -617,9 +617,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IRoomTaskManagement/HasExistUser" message="tns:IRoomTaskManagement_HasExistUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRoomTaskManagement/HasExistUserResponse" message="tns:IRoomTaskManagement_HasExistUser_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetCustomerIdByIdCard">
-      <wsdl:input wsaw:Action="http://tempuri.org/IRoomTaskManagement/GetCustomerIdByIdCard" message="tns:IRoomTaskManagement_GetCustomerIdByIdCard_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IRoomTaskManagement/GetCustomerIdByIdCardResponse" message="tns:IRoomTaskManagement_GetCustomerIdByIdCard_OutputMessage" />
+    <wsdl:operation name="GetCustomerIdByTel">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRoomTaskManagement/GetCustomerIdByTel" message="tns:IRoomTaskManagement_GetCustomerIdByTel_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRoomTaskManagement/GetCustomerIdByTelResponse" message="tns:IRoomTaskManagement_GetCustomerIdByTel_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="AddConsumeLog">
       <wsdl:input wsaw:Action="http://tempuri.org/IRoomTaskManagement/AddConsumeLog" message="tns:IRoomTaskManagement_AddConsumeLog_InputMessage" />
@@ -714,14 +714,14 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetCustomerIdByIdCard">
-      <soap12:operation soapAction="http://tempuri.org/IRoomTaskManagement/GetCustomerIdByIdCard" style="document" />
+    <wsdl:operation name="GetCustomerIdByTel">
+      <soap12:operation soapAction="http://tempuri.org/IRoomTaskManagement/GetCustomerIdByTel" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_IRoomTaskManagement_GetCustomerIdByIdCard_Input_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_IRoomTaskManagement_GetCustomerIdByTel_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_IRoomTaskManagement_GetCustomerIdByIdCard_output_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_IRoomTaskManagement_GetCustomerIdByTel_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>

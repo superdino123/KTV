@@ -41,7 +41,7 @@ namespace KtvMusic.SongInfoService {
         private string MusicNameInitialsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string RecordNumberField;
+        private double NewSongHotField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.DateTime> ReleaseDateField;
@@ -144,14 +144,14 @@ namespace KtvMusic.SongInfoService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string RecordNumber {
+        public double NewSongHot {
             get {
-                return this.RecordNumberField;
+                return this.NewSongHotField;
             }
             set {
-                if ((object.ReferenceEquals(this.RecordNumberField, value) != true)) {
-                    this.RecordNumberField = value;
-                    this.RaisePropertyChanged("RecordNumber");
+                if ((this.NewSongHotField.Equals(value) != true)) {
+                    this.NewSongHotField = value;
+                    this.RaisePropertyChanged("NewSongHot");
                 }
             }
         }
@@ -336,6 +336,12 @@ namespace KtvMusic.SongInfoService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISongInfoManagement/GetAllSongRecord", ReplyAction="http://tempuri.org/ISongInfoManagement/GetAllSongRecordResponse")]
         System.Threading.Tasks.Task<System.Data.DataTable> GetAllSongRecordAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISongInfoManagement/UpdateNewSongRank", ReplyAction="http://tempuri.org/ISongInfoManagement/UpdateNewSongRankResponse")]
+        int UpdateNewSongRank(System.Collections.Generic.Dictionary<string, double> newRank);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISongInfoManagement/UpdateNewSongRank", ReplyAction="http://tempuri.org/ISongInfoManagement/UpdateNewSongRankResponse")]
+        System.Threading.Tasks.Task<int> UpdateNewSongRankAsync(System.Collections.Generic.Dictionary<string, double> newRank);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -435,6 +441,14 @@ namespace KtvMusic.SongInfoService {
         
         public System.Threading.Tasks.Task<System.Data.DataTable> GetAllSongRecordAsync() {
             return base.Channel.GetAllSongRecordAsync();
+        }
+        
+        public int UpdateNewSongRank(System.Collections.Generic.Dictionary<string, double> newRank) {
+            return base.Channel.UpdateNewSongRank(newRank);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateNewSongRankAsync(System.Collections.Generic.Dictionary<string, double> newRank) {
+            return base.Channel.UpdateNewSongRankAsync(newRank);
         }
     }
 }

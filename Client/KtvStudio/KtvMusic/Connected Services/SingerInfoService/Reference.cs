@@ -253,6 +253,12 @@ namespace KtvMusic.SingerInfoService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISingerInfoManagement/GetNationalityInfoSource", ReplyAction="http://tempuri.org/ISingerInfoManagement/GetNationalityInfoSourceResponse")]
         System.Threading.Tasks.Task<System.Data.DataTable> GetNationalityInfoSourceAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISingerInfoManagement/UpdateNewSingerRank", ReplyAction="http://tempuri.org/ISingerInfoManagement/UpdateNewSingerRankResponse")]
+        int UpdateNewSingerRank(System.Collections.Generic.Dictionary<string, int> singerClickNum);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISingerInfoManagement/UpdateNewSingerRank", ReplyAction="http://tempuri.org/ISingerInfoManagement/UpdateNewSingerRankResponse")]
+        System.Threading.Tasks.Task<int> UpdateNewSingerRankAsync(System.Collections.Generic.Dictionary<string, int> singerClickNum);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -344,6 +350,14 @@ namespace KtvMusic.SingerInfoService {
         
         public System.Threading.Tasks.Task<System.Data.DataTable> GetNationalityInfoSourceAsync() {
             return base.Channel.GetNationalityInfoSourceAsync();
+        }
+        
+        public int UpdateNewSingerRank(System.Collections.Generic.Dictionary<string, int> singerClickNum) {
+            return base.Channel.UpdateNewSingerRank(singerClickNum);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateNewSingerRankAsync(System.Collections.Generic.Dictionary<string, int> singerClickNum) {
+            return base.Channel.UpdateNewSingerRankAsync(singerClickNum);
         }
     }
 }
