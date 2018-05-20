@@ -13,11 +13,12 @@ namespace KtvStudio.Helpers.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value == null || string.IsNullOrEmpty(value.ToString())) return null;
-            if (int.Parse(value.ToString()) == 0)
+            int authorityCode = int.Parse(value.ToString().Substring(value.ToString().Length - 1, 1));
+            if (authorityCode == 0)
                 return "操作员";
-            if (int.Parse(value.ToString()) == 1)
+            if (authorityCode == 1)
                 return "管理员";
-            if (int.Parse(value.ToString()) == 2)
+            if (authorityCode == 2)
                 return "开发人员";
             return null;
         }

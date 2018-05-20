@@ -64,18 +64,18 @@ namespace DataAccess
         #region User
         
         public static string STAFFTABLENAME = "staffcount";
-        public static string STAFFFIELDNAME = "username, userpassword, authority, adress";
+        public static string STAFFFIELDNAME = "userrecord, username, userpassword, adress";
 
         public static int LoginDataAccess(StaffInfo staffInfo)
         {
-            string hasUserSql = $"select salt from {STAFFTABLENAME} where username = '{staffInfo.UserName}'";
+            string hasUserSql = $"select salt from {STAFFTABLENAME} where userrecord = '{staffInfo.UserRecord}'";
             DataTable result = SqlServerHelper.GetDataFromKtvdb(hasUserSql);
             if (result.Rows.Count == 0) { 
                 return 0;
             }else{
                 string getSalt = result.Rows[0][0].ToString();
                 string psd = MD5Encoding(staffInfo.UserPassword + getSalt);
-                string sql = $"select count(*) from {STAFFTABLENAME} where username = '{staffInfo.UserName}' and " +
+                string sql = $"select count(*) from {STAFFTABLENAME} where userrecord = '{staffInfo.UserRecord}' and " +
                     $" userpassword in ('{staffInfo.UserPassword}', '{psd}') ";
                 return int.Parse(SqlServerHelper.GetDataFromKtvdb(sql).Rows[0][0].ToString());
             }
@@ -86,14 +86,15 @@ namespace DataAccess
             string salt = Guid.NewGuid().ToString();
             string psd = MD5Encoding(staffInfo.UserPassword + salt);
 
-            var sql = $"update {STAFFTABLENAME} set userpassword = '{psd}', salt = '{salt}' where username = '{staffInfo.UserName}'";
+            var sql = $"update {STAFFTABLENAME} set userpassword = '{psd}', salt = '{salt}' where userrecord = '{staffInfo.UserRecord}'";
             return SqlServerHelper.ExecuteNonQuery(CommandType.Text, sql, 30, null);
         }
-        
-        public static int GetAuthorityDataAccess(string userName)
+
+        public static StaffInfo GetStaffInfoByRecordDataAccess(string userRecord)
         {
-            var sql = $"select authority from {STAFFTABLENAME} where username = '{userName}'";
-            return int.Parse(SqlServerHelper.GetDataFromKtvdb(sql).Rows[0][0].ToString());
+            var sql = $"select username from {STAFFTABLENAME} where userrecord = '{userRecord}'";
+            string usernName = SqlServerHelper.GetDataFromKtvdb(sql).Rows[0][0].ToString();
+            return new StaffInfo() { UserName = usernName, };
         }
 
         /// <summary>  

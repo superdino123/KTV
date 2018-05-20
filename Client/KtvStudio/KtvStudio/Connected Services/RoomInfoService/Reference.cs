@@ -244,9 +244,6 @@ namespace KtvStudio.RoomInfoService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int AuthorityField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SaltField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -268,19 +265,6 @@ namespace KtvStudio.RoomInfoService {
             }
             set {
                 this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Authority {
-            get {
-                return this.AuthorityField;
-            }
-            set {
-                if ((this.AuthorityField.Equals(value) != true)) {
-                    this.AuthorityField = value;
-                    this.RaisePropertyChanged("Authority");
-                }
             }
         }
         
@@ -411,11 +395,11 @@ namespace KtvStudio.RoomInfoService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoomInfoManagement/UpdatePassword", ReplyAction="http://tempuri.org/IRoomInfoManagement/UpdatePasswordResponse")]
         System.Threading.Tasks.Task<int> UpdatePasswordAsync(KtvStudio.RoomInfoService.StaffInfo staffInfo);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoomInfoManagement/GetAuthority", ReplyAction="http://tempuri.org/IRoomInfoManagement/GetAuthorityResponse")]
-        int GetAuthority(string userName);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoomInfoManagement/GetStaffInfoByRecord", ReplyAction="http://tempuri.org/IRoomInfoManagement/GetStaffInfoByRecordResponse")]
+        KtvStudio.RoomInfoService.StaffInfo GetStaffInfoByRecord(string userRecord);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoomInfoManagement/GetAuthority", ReplyAction="http://tempuri.org/IRoomInfoManagement/GetAuthorityResponse")]
-        System.Threading.Tasks.Task<int> GetAuthorityAsync(string userName);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoomInfoManagement/GetStaffInfoByRecord", ReplyAction="http://tempuri.org/IRoomInfoManagement/GetStaffInfoByRecordResponse")]
+        System.Threading.Tasks.Task<KtvStudio.RoomInfoService.StaffInfo> GetStaffInfoByRecordAsync(string userRecord);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -509,12 +493,12 @@ namespace KtvStudio.RoomInfoService {
             return base.Channel.UpdatePasswordAsync(staffInfo);
         }
         
-        public int GetAuthority(string userName) {
-            return base.Channel.GetAuthority(userName);
+        public KtvStudio.RoomInfoService.StaffInfo GetStaffInfoByRecord(string userRecord) {
+            return base.Channel.GetStaffInfoByRecord(userRecord);
         }
         
-        public System.Threading.Tasks.Task<int> GetAuthorityAsync(string userName) {
-            return base.Channel.GetAuthorityAsync(userName);
+        public System.Threading.Tasks.Task<KtvStudio.RoomInfoService.StaffInfo> GetStaffInfoByRecordAsync(string userRecord) {
+            return base.Channel.GetStaffInfoByRecordAsync(userRecord);
         }
     }
 }

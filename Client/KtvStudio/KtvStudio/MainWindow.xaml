@@ -116,7 +116,7 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="{Binding CurrentStaffInfo.UserName}" Margin="0 0 10 0"/>
-                    <TextBlock Grid.Column="1" Text="{Binding CurrentStaffInfo.Authority, Converter={StaticResource Sactnc}}" Margin="0 0 10 0"/>
+                    <TextBlock Grid.Column="1" Text="{Binding CurrentStaffInfo.UserRecord, Converter={StaticResource Sactnc}}" Margin="0 0 10 0"/>
                     <TextBlock Grid.Column="2" Text="{Binding CurrentStaffInfo.UserAddress}" Margin="0 0 10 0"/>
                     <TextBlock Grid.Column="3" Text="{Binding DateTimeNow}"/>
                 </Grid>
@@ -136,7 +136,7 @@
                     </fluent:BackstageTabControl>
                 </fluent:Backstage>
             </fluent:Ribbon.Menu>
-            <fluent:RibbonTabItem Name="Home" Header="包间消费管理" Visibility="{Binding CurrentStaffInfo.Authority, Converter={StaticResource Atvc}}">
+            <fluent:RibbonTabItem Name="Home" Header="包间消费管理" Visibility="{Binding CurrentStaffInfo.UserRecord, Converter={StaticResource Atvc}}">
                 <fluent:RibbonGroupBox Header="刷新">
                     <fluent:Button Header="刷新" Margin="5 0" ToolTip="Alt+N"
                                    Command="{Binding RoomTaskRefreshCmd}">
@@ -185,7 +185,7 @@
                     </fluent:Button>
                 </fluent:RibbonGroupBox>
             </fluent:RibbonTabItem>
-            <fluent:RibbonTabItem Name="InfoManage" Header="包房信息管理" Visibility="{Binding CurrentStaffInfo.Authority, Converter={StaticResource Aitvc}}">
+            <fluent:RibbonTabItem Name="InfoManage" Header="包房信息管理" Visibility="{Binding CurrentStaffInfo.UserRecord, Converter={StaticResource Aitvc}}">
                 <fluent:RibbonGroupBox Header="刷新">
                     <fluent:Button Header="刷新" Margin="5 0" ToolTip="Alt+F"
                                    Command="{Binding RoomInfoRefreshCmd}">
@@ -227,7 +227,7 @@
                     </fluent:Button>
                 </fluent:RibbonGroupBox>
             </fluent:RibbonTabItem>
-            <fluent:RibbonTabItem Name="SongInfoManage" Header="歌曲信息管理" Visibility="{Binding CurrentStaffInfo.Authority, Converter={StaticResource Aitvc}}">
+            <fluent:RibbonTabItem Name="SongInfoManage" Header="歌曲信息管理" Visibility="{Binding CurrentStaffInfo.UserRecord, Converter={StaticResource Aitvc}}">
                 <fluent:RibbonGroupBox Header="刷新">
                     <fluent:Button Header="刷新" Margin="5 0"
                                    Command="{Binding SongInfoRefreshCmd}">
@@ -285,7 +285,7 @@
                     </fluent:Button>
                 </fluent:RibbonGroupBox>
             </fluent:RibbonTabItem>
-            <fluent:RibbonTabItem Name="SingerManage" Header="歌手信息管理" Visibility="{Binding CurrentStaffInfo.Authority, Converter={StaticResource Aitvc}}">
+            <fluent:RibbonTabItem Name="SingerManage" Header="歌手信息管理" Visibility="{Binding CurrentStaffInfo.UserRecord, Converter={StaticResource Aitvc}}">
                 <fluent:RibbonGroupBox Header="刷新" ToolTip="Alt+U">
                     <fluent:Button Header="刷新" Margin="5 0"
                                    Command="{Binding GetAllSingerInfoCmd}">
@@ -328,9 +328,8 @@
                 </fluent:RibbonGroupBox>
             </fluent:RibbonTabItem>
             <fluent:RibbonTabItem Name="DownloadManage" Header="正在下载" Visibility="Collapsed">
-                <!-- {Binding CurrentStaffInfo.Authority, Converter={StaticResource Aitvc}} -->
             </fluent:RibbonTabItem>
-            <fluent:RibbonTabItem Name="DataAnalysisManage" Header="数据分析管理" Visibility="{Binding CurrentStaffInfo.Authority, Converter={StaticResource Aitvc}}">
+            <fluent:RibbonTabItem Name="DataAnalysisManage" Header="数据分析管理" Visibility="{Binding CurrentStaffInfo.UserRecord, Converter={StaticResource Aitvc}}">
                 <fluent:RibbonGroupBox Header="经营管理" ToolTip="Alt+U">
                     <fluent:Button Header="营业额" Margin="5 0"
                                    Command="{Binding TurnOverCmd}">

@@ -14,9 +14,10 @@ namespace KtvStudio.Helpers.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value == null || string.IsNullOrEmpty(value.ToString())) return null;
-            if (int.Parse(value.ToString()) == 0)
+            int authorityCode = int.Parse(value.ToString().Substring(value.ToString().Length - 1, 1));
+            if (authorityCode == 0)
                 return Visibility.Visible;
-            if (int.Parse(value.ToString()) == 1)
+            if (authorityCode == 1)
                 return Visibility.Collapsed;
             return Visibility.Visible;
         }

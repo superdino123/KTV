@@ -52,9 +52,9 @@ namespace RoomInfoManagementService
             return RoomInfoManagementDataAccess.UpdatePasswordDataAccess(staffInfo);
         }
 
-        public int GetAuthority(string userName)
+        public StaffInfo GetStaffInfoByRecord(string userRecord)
         {
-            return RoomInfoManagementDataAccess.GetAuthorityDataAccess(userName);
+            return RoomInfoManagementDataAccess.GetStaffInfoByRecordDataAccess(userRecord);
         }
     }
 }

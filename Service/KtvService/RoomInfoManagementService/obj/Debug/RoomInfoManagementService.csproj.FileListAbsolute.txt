@@ -35,6 +35,9 @@ G:\3VSText\GitKtv\Service\KtvService\RoomInfoManagementService\obj\Debug\RoomInf
 G:\3VSText\GitKtv\Service\KtvService\RoomInfoManagementService\obj\Debug\RoomInfoManagementService.csproj.CoreCompileInputs.cache
 G:\3VSText\GitKtv\Service\KtvService\RoomInfoManagementService\obj\Debug\RoomInfoManagementService.dll
 G:\3VSText\GitKtv\Service\KtvService\RoomInfoManagementService\obj\Debug\RoomInfoManagementService.pdb
+G:\3VSText\GitTest\KTV\Service\KtvService\RoomInfoManagementService\bin\Debug\DataModel.pdb
+G:\3VSText\GitTest\KTV\Service\KtvService\RoomInfoManagementService\bin\Debug\NLog.xml
+G:\3VSText\GitTest\KTV\Service\KtvService\RoomInfoManagementService\bin\Debug\NLog.config
 G:\3VSText\GitTest\KTV\Service\KtvService\RoomInfoManagementService\bin\Debug\RoomInfoManagementService.dll
 G:\3VSText\GitTest\KTV\Service\KtvService\RoomInfoManagementService\bin\Debug\RoomInfoManagementService.pdb
 G:\3VSText\GitTest\KTV\Service\KtvService\RoomInfoManagementService\bin\Debug\DataAccess.dll
@@ -44,11 +47,9 @@ G:\3VSText\GitTest\KTV\Service\KtvService\RoomInfoManagementService\bin\Debug\Da
 G:\3VSText\GitTest\KTV\Service\KtvService\RoomInfoManagementService\bin\Debug\Helpers.dll
 G:\3VSText\GitTest\KTV\Service\KtvService\RoomInfoManagementService\bin\Debug\NLog.dll
 G:\3VSText\GitTest\KTV\Service\KtvService\RoomInfoManagementService\bin\Debug\DataAccess.pdb
-G:\3VSText\GitTest\KTV\Service\KtvService\RoomInfoManagementService\bin\Debug\DataModel.pdb
 G:\3VSText\GitTest\KTV\Service\KtvService\RoomInfoManagementService\bin\Debug\RoomInfoManagementInterface.pdb
 G:\3VSText\GitTest\KTV\Service\KtvService\RoomInfoManagementService\bin\Debug\DataHelper.pdb
 G:\3VSText\GitTest\KTV\Service\KtvService\RoomInfoManagementService\bin\Debug\Helpers.pdb
-G:\3VSText\GitTest\KTV\Service\KtvService\RoomInfoManagementService\bin\Debug\NLog.xml
 G:\3VSText\GitTest\KTV\Service\KtvService\RoomInfoManagementService\obj\Debug\RoomInfoManagementService.csprojResolveAssemblyReference.cache
 G:\3VSText\GitTest\KTV\Service\KtvService\RoomInfoManagementService\obj\Debug\RoomInfoManagementService.csproj.CoreCompileInputs.cache
 G:\3VSText\GitTest\KTV\Service\KtvService\RoomInfoManagementService\obj\Debug\RoomInfoManagementService.dll

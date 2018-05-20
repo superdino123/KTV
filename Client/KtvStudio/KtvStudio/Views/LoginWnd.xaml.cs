@@ -76,7 +76,7 @@ namespace KtvStudio.Views
         private void UpdatePasswordButton_Click(object sender, RoutedEventArgs e)
         {
 
-            if (string.IsNullOrEmpty(ClientViewModel.CurrentStaffInfo.UserName) ||
+            if (string.IsNullOrEmpty(ClientViewModel.CurrentStaffInfo.UserRecord) ||
                 string.IsNullOrEmpty(OldPasswordTextBox.Text) ||
                 string.IsNullOrEmpty(NewPasswordTextBox.Password) ||
                 string.IsNullOrEmpty(NewPasswordAgainTextBox.Password))
@@ -92,7 +92,7 @@ namespace KtvStudio.Views
             ClientViewModel.CurrentStaffInfo.UserPassword = OldPasswordTextBox.Text;
             if (ClientViewModel.RoomInfoManagementServiceCaller.Login(ClientViewModel.CurrentStaffInfo) == 0)
             {
-                MessageBox.Show("原用户名或密码不正确！", "提示", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("原工号或密码不正确！", "提示", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
             ClientViewModel.CurrentStaffInfo.UserPassword = NewPasswordTextBox.Password;

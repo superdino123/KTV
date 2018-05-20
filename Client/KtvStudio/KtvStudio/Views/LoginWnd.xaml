@@ -50,9 +50,9 @@
                             </ComboBox>
                         </Border>
                         <Border BorderBrush="White" CornerRadius="10" BorderThickness="1" Padding="10 3" Margin="20 0">
-                            <TextBox controls:TextBoxHelper.Watermark="请输入用户名"
+                            <TextBox controls:TextBoxHelper.Watermark="请输入工号"
                                      Background="Transparent" Foreground="White" FontSize="18" Width="250" BorderThickness="0"
-                                     Text="{Binding CurrentStaffInfo.UserName}"/>
+                                     Text="{Binding CurrentStaffInfo.UserRecord}"/>
                         </Border>
                         <Border BorderBrush="White" CornerRadius="10" BorderThickness="1" Padding="10 3" Margin="20 0">
                             <PasswordBox Background="Transparent" Foreground="White" FontSize="18" Width="250" BorderThickness="0"
@@ -77,8 +77,8 @@
                     <StackPanel Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center" Margin="0 0 50 0">
                         <Border BorderBrush="White" CornerRadius="10" BorderThickness="1" Padding="10 3" Margin="20 10">
                             <TextBox FontSize="18" Width="250" BorderThickness="0" Background="Transparent" Foreground="White" Padding="10 0"
-                                     controls:TextBoxHelper.Watermark="请输入用户名"
-                                     Text="{Binding CurrentStaffInfo.UserName}"/>
+                                     controls:TextBoxHelper.Watermark="请输入工号"
+                                     Text="{Binding CurrentStaffInfo.UserRecord}"/>
                         </Border>
                         <Border BorderBrush="White" CornerRadius="10" BorderThickness="1" Padding="10 3" Margin="20 10">
                             <TextBox FontSize="18" Width="250" BorderThickness="0" Background="Transparent" Foreground="White" Padding="10 0"

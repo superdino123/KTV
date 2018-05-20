@@ -39,7 +39,7 @@ namespace RoomInfoManagementInterface
         int UpdatePassword(StaffInfo staffInfo);
 
         [OperationContract]
-        int GetAuthority(string userName);
+        StaffInfo GetStaffInfoByRecord(string userRecord);
 
         #endregion
     }

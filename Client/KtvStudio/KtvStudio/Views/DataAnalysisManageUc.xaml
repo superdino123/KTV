@@ -13,6 +13,7 @@
     <UserControl.Resources>
         <converters:ConsumeYearVisibilityConverter x:Key="Cyvc"/>
         <converters:ConsumeMonthVisibilityConverter x:Key="Cmvc"/>
+        <converters:ConsumeDayVisibilityConverter x:Key="Cdvc"/>
     </UserControl.Resources>
     <Grid>
         <TabControl SelectedIndex="{Binding DataAnalysisSelectedIndex}" Visibility="Collapsed">
@@ -38,6 +39,7 @@
                     <ComboBoxItem Content="近十年"/>
                     <ComboBoxItem Content="某一年"/>
                     <ComboBoxItem Content="某一月"/>
+                    <ComboBoxItem Content="某一天"/>
                 </ComboBox>
                 <controls:NumericUpDown Width="100"
                                     VerticalAlignment="Center"
@@ -57,6 +59,15 @@
                                     Visibility="{Binding ConsumeTimeSpanType, Converter={StaticResource Cmvc}}"/>
                 <TextBlock Text="月" VerticalAlignment="Center" Margin="10 0 30 0"
                        Visibility="{Binding ConsumeTimeSpanType, Converter={StaticResource Cmvc}}"/>
+                <controls:NumericUpDown Width="100"
+                                    VerticalAlignment="Center"
+                                    ButtonsAlignment="Left"
+                                    Maximum="31"
+                                    Minimum="1"
+                                    Value="{Binding ConsumeDayValue}"
+                                    Visibility="{Binding ConsumeTimeSpanType, Converter={StaticResource Cdvc}}"/>
+                <TextBlock Text="日" VerticalAlignment="Center" Margin="10 0 30 0"
+                       Visibility="{Binding ConsumeTimeSpanType, Converter={StaticResource Cdvc}}"/>
                 <Button Content="刷新" Command="{Binding TurnOverCmd}" Padding="20 0" FontSize="13"/>
             </StackPanel>
             <Grid Grid.Row="1">
@@ -96,6 +107,7 @@
                     <ComboBoxItem Content="近十年"/>
                     <ComboBoxItem Content="某一年"/>
                     <ComboBoxItem Content="某一月"/>
+                    <ComboBoxItem Content="某一天"/>
                 </ComboBox>
                 <controls:NumericUpDown Width="100"
                                     VerticalAlignment="Center"
@@ -115,6 +127,15 @@
                                     Visibility="{Binding ConsumeTimeSpanType, Converter={StaticResource Cmvc}}"/>
                 <TextBlock Text="月" VerticalAlignment="Center" Margin="10 0 30 0"
                        Visibility="{Binding ConsumeTimeSpanType, Converter={StaticResource Cmvc}}"/>
+                <controls:NumericUpDown Width="100"
+                                    VerticalAlignment="Center"
+                                    ButtonsAlignment="Left"
+                                    Maximum="31"
+                                    Minimum="1"
+                                    Value="{Binding ConsumeDayValue}"
+                                    Visibility="{Binding ConsumeTimeSpanType, Converter={StaticResource Cdvc}}"/>
+                <TextBlock Text="日" VerticalAlignment="Center" Margin="10 0 30 0"
+                       Visibility="{Binding ConsumeTimeSpanType, Converter={StaticResource Cdvc}}"/>
                 <Button Content="刷新" Command="{Binding RoomUseRateCmd}" Padding="20 0" FontSize="13"/>
             </StackPanel>
             <Grid Grid.Row="1">
@@ -124,7 +145,7 @@
                 </Grid.RowDefinitions>
                 <lvc:CartesianChart Grid.Row="0" Series="{Binding RoomTimeSeriesCollection}" LegendLocation="Right" >
                     <lvc:CartesianChart.AxisY>
-                        <lvc:Axis Title="Sales" LabelFormatter="{Binding RoomTimeYFormatter}"></lvc:Axis>
+                        <lvc:Axis Title="Sales" LabelFormatter="{Binding RoomTimeYFormatter}" MinValue="0" MaxValue="1"></lvc:Axis>
                     </lvc:CartesianChart.AxisY>
                     <lvc:CartesianChart.AxisX>
                         <lvc:Axis Title="Month" Labels="{Binding RoomTimeLabels}"></lvc:Axis>
@@ -156,6 +177,8 @@
                 <DatePicker Width="150" Margin="10 0 0 0"
                             SelectedDate="{Binding MinClickDate}"/>
                 <TextBlock Text="内" VerticalAlignment="Center" Margin="10 0 50 0"/>
+                <DatePicker Width="150" Margin="10 0 50 0" Visibility="Collapsed"
+                            SelectedDate="{Binding MaxClickDate}"/>
 
                 <TextBlock Text="点唱次数限制" VerticalAlignment="Center" Margin="10 0 0 0"/>
                 <controls:NumericUpDown Width="100"

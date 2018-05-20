@@ -137,17 +137,17 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAuthority">
+  <xs:element name="GetStaffInfoByRecord">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userRecord" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAuthorityResponse">
+  <xs:element name="GetStaffInfoByRecordResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="GetAuthorityResult" type="xs:int" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/DataModel" minOccurs="0" name="GetStaffInfoByRecordResult" nillable="true" type="q5:StaffInfo" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

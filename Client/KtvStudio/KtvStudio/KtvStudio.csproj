@@ -101,6 +101,7 @@
     <Compile Include="Helpers\CommonFields.cs" />
     <Compile Include="Helpers\Converters\AuthorityInvertToVisibilityConverter.cs" />
     <Compile Include="Helpers\Converters\AuthorityToVisibilityConverter.cs" />
+    <Compile Include="Helpers\Converters\ConsumeDayVisibilityConverter.cs" />
     <Compile Include="Helpers\Converters\ConsumeMonthVisibilityConverter.cs" />
     <Compile Include="Helpers\Converters\ConsumeYearVisibilityConverter.cs" />
     <Compile Include="Helpers\Converters\DateTimeNullToDefaultConverter.cs" />
@@ -214,6 +215,9 @@
     </EmbeddedResource>
     <None Include="Configs\LogSettingFile\NLog.dll.nlog">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Connected Services\RoomInfoService\KtvStudio.RoomInfoService.StaffInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\RoomInfoService\MEX4.xsd">
       <SubType>Designer</SubType>

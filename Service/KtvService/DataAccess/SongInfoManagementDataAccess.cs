@@ -30,7 +30,7 @@ namespace DataAccess
 
         public static DataTable GetAllSongInfoDataAccess()
         {
-            var sql = $"select id, {INVERTFIELDNAME} from {TABLENAME}";
+            var sql = $"select id, {INVERTFIELDNAME} from {TABLENAME} order by musicname";
             return SqlServerHelper.GetDataFromKtvdb(sql);
         }
 

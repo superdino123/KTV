@@ -17,7 +17,7 @@ namespace KtvStudio.Helpers.Converters
                 return null;
             else if (int.Parse(value.ToString()) == 0)
                 return Visibility.Collapsed;
-            else if (int.Parse(value.ToString()) == 1 || int.Parse(value.ToString()) == 2)
+            else if (int.Parse(value.ToString()) == 1 || int.Parse(value.ToString()) == 2 || int.Parse(value.ToString()) == 3)
                 return Visibility.Visible;
             return Visibility.Collapsed;
         }

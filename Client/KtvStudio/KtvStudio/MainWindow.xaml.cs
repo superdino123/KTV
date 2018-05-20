@@ -50,7 +50,7 @@ namespace KtvStudio
 
             new LoginWnd(ClientViewModel).ShowDialog();
 
-            if (ClientViewModel.CurrentStaffInfo.Authority == 1)
+            if (ClientViewModel.GetAuthority() == 1)
                 Menu.SelectedTabIndex = 1;
             else {
                 //操作员和开发人员定期扫描房间状态，快到时间的包间弹出提示

@@ -158,19 +158,19 @@ namespace KtvStudio.ViewModels
 
         public void OnLogin()
         {
-            if (string.IsNullOrEmpty(CurrentStaffInfo.UserName) || string.IsNullOrEmpty(CurrentStaffInfo.UserPassword)) {
-                MessageBox.Show("请填写用户名或密码！", "提示", MessageBoxButton.OK, MessageBoxImage.Warning);
+            if (string.IsNullOrEmpty(CurrentStaffInfo.UserRecord) || string.IsNullOrEmpty(CurrentStaffInfo.UserPassword)) {
+                MessageBox.Show("请填写工号或密码！", "提示", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
             if (RoomInfoManagementServiceCaller.Login(CurrentStaffInfo) != 0) {
                 LoginState = true;
-                CurrentStaffInfo.Authority = GetAuthority();
+                CurrentStaffInfo.UserName = GetUserName();
                 loginWnd.Close();
             }
             else
             {
-                MessageBox.Show("用户名或密码错误！", "提示", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("工号或密码错误！", "提示", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
@@ -181,14 +181,17 @@ namespace KtvStudio.ViewModels
 
         #endregion
 
-
         #endregion
 
         #region Method
 
-        private int GetAuthority() {
+        private string GetUserName() {
 
-            return RoomInfoManagementServiceCaller.GetAuthority(CurrentStaffInfo.UserName);
+            return RoomInfoManagementServiceCaller.GetStaffInfoByRecord(CurrentStaffInfo.UserRecord).UserName;
+        }
+
+        public int GetAuthority() {
+            return int.Parse(CurrentStaffInfo.UserRecord.Substring(CurrentStaffInfo.UserRecord.Length - 1, 1));
         }
 
         #endregion
@@ -2228,6 +2231,79 @@ namespace KtvStudio.ViewModels
 
         public void OnRoomTaskBalance()
         {
+            #region 批量提交经营日志测试
+            /**
+             * 批量提交经营日志测试 
+             */
+
+            /* 方案2：用于包房时间段价格调整的数据
+            Random rd = new Random();
+            for (int i = 1; i <= 10; i++)//一间房
+            {
+                DateTime time = DateTime.Today.AddMonths(-1);
+                for (int k = 0; k < 30; k++)//一天
+                {
+                    for (int j = 0; j < 24; j++)//一小时
+                    {
+                        if ((j == 0 || j == 1 || j == 2 || j == 14 || j == 15) && rd.Next(1, 11) > 4) continue;
+                        if ((j == 3 || j == 4 || j == 5 || j == 6) && rd.Next(1, 16) > 3) continue;
+                        if ((j == 7 || j == 13) && rd.Next(1, 16) > 2) continue;
+                        if ((j == 8 || j == 9 || j == 10 || j == 11 || j == 12) && rd.Next(1, 16) > 1) continue;
+                        if ((j == 16) && rd.Next(1, 11) > 6) continue;
+                        if ((j == 17 || j == 18 || j == 22) && rd.Next(1, 11) > 8) continue;
+                        if ((j == 19 || j == 20 || j == 21) && rd.Next(1, 11) > 10) continue;
+                        if ((j == 23) && rd.Next(1, 11) > 5) continue;
+
+                        RoomTaskEditItem.RoomId = (8000 + i).ToString();//8001 - 8010
+                        RoomTaskEditItem.CustomerId = rd.Next(1, 25);
+                        RoomTaskEditItem.StartTime = time.AddHours(j);
+                        RoomTaskEditItem.EndTime = RoomTaskEditItem.StartTime.AddHours(1);
+                        RoomTaskEditItem.RoomConsume = (RoomTaskManagementServiceCaller.GetAccentRoomConsume(RoomTaskEditItem)).ToString();
+                        RoomTaskManagementServiceCaller.AddConsumeLog(RoomTaskEditItem);
+                    }
+                    time = time.AddDays(1);
+                }
+            }
+            */
+
+            /* 方案1：用于包房类型比例调整的数据
+            Random rd = new Random();
+            for (int i = 1; i <= 10; i++)
+            {
+                RoomTaskEditItem.RoomId = (8000 + i).ToString();//8001 - 8010
+                int blackTime = 0;
+                if (RoomTaskEditItem.RoomId.Equals("8004") || RoomTaskEditItem.RoomId.Equals("8005") ||
+                    RoomTaskEditItem.RoomId.Equals("8006") || RoomTaskEditItem.RoomId.Equals("8007"))
+                {
+                    blackTime = 1;
+                }
+                else if (RoomTaskEditItem.RoomId.Equals("8001") || RoomTaskEditItem.RoomId.Equals("8003")) {
+                    blackTime = 2;
+                }
+                else if (RoomTaskEditItem.RoomId.Equals("8002"))
+                {
+                    blackTime = 4;
+                }
+                else if (RoomTaskEditItem.RoomId.Equals("8008") || RoomTaskEditItem.RoomId.Equals("8009") ||
+                   RoomTaskEditItem.RoomId.Equals("8010"))
+                {
+                    blackTime = 3;
+                }
+                DateTime time = DateTime.Today.AddMonths(-13);
+                for (int j = 0; j < 2000; j++)
+                {
+                    RoomTaskEditItem.CustomerId = rd.Next(1, 25);
+                    RoomTaskEditItem.StartTime = time;
+                    int add = rd.Next(1, 8);
+                    RoomTaskEditItem.EndTime = RoomTaskEditItem.StartTime.AddHours(add);
+                    time = time.AddHours(add + blackTime);
+                    RoomTaskEditItem.RoomConsume = (add * RoomTaskManagementServiceCaller.GetAccentRoomConsume(RoomTaskEditItem)).ToString();
+                    RoomTaskManagementServiceCaller.AddConsumeLog(RoomTaskEditItem);
+                }
+            }
+            */
+            #endregion
+            
             if (MessageBox.Show($"此次消费{RoomTaskSelectedItem["roomconsume"].ToString()}元，是否提交本次订单?", "提示", MessageBoxButton.OKCancel, MessageBoxImage.Question) == MessageBoxResult.OK)
             {
                 //添加日志流水
@@ -2353,7 +2429,10 @@ namespace KtvStudio.ViewModels
         {
             if (!string.IsNullOrEmpty(RoomTaskAddRemarkString))
             {
-                RoomInfoManagementServiceCaller.AddRoomTaskRemark(RoomTaskSelectedItem["roomid"].ToString(), RoomTaskAddRemarkString, "操作员");
+                int authorityCode = GetAuthority();
+                string authority = authorityCode == 0 ? "操作员" : authorityCode == 1 ? "管理员" : "开发人员";
+                string remarkBeforeStr = authority + "-" + CurrentStaffInfo.UserName;
+                RoomInfoManagementServiceCaller.AddRoomTaskRemark(RoomTaskSelectedItem["roomid"].ToString(), RoomTaskAddRemarkString, remarkBeforeStr);
                 RoomInfoSource = GetRoomInfoSource();
                 RoomTaskSource = GetRoomTaskSource();
             }
@@ -3145,6 +3224,23 @@ namespace KtvStudio.ViewModels
 
         #endregion
 
+        #region ConsumeDayValue
+
+        private int _ConsumeDayValue = DateTime.Now.Day;
+
+        public int ConsumeDayValue
+        {
+            get { return _ConsumeDayValue; }
+            set
+            {
+                if (_ConsumeDayValue.Equals(value)) return;
+                _ConsumeDayValue = value;
+                RaisePropertyChanged("ConsumeDayValue");
+            }
+        }
+
+        #endregion
+
         #endregion
 
         #region 营业额-包间类型
@@ -3276,6 +3372,23 @@ namespace KtvStudio.ViewModels
                 if (_MinClickDate != null && _MinClickDate.Equals(value)) return;
                 _MinClickDate = value;
                 RaisePropertyChanged("MinClickDate");
+            }
+        }
+
+        #endregion
+
+        #region MaxClickDate
+
+        private DateTime _MaxClickDate = DateTime.Today;
+
+        public DateTime MaxClickDate
+        {
+            get { return _MaxClickDate; }
+            set
+            {
+                if (_MaxClickDate != null && _MaxClickDate.Equals(value)) return;
+                _MaxClickDate = value;
+                RaisePropertyChanged("MaxClickDate");
             }
         }
 
@@ -3514,7 +3627,7 @@ namespace KtvStudio.ViewModels
 
             #region 营业额-时间
 
-            ChartValues<int> consumeData = GetConsumeData(ConsumeTimeSpanType, ConsumeYearValue, ConsumeMonthValue);
+            ChartValues<int> consumeData = GetConsumeData(ConsumeTimeSpanType, ConsumeYearValue, ConsumeMonthValue, ConsumeDayValue);
 
             //数据集赋值
             ConsumeSeriesCollection = new SeriesCollection
@@ -3527,14 +3640,14 @@ namespace KtvStudio.ViewModels
             };
 
             //x,y轴
-            ConsumeLabels = GetConsumeX(ConsumeTimeSpanType, ConsumeYearValue, ConsumeMonthValue);
+            ConsumeLabels = GetConsumeX(ConsumeTimeSpanType, ConsumeYearValue, ConsumeMonthValue, ConsumeDayValue);
             ConsumeYFormatter = value => value.ToString("C");
 
             #endregion
 
             #region 营业额-房间类型
 
-            Dictionary<string, int> consumeRoomTypeRate = GetConsumeDataByRoomType(ConsumeTimeSpanType, ConsumeYearValue, ConsumeMonthValue);
+            Dictionary<string, int> consumeRoomTypeRate = GetConsumeDataByRoomType(ConsumeTimeSpanType, ConsumeYearValue, ConsumeMonthValue, ConsumeDayValue);
 
             ConsumeRoomTypeSeriesCollection = new SeriesCollection();
             foreach (KeyValuePair<string, int> item in consumeRoomTypeRate)
@@ -3575,7 +3688,7 @@ namespace KtvStudio.ViewModels
 
             #region 房间使用率-时间
 
-            ChartValues<double> consumeData = GetRoomUseRateData(ConsumeTimeSpanType, ConsumeYearValue, ConsumeMonthValue);
+            ChartValues<double> consumeData = GetRoomUseRateData(ConsumeTimeSpanType, ConsumeYearValue, ConsumeMonthValue, ConsumeDayValue);
 
             //数据集赋值
             RoomTimeSeriesCollection = new SeriesCollection
@@ -3588,14 +3701,14 @@ namespace KtvStudio.ViewModels
             };
 
             //x,y轴
-            RoomTimeLabels = GetConsumeX(ConsumeTimeSpanType, ConsumeYearValue, ConsumeMonthValue);
+            RoomTimeLabels = GetConsumeX(ConsumeTimeSpanType, ConsumeYearValue, ConsumeMonthValue, ConsumeDayValue);
             RoomTimeYFormatter = value => value.ToString("p");
 
             #endregion
 
             #region 房间使用率-房间类型
 
-            Dictionary<string, double> useRateRoomTypeRate = GetuseRateRoomTypeDataByRoomType(ConsumeTimeSpanType, ConsumeYearValue, ConsumeMonthValue);
+            Dictionary<string, double> useRateRoomTypeRate = GetuseRateRoomTypeDataByRoomType(ConsumeTimeSpanType, ConsumeYearValue, ConsumeMonthValue, ConsumeDayValue);
 
             UserRateRoomTypeSeriesCollection = new SeriesCollection();
             foreach (KeyValuePair<string, double> item in useRateRoomTypeRate)
@@ -3634,7 +3747,7 @@ namespace KtvStudio.ViewModels
 
             SongRecordSource = GetSongRecordSource();
 
-            SongRecordSource.DefaultView.RowFilter = $"clickdate >= '{MinClickDate}'";
+            SongRecordSource.DefaultView.RowFilter = $"clickdate >= '{MinClickDate}' and clickdate <= '{MaxClickDate}'";
 
             //计算发行时间内所有歌曲的总点击量，过滤掉点击量不够的，计算出热度
             SongRecordTempResultSource = GetSongRecordTimeResultSource(SongRecordSource);
@@ -3684,11 +3797,8 @@ namespace KtvStudio.ViewModels
             }
 
             //x,y轴
-            SongTimeLabels = GetConsumeX(SongTimeSpanType, SongYearValue, SongMonthValue);
+            SongTimeLabels = GetConsumeX(SongTimeSpanType, SongYearValue, SongMonthValue, ConsumeDayValue);
             SongTimeYFormatter = value => value.ToString();
-
-            #endregion
-
         }
 
         public bool CanSongTimeHot()
@@ -3816,14 +3926,15 @@ namespace KtvStudio.ViewModels
         /// <param name="timeSpanType"></param>
         /// <param name="yearValue"></param>
         /// <param name="monthValue"></param>
+        /// <param name="dayValue"></param>
         /// <returns></returns>
-        private ChartValues<int> GetConsumeData(int timeSpanType, int yearValue, int monthValue)
+        private ChartValues<int> GetConsumeData(int timeSpanType, int yearValue, int monthValue, int dayValue)
         {
             ChartValues<int> result = new ChartValues<int>();
 
             Dictionary<int, int> tempResult = GetTempResultDictionary(timeSpanType, yearValue, monthValue);
 
-            ConsumeLogSource.DefaultView.RowFilter = GetRowFilterByTime(timeSpanType, yearValue, monthValue);
+            ConsumeLogSource.DefaultView.RowFilter = GetRowFilterByTime(timeSpanType, yearValue, monthValue, dayValue);
 
             for (int i = 0; i < ConsumeLogSource.DefaultView.Count; i++)
             {
@@ -3874,7 +3985,7 @@ namespace KtvStudio.ViewModels
             return tempResult;
         }
 
-        private Dictionary<int, double> GetTempResultDictionaryReturnDouble(int timeSpanType, int yearValue, int monthValue)
+        private Dictionary<int, double> GetTempResultDictionaryReturnDouble(int timeSpanType, int yearValue, int monthValue, int dayValue)
         {
             Dictionary<int, double> tempResult = new Dictionary<int, double>();
 
@@ -3901,10 +4012,18 @@ namespace KtvStudio.ViewModels
                     tempResult.Add(i, 0);
                 }
             }
+            else if (timeSpanType == 3)//某一天
+            {
+                for (int i = 0; i <= 23; i++)
+                {
+                    tempResult.Add(i, 0);
+                }
+            }
+
             return tempResult;
         }
 
-        private string GetRowFilterByTime(int timeSpanType, int yearValue, int monthValue) {
+        private string GetRowFilterByTime(int timeSpanType, int yearValue, int monthValue, int dayValue) {
             if (timeSpanType == 0)
             {
                 DateTime startDate = DateTime.Now.AddYears(-10);
@@ -3922,6 +4041,12 @@ namespace KtvStudio.ViewModels
                 DateTime endDate = new DateTime(yearValue, monthValue, 1).AddDays(DateTime.DaysInMonth(yearValue, monthValue) - 1);
                 return $"starttime >= ('{startDate}') and starttime <= ('{endDate}')";
             }
+            if (timeSpanType == 3)
+            {
+                DateTime startDate = new DateTime(yearValue, monthValue, dayValue);
+                DateTime endDate = new DateTime(yearValue, monthValue, dayValue + 1).AddSeconds(-1);
+                return $"endtime > ('{startDate}') and starttime < ('{endDate}')";
+            }
             else
                 return string.Empty;
         }
@@ -3932,8 +4057,9 @@ namespace KtvStudio.ViewModels
         /// <param name="timeSpanType"></param>
         /// <param name="yearValue"></param>
         /// <param name="monthValue"></param>
+        /// <param name="dayValue"></param>
         /// <returns></returns>
-        private string[] GetConsumeX(int timeSpanType, int yearValue, int monthValue)
+        private string[] GetConsumeX(int timeSpanType, int yearValue, int monthValue, int dayValue)
         {
             List<string> result = new List<string>();
             if (timeSpanType == 0)
@@ -3951,6 +4077,12 @@ namespace KtvStudio.ViewModels
                     result.Add(i.ToString());
                 }
             }
+            if (timeSpanType == 3) {
+                for (int i = 0; i < 23; i++)
+                {
+                    result.Add(i + ":00-" + (i + 1) + ":00");
+                }
+            }
             string[] resultStr = new string[result.Count];
             for (int i = 0; i < result.Count; i++)
             {
@@ -3965,8 +4097,9 @@ namespace KtvStudio.ViewModels
         /// <param name="timeSpanType"></param>
         /// <param name="yearValue"></param>
         /// <param name="monthValue"></param>
+        /// <param name="dayValue"></param>
         /// <returns></returns>
-        private Dictionary<string, int> GetConsumeDataByRoomType(int timeSpanType, int yearValue, int monthValue) {
+        private Dictionary<string, int> GetConsumeDataByRoomType(int timeSpanType, int yearValue, int monthValue, int dayValue) {
 
             Dictionary<string, int> result = new Dictionary<string, int>() {
                 { "0", 0},//小型包间
@@ -3977,7 +4110,7 @@ namespace KtvStudio.ViewModels
                 { "5", 0},//商务包间
             };
 
-            ConsumeLogSource.DefaultView.RowFilter = GetRowFilterByTime(timeSpanType, yearValue, monthValue);
+            ConsumeLogSource.DefaultView.RowFilter = GetRowFilterByTime(timeSpanType, yearValue, monthValue, dayValue);
 
             for (int i = 0; i < ConsumeLogSource.DefaultView.Count; i++)
             {
@@ -3988,15 +4121,16 @@ namespace KtvStudio.ViewModels
 
             return result;
         }
-        
+
         /// <summary>
         /// 获取房间使用率(房间类型)数据集合
         /// </summary>
         /// <param name="timeSpanType"></param>
         /// <param name="yearValue"></param>
         /// <param name="monthValue"></param>
+        /// <param name="dayValue"></param>
         /// <returns></returns>
-        private Dictionary<string, double> GetuseRateRoomTypeDataByRoomType(int timeSpanType, int yearValue, int monthValue)
+        private Dictionary<string, double> GetuseRateRoomTypeDataByRoomType(int timeSpanType, int yearValue, int monthValue, int dayValue)
         {
 
             Dictionary<string, double> result = new Dictionary<string, double>() {
@@ -4008,14 +4142,23 @@ namespace KtvStudio.ViewModels
                 { "5", 0},//商务包间
             };
 
-            ConsumeLogSource.DefaultView.RowFilter = GetRowFilterByTime(timeSpanType, yearValue, monthValue);
+            ConsumeLogSource.DefaultView.RowFilter = GetRowFilterByTime(timeSpanType, yearValue, monthValue, dayValue);
 
             for (int i = 0; i < ConsumeLogSource.DefaultView.Count; i++)
             {
                 string roomType = ConsumeLogSource.DefaultView[i]["roomtype"].ToString();
                 if (result.ContainsKey(roomType))
-                    result[roomType] += (DateTime.Parse(ConsumeLogSource.DefaultView[i]["endtime"].ToString())
-                        - DateTime.Parse(ConsumeLogSource.DefaultView[i]["starttime"].ToString())).TotalHours;
+                {
+                    if (timeSpanType != 3)//统计几年，一年，一个月时，月末切换的数据出现几个小时误差，不影响统计结果，可以忽略
+                        result[roomType] += (DateTime.Parse(ConsumeLogSource.DefaultView[i]["endtime"].ToString())
+                            - DateTime.Parse(ConsumeLogSource.DefaultView[i]["starttime"].ToString())).TotalHours;
+                    else {
+                        //统计一天时，每天切换的小时数要严格计算
+                        int startHour = DateTime.Parse(ConsumeLogSource.DefaultView[i]["starttime"].ToString()).Day == dayValue ? DateTime.Parse(ConsumeLogSource.DefaultView[i]["starttime"].ToString()).Hour : 0;
+                        int endHour = DateTime.Parse(ConsumeLogSource.DefaultView[i]["endtime"].ToString()).Day == dayValue ? DateTime.Parse(ConsumeLogSource.DefaultView[i]["endtime"].ToString()).Hour : 23;
+                        result[roomType] += endHour - startHour;
+                    }
+                }
             }
             
             return result;
@@ -4030,14 +4173,15 @@ namespace KtvStudio.ViewModels
         /// <param name="timeSpanType"></param>
         /// <param name="yearValue"></param>
         /// <param name="monthValue"></param>
+        /// <param name="dayValue"></param>
         /// <returns></returns>
-        private ChartValues<double> GetRoomUseRateData(int timeSpanType, int yearValue, int monthValue)
+        private ChartValues<double> GetRoomUseRateData(int timeSpanType, int yearValue, int monthValue, int dayValue)
         {
             ChartValues<double> result = new ChartValues<double>();
 
-            Dictionary<int, double> tempResult = GetTempResultDictionaryReturnDouble(timeSpanType, yearValue, monthValue);
+            Dictionary<int, double> tempResult = GetTempResultDictionaryReturnDouble(timeSpanType, yearValue, monthValue, dayValue);
 
-            ConsumeLogSource.DefaultView.RowFilter = GetRowFilterByTime(timeSpanType, yearValue, monthValue);
+            ConsumeLogSource.DefaultView.RowFilter = GetRowFilterByTime(timeSpanType, yearValue, monthValue, dayValue);
 
             int allHours = GetAllHours(timeSpanType);
 
@@ -4055,6 +4199,15 @@ namespace KtvStudio.ViewModels
                 if (timeSpanType == 2)
                 {
                     tempResult[date.Day] += ((DateTime.Parse(ConsumeLogSource.DefaultView[i]["endtime"].ToString()) - DateTime.Parse(ConsumeLogSource.DefaultView[i]["starttime"].ToString())).TotalHours);
+                }
+                if (timeSpanType == 3)
+                {
+                    int startHour = DateTime.Parse(ConsumeLogSource.DefaultView[i]["starttime"].ToString()).Day == dayValue ? DateTime.Parse(ConsumeLogSource.DefaultView[i]["starttime"].ToString()).Hour : 0;
+                    int endHour = DateTime.Parse(ConsumeLogSource.DefaultView[i]["endtime"].ToString()).Day == dayValue ? DateTime.Parse(ConsumeLogSource.DefaultView[i]["endtime"].ToString()).Hour : 24;
+                    for (int j = startHour; j < endHour; j++)
+                    {
+                        tempResult[j] += 1;
+                    }
                 }
             }
 
@@ -4078,6 +4231,8 @@ namespace KtvStudio.ViewModels
                 result = DateTime.DaysInMonth(date.Year, date.Month) * 24;
             if (timeSpanType == 2)
                 result = 24;
+            if (timeSpanType == 3)
+                result = 1;
             return result * RoomInfoSource.Rows.Count;
         }
 
@@ -4342,7 +4497,9 @@ namespace KtvStudio.ViewModels
                 return string.Empty;
         }
 
-        #endregion      
+        #endregion
+
+        #endregion
     }
 
     internal class RecordNumberAndReleaseDate {
@@ -4364,3 +4521,4 @@ namespace KtvStudio.ViewModels
         }
     }
 }
+ 

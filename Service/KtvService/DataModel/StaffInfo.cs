@@ -18,10 +18,7 @@ namespace DataModel
 
         [DataMember]
         public string UserPassword { get; set; }
-
-        [DataMember]
-        public int Authority { get; set; }
-
+        
         [DataMember]
         public string UserAddress { get; set; }
 
