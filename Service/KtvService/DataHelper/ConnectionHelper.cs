@@ -14,7 +14,7 @@ namespace DataHelper
         public static SqlConnection GetSqlConnection()
         {
             var sqlConnectionString =
-                string.Format(_connection, "127.0.0.1", "KTVDB", "sa", "A1zhengweidi94");
+                string.Format(_connection, "127.0.0.1", "KTVDB", "sa", "yourpassword");
             var conn = new SqlConnection(sqlConnectionString);
             return conn;
         }

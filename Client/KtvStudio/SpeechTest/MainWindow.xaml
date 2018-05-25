@@ -1,0 +1,20 @@
+﻿<Window x:Class="SpeechTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SpeechTest"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <!--   
+        <Label Content="现在时间：" Height="32" HorizontalAlignment="Left" Margin="85,119,0,0" Name="label1" VerticalAlignment="Top" Width="81" />
+        
+            <Label Height="30" HorizontalAlignment="Left" Margin="198,119,0,0" Name="label2" VerticalAlignment="Top" Width="185" IsEnabled="False" Visibility="Visible" />
+            
+            <Button Content="现在现在几点了" Height="25" HorizontalAlignment="Left" Margin="198,65,0,0" Name="button1" VerticalAlignment="Top" Width="60" Opacity="1" Click="button1_Click"/>
+-->
+
+
+    </Grid>
+</Window>

@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DownloadFileTest", "Downloa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChartsTest", "ChartsTest\ChartsTest.csproj", "{10A7CA10-E230-414A-85E6-EEA3FC2C5A39}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeechTest", "SpeechTest\SpeechTest.csproj", "{2B23F707-E2EC-4D27-BFDC-6CA3D6692D80}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		..\..\类库\MahApps.Metro-develop\MahApps.Metro-develop\src\MahApps.Metro\MahApps.Metro.Shared\MahApps.Metro.Shared.projitems*{579d4fa7-0946-4592-ae9b-a73d2d1262c6}*SharedItemsImports = 4
@@ -72,6 +74,10 @@ Global
 		{10A7CA10-E230-414A-85E6-EEA3FC2C5A39}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10A7CA10-E230-414A-85E6-EEA3FC2C5A39}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10A7CA10-E230-414A-85E6-EEA3FC2C5A39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B23F707-E2EC-4D27-BFDC-6CA3D6692D80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B23F707-E2EC-4D27-BFDC-6CA3D6692D80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B23F707-E2EC-4D27-BFDC-6CA3D6692D80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B23F707-E2EC-4D27-BFDC-6CA3D6692D80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -88,6 +94,7 @@ Global
 		{76D42ECF-0245-408E-A420-1E10350C0642} = {D14662A7-A676-4A05-B5DA-30B9BEE7E17C}
 		{9CF74775-81E1-4F54-99C7-62F68A7B2FB8} = {F410790A-A8A5-4EF4-A9D8-2513A8AD3D84}
 		{10A7CA10-E230-414A-85E6-EEA3FC2C5A39} = {F410790A-A8A5-4EF4-A9D8-2513A8AD3D84}
+		{2B23F707-E2EC-4D27-BFDC-6CA3D6692D80} = {F410790A-A8A5-4EF4-A9D8-2513A8AD3D84}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0DF48393-E148-4C1E-B40C-28BB36DCBED7}

@@ -8,6 +8,7 @@ using System.Configuration;
 using System.Data;
 using System.Globalization;
 using System.Linq;
+using System.Speech.Recognition;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,6 +16,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Threading;
 
 namespace KtvMusic.ViewModels
 {
@@ -28,6 +30,7 @@ namespace KtvMusic.ViewModels
             InitSelectedSongSour();
             CategorySource = SongInfoManagementServiceCaller.GetAllCategorySource();
             CategorySourceDict = getCategorySourceDict();
+            InitSpeech();
         }
 
         #endregion
@@ -364,7 +367,10 @@ namespace KtvMusic.ViewModels
 
         public void OnSoundDown()
         {
-            selectedSongListUc.vedio.Volume = selectedSongListUc.vedio.Volume >= 0.1 ? selectedSongListUc.vedio.Volume - 0.1 : 0;
+            selectedSongListUc.Dispatcher.BeginInvoke(DispatcherPriority.DataBind, (Action)delegate
+            {
+                selectedSongListUc.vedio.Volume = selectedSongListUc.vedio.Volume >= 0.1 ? selectedSongListUc.vedio.Volume - 0.1 : 0;
+            });
         }
 
         public bool CanSoundDown()
@@ -385,7 +391,10 @@ namespace KtvMusic.ViewModels
 
         public void OnSoundUp()
         {
-            selectedSongListUc.vedio.Volume = selectedSongListUc.vedio.Volume <= 0.9 ? selectedSongListUc.vedio.Volume + 0.1 : 1; 
+            selectedSongListUc.Dispatcher.BeginInvoke(DispatcherPriority.DataBind, (Action)delegate
+            {
+                selectedSongListUc.vedio.Volume = selectedSongListUc.vedio.Volume <= 0.9 ? selectedSongListUc.vedio.Volume + 0.1 : 1;
+            });
         }
 
         public bool CanSoundUp()
@@ -427,7 +436,10 @@ namespace KtvMusic.ViewModels
 
         public void OnSongToNext()
         {
-            UpdatePlayingInfo();
+            selectedSongListUc.Dispatcher.BeginInvoke(DispatcherPriority.DataBind, (Action)delegate
+            {
+                UpdatePlayingInfo();
+            });
         }
 
         public bool CanSongToNext()
@@ -449,9 +461,19 @@ namespace KtvMusic.ViewModels
         public void OnSongPauseAndPlay()
         {
             if (IsPlayNoPause)
-                selectedSongListUc.vedio.Pause();
+            {
+                selectedSongListUc.Dispatcher.BeginInvoke(DispatcherPriority.DataBind, (Action)delegate
+                {
+                    selectedSongListUc.vedio.Pause();
+                });
+            }
             else
-                selectedSongListUc.vedio.Play();
+            {
+                selectedSongListUc.Dispatcher.BeginInvoke(DispatcherPriority.DataBind, (Action)delegate
+                {
+                    selectedSongListUc.vedio.Play();
+                });
+            }
             IsPlayNoPause = !IsPlayNoPause;
         }
 
@@ -473,8 +495,11 @@ namespace KtvMusic.ViewModels
 
         public void OnSongAgain()
         {
-            selectedSongListUc.vedio.Stop();
-            selectedSongListUc.vedio.Play();
+            selectedSongListUc.Dispatcher.BeginInvoke(DispatcherPriority.DataBind, (Action)delegate
+            {
+                selectedSongListUc.vedio.Stop();
+                selectedSongListUc.vedio.Play();
+            });
         }
 
         public bool CanSongAgain()
@@ -496,9 +521,18 @@ namespace KtvMusic.ViewModels
         public void OnSongAccompanyOrSing()
         {
             if (IsSingNoAccompany)
-                selectedSongListUc.vedio.Balance = -1 * int.Parse(PlayingSongRail);
-            else
-                selectedSongListUc.vedio.Balance = 0;
+            {
+                selectedSongListUc.Dispatcher.BeginInvoke(DispatcherPriority.DataBind, (Action)delegate
+                {
+                    selectedSongListUc.vedio.Balance = -1 * int.Parse(PlayingSongRail);
+                });
+            }
+            else {
+                selectedSongListUc.Dispatcher.BeginInvoke(DispatcherPriority.DataBind, (Action)delegate
+                {
+                    selectedSongListUc.vedio.Balance = 0;
+                });
+            }
             IsSingNoAccompany = !IsSingNoAccompany;
         }
 
@@ -1923,6 +1957,81 @@ namespace KtvMusic.ViewModels
                     $" category like '{category},%' or " +
                     $" category like '%,{category},%' or " +
                     $" category like '%,{category}' ";
+        }
+
+        #endregion
+
+        #endregion
+
+        #region Speech
+
+        #region NotifyProperty
+        
+        #region IsUsingSpeech
+
+        private bool _IsUsingSpeech = false;
+
+        public bool IsUsingSpeech
+        {
+            get { return _IsUsingSpeech; }
+            set
+            {
+                if (_IsUsingSpeech.Equals(value)) return;
+                _IsUsingSpeech = value;
+                RaisePropertyChanged("IsUsingSpeech");
+            }
+        }
+
+        #endregion
+
+        private SpeechRecognitionEngine speech = new SpeechRecognitionEngine();
+
+        #endregion
+
+        #region Methods
+
+        private void InitSpeech()
+        {
+
+            speech.SetInputToDefaultAudioDevice();
+            GrammarBuilder grammarBuilder = new GrammarBuilder();
+            grammarBuilder.Append(new Choices(new string[] { "暂停", "播放", "伴奏", "原唱", "切歌", "调大", "调小", "重唱" }));
+            Grammar grammar = new Grammar(grammarBuilder);
+            grammar.SpeechRecognized += new EventHandler<SpeechRecognizedEventArgs>(G_SpeechRecognized);
+            speech.LoadGrammar(grammar);
+            speech.RecognizeAsync(RecognizeMode.Multiple);
+        }
+
+        private void G_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
+        {
+            if (!IsUsingSpeech) return;
+            switch (e.Result.Text)
+            {
+                case "暂停":
+                    OnSongPauseAndPlay();
+                    break;
+                case "播放":
+                    OnSongPauseAndPlay();
+                    break;
+                case "伴奏":
+                    OnSongAccompanyOrSing();
+                    break;
+                case "原唱":
+                    OnSongAccompanyOrSing();
+                    break;
+                case "切歌":
+                    OnSongToNext();
+                    break;
+                case "调大":
+                    OnSoundUp();
+                    break;
+                case "调小":
+                    OnSoundDown();
+                    break;
+                case "重唱":
+                    OnSongAgain();
+                    break;
+            }
         }
 
         #endregion
